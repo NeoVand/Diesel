@@ -1,8 +1,9 @@
 name: Browser application checks
 on:
   push:
-    branches: [main, browser-first]
+    branches: [browser-first]
   pull_request:
+  workflow_call:
 permissions:
   contents: read
 jobs:

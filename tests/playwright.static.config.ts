@@ -9,6 +9,7 @@ export default defineConfig({
 	testDir: '.',
 	testMatch: 'browser-static.e2e.ts',
 	outputDir: '../test-results/browser-static',
+	globalSetup: './webgpu-ci-setup.ts',
 	workers: 1,
 	timeout: 90_000,
 	expect: { timeout: 15_000 },
@@ -24,10 +25,10 @@ export default defineConfig({
 						args: [
 							'--enable-unsafe-webgpu',
 							'--use-webgpu-adapter=swiftshader',
-							// Keep the headless compositor on ANGLE's software GL path.
-							// Forcing Chromium's full Vulkan compositor caused Dawn instance
-							// drops/black canvas tiles on the Ubuntu runner. The application
-							// still requests WebGPU exclusively; this is browser plumbing.
+							// Share ANGLE's SwiftShader Vulkan device with the compositor.
+							// Without VulkanFromANGLE Chromium cannot create a backing image
+							// for the WebGPU swapchain on this GPU-less Linux runner.
+							'--enable-features=Vulkan,VulkanFromANGLE',
 							'--use-gl=angle',
 							'--use-angle=swiftshader',
 							'--enable-unsafe-swiftshader'
