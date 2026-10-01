@@ -4,7 +4,7 @@ Checked 1 October 2026 against `http://127.0.0.1:4202/Diesel/`, using a fresh Go
 
 ## Browser resource decoding and renderer
 
-The application registered `/Diesel/coi-serviceworker.js` and reloaded into a `crossOriginIsolated` document. Instrumented browser Web Crypto calls recorded five AES-GCM decodes. The decoded output sizes and SHA-256 digests matched the application's expected values for all five resources:
+The application registered `/Diesel/coi-serviceworker.js` and reloaded into a `crossOriginIsolated` document. Instrumented browser Web Crypto calls recorded six AES-GCM decodes of five distinct resources, including a repeated clearance-binary decode. The decoded output sizes and SHA-256 digests matched the application's expected values for all five resources:
 
 - `v12-review.glb`
 - `v12-cams-refined.glb`
@@ -12,7 +12,7 @@ The application registered `/Diesel/coi-serviceworker.js` and reloaded into a `c
 - `v12-clearance-refined.bin`
 - `v12-chamber-domains.bin`
 
-The browser fetched 24 encrypted resource chunks. It requested no raw geometry files and made no `/api/` requests. Direct requests outside the application for the raw GLB and clearance binary returned 404. The only requested graphics canvas context was `webgpu`; no WebGL context was requested. The decoding key is a resource-packaging mechanism, not DRM or a secret API credential.
+The browser made 24 encrypted-chunk requests covering 12 distinct resource chunks, with repeated requests during loading. It requested no raw geometry files and made no `/api/` requests. Direct requests outside the application for the raw GLB and clearance binary returned 404. The only requested graphics canvas context was `webgpu`; no WebGL context was requested. The decoding key is a resource-packaging mechanism, not DRM or a secret API credential.
 
 The running exterior, X-ray, X/Y/Z moving sections, mechanism with all four process channels, and component atlas were exercised and screenshots visually inspected. There were no console, page, shader, or GPU validation errors. A hard reload of `/Diesel/design/?workspace=analyze` also succeeded.
 

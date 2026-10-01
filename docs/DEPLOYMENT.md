@@ -74,6 +74,8 @@ The script takes `ENGINE_ASSET_PACKAGE_KEY` from the environment or reuses/creat
 
 Anything placed under `static/` is copied into a build. Inspect the artifact before publication and only distribute engine geometry when its rights permit it. Keep the Gmsh GPL licence and source notices with the shipped WASM; the package has GPL-2.0-or-later corresponding-source obligations.
 
+The linked incorporation guidance applies only if the purchase is covered by CGTrader’s Royalty Free License. Actual purchase terms and seller-specific restrictions govern; encryption is not proof of licence compliance. The [resource audit](verification/asset-package-audit.md) records all five resources, every source body and the inspected public artifact’s boundaries.
+
 There is no server-sponsored secret on this static host. Visitors enter their own OpenAI key, which the app holds in memory and sends only to OpenAI. Meshes stay local; question context and bounded study summaries are transmitted for inference. A shared password cannot securely conceal a paid API key embedded in static JavaScript. Any future sponsored-AI service would be an explicit optional network service with its own access boundary, not a prerequisite for engineering computation.
 
 ## Deployment acceptance

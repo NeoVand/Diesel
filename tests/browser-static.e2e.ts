@@ -1,4 +1,4 @@
-import { readFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { expect, test as base, type Page } from '@playwright/test';
 import type { DesignParams } from '../src/lib/design/design-core';
 import type { RodCadReport } from '../src/lib/browser-cad/contracts';
@@ -328,7 +328,7 @@ test('cancelling an in-flight WASM initialization cannot attach a stale result a
 
 test('operating search reports its real compute backend and saved studies preserve the numerical evidence', async ({
 	page
-}) => {
+}, testInfo) => {
 	test.setTimeout(150_000);
 	await ready(page, true);
 	await page
@@ -340,6 +340,12 @@ test('operating search reports its real compute backend and saved studies preser
 	});
 	const result = await exportedCase(page),
 		search = result.operatingSearch!;
+	await mkdir(testInfo.outputDir, { recursive: true });
+	await writeFile(
+		testInfo.outputPath('operating-search-computation.json'),
+		JSON.stringify(search.computation, null, 2)
+	);
+	console.log('Operating search computation evidence:', JSON.stringify(search.computation));
 	expect(search.evaluated).toBe(500);
 	expect(search.best?.angularSamples).toBe(721);
 	expect(search.computation?.sectionEvaluations).toBe(3_085_500);

@@ -37,6 +37,8 @@ The coarse screen uses 121 phases per condition and 17 rod sections. A typical 5
 
 If WebGPU is unavailable, device initialisation fails, or GPU/reference agreement fails, the same worker uses the independent Float64 CPU search. Cancellation and stale-result guards remain active. Saved study provenance records backend, precision, device, validation count/error, timing and fallback reason. A GPU label is based on the executed path, not just `navigator.gpu` availability.
 
+Automatic compute also selects this Float64 path when the adapter explicitly identifies itself as software, such as SwiftShader. Compiling GPU kernels for CPU emulation offered no acceleration and stalled a Linux CI run. Unknown and physical adapters retain the WebGPU path; an explicit WebGPU request still exercises that path for diagnostics. This numerical choice does not change the native WebGPU renderer. Linux CI verifies that renderer on its software driver; the separately recorded physical-adapter checks establish numerical GPU execution and agreement.
+
 ### Recorded browser measurements
 
 [The complete machine-readable report](verification/browser-webgpu.json) was captured in Chrome 154 on an `apple / metal-3` WebGPU adapter. Each of three 500-design cases was compared candidate-by-candidate against the independent Float64 implementation. Pass/fail decisions and finalist identities agreed in all three cases.
