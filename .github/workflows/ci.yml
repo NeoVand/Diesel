@@ -22,3 +22,9 @@ jobs:
       - run: pnpm test:unit --run
       - run: pnpm build
       - run: pnpm exec playwright test --config tests/playwright.static.config.ts
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: browser-test-diagnostics
+          path: test-results/browser-static
+          retention-days: 7

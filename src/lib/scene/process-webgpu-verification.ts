@@ -175,22 +175,32 @@ export async function verifyProcessWebGPU() {
 		blocker.material.dispose();
 	}
 
-	// Sized, soft particles must remain billboards on WebGPU, not silently collapse to 1px dots.
+	// Four separated instances detect accidental per-vertex indexing: a single
+	// particle cannot reveal corners stretched between neighbouring parcel positions.
 	scene.clear();
 	const particleGeometry = new THREE.BufferGeometry();
+	const parcelCenters = [
+		[-0.7, -0.7, 0],
+		[0.7, -0.7, 0],
+		[0.7, 0.7, 0],
+		[-0.7, 0.7, 0]
+	];
 	particleGeometry.setAttribute(
 		'position',
-		new THREE.BufferAttribute(new Float32Array([0, 0, 0]), 3).setUsage(THREE.DynamicDrawUsage)
-	);
-	particleGeometry.setAttribute(
-		'color',
-		new THREE.BufferAttribute(new Float32Array([0.3, 0.7, 1, 0.8]), 4).setUsage(
+		new THREE.BufferAttribute(new Float32Array(parcelCenters.flat()), 3).setUsage(
 			THREE.DynamicDrawUsage
 		)
 	);
+	particleGeometry.setAttribute(
+		'color',
+		new THREE.BufferAttribute(
+			new Float32Array([1, 0.1, 0.1, 0.8, 0.1, 1, 0.1, 0.8, 0.1, 0.1, 1, 0.8, 1, 1, 0.1, 0.8]),
+			4
+		).setUsage(THREE.DynamicDrawUsage)
+	);
 	const particleMap = softFlowParticleTexture();
 	const particleMaterial = new PointsNodeMaterial({
-		size: 0.6,
+		size: 0.3,
 		sizeAttenuation: true,
 		transparent: true,
 		map: particleMap,
@@ -199,7 +209,7 @@ export async function verifyProcessWebGPU() {
 		toneMapped: false
 	});
 	const cloud = new ProcessParticles(particleGeometry, particleMaterial);
-	cloud.setCount(1);
+	cloud.setCount(4);
 	const clip = new ClippingGroup();
 	clip.add(cloud);
 	scene.add(clip);
@@ -215,6 +225,44 @@ export async function verifyProcessWebGPU() {
 		return new Uint8Array(await renderer.readRenderTargetPixelsAsync(target, 0, 0, 256, 256));
 	};
 	const visiblePixels = await particlesDraw();
+	const patch = (pixels: Uint8Array, point: number[]) => {
+		const projected = new THREE.Vector3(...point).project(camera);
+		const x = Math.round((projected.x + 1) * 128),
+			y = Math.round((1 - projected.y) * 128);
+		const rgb = [0, 0, 0];
+		const brightnessLevels = new Set<number>();
+		let count = 0;
+		for (let row = y - 12; row <= y + 12; row++)
+			for (let col = x - 12; col <= x + 12; col++) {
+				const at = (row * 256 + col) * 4;
+				for (let channel = 0; channel < 3; channel++) rgb[channel] += pixels[at + channel];
+				const brightness = pixels[at] + pixels[at + 1] + pixels[at + 2];
+				if (brightness > 6) {
+					count++;
+					brightnessLevels.add(brightness);
+				}
+			}
+		return { count, rgb, brightnessLevels: brightnessLevels.size };
+	};
+	const clusters = parcelCenters.map((point) => patch(visiblePixels, point));
+	if (clusters.some((cluster) => cluster.count < 50))
+		throw Error(
+			'Particle instances did not form four separated billboards: ' + JSON.stringify(clusters)
+		);
+	if (clusters.some((cluster) => cluster.brightnessLevels < 10))
+		throw Error(
+			'Gaussian particle texture was replaced by a flat square: ' + JSON.stringify(clusters)
+		);
+	for (let i = 0; i < 3; i++) {
+		if (
+			clusters[i].rgb.some(
+				(energy, channel) => channel !== i && energy >= clusters[i].rgb[i] * 0.75
+			)
+		)
+			throw Error('Particle instance colors are not independent: ' + JSON.stringify(clusters));
+	}
+	if (patch(visiblePixels, [0, 0, 0]).count !== 0)
+		throw Error('Particles stretched triangles across the empty centre');
 	let nonzero = 0,
 		brightness = 0;
 	for (let i = 0; i < visiblePixels.length; i += 4)
@@ -224,15 +272,22 @@ export async function verifyProcessWebGPU() {
 		}
 	if (nonzero < 100)
 		throw Error('WebGPU sized particles regressed to point primitives: ' + nonzero);
+	const positions = particleGeometry.getAttribute('position');
+	positions.setXYZ(0, 0, 0, 0);
+	positions.needsUpdate = true;
+	const movedPixels = await particlesDraw();
+	if (patch(movedPixels, [0, 0, 0]).count < 50 || patch(movedPixels, parcelCenters[0]).count !== 0)
+		throw Error('Dynamic particle position update did not move the first instance independently');
 	clip.clippingPlanes = [new THREE.Plane(new THREE.Vector3(1, 0, 0), -2)];
 	const hiddenPixels = await particlesDraw();
 	if (hiddenPixels.some((v, i) => i % 4 !== 3 && v > 2))
 		throw Error('Particle section plane did not clip instances');
 	results.push({
-		kind: 'sized-particle',
+		kind: 'four-independent-sized-particles',
 		energy: brightness,
 		difference: nonzero,
-		occludedEnergy: 0
+		occludedEnergy: 0,
+		clusters
 	});
 	cloud.dispose();
 	particleGeometry.dispose();

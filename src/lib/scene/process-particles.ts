@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { PointsNodeMaterial } from 'three/webgpu';
-import { instancedBufferAttribute } from 'three/tsl';
+import { instancedDynamicBufferAttribute, texture, vec4 } from 'three/tsl';
 
 /** Sized point clouds need instanced billboards on WebGPU, whose point primitive is only 1 px. */
 export class ProcessParticles extends THREE.Sprite {
@@ -12,13 +12,31 @@ export class ProcessParticles extends THREE.Sprite {
 		// Sprite + PointsNodeMaterial is the documented Three WebGPU sized-particle path.
 		super(material as unknown as THREE.SpriteMaterial);
 		this.geometry = this.geometry.clone();
-		const position = sourceGeometry.getAttribute('position') as THREE.BufferAttribute;
-		const color = sourceGeometry.getAttribute('color') as THREE.BufferAttribute;
-		material.positionNode = instancedBufferAttribute<'vec3'>(position, 'vec3');
-		material.colorNode =
+		// Three 0.186's node helper alone does not set the underlying vec3/vec4
+		// buffer's instance step mode. Ordinary BufferAttributes make four successive
+		// parcel positions become a quad's corners, stretching triangles between them.
+		// Keep the same arrays and make sourceGeometry own the attributes that callers
+		// mark dirty, so both rendering and pause/seek uploads use one version counter.
+		const instanced = (name: string) => {
+			const source = sourceGeometry.getAttribute(name) as THREE.BufferAttribute;
+			const attribute = new THREE.InstancedBufferAttribute(
+				source.array,
+				source.itemSize,
+				source.normalized
+			).setUsage(THREE.DynamicDrawUsage);
+			sourceGeometry.setAttribute(name, attribute);
+			return attribute;
+		};
+		const position = instanced('position');
+		const color = instanced('color');
+		material.positionNode = instancedDynamicBufferAttribute<'vec3'>(position, 'vec3');
+		const tint =
 			color.itemSize === 4
-				? instancedBufferAttribute<'vec4'>(color, 'vec4')
-				: instancedBufferAttribute<'vec3'>(color, 'vec3');
+				? instancedDynamicBufferAttribute<'vec4'>(color, 'vec4')
+				: vec4(instancedDynamicBufferAttribute<'vec3'>(color, 'vec3'), 1);
+		// colorNode replaces the built-in diffuse-map path; sample the Gaussian
+		// explicitly so soft parcels do not become opaque square billboards.
+		material.colorNode = material.map ? tint.mul(texture(material.map)) : tint;
 		material.vertexColors = false;
 		// Explicit ownership lets geometry disposal release the instanced GPU buffers too.
 		this.geometry.setAttribute('parcelPosition', position);

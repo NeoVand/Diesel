@@ -1,33 +1,55 @@
 {
-  "backend": "WebGPU",
-  "results": [
-    {
-      "kind": "chamber",
-      "energy": 1990088,
-      "difference": 24475,
-      "occludedEnergy": 0,
-      "sectionEnergy": 1000258
-    },
-    {
-      "kind": "exhaust",
-      "energy": 170136,
-      "difference": 33695,
-      "occludedEnergy": 0,
-      "sectionEnergy": 109731
-    },
-    {
-      "kind": "directed",
-      "energy": 967987,
-      "difference": 397623,
-      "occludedEnergy": 441565,
-      "sectionEnergy": 419994
-    },
-    {
-      "kind": "sized-particle",
-      "energy": 218929,
-      "difference": 676,
-      "occludedEnergy": 0
-    }
-  ],
-  "errors": []
+	"backend": "WebGPU",
+	"results": [
+		{
+			"kind": "chamber",
+			"energy": 1990088,
+			"difference": 24475,
+			"occludedEnergy": 0,
+			"sectionEnergy": 1000258
+		},
+		{
+			"kind": "exhaust",
+			"energy": 170136,
+			"difference": 33695,
+			"occludedEnergy": 0,
+			"sectionEnergy": 109731
+		},
+		{
+			"kind": "directed",
+			"energy": 967987,
+			"difference": 397623,
+			"occludedEnergy": 441565,
+			"sectionEnergy": 419994
+		},
+		{
+			"kind": "four-independent-sized-particles",
+			"energy": 24569,
+			"difference": 386,
+			"occludedEnergy": 0,
+			"clusters": [
+				{
+					"count": 96,
+					"rgb": [4364, 434, 434],
+					"brightnessLevels": 45
+				},
+				{
+					"count": 96,
+					"rgb": [434, 4364, 434],
+					"brightnessLevels": 45
+				},
+				{
+					"count": 96,
+					"rgb": [434, 434, 4364],
+					"brightnessLevels": 45
+				},
+				{
+					"count": 98,
+					"rgb": [4364, 4364, 434],
+					"brightnessLevels": 46
+				}
+			]
+		}
+	],
+	"errors": []
 }
