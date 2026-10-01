@@ -27,14 +27,14 @@ British narration generated with ElevenLabs. The first prototype took roughly tw
 Chapters
 
 00:00 From mechanism to measurement
-00:38 Geometry, identity and inspection
-01:22 Sections and component organization
-02:13 Connected motion and gas exchange
-03:10 A declared cylinder model
-04:00 An assistant with bounded scene tools
-04:49 A bounded parametric family
-05:46 WebGPU screening with independent checks
-06:52 Exact solids and browser finite elements
-07:57 Comparing results and preserving a study
-08:59 Static deployment and reproducibility
-09:51 Development and conclusion
+00:39 Part I — Geometry, identity and inspection
+01:25 Part II — Sections and component organization
+02:16 Part III — Connected motion and gas exchange
+03:14 Part IV — A declared cylinder model
+04:10 Part V — An assistant with bounded scene tools
+05:01 Part VI — A bounded parametric family
+05:57 Part VII — WebGPU screening with independent checks
+07:05 Part VIII — Exact solids and browser finite elements
+08:12 Part IX — Comparing results and preserving a study
+09:17 Part X — Static deployment and reproducibility
+10:11 Part XI — Development and conclusion
