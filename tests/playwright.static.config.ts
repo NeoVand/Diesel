@@ -23,11 +23,14 @@ export default defineConfig({
 				? {
 						args: [
 							'--enable-unsafe-webgpu',
-							'--enable-features=Vulkan',
-							'--use-angle=vulkan',
-							'--use-vulkan=swiftshader',
 							'--use-webgpu-adapter=swiftshader',
-							'--disable-vulkan-surface'
+							// Keep the headless compositor on ANGLE's software GL path.
+							// Forcing Chromium's full Vulkan compositor caused Dawn instance
+							// drops/black canvas tiles on the Ubuntu runner. The application
+							// still requests WebGPU exclusively; this is browser plumbing.
+							'--use-gl=angle',
+							'--use-angle=swiftshader',
+							'--enable-unsafe-swiftshader'
 						]
 					}
 				: {},

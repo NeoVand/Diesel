@@ -25,7 +25,7 @@ type CaseExport = {
 // Browser CAD/FEA and generated geometry must not quietly fall back to either one.
 const test = base.extend<{ browserIsolation: void }>({
 	browserIsolation: [
-		async ({ context, page }, use) => {
+		async ({ context, page }, use, testInfo) => {
 			const apiRequests: string[] = [],
 				modelRequests: string[] = [],
 				errors: string[] = [];
@@ -35,9 +35,76 @@ const test = base.extend<{ browserIsolation: void }>({
 				if (path.startsWith('/models/')) modelRequests.push(path);
 			});
 			page.on('pageerror', (error) => errors.push(error.message));
+			await context.addInitScript(() => {
+				const evidence = {
+					contexts: [] as string[],
+					adapters: [] as Record<string, unknown>[],
+					deviceLosses: [] as string[],
+					validationErrors: [] as string[]
+				};
+				(window as unknown as { __staticWebGPU: typeof evidence }).__staticWebGPU = evidence;
+				const canvas = HTMLCanvasElement.prototype as unknown as {
+					getContext: (kind: string, ...args: unknown[]) => unknown;
+				};
+				const getContext = canvas.getContext;
+				canvas.getContext = function (kind, ...args) {
+					evidence.contexts.push(kind);
+					return getContext.call(this, kind, ...args);
+				};
+				if (!navigator.gpu) return;
+				const requestAdapter = navigator.gpu.requestAdapter.bind(navigator.gpu);
+				navigator.gpu.requestAdapter = async (options) => {
+					const adapter = await requestAdapter(options);
+					if (!adapter) return adapter;
+					const { vendor, architecture, device, description } = adapter.info;
+					evidence.adapters.push({
+						vendor,
+						architecture,
+						device,
+						description,
+						maxBufferSize: adapter.limits.maxBufferSize,
+						maxStorageBufferBindingSize: adapter.limits.maxStorageBufferBindingSize
+					});
+					const requestDevice = adapter.requestDevice.bind(adapter);
+					adapter.requestDevice = async (descriptor) => {
+						const device = await requestDevice(descriptor);
+						device.addEventListener('uncapturederror', (event) =>
+							evidence.validationErrors.push((event as GPUUncapturedErrorEvent).error.message)
+						);
+						void device.lost.then((info) => {
+							if (info.reason !== 'destroyed') evidence.deviceLosses.push(info.message);
+						});
+						return device;
+					};
+					return adapter;
+				};
+			});
 			await context.route('**/api/**', (route) => route.abort('blockedbyclient'));
 			await context.route('**/models/**', (route) => route.abort('blockedbyclient'));
 			await use();
+			const gpu = await page.evaluate(
+				() =>
+					(
+						window as unknown as {
+							__staticWebGPU: {
+								contexts: string[];
+								adapters: Record<string, unknown>[];
+								deviceLosses: string[];
+								validationErrors: string[];
+							};
+						}
+					).__staticWebGPU
+			);
+			await testInfo.attach('WebGPU adapter and device evidence', {
+				body: JSON.stringify(gpu, null, 2),
+				contentType: 'application/json'
+			});
+			expect(gpu.validationErrors, 'WebGPU validation remains enabled').toEqual([]);
+			expect(gpu.deviceLosses, 'The graphics device remains available').toEqual([]);
+			expect(
+				gpu.contexts.filter((kind) => kind === 'webgl' || kind === 'webgl2'),
+				'No application WebGL fallback'
+			).toEqual([]);
 			expect(apiRequests, 'No engineering operation may call an application backend').toEqual([]);
 			expect(
 				modelRequests,

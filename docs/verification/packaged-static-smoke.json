@@ -1226,5 +1226,72 @@
     }
   ],
   "apiRequests": [],
-  "rawGeometryRequests": []
+  "rawGeometryRequests": [],
+  "particleRepairRecheck": {
+    "httpErrors": [
+      {
+        "url": "http://127.0.0.1:4202/favicon.ico",
+        "status": 404
+      },
+      {
+        "url": "http://127.0.0.1:4202/favicon.ico",
+        "status": 404
+      }
+    ],
+    "checkedAt": "2026-10-01T05:51:21.321Z",
+    "buildCommit": "8e886e4",
+    "scope": "Independent packaged-build process and phone check after particle instancing repair; other smoke evidence above retains its original timestamp.",
+    "url": "http://127.0.0.1:4202/Diesel/",
+    "sequence": [
+      "Mechanism",
+      "Show all four processes",
+      "Seek 447 degrees",
+      "Run engine",
+      "Wait 1.2 seconds",
+      "Capture running scene",
+      "Pause"
+    ],
+    "canvasChanged": true,
+    "ui": {
+      "phase": "508° / 720°",
+      "running": true,
+      "legend": "Air inFuel inExhaust out Compression ignition Flow paths",
+      "proof": {
+        "contexts": [
+          "webgpu"
+        ],
+        "gpuErrors": []
+      },
+      "crossOriginIsolated": true,
+      "controller": "http://127.0.0.1:4202/Diesel/coi-serviceworker.js"
+    },
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "apiRequests": [],
+    "rawGeometryRequests": [],
+    "phone": {
+      "image": {
+        "src": "http://127.0.0.1:4202/Diesel/engine-preview.png",
+        "naturalWidth": 1440,
+        "naturalHeight": 1000
+      },
+      "errors": [],
+      "canvasCount": 0,
+      "heavyRequests": []
+    },
+    "httpWarnings": [
+      {
+        "url": "http://127.0.0.1:4202/favicon.ico",
+        "status": 404,
+        "source": "Chrome automatic root favicon request; independently identified with DevTools Network.responseReceived and console location"
+      }
+    ],
+    "visualInspection": {
+      "runningScreenshot": "packaged-static-processes.png",
+      "diagonalParticleWedgeAbsent": true,
+      "softParticleEdgesVisible": true,
+      "phonePreviewDecoded": true
+    }
+  }
 }
