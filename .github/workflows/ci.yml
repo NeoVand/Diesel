@@ -19,15 +19,21 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec playwright install --with-deps chromium chrome
+      - name: Select and verify the CI WebGPU driver
+        run: xvfb-run -a node tests/webgpu-ci-setup.ts --select
+        env:
+          DEBUG: pw:browser
       - run: pnpm check
       - run: pnpm test:unit --run
       - run: pnpm build
-      - run: pnpm exec playwright test --config tests/playwright.static.config.ts
+      - run: xvfb-run -a pnpm exec playwright test --config tests/playwright.static.config.ts
         env:
           DEBUG: pw:browser
       - uses: actions/upload-artifact@v7
-        if: failure()
+        if: always()
         with:
           name: browser-test-diagnostics
-          path: test-results/browser-static
+          path: |
+            test-results/browser-static
+            test-results/ci-webgpu
           retention-days: 7

@@ -1,18 +1,23 @@
 import { mkdir, writeFile } from 'node:fs/promises';
+import { createServer } from 'node:http';
 import { resolve } from 'node:path';
-import { chromium, type FullConfig } from '@playwright/test';
+import { chromium, type FullConfig, type LaunchOptions } from '@playwright/test';
 
-/** Fail fast if the CI software GPU can compute but cannot present a canvas. */
+/** Run before the suite too, so a broken environment cannot become skipped coverage. */
 export default async function verifyCIWebGPU(config: FullConfig) {
 	if (!process.env.CI || process.platform !== 'linux') return;
 	const use = config.projects[0].use;
-	const directory = resolve(config.projects[0].outputDir, 'webgpu-preflight');
+	await probeWebGPU(
+		{ ...use.launchOptions, channel: use.channel, headless: use.headless },
+		use.baseURL!,
+		resolve(config.projects[0].outputDir, 'webgpu-preflight')
+	);
+}
+
+/** Requires correct GPU buffer values AND a visible compositor image. */
+async function probeWebGPU(launch: LaunchOptions, origin: string, directory: string) {
 	await mkdir(directory, { recursive: true });
-	const browser = await chromium.launch({
-		...use.launchOptions,
-		channel: use.channel,
-		headless: use.headless
-	});
+	const browser = await chromium.launch({ ...launch, timeout: 15_000 });
 	const page = await browser.newPage({ viewport: { width: 128, height: 128 } });
 	const errors: string[] = [];
 	page.on('pageerror', (error) => errors.push(error.message));
@@ -27,7 +32,7 @@ export default async function verifyCIWebGPU(config: FullConfig) {
 				body: '<!doctype html><link rel="icon" href="data:,"><body style="margin:0;background:black"><canvas width="64" height="64"></canvas></body>'
 			})
 		);
-		await page.goto(`${use.baseURL}/webgpu-ci-probe`);
+		await page.goto(`${origin}/webgpu-ci-probe`);
 		const proof = await Promise.race([
 			page.evaluate(async () => {
 				const adapter = await navigator.gpu.requestAdapter();
@@ -160,9 +165,10 @@ export default async function verifyCIWebGPU(config: FullConfig) {
 		if (!(pixel[2] > pixel[1] && pixel[1] > pixel[0] && pixel[0] > 10 && pixel[3] === 255))
 			throw new Error(`CI WebGPU canvas presentation failed: ${pixel}`);
 		if (errors.length) throw new Error(errors.join('\n'));
-		const evidence = { ...proof, pixel, launchArguments: use.launchOptions?.args };
+		const evidence = { ...proof, pixel, launchOptions: launch };
 		await writeFile(resolve(directory, 'adapter.json'), JSON.stringify(evidence, null, 2));
 		console.log('CI software WebGPU preflight:', JSON.stringify(evidence));
+		return evidence;
 	} catch (error) {
 		await writeFile(
 			resolve(directory, 'failure.json'),
@@ -174,3 +180,93 @@ export default async function verifyCIWebGPU(config: FullConfig) {
 		await browser.close();
 	}
 }
+
+/**
+ * A CI driver selection, never an application fallback. Chromium's stable and
+ * bundled revisions can differ in Linux shared-image / SwiftShader interop.
+ * Every accepted configuration still uses WebGPU for both compute and drawing.
+ * SwANGLE: chromium/src/docs/gpu/swiftshader.md; VulkanFromANGLE: Kitware's
+ * documented Linux WebGPU launch configuration. Headed cases require Xvfb.
+ */
+async function selectCIWebGPU() {
+	if (!process.env.CI || process.platform !== 'linux')
+		throw new Error('The software GPU selector is only for Linux CI');
+	const directory = resolve('test-results/ci-webgpu');
+	await mkdir(directory, { recursive: true });
+	const swangle = [
+		'--enable-unsafe-webgpu',
+		'--use-webgpu-adapter=swiftshader',
+		'--use-gl=angle',
+		'--use-angle=swiftshader',
+		'--enable-unsafe-swiftshader'
+	];
+	const vulkan = [...swangle, '--enable-features=Vulkan,VulkanFromANGLE'];
+	const candidates: { name: string; launch: LaunchOptions }[] = [
+		{ name: 'bundled-headless-shell-swangle', launch: { headless: true, args: swangle } },
+		{
+			name: 'bundled-chromium-swangle',
+			launch: { channel: 'chromium', headless: true, args: swangle }
+		},
+		{ name: 'bundled-headless-shell-vulkan', launch: { headless: true, args: vulkan } },
+		{
+			name: 'bundled-chromium-vulkan',
+			launch: { channel: 'chromium', headless: true, args: vulkan }
+		},
+		...(process.env.DISPLAY
+			? [
+					{
+						name: 'bundled-chromium-headed-swangle',
+						launch: { channel: 'chromium', headless: false, args: swangle }
+					},
+					{
+						name: 'chrome-headed-swangle',
+						launch: { channel: 'chrome', headless: false, args: swangle }
+					}
+				]
+			: [])
+	];
+	// Independent of building or starting the application. This is a secure local
+	// origin and a 64px canvas, so a failed driver is found before expensive checks.
+	const server = createServer((_request, response) => {
+		response.writeHead(200, { 'Content-Type': 'text/html' });
+		response.end('<!doctype html><link rel="icon" href="data:,">');
+	});
+	await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
+	const address = server.address();
+	if (!address || typeof address === 'string') throw new Error('Probe server address unavailable');
+	const origin = `http://127.0.0.1:${address.port}`;
+	const attempts: { name: string; launch: LaunchOptions; success: boolean; error?: string }[] = [];
+	try {
+		for (const candidate of candidates) {
+			console.log(`Testing CI WebGPU driver: ${candidate.name}`);
+			try {
+				const proof = await probeWebGPU(
+					candidate.launch,
+					origin,
+					resolve(directory, candidate.name)
+				);
+				attempts.push({ ...candidate, success: true });
+				await writeFile(
+					resolve(directory, 'selected.json'),
+					JSON.stringify({ ...candidate, proof }, null, 2)
+				);
+				await writeFile(resolve(directory, 'attempts.json'), JSON.stringify(attempts, null, 2));
+				console.log(`Selected CI software WebGPU driver: ${candidate.name}`);
+				return;
+			} catch (error) {
+				attempts.push({ ...candidate, success: false, error: String(error) });
+				console.error(`${candidate.name}: ${String(error)}`);
+				await writeFile(resolve(directory, 'attempts.json'), JSON.stringify(attempts, null, 2));
+			}
+		}
+		throw new Error(
+			'No CI WebGPU configuration passed compute and canvas presentation; see test-results/ci-webgpu/attempts.json'
+		);
+	} finally {
+		await new Promise<void>((resolve, reject) =>
+			server.close((error) => (error ? reject(error) : resolve()))
+		);
+	}
+}
+
+if (process.argv.includes('--select')) await selectCIWebGPU();

@@ -1,8 +1,19 @@
-import { defineConfig } from '@playwright/test';
+import { defineConfig, type LaunchOptions } from '@playwright/test';
+import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const port = Number(process.env.STATIC_TEST_PORT ?? 4198);
 const origin = `http://127.0.0.1:${port}`;
+// Selected by the standalone compute+compositor probe before CI builds the app.
+// Local runs continue using the user's normal hardware Chrome adapter.
+const selected: LaunchOptions | undefined =
+	process.env.CI && process.platform === 'linux'
+		? (
+				JSON.parse(
+					readFileSync(new URL('../test-results/ci-webgpu/selected.json', import.meta.url), 'utf8')
+				) as { launch: LaunchOptions }
+			).launch
+		: undefined;
 
 /** Exercises the shipped files against a server that cannot execute application APIs. */
 export default defineConfig({
@@ -16,26 +27,9 @@ export default defineConfig({
 	retries: 0,
 	use: {
 		baseURL: origin,
-		channel: 'chrome',
-		// CI has no physical GPU. Exercise the actual WebGPU API with Chromium's
-		// software adapter only in this test runner; application capability checks stay strict.
-		launchOptions:
-			process.env.CI && process.platform === 'linux'
-				? {
-						args: [
-							'--enable-unsafe-webgpu',
-							'--use-webgpu-adapter=swiftshader',
-							// Share ANGLE's SwiftShader Vulkan device with the compositor.
-							// Without VulkanFromANGLE Chromium cannot create a backing image
-							// for the WebGPU swapchain on this GPU-less Linux runner.
-							'--enable-features=Vulkan,VulkanFromANGLE',
-							'--use-gl=angle',
-							'--use-angle=swiftshader',
-							'--enable-unsafe-swiftshader'
-						]
-					}
-				: {},
-		headless: true,
+		channel: selected ? selected.channel : 'chrome',
+		launchOptions: selected ?? {},
+		headless: selected?.headless ?? true,
 		viewport: { width: 1440, height: 1000 },
 		trace: 'retain-on-failure',
 		screenshot: 'only-on-failure'
