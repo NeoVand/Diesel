@@ -3,13 +3,11 @@
 	let {
 		ready,
 		aiAvailable,
-		inviteAvailable,
 		ontour,
 		onconnect
 	}: {
 		ready: boolean;
 		aiAvailable: boolean;
-		inviteAvailable: boolean;
 		ontour: () => void;
 		onconnect: () => void;
 	} = $props();
@@ -85,10 +83,8 @@
 			<strong>{aiAvailable ? 'Assistant connected' : 'Assistant access'}</strong>
 			<p>
 				{aiAvailable
-					? 'The assistant can inspect parts and change the view. The host provides access; the API key remains on the server.'
-					: inviteAvailable
-						? 'Enter an invitation password in connection settings to use the assistant and narration.'
-						: 'Geometry controls and analysis remain available. Configure assistant access in connection settings.'}
+					? 'The assistant can inspect parts and change the view. Requests go directly to OpenAI with your key held in this tab’s memory.'
+					: 'Geometry controls and analysis run in your browser. Add your own OpenAI key in connection settings to use the assistant and AI-generated narration.'}
 			</p>
 			{#if !aiAvailable}<button
 					class="text-button"

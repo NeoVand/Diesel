@@ -1,5 +1,42 @@
 import * as THREE from 'three';
 import { applyV12PistonSurfaceShader } from './v12-piston-surface';
+import {
+	attribute,
+	float,
+	materialRoughness,
+	max,
+	mix,
+	modelNormalMatrix,
+	modelViewMatrix,
+	normalView,
+	positionLocal,
+	positionView,
+	reference,
+	smoothstep,
+	varying,
+	vec4,
+	faceDirection,
+	mx_noise_float,
+	screenCoordinate,
+	wgslFn
+} from 'three/tsl';
+import type { MeshStandardNodeMaterial, Node } from 'three/webgpu';
+// Fixed 8×8 Bayer coverage in the light's shadow map. A stable screen-space
+// threshold makes the returning shell's shadow fade without a final opacity snap.
+// Keep every node in the public TSL module: mixing source-module Fn nodes with
+// bundled WebGPU nodes creates separate builder state in Three's distribution.
+const shadowCoverageThreshold = wgslFn(`
+fn shadowCoverageThreshold(pixel: vec2f) -> f32 {
+  let p = vec2u(pixel) & vec2u(7u);
+  var threshold: u32 = 0u;
+  for (var bit: u32 = 0u; bit < 3u; bit = bit + 1u) {
+    let x = (p.x >> bit) & 1u;
+    let y = (p.y >> bit) & 1u;
+    threshold = (threshold << 2u) | (((x ^ y) << 1u) | y);
+  }
+  return (f32(threshold) + 0.5) / 64.0;
+}
+`);
 
 type SourcePart = {
 	id: string;
@@ -137,7 +174,43 @@ function finishFor(material: THREE.MeshStandardMaterial, part: SourcePart): Fini
 export function restoreV12MaterialDetail(material: THREE.Material) {
 	const grain = Number(material.userData.displayRoughnessGrain ?? 0);
 	const skirt = material.userData.pistonSkirtFiltering === true;
-	if (!(material instanceof THREE.MeshStandardMaterial) || (!grain && !skirt)) return;
+	if (!(material instanceof THREE.MeshStandardMaterial)) return;
+	// StandardNodeLibrary transfers these node properties onto the WebGPU material.
+	// Keep source standard/physical classes so opacity, pooling and asset provenance
+	// retain their existing behavior. Clones reconstruct nodes here from userData.
+	const nodeMaterial = material as THREE.MeshStandardMaterial &
+		Pick<MeshStandardNodeMaterial, 'roughnessNode' | 'normalNode' | 'maskShadowNode'>;
+	// WebGPU does not consume Mesh.customDepthMaterial. Use its native shadow-only
+	// mask to preserve the smooth coverage return when leaving mechanism/X-ray.
+	nodeMaterial.maskShadowNode = smoothstep(
+		0.12,
+		1,
+		reference('opacity', 'float', material)
+	).greaterThanEqual(shadowCoverageThreshold(screenCoordinate.xy) as Node<'float'>);
+	if (!grain && !skirt) return;
+	if (grain) {
+		const p = positionLocal.mul(42);
+		const footprint = max(p.dFdx().length(), p.dFdy().length());
+		const visibility = float(1).sub(smoothstep(0.35, 0.9, footprint));
+		const amplitude = reference('displayRoughnessGrain', 'float', material.userData);
+		nodeMaterial.roughnessNode = materialRoughness
+			.add(mx_noise_float(p).mul(0.5).mul(amplitude).mul(visibility))
+			.clamp(0.08, 1);
+	}
+	if (skirt) {
+		const detail = attribute('pistonSkirtDetail', 'vec3');
+		const macro = varying(
+			modelNormalMatrix.mul(attribute('pistonSkirtMacroNormal', 'vec3'))
+		).normalize();
+		const millimetreScale = varying(
+			detail.z.mul(modelViewMatrix.mul(vec4(1, 0, 0, 0)).xyz.length())
+		);
+		const footprint = max(positionView.dFdx().length(), positionView.dFdy().length()).div(
+			max(millimetreScale, 0.000001)
+		);
+		const blend = smoothstep(0.15, 0.65, footprint).mul(varying(detail.y));
+		nodeMaterial.normalNode = mix(normalView, macro.mul(faceDirection), blend).normalize();
+	}
 	material.onBeforeCompile = (shader) => {
 		if (skirt) applyV12PistonSurfaceShader(shader);
 		if (!grain) return;

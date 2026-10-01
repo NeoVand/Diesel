@@ -1,0 +1,16 @@
+{
+  "meshes": [
+    {
+      "vertices": 27056,
+      "triangles": 25992,
+      "material": "Powder Coat - Rough (Dark Grey)"
+    }
+  ],
+  "backend": "webgpu",
+  "variants": [
+    "source-smooth",
+    "face-normals",
+    "wireframe"
+  ],
+  "errors": []
+}

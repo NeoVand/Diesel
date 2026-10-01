@@ -1,0 +1,94 @@
+{
+	"createdAt": "2026-10-01T05:07:22.479Z",
+	"environment": "Chromium browser worker; all /api/** requests blocked",
+	"crossOriginIsolated": true,
+	"exportBytes": 54596,
+	"cad": {
+		"schemaVersion": "rod-solid-v1",
+		"parameterHash": "b4c7deba5b7f087724c937b4abc2edde3594893fc4d500f9d8d734f4fbd3bac6",
+		"params": {
+			"rodLengthMm": 125,
+			"rodWidthMm": 20,
+			"rodDepthMm": 16,
+			"webMm": 4,
+			"flangeMm": 3
+		},
+		"kernel": "OpenCASCADE through Gmsh 5.0.0 / WebAssembly (gmsh-wasm 0.3.0)",
+		"units": "mm",
+		"valid": true,
+		"solidCount": 1,
+		"volumeMm3": 39984.269681048725,
+		"massKg": 0.3138765169962325,
+		"densityKgM3": 7850,
+		"densityProvenance": "Assumed representative steel; not a verified source material",
+		"boundsMm": {
+			"min": [-32.00000015, -32.00000015, -8.00000015],
+			"max": [32.00000015, 140.00000015, 8.00000015]
+		},
+		"analyticVolumeMm3": 39984.26968104874,
+		"relativeVolumeError": 3.639410034107486e-16,
+		"stepRoundTripValid": true,
+		"stepRoundTripRelativeVolumeError": 4.458277291781672e-14,
+		"limitations": [
+			"New parametric concept derivative; not the purchased rod feature history.",
+			"Sharp shoulders without fillets, cap joint, bolts, bearings or manufacturing tolerances.",
+			"Checks cover a connected OCCT volume, independent analytic volume, and STEP round-trip; they do not certify engineering fitness.",
+			"Solid analysis uses its separately declared fixture, mesh and material assumptions."
+		]
+	},
+	"stats": {
+		"meshSizeMm": 2.73,
+		"nodes": 3784,
+		"elements": 11897,
+		"dofs": 11352,
+		"volumeMm3": 40000.819633948806,
+		"volumeRelativeError": 0.0004139115965377999,
+		"maxDisplacementMm": 0.3154344841049259,
+		"loadedMeanDisplacementMm": [0.0004610812227902204, -0.06533841879899292, 0.2262437702790931],
+		"strainEnergyNmm": 929.8521201376399,
+		"p95VonMisesMpa": 215.8807032943483,
+		"p99VonMisesMpa": 248.46633422860378,
+		"interiorP95VonMisesMpa": 237.376959616089,
+		"interiorP99VonMisesMpa": 255.04627901877254,
+		"rawMaxElementVonMisesMpa": 313.0027190377657,
+		"interiorElementCount": 3396,
+		"interiorExclusionMm": 8,
+		"appliedN": [0, -24999.999999999985, 999.9999999999997],
+		"reactionN": [4.5615724308945005e-8, 25000.00000062855, -1000.0000000439348],
+		"appliedMomentNmm": [117990.06015086059, -6.147866820735402, -153.69667051839156],
+		"reactionMomentNmm": [-117990.06015295575, 6.147870190027325, 153.69668210462783],
+		"bodyForceN": [0, 1.4551915228366852e-11, -3.410605131648481e-13],
+		"forceBalanceRelative": 2.5249766367634627e-11,
+		"momentBalanceRelative": 3.915825855396667e-12,
+		"solveResidualRelative": 7.886914142049027e-11,
+		"solveIterations": 375,
+		"durationSeconds": 0.37107000017166136
+	},
+	"runtime": {
+		"solver": "Browser Float64 sparse PCG / IC(0)",
+		"mesher": "Gmsh 5.0.0 / WebAssembly (gmsh-wasm 0.3.0)",
+		"durationSeconds": 1.2171299998760223
+	},
+	"cancellation": "AbortError",
+	"restartExportBytes": 54596,
+	"elapsed": 2.328990000009537,
+	"errors": [],
+	"apiRequests": [],
+	"staticUiVerification": {
+		"origin": "http://127.0.0.1:4198",
+		"host": "Static file server; /api returns 404; no SvelteKit runtime",
+		"crossOriginIsolated": true,
+		"solidSolve": {
+			"elements": 5881,
+			"nodes": 1970,
+			"interiorP95Mpa": 67.1,
+			"maxDisplacementMicrometres": 28.37,
+			"clickToFieldMs": 2366
+		},
+		"cadVerified": true,
+		"download": "engine-lab-parametric-rod.step",
+		"apiRequests": [],
+		"pageErrors": [],
+		"screenshot": "browser-static-solid.png"
+	}
+}

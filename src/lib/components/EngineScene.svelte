@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { requestEngineAssets } from '$lib/engine/local-assets';
 	import { dev } from '$app/environment';
 	import { EngineStudio, type SceneStats, type SceneSnapshot } from '$lib/scene/engine-studio';
 	import type { ComponentRecord, LabCamera, LabState } from '$lib/engine/lab-state';
@@ -95,12 +96,17 @@
 				.catch((cause: unknown) => {
 					if (!active) return;
 					console.error('Engine studio load failed', cause);
-					error = 'The engine could not be loaded. Refresh to try again.';
+					error =
+						cause instanceof Error
+							? cause.message
+							: 'The engine could not be loaded. Refresh to try again.';
 				});
 		} catch (cause) {
 			console.error('Engine studio initialization failed', cause);
 			error =
-				'This browser could not start the 3D studio. Enable hardware acceleration and refresh.';
+				cause instanceof Error
+					? cause.message
+					: 'This browser could not start the WebGPU studio. Enable hardware acceleration and refresh.';
 		}
 		return () => {
 			active = false;
@@ -127,7 +133,9 @@
 {/if}
 {#if error}
 	<div class="scene-error" role="alert">
-		<strong>3D studio unavailable</strong>
+		<strong>3D studio unavailable</strong><button onclick={requestEngineAssets}
+			>Open local engine files</button
+		>
 		<p>{error}</p>
 	</div>
 {/if}

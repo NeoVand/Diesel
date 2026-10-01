@@ -26,6 +26,7 @@ function fixture() {
 	};
 	const atlas = createV12Atlas([part], -4);
 	const target = { name: 'live-render-target' };
+	const key = { shadow: { needsUpdate: true } };
 	const viewport = new THREE.Vector4(14, 21, 800, 500);
 	const scissor = new THREE.Vector4(4, 9, 400, 300);
 	const renderer = {
@@ -37,9 +38,8 @@ function fixture() {
 		setScissor: vi.fn(),
 		getScissorTest: vi.fn(() => true),
 		setScissorTest: vi.fn(),
-		shadowMap: { needsUpdate: true },
 		render: vi.fn(),
-		readRenderTargetPixels: vi.fn()
+		readRenderTargetPixelsAsync: vi.fn(async () => new Uint8Array(640 * 420 * 4))
 	};
 	const canvas = {
 		width: 0,
@@ -53,7 +53,7 @@ function fixture() {
 		toDataURL: vi.fn(() => 'data:image/png;base64,source-preview')
 	};
 	vi.stubGlobal('document', { createElement: vi.fn(() => canvas) });
-	// Skip the WebGL constructor; invoke the real public API and preview implementation.
+	// Skip device initialization; invoke the real public API and preview implementation.
 	const studio = Object.assign(Object.create(EngineStudio.prototype), {
 		loaded: true,
 		disposed: false,
@@ -61,11 +61,12 @@ function fixture() {
 		atlasPreviewPromise: null,
 		scene: new THREE.Scene(),
 		renderer,
+		key,
 		components: new Map([
 			[part.id, { ...part, object, meshes: [mesh], baseMaterials: new Map([[mesh, material]]) }]
 		])
 	}) as EngineStudio;
-	return { studio, renderer, target, viewport, scissor, material, mesh, object, canvas };
+	return { studio, renderer, key, target, viewport, scissor, material, mesh, object, canvas };
 }
 
 afterEach(() => {
@@ -113,11 +114,9 @@ describe('source geometry atlas preview API', () => {
 	});
 
 	it('restores live render state on failed pixel readback and permits a fresh successful preview request', async () => {
-		const { studio, renderer, target } = fixture();
-		const dispose = vi.spyOn(THREE.WebGLRenderTarget.prototype, 'dispose');
-		renderer.readRenderTargetPixels.mockImplementationOnce(() => {
-			throw new Error('Readback interrupted');
-		});
+		const { studio, renderer, key, target } = fixture();
+		const dispose = vi.spyOn(THREE.RenderTarget.prototype, 'dispose');
+		renderer.readRenderTargetPixelsAsync.mockRejectedValueOnce(new Error('Readback interrupted'));
 		await expect(studio.getAtlasPreviews()).rejects.toThrow('Readback interrupted');
 		expect(renderer.setRenderTarget).toHaveBeenLastCalledWith(target);
 		// Render-target binding restores its physical viewport. Manual setViewport
@@ -125,7 +124,7 @@ describe('source geometry atlas preview API', () => {
 		expect(renderer.setViewport).not.toHaveBeenCalled();
 		expect(renderer.setScissor).not.toHaveBeenCalled();
 		expect(renderer.setScissorTest).not.toHaveBeenCalled();
-		expect(renderer.shadowMap.needsUpdate).toBe(true);
+		expect(key.shadow.needsUpdate).toBe(true);
 		expect(dispose).toHaveBeenCalledTimes(1);
 		await expect(studio.getAtlasPreviews()).resolves.toEqual({
 			rods: 'data:image/png;base64,source-preview'

@@ -1,117 +1,127 @@
 # Engine Lab
 
-An interactive engineering workspace for exploring a V12 diesel concept, inspecting its mechanism, and connecting parametric geometry to numerical evidence.
+A browser-based workspace for inspecting a V12 diesel concept, changing parametric geometry, and comparing engineering calculations with their assumptions and verification evidence.
 
 ![Engine Lab showing the assembled V12 diesel concept and inspection controls](docs/images/engine-explorer.webp)
 
-[Run locally](docs/RUNNING.md) · [Architecture and WebGPU](docs/COMPUTE_ARCHITECTURE.md) · [Deployment](docs/DEPLOYMENT.md) · [Engineering scope](#engineering-scope)
+[Run locally](docs/RUNNING.md) · [Computation and verification](docs/COMPUTE_ARCHITECTURE.md) · [Static deployment](docs/DEPLOYMENT.md) · [Engineering scope](#engineering-scope)
 
-## Three connected workspaces
+**The `browser-first` branch runs geometry, meshing, structural analysis and design searches in the browser.** Its built application is static files: no application server, Python installation or native solver service is required. Optional AI uses the visitor’s own OpenAI key and calls OpenAI directly; language-model inference is remote.
 
-| Workspace   | What it does                                                                                                                                                                                           |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Explore** | Inspect 1,229 mechanical bodies across 22 component families. Run the mechanism, isolate parts, move a section plane, reveal internals with X-ray, separate the assembly, or open the component atlas. |
-| **Design**  | Adjust a generated cranktrain and connecting-rod family. Link geometry to displacement, piston motion, mass and section properties. Screen a bounded design space and compare feasible samples.        |
-| **Analyze** | Derive prescribed operating loads. Mesh and solve a generated rod, compare stress/displacement fields, refine the mesh, and preserve the result with its inputs.                                       |
+## Workspaces
 
-The AI assistant can find source components, operate the real viewer and explain cited evidence. Design assistance can discuss the current study and its limits. A phase-linked cylinder study exposes pressure–volume plots and numerical checks in Explore. Guided lessons use the same scene controls as manual exploration.
+| Workspace   | Capabilities                                                                                                                                                                                                                   |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Explore** | Inspect 1,229 mechanical bodies across 22 families. Run the linkage, isolate components, move a section plane, reveal internals with X-ray, separate the assembly and browse the component atlas.                              |
+| **Design**  | Adjust a generated cranktrain and five-parameter connecting-rod family. Inspect dimensions, displacement, motion, mass and section properties. Verify the exact solid and export STEP locally.                                 |
+| **Analyze** | Calculate prescribed operating loads, screen a bounded design space with WebGPU, and solve three-dimensional rod elasticity in a browser worker. Compare stress/displacement fields, mesh refinement and saved study evidence. |
 
-### Inspection and process views
+The assembly assistant can search registered components, execute acknowledged scene operations and explain curated sources. The design assistant interprets the current numerical study. Guided lessons and a phase-linked air-standard cylinder study use the same inspection controls.
 
 <table>
   <tr>
-    <td><a href="docs/images/section-inspection.webp"><img src="docs/images/section-inspection.webp" alt="Section plane cutting through the engine, with axis and position controls" /></a><br /><strong>Movable cross-section</strong><br />Filled cut faces preserve the inspected geometry.</td>
-    <td><a href="docs/images/mechanism-processes.webp"><img src="docs/images/mechanism-processes.webp" alt="Internal mechanism with intake, fuel and exhaust paths and combustion glow" /></a><br /><strong>Connected mechanism and processes</strong><br />Flow and combustion layers share the mechanical phase.</td>
+    <td><a href="docs/images/section-inspection.webp"><img src="docs/images/section-inspection.webp" alt="Movable section plane cutting through the V12 engine" /></a><br /><strong>Section inspection</strong><br />Position and orient a plane through the source assembly.</td>
+    <td><a href="docs/images/mechanism-processes.webp"><img src="docs/images/mechanism-processes.webp" alt="Internal mechanism with intake, fuel, exhaust and combustion visualization" /></a><br /><strong>Mechanism and processes</strong><br />Connected motion with phase-aligned explanatory layers.</td>
   </tr>
   <tr>
-    <td><a href="docs/images/parametric-cranktrain.webp"><img src="docs/images/parametric-cranktrain.webp" alt="Parametric cranktrain with a 90 mm bore, displacement constraint and live kinematics" /></a><br /><strong>Parametric geometry</strong><br />Dimensions, measurements and plots update together.</td>
-    <td><a href="docs/images/solid-analysis.webp"><img src="docs/images/solid-analysis.webp" alt="Connecting-rod finite-element mesh and displacement field with 25 times visual deformation amplification" /></a><br /><strong>Native solid analysis</strong><br />Computed fields, explicit loads and mesh-refinement evidence.</td>
+    <td><a href="docs/images/parametric-cranktrain.webp"><img src="docs/images/parametric-cranktrain.webp" alt="Parametric cranktrain with dimensions and live kinematic plots" /></a><br /><strong>Parametric geometry</strong><br />Dimensions, measurements and plots update together.</td>
+    <td><a href="docs/verification/browser-static-solid.png"><img src="docs/verification/browser-static-solid.png" alt="Browser-computed connecting-rod solid stress result from a static build, with 5881 tetrahedral elements and 1970 nodes" /></a><br /><strong>Browser solid analysis</strong><br />Actual static-build result; 3D elements, explicit loads and equilibrium checks.</td>
   </tr>
 </table>
 
 <details>
 <summary>Component atlas</summary>
 
-![Searchable component atlas with live previews of 22 engine-part families](docs/images/component-atlas.webp)
+![Searchable component atlas with previews of 22 engine-part families](docs/images/component-atlas.webp)
 
-The atlas groups the same component identities used by selection, isolation and the AI guide. Gallery previews have independent fit scales; assembly views preserve component scale.
+The atlas uses the same component identities as selection, isolation and the assistant. Gallery previews have independent fit scales; assembly views preserve component scale.
 
 </details>
 
-These are actual application captures. [Screenshot provenance](docs/images/README.md) records their source frames and display settings. Process overlays are illustrative; deformation amplification changes presentation, not computed values.
+The solid-analysis image is from the verified browser-first static build. The other images are application captures from the earlier tour and **predate the runtime migration**; they illustrate the retained interface, not its former backend architecture. [Screenshot provenance](docs/images/README.md) records those original frames. Process overlays are explanatory; deformation magnification changes presentation, not calculated values.
 
-## Run locally
+## Quick start
 
-**Source availability:** this README describes the current development working tree. At the 30 September 2026 audit, public `main` still contained the initial boilerplate commit. A public clone alone did not contain the demonstrated application. Publication of the current code and a reproducible V12 asset-preparation pipeline remain separate release steps.
-
-For a checkout containing the application, use **Node 24** and **pnpm 12.4.2**. The recorded environment used Node 24.21.0. Python is optional unless you need exact CAD or native solid analysis.
+Use **Node 24** and **pnpm 12.4.2** to build or develop the project. Visitors to a hosted build need only a supported browser.
 
 ```sh
-cd /path/to/Diesel
+git clone --branch browser-first https://github.com/NeoVand/Diesel.git
+cd Diesel
 npm install --global pnpm@12.4.2
 pnpm install --frozen-lockfile
-# For a new checkout only; preserve an existing .env.
-test -f .env || cp .env.example .env
 pnpm dev --host 127.0.0.1
 ```
 
-Open the address printed by Vite, normally **http://127.0.0.1:5173**. The workspaces are `/`, `/design` and `/design?workspace=analyze`.
+Open the URL printed by Vite, normally **http://127.0.0.1:5173**. Design and Analyze work without the commercial Explorer meshes. No `.env` file or Python environment is needed.
 
-The full Explorer also requires the licensed runtime asset bundle in `static/models/`. The base model, refined cams, clearance corrections and chamber domains must match this application version. These files are intentionally excluded from Git; a key or package installation cannot replace them. The generated Design/Analyze workspace does not load the purchased engine mesh, although the checkout still needs its source metadata imports to build.
+To serve the production output as static files:
 
-The [complete rerun guide](docs/RUNNING.md) covers assets, Python installation, optional AI credentials, production startup, verification and troubleshooting.
+```sh
+pnpm build
+node scripts/serve-static.mjs --port 4198
+```
 
-### Optional services
+Open **http://127.0.0.1:4198**. This verification server only serves files and deliberately returns 404 for `/api/`. A normal static host can serve the same `build/` directory.
 
-| Capability                                                  | Requirement                                                           |
-| ----------------------------------------------------------- | --------------------------------------------------------------------- |
-| Viewer, mechanism, browser calculations and design searches | JavaScript dependencies; licensed runtime geometry for Explore        |
-| AI guide and spoken explanations                            | OpenAI access through a server key or the app's optional BYOK flow    |
-| Exact solid verification and STEP export                    | Python 3.12 environment with the pinned OCP dependencies              |
-| Tetrahedral solid FEA and refined candidate comparisons     | Python environment with OCP, Gmsh, NumPy, SciPy, scikit-fem and PyAMG |
+### Explorer assets
 
-The AI key does not enable or pay for the numerical solver. ElevenLabs narrated the video tour; it is not an application runtime dependency.
+The release includes the complete processed Explorer model as compressed, encrypted application resources. Original editable vendor files and loose runtime geometry remain outside the public source checkout. This packaging discourages direct reuse; a browser must eventually decode geometry to display it, so it cannot make extraction impossible.
 
-## Where the work runs
+Independent clones can import five matching runtime files into the browser’s IndexedDB; nothing is uploaded. Owners can also supply them locally under `static/models/`. Public metadata needed to build the application is included. The generated Design and Analyze workspaces do not depend on the purchased mesh.
 
-| Layer                        | Current implementation                                                                        | Execution                                  |
-| ---------------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| Interface                    | Svelte 5, SvelteKit 2, TypeScript, Hugeicons                                                  | Browser and Node server                    |
-| 3D rendering                 | Three.js WebGL renderer, physical materials, lighting, shadows, clipping and section caps     | Browser GPU                                |
-| Process visualization        | GLSL flow shaders and ray-marched chamber volumes                                             | Browser GPU; illustrative fields           |
-| Mechanism and cylinder study | Measured linkage geometry, declared timing, ideal-gas mass/energy integration with RK4        | Browser CPU                                |
-| Parametric screening         | Generated geometry properties, beam equations, independent matrix checks and bounded searches | Browser CPU; searches use Web Workers      |
-| Exact CAD and solid FEA      | Open CASCADE/OCP, Gmsh, scikit-fem, SciPy and PyAMG                                           | Native Python subprocesses started by Node |
-| AI                           | OpenAI Codex SDK, validated commands, scene state and browser acknowledgements                | Persistent Node process and OpenAI API     |
+The original vendor download alone does not reproduce the corrected runtime bundle. Obtain that versioned bundle through an authorised project handoff. [The rerun guide](docs/RUNNING.md#explorer-assets) lists the files and the remaining conversion-toolchain boundary.
 
-### WebGPU status
+### Optional AI
 
-**Rendering already uses the GPU. Numerical WebGPU compute is not implemented.** The current application has no JAX-JS dependency and does not use Three.js `WebGPURenderer`.
+Open **AI connection settings** in Explore or **Connect AI** in Analyze. Enter your own OpenAI API key and an accessible model. The key stays in tab memory, survives workspace navigation, and is cleared by reload or disconnect. Questions, selected context and study summaries go directly to OpenAI; meshes are not sent. Narration is AI-generated speech. API usage belongs to the visitor’s OpenAI project.
 
-The next useful GPU-compute target is batched operating-envelope and design screening, followed by parameter sensitivities. JAX-JS could run those kernels alongside the existing WebGL viewer. Independent double-precision calculations and native FEA would remain reference checks. Migrating the renderer is separate work because the sectioning and volumetric materials use custom WebGL shaders.
+The browser implements the Responses API tool loop. It does not launch the native Codex harness. Shared host-key/password access from the earlier implementation is not part of this static edition. ElevenLabs was used to narrate the recorded tour, not as an application dependency.
 
-See [compute architecture and the proposed WebGPU sequence](docs/COMPUTE_ARCHITECTURE.md) for implementation boundaries, precision constraints and acceptance criteria. No GPU speedup or differentiable full-engine solver is claimed by this release.
+## Where computation runs
 
-## Hosting
+| Work                                                     | Implementation                                                                                      | Runtime                                        |
+| -------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| Interface                                                | Svelte 5, SvelteKit, TypeScript, Hugeicons                                                          | Browser                                        |
+| Geometry rendering and visual process layers             | Three.js materials, lighting, sections and volumetric layers; WebGPU graphics migration in progress | Browser GPU                                    |
+| Linkage, cylinder integration and reference calculations | Measured geometry, ideal-air RK4 cycle, analytic/Float64 calculations                               | Browser CPU and workers                        |
+| Operating design screening                               | JAX-JS batched force/stress calculations; independent Float64 checks and finalist refinement        | Browser WebGPU, with browser CPU fallback      |
+| Exact rod CAD and STEP                                   | Open CASCADE through Gmsh WebAssembly                                                               | Browser worker / WASM                          |
+| Solid finite-element analysis                            | Gmsh tetrahedral mesh; Float64 sparse CSR assembly and IC(0)-preconditioned conjugate gradients     | Browser worker                                 |
+| Assistant and narration                                  | Local tool execution; direct OpenAI Responses and speech requests                                   | Browser orchestration; remote OpenAI inference |
 
-This is a **Node application with backend components**. GitHub Pages cannot run the Codex process, scene broker, CAD kernel or Python FEA service.
+**WebGPU numerical compute is implemented.** It accelerates the operating-search screen, while exact CAD, double-precision solid FEA and independent reference checks use browser CPU/WASM. The verified graphics baseline used WebGL; the requested WebGPU renderer migration is underway and will be reported complete only after visual verification.
 
-At the 30 September 2026 audit, the repository had **no GitHub Pages site, no Actions workflows and no deployment records**. GitHub Actions could later build, test and deploy the application to a suitable host; it is not the runtime host itself.
+For one recorded 500-design, three-condition search on an Apple Metal WebGPU adapter, total GPU-path wall time was **194 ms**, including verification and refinement, versus **528 ms** for the Float64 CPU path. All candidate pass/fail decisions and finalists agreed. These are machine-specific measurements, not a general speed guarantee. The [full report](docs/verification/browser-webgpu.json) includes other cases, precision errors and provenance.
 
-The current hosting shape is one persistent Node instance behind HTTPS, with a native Python environment for full analysis. Scene sessions and AI access accounting are process-local. The existing Dockerfile provisions Node and the Codex runtime, but **does not provision Python/CAD/FEA** and has not been accepted as a complete production image. A static-only edition, stateless deployment or multiple replicas requires additional implementation.
+## Verification
 
-See [deployment requirements](docs/DEPLOYMENT.md) before hosting an invited demo. No public live-demo URL is currently available.
+The browser CAD/FEA checks compare independently remeshed solutions with saved native reference fixtures. Baseline displacement differed by **−0.4784%**; a thin candidate with inertia differed by **+0.0485%**. A real static-build browser session exported STEP and solved the displayed solid load case with `/api` unavailable. [Formulation, residuals, timings and limits](docs/verification/browser-cad-solid.md) accompany the results.
+
+```sh
+pnpm exec playwright install chromium chrome
+pnpm check
+pnpm exec vitest run --project server src/lib/ai src/lib/browser-cad src/lib/design
+node scripts/verify-webgpu.mjs --output /tmp/engine-lab-webgpu.json
+pnpm build
+```
+
+The Vitest project named `server` is the Node-based **test runner**, not a deployed application backend. The WebGPU check launches an actual browser. Complete Explorer tests additionally need the licensed files; see [verification instructions](docs/RUNNING.md#verification).
+
+## Deployment
+
+Deploy the generated `build/` directory to a static host. GitHub Pages, a static Cloudflare/Vercel site, or an ordinary web server can serve this application. The CAD/meshing WASM build needs cross-origin isolation: the project supplies COOP/COEP headers for local serving and an isolation service worker for hosts such as Pages.
+
+The branch includes CI and a GitHub Pages workflow that runs on pushes to `main` or manual dispatch. **A workflow file is not evidence of a published site; no public deployment is claimed here.** [Deployment instructions](docs/DEPLOYMENT.md) cover the `/Diesel` base path, isolation, assets and the static container profile.
 
 ## Engineering scope
 
-The source is a purchased **60° V12 diesel concept**, measured at **85 mm bore × 100 mm stroke**, approximately **6.81 L** swept volume. It is not an OEM production master or a validated engine rating.
+The source is a purchased **60° V12 diesel concept**, measured at **85 mm bore × 100 mm stroke**, approximately **6.81 L**. It is not an identified OEM production master or a verified engine rating.
 
-- **Source and derived geometry:** original asset files are retained separately. Corrections to timing, valve-train and clearance geometry are documented. Display finishes do not identify physical material grades.
-- **Motion:** a connected 720° teaching cycle drives the cranktrain and valve train. Playback speed is distinct from operating RPM; turbo speed is illustrative. Production firing order and hot-running clearances are not established by the model.
-- **Processes:** intake/exhaust fields, reduced fuel spray and combustion glow explain route and timing. They do not predict emissions, calibrated flame temperatures or fuel consumption.
-- **Parametric scope:** the generated cranktrain and rod family adapt to their parameters. The entire purchased assembly is not regenerated or proven compatible with those changes.
-- **Analysis:** the ideal-air cylinder model, beam screen, prescribed-pressure operating loads and native linear-elastic solid solver are separate models. Their assumptions and fixtures must accompany their results.
-- **Design comparisons:** sampled mass/deflection tradeoffs are numerical evidence under declared conditions. Bearing contact, fatigue, thermal stress, nonlinear behavior, manufacturing detail and experimental validation remain outside the demonstrated capability.
+- **Geometry and motion:** imported source bodies include documented timing, valvetrain and clearance corrections. The connected teaching cycle does not establish production firing order, hot-running clearance or physical material grades.
+- **Processes:** passage fields, reduced fuel spray and combustion glow explain route and timing. They do not predict emissions, calibrated flame temperatures or fuel consumption.
+- **Parametric scope:** the generated cranktrain and rod family adapt to their parameters. The complete purchased assembly is not regenerated or proven compatible with every change.
+- **Distinct numerical models:** the ideal-air cylinder study, beam screen, prescribed-pressure operating loads and 3D linear-elastic rod model answer different questions. Their assumptions and fixtures accompany their outputs.
+- **Design acceptance:** sampled mass/stress tradeoffs and numerical verification do not establish bearing contact, fatigue, thermal stress, nonlinear response, manufacturing feasibility or experimental validation. The sharp-shoulder rod omits bolts, cap joints, bushings and fillets; fixture/edge peak stresses can be singular.
 
 ## Controls
 
@@ -126,39 +136,24 @@ The source is a purchased **60° V12 diesel concept**, measured at **85 mm bore 
 | Fit the current view                 | `F`                        |
 | Stop the current interaction or tour | `Esc`                      |
 
-## Verification
+## Project map
 
-```sh
-pnpm exec playwright install chromium chrome
-pnpm check
-pnpm test:unit --run
-pnpm test:e2e
-pnpm build
-```
+| Path                                         | Purpose                                                                            |
+| -------------------------------------------- | ---------------------------------------------------------------------------------- |
+| [`src/lib/scene`](src/lib/scene)             | Rendering, sections, materials, mechanism and process presentation                 |
+| [`src/lib/engine`](src/lib/engine)           | Engine identity, measured data, local asset imports, timing and cylinder equations |
+| [`src/lib/design`](src/lib/design)           | Parametric mechanics, JAX-JS kernels, search workers and saved study contracts     |
+| [`src/lib/browser-cad`](src/lib/browser-cad) | WASM exact solids/meshing and browser Float64 elasticity                           |
+| [`src/lib/ai`](src/lib/ai)                   | Memory-only BYOK, validated browser scene tools and direct OpenAI requests         |
+| [`docs/verification`](docs/verification)     | Numerical and browser evidence, with dates and runtime provenance                  |
+| [`src/lib/server`](src/lib/server)           | Historical native reference implementations and tests; not deployed routes         |
 
-The full suite needs the runtime assets; browser scenarios also exercise real native analyses. Some AI regression tests use mocks. Historical passing counts and hardware measurements are recorded with their context in the engineering reports; they are not a current CI badge. [Testing requirements and native checks](docs/RUNNING.md#verification) explain how to reproduce them.
+[Running-engine implementation](docs/V12_RUNNING_ENGINE_RELEASE.md) · [Cylinder equations](docs/V12_AIR_STANDARD_CYCLE.md) · [Operating-load derivation](docs/OPERATING_DESIGN_VERIFICATION.md) · [Browser CAD/FEA verification](docs/verification/browser-cad-solid.md)
 
-## Project map and technical documentation
+Earlier Caterpillar research and Node/Python setup instructions are historical. [Archived baseline documentation](docs/archive/README_NODE_BASELINE.md) preserves the earlier architecture; it is not the current run guide.
 
-| Path or document                                                     | Purpose                                                             |
-| -------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| [`src/lib/scene`](src/lib/scene)                                     | Rendering, motion, sections, material and process presentation      |
-| [`src/lib/engine`](src/lib/engine)                                   | Engine identity, measured data, timing and cylinder calculations    |
-| [`src/lib/design`](src/lib/design)                                   | Parametric geometry, mechanics, search workers and result contracts |
-| [`src/lib/server`](src/lib/server)                                   | AI access, scene broker, native CAD and structural services         |
-| [`src/lib/server/cad`](src/lib/server/cad)                           | Exact-solid generation, meshing, elasticity and verification        |
-| [`tests`](tests)                                                     | Browser regression scenarios                                        |
-| [Running-engine implementation](docs/V12_RUNNING_ENGINE_RELEASE.md)  | Motion inventory, process models and checks                         |
-| [Cylinder-cycle equations](docs/V12_AIR_STANDARD_CYCLE.md)           | Numerical formulation and assumptions                               |
-| [Parametric design](docs/PARAMETRIC_DESIGN_IMPLEMENTATION.md)        | Generated family, searches and verification history                 |
-| [Operating-load verification](docs/OPERATING_DESIGN_VERIFICATION.md) | Pressure assumptions, rigid-body mechanics and comparison           |
-| [Native solid FEA](docs/DESIGN_SOLID_FEA.md)                         | Elements, boundary conditions, residuals and refinement             |
-| [CAD export](docs/DESIGN_CAD_EXPORT.md)                              | Geometry contract, solid validity and STEP round trip               |
+## Asset rights and dependencies
 
-Earlier Caterpillar research and superseded implementation notes are historical. They do not supply operating specifications for the current generic V12.
+The purchased engine is [V12 Quad Turbocharged Diesel Engine by Y-Studio19](https://www.cgtrader.com/3d-models/industrial/industrial-machine/v12-quad-turbocharged-diesel-engine-cf492efc-f63a-4c18-86c7-d3bd0948c20d). The commercial geometry is licensed separately from the application source. The hosted demonstration incorporates processed model resources; it does not grant visitors a standalone model licence or redistribute the editable vendor project. Independent deployments must respect the model’s licence and [CGTrader’s incorporation and resource-protection requirements](https://help.cgtrader.com/hc/en-us/articles/360015124437-Royalty-Free-License). Screenshots do not grant rights to the model.
 
-## Source asset and acknowledgements
-
-The purchased engine is [V12 Quad Turbocharged Diesel Engine by Y-Studio19](https://www.cgtrader.com/3d-models/industrial/industrial-machine/v12-quad-turbocharged-diesel-engine-cf492efc-f63a-4c18-86c7-d3bd0948c20d). Its commercial geometry and derived runtime assets are not included for redistribution. Screenshots do not grant rights to the underlying model.
-
-Built with [SvelteKit](https://svelte.dev/docs/kit/introduction), [Three.js](https://threejs.org/), [Hugeicons](https://hugeicons.com/), [OpenAI Codex](https://github.com/openai/codex), [Open CASCADE](https://dev.opencascade.org/), [Gmsh](https://gmsh.info/) and [scikit-fem](https://github.com/kinnala/scikit-fem). Third-party packages and assets retain their respective licences.
+Built with [SvelteKit](https://svelte.dev/docs/kit/introduction), [Three.js](https://threejs.org/), [Hugeicons](https://hugeicons.com/), [JAX-JS](https://github.com/ekzhang/jax-js), [Gmsh WASM](https://github.com/loumalouomega/GMSH-JS), [Open CASCADE](https://dev.opencascade.org/) and the [OpenAI API](https://developers.openai.com/api/docs/guides/function-calling). Build preparation places Gmsh’s licence and source provenance beside its WASM files under `vendor/gmsh/`. Gmsh is GPL-2.0-or-later; preserve its licence and corresponding-source obligations when distributing the application. Other dependencies retain their respective licences.

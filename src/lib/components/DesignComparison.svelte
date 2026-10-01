@@ -204,6 +204,8 @@
 					throw cause;
 				}
 				owned = [left, right];
+				await Promise.all(owned.map((instance) => instance.ready));
+				if (disposed) return;
 				for (const instance of owned) {
 					instance.setView('rod');
 					instance.setRunning(false);

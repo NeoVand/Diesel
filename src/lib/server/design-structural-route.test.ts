@@ -7,7 +7,7 @@ vi.mock('./design-structural', async (original) => ({
 	runStructuralAnalysis: fixture.solve
 }));
 
-import { POST } from '../../routes/api/design/rod-analysis/+server';
+import { POST } from './archive-routes/api/design/rod-analysis/+server';
 import { DEFAULT_DESIGN_PARAMS } from '$lib/design/design-core';
 import { ApiProblem } from './validation';
 

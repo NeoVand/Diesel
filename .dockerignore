@@ -14,3 +14,7 @@ test-results
 playwright-report
 .DS_Store
 .npmrc
+static/models/*.glb
+static/models/*.obj
+static/models/*.bin
+static/models/v12-clearance-refined.json

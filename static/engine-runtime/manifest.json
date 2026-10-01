@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "encoding": "aes-256-gcm+gzip",
+  "files": {
+    "v12-review.glb": {
+      "iv": "CW50ODT7FDWmndLh",
+      "bytes": 69554040,
+      "sha256": "6cd6b2c5c81fd6b96d62e49230a05decd5cc84afb704dd717ead52c60e7f28f0",
+      "chunks": [
+        {
+          "path": "2078bc214523c1385924ce03.elres",
+          "bytes": 8388608,
+          "sha256": "2078bc214523c1385924ce03f1c0f89e9f1034261a7393df3e586c885c238780"
+        },
+        {
+          "path": "5a49f4afd085624e68cebaeb.elres",
+          "bytes": 8388608,
+          "sha256": "5a49f4afd085624e68cebaebea833b84639ac247158415da2462212cbe580d4f"
+        },
+        {
+          "path": "4d318666bc2e103aebb9f027.elres",
+          "bytes": 8388608,
+          "sha256": "4d318666bc2e103aebb9f027d01a3f73466d9e059bafb6d2add35f6340919dfc"
+        },
+        {
+          "path": "f81c3941e83ca124fa0055a5.elres",
+          "bytes": 8388608,
+          "sha256": "f81c3941e83ca124fa0055a5a315e2a8b55cce7458bd774c1fdcb8db03b1f774"
+        },
+        {
+          "path": "c5021c2874ecb85567c94bfd.elres",
+          "bytes": 8388608,
+          "sha256": "c5021c2874ecb85567c94bfd292f27cff2047b082c5886c8c625b070e9ace56e"
+        },
+        {
+          "path": "e81500ed84ff0206fcae33e7.elres",
+          "bytes": 8388608,
+          "sha256": "e81500ed84ff0206fcae33e7f5968b25eb8d2e6da9c7746bcb8b0d51d0651b6c"
+        },
+        {
+          "path": "c191e04f73f5b867f557c15c.elres",
+          "bytes": 1140710,
+          "sha256": "c191e04f73f5b867f557c15c8c8fd780f6fdfb39ce8a4a8cb9ed378041543d26"
+        }
+      ]
+    },
+    "v12-cams-refined.glb": {
+      "iv": "YnAoY7HvSuTXHK5T",
+      "bytes": 3920996,
+      "sha256": "b642dde7c156069f2d0209768bf640a9bebd87055c81a4f0334b5c291c6216db",
+      "chunks": [
+        {
+          "path": "50231aa746bf69fd7f218d66.elres",
+          "bytes": 1001248,
+          "sha256": "50231aa746bf69fd7f218d66671d3962464bd236eaba4f05435829a75789de6c"
+        }
+      ]
+    },
+    "v12-clearance-refined.json": {
+      "iv": "zd18JzjNgOTUkA5c",
+      "bytes": 7057,
+      "sha256": "5f7a072d8ac19c657a859bb3fa1c29e9397c80dc4e8703e9ed3ce6c30c6c4175",
+      "chunks": [
+        {
+          "path": "12ebbac6160f13f879677100.elres",
+          "bytes": 1441,
+          "sha256": "12ebbac6160f13f879677100fc486ddff04db6c95a8600dfc4a908aa006c3c93"
+        }
+      ]
+    },
+    "v12-clearance-refined.bin": {
+      "iv": "SFkn6AVn6U3+L60m",
+      "bytes": 25565628,
+      "sha256": "5f35f657addc4a1c1b891c1cde2b95d34365b04bf14f119df89962975e2d3f49",
+      "chunks": [
+        {
+          "path": "b12d10ea31dc856213bd3f20.elres",
+          "bytes": 8388608,
+          "sha256": "b12d10ea31dc856213bd3f20c15cf7f414adc1a6457d95b7df8710c9cfd5f06a"
+        },
+        {
+          "path": "aa64a51e44dce3f2a48a5c52.elres",
+          "bytes": 2293644,
+          "sha256": "aa64a51e44dce3f2a48a5c52ecccd7bf7bea7c63d71984f1f1bf748197fff05e"
+        }
+      ]
+    },
+    "v12-chamber-domains.bin": {
+      "iv": "E9ruOVcxiTnkoRfi",
+      "bytes": 393216,
+      "sha256": "d88e84e07da3ad6bf3572198e5babac58d773fed634ea9b8c424a8fb00ac62b3",
+      "chunks": [
+        {
+          "path": "ffe6908084ef62b47c05473a.elres",
+          "bytes": 59888,
+          "sha256": "ffe6908084ef62b47c05473a5f333d4b16747edfd330ffec69f6a81ee9fbebfa"
+        }
+      ]
+    }
+  }
+}

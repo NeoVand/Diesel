@@ -16,6 +16,7 @@ import {
 } from './operating-cycle';
 import type { StructuralResult } from './structural';
 import type { OperatingSearchResult } from './operating-search';
+import type { GpuComputationReport } from './gpu-types';
 
 export type StudyExperiment = {
 	id: string;
@@ -431,6 +432,26 @@ function beamSearch(value: unknown, current: DesignParams) {
 function operatingSearch(value: unknown, current: DesignParams) {
 	object(value, 'operating search');
 	const result = value as unknown as OperatingSearchResult;
+	fields(
+		result,
+		[
+			'schemaVersion',
+			'baseline',
+			'scenarios',
+			'candidates',
+			'finalists',
+			'best',
+			'evaluated',
+			'coarsePassCount',
+			'refinedCount',
+			'cancelled',
+			'massReductionPercent',
+			'method',
+			'limitations',
+			'computation'
+		],
+		'operating search'
+	);
 	if (
 		result.schemaVersion !== 'operating-design-search-v1' ||
 		!Array.isArray(result.scenarios) ||
@@ -500,6 +521,79 @@ function operatingSearch(value: unknown, current: DesignParams) {
 			fail('untraceable operating finalist');
 	text(result.method, 'operating method');
 	strings(result.limitations, 'operating limitations');
+	if (result.computation !== undefined) computation(result.computation, result);
+}
+
+/** Runtime provenance is validated and retained, including a recorded fallback reason. */
+function computation(
+	value: unknown,
+	result: OperatingSearchResult
+): asserts value is GpuComputationReport {
+	object(value, 'compute provenance');
+	fields(
+		value,
+		[
+			'backend',
+			'library',
+			'precision',
+			'device',
+			'requested',
+			'totalMs',
+			'batchMs',
+			'geometryPreparationMs',
+			'verificationMs',
+			'validatedDesigns',
+			'maxRelativeError',
+			'relativeTolerance',
+			'guardedThresholdDesigns',
+			'coarseDesigns',
+			'coarsePhasesPerCondition',
+			'sectionEvaluations',
+			'fallbackReason',
+			'note'
+		],
+		'compute provenance'
+	);
+	if (!['auto', 'webgpu', 'cpu'].includes(value.requested as string))
+		fail('requested compute backend');
+	text(value.device, 'compute device', 512);
+	text(value.note, 'compute note');
+	if (value.fallbackReason !== undefined) text(value.fallbackReason, 'compute fallback reason');
+	for (const key of ['totalMs', 'batchMs', 'geometryPreparationMs', 'verificationMs'])
+		number(value[key], key, 0, 86_400_000);
+	for (const key of ['validatedDesigns', 'guardedThresholdDesigns', 'coarseDesigns'])
+		integer(value[key], key, 0, result.evaluated);
+	if (
+		value.coarseDesigns !== result.evaluated ||
+		value.coarsePhasesPerCondition !== 121 ||
+		value.sectionEvaluations !== result.evaluated * result.scenarios.length * 121 * 17
+	)
+		fail('compute workload');
+	number(value.maxRelativeError, 'compute relative error');
+	number(value.relativeTolerance, 'compute error tolerance');
+	if (value.backend === 'webgpu') {
+		if (
+			value.library !== 'JAX-JS' ||
+			value.precision !== 'float32 + Float64 verification' ||
+			value.requested === 'cpu' ||
+			value.relativeTolerance !== 3e-4 ||
+			(value.maxRelativeError as number) > 3e-4 ||
+			(value.validatedDesigns as number) < Math.min(5, result.evaluated) ||
+			(value.guardedThresholdDesigns as number) > (value.validatedDesigns as number) ||
+			value.fallbackReason !== undefined
+		)
+			fail('WebGPU provenance');
+	} else if (value.backend === 'cpu') {
+		if (
+			value.library !== 'JavaScript' ||
+			value.precision !== 'Float64' ||
+			value.relativeTolerance !== 0 ||
+			value.maxRelativeError !== 0 ||
+			value.validatedDesigns !== result.evaluated ||
+			value.guardedThresholdDesigns !== 0
+		)
+			fail('CPU provenance');
+	} else fail('compute backend');
 }
 
 /** Validate stored data as untrusted input; all native arrays remain intact and unmodified. */

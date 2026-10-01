@@ -1,11 +1,16 @@
 <script lang="ts">
 	import { onDestroy, tick } from 'svelte';
+	import { base } from '$app/paths';
 	import AtlasGallery from '$lib/components/AtlasGallery.svelte';
 	import WorkbenchHeader from '$lib/components/WorkbenchHeader.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import EngineScene from '$lib/components/EngineScene.svelte';
 	import DemoWelcome from '$lib/components/DemoWelcome.svelte';
-	import type { AIAccessStatus } from '$lib/ai/access';
+	import { browserAI, connectBrowserAI, disconnectBrowserAI } from '$lib/ai/session';
+	import { aiErrorMessage } from '$lib/ai/errors';
+	import { runBrowserGuide, browserNarration } from '$lib/ai/client';
+	import { createBrowserSceneTools } from '$lib/ai/scene';
+	import type { SceneContext } from '$lib/ai/scene-contract';
 	import InspectionControls from '$lib/components/InspectionControls.svelte';
 	import KinematicAnalysis from '$lib/components/KinematicAnalysis.svelte';
 	import CylinderCycleAnalysis from '$lib/components/CylinderCycleAnalysis.svelte';
@@ -24,9 +29,6 @@
 		type LabSnapshot
 	} from '$lib/engine/lab-state';
 	import { engineLessons } from '$lib/engine/lessons';
-	import type { PageProps } from './$types';
-
-	let { data }: PageProps = $props();
 	let lab: LabState = $state.raw(createLabState());
 	let actualPhase = $state(0);
 	let components = $state.raw<ComponentRecord[]>([]);
@@ -55,20 +57,12 @@
 	let endTour: (() => void) | null = null;
 	let touring = $state(false);
 	let preparingTour = false;
-	let accessOverride = $state.raw<AIAccessStatus | null>(null);
-	let accessGeneration = 0;
-	let accessAbort: AbortController | null = null;
-	let aiAccess = $derived(accessOverride ?? data.aiAccess);
-	let password = $state('');
-	let unlocking = $state(false);
 	let accessError = $state('');
 	let questionInput = $state<HTMLInputElement>();
 	let messageBottom = $state<HTMLDivElement>();
-	let apiKey = $state('');
 	let draftKey = $state('');
 	let model = $state('gpt-6-sol');
-	let localAIEnabled = $state(true);
-	let aiAvailable = $derived(Boolean(apiKey || (aiAccess.aiAvailable && localAIEnabled)));
+	let aiAvailable = $derived(Boolean($browserAI.key));
 	let question = $state('');
 	let busy = $state(false);
 	let agentError = $state('');
@@ -89,22 +83,18 @@
 	let audioAbort: AbortController | null = null;
 	let audioPlayer: HTMLAudioElement | null = null;
 	let audioUrl: string | null = null;
-	let streamAbort: AbortController | null = null;
 	let commandAbort: AbortController | null = null;
-	let sceneSession: { sessionId: string; token: string } | null = null;
 	let agentGeneration = 0;
 	let lessonGeneration = 0;
-	let connectionPromise: Promise<{ sessionId: string; token: string } | null> | null = null;
-	let pendingCancel: Promise<void> = Promise.resolve();
-	let syncTimer: ReturnType<typeof setInterval> | null = null;
-	let streamReady: Promise<void> | null = null;
-	let resolveReady: (() => void) | null = null;
-	let rejectReady: ((error: Error) => void) | null = null;
-	let commandQueue: Promise<void> = Promise.resolve();
-	let activeRunId: string | null = null;
-	let activeRequestId: string | null = null;
 	let disposed = false;
-	const cancelledRuns: string[] = [];
+	const guideScene = createBrowserSceneTools({
+		context: sceneContext,
+		components: () => components,
+		execute: executeCommand,
+		progress: (message) => {
+			commandNotice = message;
+		}
+	});
 
 	const viewModes = [
 		{ id: 'assembly', label: 'Exterior', icon: 'cube' },
@@ -160,12 +150,10 @@
 			actualPhase = action.value;
 		}
 		lab = applyLabAction(lab, action, components.length ? components : undefined);
-		void syncScene();
 	}
 	function batch(actions: LabAction[]) {
 		for (const action of actions)
 			lab = applyLabAction(lab, action, components.length ? components : undefined);
-		void syncScene();
 	}
 	function snapshot() {
 		const current = scene?.getSnapshot();
@@ -178,7 +166,7 @@
 	function liveState() {
 		return { ...lab, camera: scene?.getSnapshot()?.camera ?? lab.camera };
 	}
-	function sceneContext() {
+	function sceneContext(): SceneContext {
 		return {
 			state: liveState(),
 			sampledAt: Date.now(),
@@ -207,7 +195,6 @@
 			actualPhase = 0;
 		}
 		lessonId = null;
-		void syncScene();
 	}
 	function select(id: string | null) {
 		manualInteraction();
@@ -333,7 +320,6 @@
 		panel = 'details';
 		panelOpen = false;
 		if (matchMedia('(max-width: 850px)').matches) window.scrollTo({ top: 0, behavior: 'smooth' });
-		void syncScene();
 	}
 	function inspectAtlasFamily(id: string) {
 		manualInteraction();
@@ -383,7 +369,6 @@
 			clearLessonTimer();
 		}
 		if (busy) stopAll();
-		void syncScene();
 	}
 	function clearLessonTimer() {
 		if (lessonTimer) clearTimeout(lessonTimer);
@@ -402,7 +387,6 @@
 			touring = false;
 		}
 		stopLesson();
-		activeRequestId = null;
 		agentGeneration++;
 		agentAbort?.abort();
 		commandAbort?.abort();
@@ -410,12 +394,6 @@
 		busy = false;
 		commandNotice = '';
 		lab = applyLabAction(lab, { type: 'running', value: false });
-		if (activeRunId) cancelledRuns.push(activeRunId);
-		if (sceneSession)
-			pendingCancel = scenePost('cancel', sceneContext()).then(
-				() => {},
-				() => {}
-			);
 	}
 	function startLesson(id: string) {
 		manualInteraction();
@@ -488,120 +466,28 @@
 		panelOpen = true;
 		void tick().then(() => questionInput?.focus());
 	}
-	function mountAccessStatus() {
-		const controller = new AbortController();
-		const generation = accessGeneration;
-		accessAbort = controller;
-		void fetch('/api/access/status', { signal: controller.signal })
-			.then(async (response) => {
-				if (!response.ok) return;
-				const status = await response.json();
-				if (!disposed && !controller.signal.aborted && generation === accessGeneration)
-					accessOverride = status;
-			})
-			.catch(() => {})
-			.finally(() => {
-				if (accessAbort === controller) accessAbort = null;
-			});
-		return () => controller.abort();
-	}
-	function expireDemoAccess() {
-		accessGeneration++;
-		accessAbort?.abort();
-		accessAbort = null;
-		unlocking = false;
-		accessOverride = { ...aiAccess, authenticated: false, aiAvailable: false, expiresAt: null };
-		openSettings();
-	}
 	function openSettings() {
-		draftKey = apiKey;
+		draftKey = '';
+		model = $browserAI.model;
 		accessError = '';
-		password = '';
 		keyDialog.showModal();
 	}
 	function connectKey() {
-		apiKey = draftKey.trim();
-		draftKey = '';
-		keyDialog.close();
-		agentError = '';
-		openGuide();
-	}
-	function useLocalKey() {
-		apiKey = '';
-		draftKey = '';
-		localAIEnabled = true;
-		keyDialog.close();
-		openGuide();
-	}
-	async function disconnectKey() {
-		const invited = aiAccess.mode === 'invite';
-		const generation = ++accessGeneration;
-		accessAbort?.abort();
-		unlocking = false;
-		stopAll();
-		apiKey = '';
-		draftKey = '';
-		password = '';
-		localAIEnabled = false;
-		accessError = '';
-		if (!invited) {
-			accessAbort = null;
-			keyDialog.close();
-			return;
-		}
-		accessOverride = { ...aiAccess, authenticated: false, aiAvailable: false, expiresAt: null };
-		const controller = new AbortController();
-		accessAbort = controller;
 		try {
-			const response = await fetch('/api/access/logout', {
-				method: 'POST',
-				signal: controller.signal
-			});
-			const result = await response.json();
-			if (disposed || controller.signal.aborted || generation !== accessGeneration) return;
-			if (!response.ok) throw new Error('Server sign-out was not confirmed.');
-			accessOverride = result;
+			connectBrowserAI(draftKey, model);
+			draftKey = '';
 			keyDialog.close();
-		} catch {
-			if (disposed || controller.signal.aborted || generation !== accessGeneration) return;
-			accessError = 'AI is disconnected in this tab. The server did not confirm sign-out.';
-			agentError = accessError;
-		} finally {
-			if (accessAbort === controller) accessAbort = null;
-		}
-	}
-
-	async function unlockAI() {
-		if (unlocking) return;
-		const generation = ++accessGeneration;
-		accessAbort?.abort();
-		const controller = new AbortController();
-		accessAbort = controller;
-		unlocking = true;
-		accessError = '';
-		try {
-			const response = await fetch('/api/access/unlock', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ password }),
-				signal: controller.signal
-			});
-			const result = await response.json();
-			if (disposed || controller.signal.aborted || generation !== accessGeneration) return;
-			if (!response.ok) throw new Error(result.error || 'The invitation could not be unlocked.');
-			accessOverride = result;
-			localAIEnabled = true;
 			agentError = '';
-			password = '';
-			keyDialog.close();
 			openGuide();
 		} catch (error) {
-			if (disposed || controller.signal.aborted || generation !== accessGeneration) return;
-			accessError = error instanceof Error ? error.message : 'Please try again.';
-		} finally {
-			if (generation === accessGeneration) unlocking = false;
-			if (accessAbort === controller) accessAbort = null;
+			accessError = aiErrorMessage(error);
 		}
+	}
+	function disconnectKey() {
+		stopAll();
+		disconnectBrowserAI();
+		draftKey = '';
+		keyDialog.close();
 	}
 	async function prepareTourStep(index: number) {
 		preparingTour = true;
@@ -697,224 +583,33 @@
 			treeOpen = false;
 		}
 	}
-	async function scenePost(path: string, body: Record<string, unknown>) {
-		if (!sceneSession) return;
-		const response = await fetch(`/api/scene/${path}`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${sceneSession.token}`
-			},
-			body: JSON.stringify({ sessionId: sceneSession.sessionId, ...body })
-		});
-		if (!response.ok) throw new Error('The scene connection could not complete this action.');
-		return response.json();
-	}
-	async function syncScene() {
-		if (!sceneSession || commandAbort) return;
-		try {
-			await scenePost('state', sceneContext());
-		} catch {
-			/* The next guide request re-establishes the connection if necessary. */
-		}
-	}
-	async function ensureSession() {
-		if (connectionPromise) return connectionPromise;
-		connectionPromise = connectSession();
-		try {
-			return await connectionPromise;
-		} finally {
-			connectionPromise = null;
-		}
-	}
-	async function connectSession() {
-		if (sceneSession && streamReady) {
-			try {
-				await scenePost('state', sceneContext());
-				await streamReady;
-				return sceneSession;
-			} catch {
-				streamAbort?.abort();
-				sceneSession = null;
-				streamReady = null;
-				if (syncTimer) clearInterval(syncTimer);
-			}
-		}
-		const response = await fetch('/api/scene/session', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ ...sceneContext(), components })
-		});
-		if (!response.ok) {
-			const detail = await response.json();
-			throw new Error(detail.error || 'The engine guide could not connect to this scene.');
-		}
-		const connected = await response.json();
-		if (disposed) throw new Error('Scene closed.');
-		sceneSession = connected;
-		streamReady = new Promise<void>((resolve, reject) => {
-			resolveReady = resolve;
-			rejectReady = reject;
-		});
-		streamAbort = new AbortController();
-		void readCommands(streamAbort.signal);
-		let timeout: ReturnType<typeof setTimeout> | undefined;
-		try {
-			await Promise.race([
-				streamReady,
-				new Promise<never>((_, reject) => {
-					timeout = setTimeout(
-						() => reject(new Error('The scene connection timed out. Please retry.')),
-						8000
-					);
-				})
-			]);
-		} finally {
-			if (timeout) clearTimeout(timeout);
-		}
-		syncTimer = setInterval(() => {
-			if (busy) void syncScene();
-		}, 500);
-		return sceneSession;
-	}
-	async function readCommands(signal: AbortSignal) {
-		if (!sceneSession) return;
-		try {
-			const response = await fetch(
-				`/api/scene/events?sessionId=${encodeURIComponent(sceneSession.sessionId)}`,
-				{ headers: { Authorization: `Bearer ${sceneSession.token}` }, signal }
-			);
-			if (!response.ok || !response.body) throw new Error('Scene control disconnected.');
-			const reader = response.body.getReader();
-			const decoder = new TextDecoder();
-			let buffer = '';
-			while (!signal.aborted) {
-				const { done, value } = await reader.read();
-				if (done) break;
-				buffer += decoder.decode(value, { stream: true });
-				let boundary;
-				while ((boundary = buffer.indexOf('\n\n')) >= 0) {
-					const event = buffer.slice(0, boundary);
-					buffer = buffer.slice(boundary + 2);
-					const payload = event
-						.split('\n')
-						.filter((l) => l.startsWith('data:'))
-						.map((l) => l.slice(5).trimStart())
-						.join('\n');
-					if (!payload) continue;
-					const command = JSON.parse(payload);
-					if (
-						command.type !== 'ready' &&
-						(!activeRequestId || command.requestId !== activeRequestId)
-					)
-						continue;
-					if (command.type === 'ready') {
-						resolveReady?.();
-						resolveReady = null;
-						rejectReady = null;
-					} else if (command.type === 'command' && command.action) {
-						activeRunId = command.runId;
-						const generation = agentGeneration;
-						commandQueue = commandQueue
-							.then(() => executeCommand(command, generation))
-							.catch((error) => {
-								if (busy)
-									agentError = error instanceof Error ? error.message : 'Scene command failed.';
-							});
-					} else if (command.type === 'cancel') {
-						cancelledRuns.push(command.runId);
-						if (activeRunId === command.runId) commandAbort?.abort();
-						commandNotice = '';
-					} else if (command.type === 'progress' && busy) {
-						activeRunId = command.runId;
-						commandNotice = 'Inspecting the engine…';
-					}
-				}
-			}
-			if (!signal.aborted) throw new Error('Scene control disconnected. Please retry.');
-		} catch (error) {
-			if (!signal.aborted) {
-				const issue = error instanceof Error ? error : new Error('Scene control disconnected.');
-				rejectReady?.(issue);
-				if (busy) {
-					agentError = issue.message;
-					agentAbort?.abort();
-				}
-				sceneSession = null;
-				streamReady = null;
-				if (syncTimer) clearInterval(syncTimer);
-			}
-		}
-	}
-	async function executeCommand(
-		command: {
-			id: string;
-			runId: string;
-			expectedRevision: number;
-			action: LabAction;
-		},
-		generation: number
-	) {
-		if (!busy || generation !== agentGeneration || cancelledRuns.includes(command.runId)) return;
+	async function executeCommand(action: LabAction, expectedRevision: number, signal: AbortSignal) {
+		signal.throwIfAborted();
+		if (!busy || expectedRevision !== lab.revision)
+			throw new Error('The scene changed. Read the state and retry.');
 		const controller = new AbortController();
 		commandAbort = controller;
-		const signal = controller.signal;
+		const executionSignal = AbortSignal.any([signal, controller.signal]);
 		try {
-			if (command.expectedRevision !== lab.revision) {
-				await scenePost('ack', {
-					id: command.id,
-					runId: command.runId,
-					status: 'failed',
-					message: 'Scene changed; query the current state and retry.',
-					...sceneContext()
-				});
-				return;
-			}
-			commandNotice = 'Positioning the engine…';
-			if (
-				command.action.type === 'display' &&
-				command.action.value === 'layout' &&
-				lab.display !== 'layout'
-			)
+			if (action.type === 'display' && action.value === 'layout' && lab.display !== 'layout')
 				saveCheckpoint();
-			lab = applyLabAction(lab, command.action, components);
+			lab = applyLabAction(lab, action, components);
 			if (lab.display !== 'layout') {
 				atlasGalleryOpen = false;
 				atlasFamily = '';
-			} else if (['select', 'focus', 'isolate'].includes(command.action.type)) {
+			} else if (['select', 'focus', 'isolate'].includes(action.type)) {
 				atlasGalleryOpen = false;
 				atlasFamily = 'Selected components';
 			}
-			if (command.action.type === 'explosion') explosionControlsOpen = true;
-			else if (['display', 'restore', 'reset'].includes(command.action.type))
+			if (action.type === 'explosion') explosionControlsOpen = true;
+			else if (['display', 'restore', 'reset'].includes(action.type))
 				explosionControlsOpen = lab.explosion > 0;
-			if (['seek', 'restore', 'reset'].includes(command.action.type)) actualPhase = lab.phase;
+			if (['seek', 'restore', 'reset'].includes(action.type)) actualPhase = lab.phase;
 			await tick();
-			await scene?.settle(signal);
-			if (signal.aborted || generation !== agentGeneration) return;
-			await scenePost('ack', {
-				id: command.id,
-				runId: command.runId,
-				status: 'applied',
-				...sceneContext()
-			});
-			commandNotice = '';
-		} catch (error) {
-			if (!signal.aborted && generation === agentGeneration) {
-				await scenePost('ack', {
-					id: command.id,
-					runId: command.runId,
-					status: 'failed',
-					message: error instanceof Error ? error.message : 'Unsupported scene action',
-					...sceneContext()
-				});
-				commandNotice = '';
-			}
+			await scene?.settle(executionSignal);
+			executionSignal.throwIfAborted();
 		} finally {
-			if (commandAbort === controller) {
-				commandAbort = null;
-				void syncScene();
-			}
+			if (commandAbort === controller) commandAbort = null;
 		}
 	}
 	async function ask(text = question) {
@@ -930,54 +625,24 @@
 		agentError = '';
 		busy = true;
 		const generation = ++agentGeneration;
-		const accessAtRequest = accessGeneration;
-		const requestId = crypto.randomUUID();
-		activeRequestId = requestId;
-		activeRunId = null;
 		const history = messages.slice(-12).map((m) => ({ role: m.role, content: m.content }));
 		messages = [...messages, { id: ++messageId, role: 'user', content: text.trim() }];
 		try {
-			{
-				await pendingCancel;
-				if (generation !== agentGeneration) return;
-				const session = await ensureSession();
-				if (generation !== agentGeneration) return;
-				agentAbort = new AbortController();
-				const response = await fetch('/api/agent', {
-					method: 'POST',
-					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify({
-						key: apiKey || undefined,
-						model,
-						message: text.trim(),
-						history,
-						scene: {
-							selected: lab.selected,
-							exploded: lab.explosion > 0,
-							load: lab.loadPercent
-						},
-						sceneSession: session,
-						requestId
-					}),
-					signal: agentAbort.signal
-				});
-				const result = await response.json();
-				if (disposed || generation !== agentGeneration) return;
-				if (response.status === 401 && !apiKey && accessAtRequest === accessGeneration) {
-					question = text;
-					expireDemoAccess();
-				}
-				if (!response.ok)
-					throw new Error(result.error || 'The guide could not complete this request.');
-				if (generation !== agentGeneration) return;
-				messages = [
-					...messages,
-					{ id: ++messageId, role: 'assistant', content: result.answer, sources: result.sources }
-				];
-			}
+			agentAbort = new AbortController();
+			const result = await runBrowserGuide({
+				question: text.trim(),
+				history,
+				scene: guideScene,
+				signal: AbortSignal.any([agentAbort.signal, AbortSignal.timeout(180_000)])
+			});
+			if (disposed || generation !== agentGeneration) return;
+			messages = [
+				...messages,
+				{ id: ++messageId, role: 'assistant', content: result.answer, sources: result.sources }
+			];
 		} catch (error) {
 			if (generation === agentGeneration && error instanceof Error && error.name !== 'AbortError')
-				agentError = error.message;
+				agentError = aiErrorMessage(error);
 		} finally {
 			if (generation === agentGeneration) {
 				busy = false;
@@ -1013,24 +678,9 @@
 		audioText = text;
 		audioNotice = '';
 		const controller = new AbortController();
-		const accessAtRequest = accessGeneration;
-		const requestKey = apiKey;
 		audioAbort = controller;
 		try {
-			const response = await fetch('/api/narrate', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ key: requestKey || undefined, text }),
-				signal: controller.signal
-			});
-			if (!response.ok) {
-				const error = await response.json();
-				if (disposed || audioAbort !== controller || controller.signal.aborted) return;
-				if (response.status === 401 && !requestKey && accessAtRequest === accessGeneration)
-					expireDemoAccess();
-				throw new Error(error.error || 'Narration is unavailable.');
-			}
-			const recording = await response.blob();
+			const recording = await browserNarration(text, controller.signal);
 			if (audioAbort !== controller || controller.signal.aborted) return;
 			audioUrl = URL.createObjectURL(recording);
 			const player = new Audio(audioUrl);
@@ -1056,7 +706,8 @@
 			if (waitForEnd) await ended;
 		} catch (error) {
 			if (audioAbort !== controller) return;
-			if (error instanceof Error && error.name !== 'AbortError') audioNotice = error.message;
+			if (error instanceof Error && error.name !== 'AbortError')
+				audioNotice = aiErrorMessage(error);
 			stopAudio();
 		}
 	}
@@ -1065,13 +716,10 @@
 		endTour?.();
 		agentGeneration++;
 		lessonGeneration++;
-		activeRequestId = null;
 		clearLessonTimer();
 		stopAudio();
 		agentAbort?.abort();
-		streamAbort?.abort();
 		commandAbort?.abort();
-		if (syncTimer) clearInterval(syncTimer);
 	});
 </script>
 
@@ -1088,12 +736,11 @@
 	bind:this={welcome}
 	{ready}
 	{aiAvailable}
-	inviteAvailable={aiAccess.mode === 'invite'}
 	ontour={() => void startTour()}
 	onconnect={openSettings}
 />
 
-<div class="app-shell" {@attach mountAccessStatus}>
+<div class="app-shell">
 	<WorkbenchHeader active="explore" context="V12 diesel concept · Source assembly">
 		{#snippet actions()}
 			<button
@@ -1514,7 +1161,9 @@
 												{#each message.sources as id (id)}{@const source = sources.find(
 														(item) => item.id === id
 													)}{#if source}<!-- eslint-disable-next-line svelte/no-navigation-without-resolve --><a
-															href={source.url}
+															href={source.url.startsWith('/')
+																? `${base}${source.url}`
+																: source.url}
 															target="_blank"
 															rel="noreferrer">{source.title}<Icon name="arrow" size={12} /></a
 														>{/if}{/each}
@@ -1564,7 +1213,7 @@
 							</form>
 							<button class="ai-access quiet" onclick={openSettings}
 								><Icon name={aiAvailable ? 'check' : 'key'} size={14} />{aiAvailable
-									? 'Private AI available'
+									? 'AI connected for this tab'
 									: 'Connect assistant'}</button
 							>
 						{:else if panel === 'performance'}
@@ -1797,70 +1446,43 @@
 			><Icon name="close" size={19} /></button
 		>
 	</div>
+	<p>
+		AI requests go directly from this browser to OpenAI using your own key. Your key stays in this
+		tab’s memory and is cleared on reload. Engine controls and analysis do not need AI.
+	</p>
 	{#if aiAvailable}<div class="access-ready">
 			<Icon name="check" size={24} />
 			<div>
-				<strong>Assistant connected</strong>
-				<p>
-					Ask questions, inspect parts and listen to explanations. The host key stays on the server.
-				</p>
+				<strong>Key connected for this tab</strong>
+				<p>{$browserAI.model} · direct OpenAI connection</p>
 			</div>
-		</div>
-		<button
-			class="primary"
-			onclick={() => {
-				keyDialog.close();
-				openGuide();
-			}}>Open assistant<Icon name="right" size={16} /></button
-		>
-	{:else if aiAccess.mode === 'invite'}<p>
-			Enter your invitation password. The host provides AI for this private demonstration.
+		</div>{/if}
+	<form
+		onsubmit={(event) => {
+			event.preventDefault();
+			connectKey();
+		}}
+	>
+		<label for="api-key">OpenAI API key</label>
+		<input
+			id="api-key"
+			type="password"
+			bind:value={draftKey}
+			placeholder="sk-…"
+			autocomplete="off"
+		/>
+		<label for="model">Model</label><input id="model" bind:value={model} />
+		<p class="dialog-note">
+			Only your questions, selected scene context, study summaries and narration text are sent.
+			Purchased model meshes are not uploaded. Narration uses an AI-generated voice. API usage is
+			billed to your OpenAI project.
 		</p>
-		<form
-			onsubmit={(e) => {
-				e.preventDefault();
-				void unlockAI();
-			}}
+		{#if accessError}<p class="error" role="alert">{accessError}</p>{/if}
+		<button class="primary" disabled={!draftKey.trim()}
+			>Connect key<Icon name="right" size={15} /></button
 		>
-			<label for="demo-password">Invitation password</label><input
-				id="demo-password"
-				type="password"
-				bind:value={password}
-				autocomplete="current-password"
-				placeholder="Your invitation password"
-			/>{#if accessError}<p class="error" role="alert">{accessError}</p>{/if}<button
-				class="primary"
-				disabled={unlocking || !password.trim()}
-				>{unlocking ? 'Unlocking…' : 'Unlock AI'}<Icon name="right" size={16} /></button
-			>
-		</form>
-	{:else}<p>The engine and guided tour are available. Add your key to use the AI guide.</p>{/if}
-	<details class="advanced-ai">
-		<summary>Use my own API key</summary>
-		<form
-			onsubmit={(e) => {
-				e.preventDefault();
-				connectKey();
-			}}
-		>
-			<label for="api-key">API key</label><input
-				id="api-key"
-				type="password"
-				bind:value={draftKey}
-				placeholder="sk-…"
-				autocomplete="off"
-			/><label for="model">Model</label><input id="model" bind:value={model} />
-			<p class="dialog-note">
-				Kept in this tab’s memory and sent only to this application’s server for your requests.
-			</p>
-			<button class="primary" disabled={!draftKey.trim()}
-				>Connect key<Icon name="right" size={15} /></button
-			>
-		</form>
-	</details>
-	{#if aiAccess.aiAvailable && !localAIEnabled}<button class="secondary" onclick={useLocalKey}
-			>Use demo AI</button
-		>{/if}{#if aiAvailable}<button class="text-link" onclick={() => void disconnectKey()}
+	</form>
+	{#if aiAvailable}<button class="text-link" onclick={disconnectKey}
 			>Disconnect for this session</button
 		>{/if}
 </dialog>
@@ -1910,7 +1532,7 @@
 	</div>
 	<div class="source-links">
 		{#each sources as source (source.id)}<!-- eslint-disable-next-line svelte/no-navigation-without-resolve --><a
-				href={source.url}
+				href={source.url.startsWith('/') ? `${base}${source.url}` : source.url}
 				target="_blank"
 				rel="noreferrer"
 				><span>{source.id}</span><strong>{source.title}</strong><Icon name="arrow" size={15} /></a
@@ -2862,16 +2484,7 @@
 	.access-ready p {
 		margin: 8px 0;
 	}
-	.advanced-ai {
-		margin-top: 25px;
-		border-top: 1px solid var(--line);
-		padding: 20px 0;
-	}
-	.advanced-ai summary {
-		cursor: pointer;
-		font-size: 12px;
-		color: #b7c1cc;
-	}
+
 	.dialog-note {
 		font-size: 12px;
 	}

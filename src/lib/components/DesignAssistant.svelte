@@ -1,12 +1,28 @@
 <script lang="ts">
 	import { onDestroy } from 'svelte';
 	import Icon from './Icon.svelte';
+	import { browserAI, connectBrowserAI, disconnectBrowserAI } from '$lib/ai/session';
+	import { explainBrowserDesign } from '$lib/ai/design';
+	import { aiErrorMessage } from '$lib/ai/errors';
 	import type { DesignAssistantEvidence, DesignAssistantReply } from '$lib/design/assistant';
 	let {
 		getEvidence,
 		contextLabel = 'Current design and selected study'
 	}: { getEvidence: () => DesignAssistantEvidence; contextLabel?: string } = $props();
 	let question = $state('');
+	let draftKey = $state('');
+	let model = $state('gpt-6-sol');
+	let settingsOpen = $state(false);
+	function connectKey() {
+		try {
+			connectBrowserAI(draftKey, model);
+			draftKey = '';
+			settingsOpen = false;
+			error = '';
+		} catch (issue) {
+			error = aiErrorMessage(issue);
+		}
+	}
 	let busy = $state(false);
 	let response = $state.raw<DesignAssistantReply | null>(null);
 	let snapshot = $state('');
@@ -17,6 +33,11 @@
 	let disposed = false;
 	async function ask(prompt = question) {
 		if (busy || !prompt.trim()) return;
+		if (!$browserAI.key) {
+			question = prompt;
+			settingsOpen = true;
+			return;
+		}
 		const evidence = getEvidence();
 		question = prompt;
 		askedQuestion = prompt;
@@ -27,17 +48,10 @@
 		snapshot = `${evidence.params.rodWidthMm} × ${evidence.params.rodDepthMm} mm section · ${evidence.scenario?.rpm ?? evidence.params.rpm} rpm · ${evidence.native?.length ?? 0} solid result summaries`;
 		controller = new AbortController();
 		try {
-			const request = await fetch('/api/design/explain', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ question: prompt, evidence }),
-				signal: controller.signal
-			});
-			const data = await request.json();
-			if (!request.ok) throw new Error(data.error ?? 'The design assistant is unavailable.');
-			if (!disposed) response = data;
+			const reply = await explainBrowserDesign(prompt, evidence, controller.signal);
+			if (!disposed) response = reply;
 		} catch (e) {
-			if (!disposed && e instanceof Error && e.name !== 'AbortError') error = e.message;
+			if (!disposed && e instanceof Error && e.name !== 'AbortError') error = aiErrorMessage(e);
 		} finally {
 			if (!disposed) {
 				busy = false;
@@ -54,8 +68,48 @@
 <div class="design-assistant" aria-label="Design evidence assistant">
 	<div class="assistant-heading">
 		<h3><Icon name="ai" size={17} />Assistant</h3>
-		<span>Study evidence</span>
+		<button
+			type="button"
+			class="connection"
+			onclick={() => {
+				settingsOpen = !settingsOpen;
+				model = $browserAI.model;
+			}}>{$browserAI.key ? 'AI connected' : 'Connect AI'}<Icon name="settings" size={14} /></button
+		>
 	</div>
+	{#if settingsOpen}
+		<div class="connection-settings">
+			<p>
+				Your OpenAI key stays in this tab’s memory. Questions and study summaries go directly to
+				OpenAI; meshes are not sent. API usage is billed to your project.
+			</p>
+			<form
+				class="key-form"
+				onsubmit={(event) => {
+					event.preventDefault();
+					connectKey();
+				}}
+			>
+				<label for="design-ai-key">OpenAI API key</label><input
+					id="design-ai-key"
+					type="password"
+					autocomplete="off"
+					placeholder="sk-…"
+					bind:value={draftKey}
+				/>
+				<label for="design-ai-model">Model</label><input id="design-ai-model" bind:value={model} />
+				<button type="submit" disabled={!draftKey.trim()}>Connect</button>
+			</form>
+			{#if $browserAI.key}<button
+					type="button"
+					onclick={() => {
+						controller?.abort();
+						disconnectBrowserAI();
+						draftKey = '';
+					}}>Disconnect</button
+				>{/if}
+		</div>
+	{/if}
 	<p class="active-context">{contextLabel}</p>
 	<div class="conversation">
 		{#if response}
@@ -126,6 +180,39 @@
 </div>
 
 <style>
+	.connection-settings {
+		border: 1px solid #ffffff26;
+		padding: 10px;
+		border-radius: 4px;
+	}
+	.connection-settings p {
+		font-size: 12px;
+		line-height: 1.5;
+		margin: 0 0 8px;
+	}
+	.key-form {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+		border: 0;
+		padding: 0;
+		margin-bottom: 6px;
+	}
+	.key-form label {
+		align-self: center;
+		font-size: 12px;
+	}
+	.key-form input {
+		flex: 1;
+		min-width: 120px;
+		border: 1px solid #ffffff26;
+		border-radius: 3px;
+	}
+	.key-form button {
+		width: auto;
+		padding: 7px 12px;
+	}
+
 	.design-assistant {
 		height: 100%;
 		min-height: 218px;
@@ -151,7 +238,10 @@
 		color: #e0e6ed;
 		margin: 0;
 	}
-	.assistant-heading > span {
+	.connection {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
 		font-size: 12px;
 		color: #a2adba;
 	}

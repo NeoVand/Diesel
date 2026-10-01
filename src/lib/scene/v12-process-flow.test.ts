@@ -1,6 +1,10 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it, vi } from 'vitest';
 import * as THREE from 'three';
+import { ProcessParticles } from './process-particles';
+import { ClippingGroup } from 'three/webgpu';
+import { type WebGPURenderer } from 'three/webgpu';
+import { ProcessNodeMaterial } from './process-node-material';
 import { V12ProcessFlow } from './v12-process-flow';
 import { V12ChamberDomain, V12_CHAMBER_DATUMS } from './v12-chamber-domain';
 import { v12CylinderValveState } from '../engine/v12-valve-events';
@@ -18,11 +22,11 @@ const state = {
 	clipPlane: null
 };
 function parcels(flow: V12ProcessFlow) {
-	const points = flow.group.getObjectByName('Reduced liquid-fuel parcels') as THREE.Points;
+	const points = flow.group.getObjectByName('Reduced liquid-fuel parcels') as ProcessParticles;
 	return {
 		points,
-		count: points.geometry.drawRange.count,
-		positions: points.geometry.getAttribute('position')
+		count: points.sourceGeometry.drawRange.count,
+		positions: points.sourceGeometry.getAttribute('position')
 	};
 }
 
@@ -36,7 +40,7 @@ describe('source-contained engine process layer', () => {
 		};
 		try {
 			await flow.warmup(
-				renderer as unknown as THREE.WebGLRenderer,
+				renderer as unknown as WebGPURenderer,
 				new THREE.Scene(),
 				new THREE.PerspectiveCamera()
 			);
@@ -171,7 +175,17 @@ describe('source-contained engine process layer', () => {
 		const flow = new V12ProcessFlow(data);
 		const camera = new THREE.PerspectiveCamera(35, 1.5, 0.1, 100);
 		const scene = new THREE.Scene();
+		const depthTextureData = {
+			texture: {
+				width: 600,
+				height: 400,
+				depthOrArrayLayers: 1,
+				mipLevelCount: 1,
+				createView: vi.fn(() => ({}))
+			}
+		};
 		const renderer = {
+			backend: { get: () => depthTextureData },
 			getDrawingBufferSize: (out: THREE.Vector2) => out.set(600, 400),
 			getRenderTarget: () => null,
 			setRenderTarget: vi.fn(),
@@ -184,7 +198,7 @@ describe('source-contained engine process layer', () => {
 			flow.update({ ...state, running: false });
 			expect((parcels(flow).positions as THREE.BufferAttribute).version).toBe(version);
 			const depth = (changed: boolean) =>
-				flow.prepareDepth(renderer as unknown as THREE.WebGLRenderer, scene, camera, [], changed);
+				flow.prepareDepth(renderer as unknown as WebGPURenderer, scene, camera, [], changed);
 			depth(false);
 			depth(false);
 			expect(renderer.render).toHaveBeenCalledTimes(1);
@@ -216,7 +230,7 @@ describe('source-contained engine process layer', () => {
 			plane = new THREE.Plane(new THREE.Vector3(1, 0, 0), 0.3);
 		try {
 			flow.update({ ...state, clipPlane: plane });
-			expect((parcels(flow).points.material as THREE.Material).clippingPlanes?.[0]).toBe(plane);
+			expect((parcels(flow).points.parent as ClippingGroup).clippingPlanes?.[0]).toBe(plane);
 			const volumes: THREE.Mesh[] = [];
 			flow.group.traverse((o) => {
 				if (o instanceof THREE.Mesh && o.name.startsWith('Bounded spray')) volumes.push(o);
@@ -237,13 +251,16 @@ describe('source-contained engine process layer', () => {
 		const flow = new V12ProcessFlow(data),
 			resources = new Set<THREE.Material | THREE.BufferGeometry | THREE.Texture>();
 		flow.group.traverse((o) => {
-			if (o instanceof THREE.Mesh || o instanceof THREE.Points) {
+			if (o instanceof THREE.Mesh || o instanceof ProcessParticles) {
 				resources.add(o.geometry);
 				const m = o.material as THREE.Material;
 				resources.add(m);
-				if (m instanceof THREE.PointsMaterial && m.map) resources.add(m.map);
-				if (m instanceof THREE.ShaderMaterial && m.uniforms.uBounds)
-					resources.add(m.uniforms.uBounds.value);
+				if (o instanceof ProcessParticles && o.material.map) {
+					resources.add(o.material.map);
+					resources.add(o.sourceGeometry);
+				}
+				if (m instanceof ProcessNodeMaterial && m.uniforms.uBounds)
+					resources.add(m.uniforms.uBounds.value as THREE.Texture);
 			}
 		});
 		const spies = [...resources].map((r) => vi.spyOn(r, 'dispose'));

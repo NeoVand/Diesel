@@ -15,11 +15,11 @@ vi.mock('$app/environment', () => ({ dev: false }));
 vi.mock('$env/dynamic/private', () => ({ env: fixtures.env }));
 vi.mock('./engine-agent', () => ({ runEngineAgent: fixtures.agent }));
 vi.mock('./audio', () => ({ synthesizeNarration: fixtures.audio }));
-import { POST as unlock } from '../../routes/api/access/unlock/+server';
-import { POST as logout } from '../../routes/api/access/logout/+server';
-import { GET as status } from '../../routes/api/access/status/+server';
-import { POST as agent } from '../../routes/api/agent/+server';
-import { POST as narrate } from '../../routes/api/narrate/+server';
+import { POST as unlock } from './archive-routes/api/access/unlock/+server';
+import { POST as logout } from './archive-routes/api/access/logout/+server';
+import { GET as status } from './archive-routes/api/access/status/+server';
+import { POST as agent } from './archive-routes/api/agent/+server';
+import { POST as narrate } from './archive-routes/api/narrate/+server';
 import { DEMO_COOKIE } from './demo-access';
 
 let revision = 0;

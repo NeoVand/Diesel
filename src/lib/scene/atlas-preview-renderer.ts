@@ -1,5 +1,10 @@
 import * as THREE from 'three';
-import { createStudioEnvironment } from './studio-environment';
+import { WebGPURenderer, PMREMGenerator } from 'three/webgpu';
+import {
+	createStudioEnvironment,
+	createStrictWebGPURenderer,
+	initializeWebGPURenderer
+} from './studio-environment';
 
 /** A borrowed source-geometry tree with independently owned preview materials. */
 export type AtlasPreviewAsset = {
@@ -16,10 +21,11 @@ type CachedPreview = {
 
 /** One context renders the visible catalog cells. No source geometry or main-scene state is changed. */
 export class AtlasPreviewRenderer {
-	private renderer: THREE.WebGLRenderer;
+	private renderer: WebGPURenderer;
+	private rendererReady = false;
 	private scene = new THREE.Scene();
 	private camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.01, 1000);
-	private environment: THREE.WebGLRenderTarget;
+	private environment: THREE.RenderTarget | undefined;
 	private scroll: HTMLElement;
 	private intersection: IntersectionObserver;
 	private mutation: MutationObserver;
@@ -48,11 +54,10 @@ export class AtlasPreviewRenderer {
 	) {
 		this.scroll = host.querySelector<HTMLElement>('.gallery-scroll')!;
 		canvas.dataset.rotating = 'false';
-		this.renderer = new THREE.WebGLRenderer({
+		this.renderer = createStrictWebGPURenderer({
 			canvas,
 			antialias: true,
-			alpha: true,
-			powerPreference: 'low-power'
+			alpha: true
 		});
 		this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.25));
 		this.renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -60,8 +65,17 @@ export class AtlasPreviewRenderer {
 		this.renderer.toneMappingExposure = 1.12;
 		this.renderer.shadowMap.enabled = false;
 		this.scene.background = new THREE.Color('#1b2027');
-		this.environment = this.createEnvironment();
-		this.scene.environment = this.environment.texture;
+		void initializeWebGPURenderer(this.renderer)
+			.then(() => {
+				if (this.disposed) return;
+				this.environment = this.createEnvironment();
+				this.scene.environment = this.environment.texture;
+				this.rendererReady = true;
+				this.invalidate();
+			})
+			.catch((error) =>
+				this.onerror(error instanceof Error ? error.message : 'WebGPU previews could not start.')
+			);
 		this.scene.environmentIntensity = 0.75;
 		this.scene.add(new THREE.HemisphereLight(0xe7ecf2, 0x525862, 2));
 		const key = new THREE.DirectionalLight(0xf3f5f7, 2.6);
@@ -86,14 +100,13 @@ export class AtlasPreviewRenderer {
 		this.resize.observe(host);
 		this.scroll.addEventListener('scroll', this.invalidate, { passive: true });
 		document.addEventListener('visibilitychange', this.visibilityChanged);
-		canvas.addEventListener('webglcontextlost', this.lostContext);
-		canvas.addEventListener('webglcontextrestored', this.restoredContext);
+		window.addEventListener('engine-lab:webgpu-device-lost', this.deviceLost);
 		this.scan();
 	}
 
 	private createEnvironment() {
 		const environment = createStudioEnvironment();
-		const pmrem = new THREE.PMREMGenerator(this.renderer);
+		const pmrem = new PMREMGenerator(this.renderer);
 		const texture = pmrem.fromScene(environment.scene, 0.04);
 		environment.dispose();
 		pmrem.dispose();
@@ -128,21 +141,12 @@ export class AtlasPreviewRenderer {
 			this.frame = 0;
 		} else this.invalidate();
 	};
-	private lostContext = (event: Event) => {
-		event.preventDefault();
+	private deviceLost = () => {
 		this.contextLost = true;
 		cancelAnimationFrame(this.frame);
 		this.frame = 0;
 		for (const node of this.observed) delete node.dataset.previewReady;
 		this.onerror('Live previews are unavailable. Select a family to inspect the source geometry.');
-	};
-	private restoredContext = () => {
-		this.contextLost = false;
-		this.environment.dispose();
-		this.environment = this.createEnvironment();
-		this.scene.environment = this.environment.texture;
-		this.onerror('');
-		this.invalidate();
 	};
 
 	private invalidate = () => {
@@ -170,7 +174,7 @@ export class AtlasPreviewRenderer {
 
 	private render = (now: number) => {
 		this.frame = 0;
-		if (this.disposed || this.contextLost || document.hidden) return;
+		if (!this.rendererReady || this.disposed || this.contextLost || document.hidden) return;
 		const visible = [...this.visible].filter((element) => element.isConnected);
 		if (this.playing && visible.length) {
 			if (this.previousTime) this.angle += Math.min((now - this.previousTime) / 1000, 0.1) * 0.09;
@@ -224,18 +228,19 @@ export class AtlasPreviewRenderer {
 					.multiplyScalar(entry.radius * 4);
 				this.camera.lookAt(0, 0, 0);
 				this.scene.add(entry.asset.object);
-				this.renderer.setViewport(
-					rect.left - host.left,
-					host.bottom - rect.bottom,
+				// WebGPU viewports have a top-left origin and must stay inside their
+				// attachment. Preserve the full card's framing with a projection crop
+				// when scrolling; a negative viewport would be a GPU validation error.
+				this.camera.setViewOffset(
 					rect.width,
-					rect.height
-				);
-				this.renderer.setScissor(
-					left - host.left,
-					host.bottom - bottom,
+					rect.height,
+					left - rect.left,
+					top - rect.top,
 					right - left,
 					bottom - top
 				);
+				this.renderer.setViewport(left - host.left, top - host.top, right - left, bottom - top);
+				this.renderer.setScissor(left - host.left, top - host.top, right - left, bottom - top);
 				try {
 					this.renderer.render(this.scene, this.camera);
 				} finally {
@@ -276,13 +281,11 @@ export class AtlasPreviewRenderer {
 		this.resize.disconnect();
 		this.scroll.removeEventListener('scroll', this.invalidate);
 		document.removeEventListener('visibilitychange', this.visibilityChanged);
-		this.canvas.removeEventListener('webglcontextlost', this.lostContext);
-		this.canvas.removeEventListener('webglcontextrestored', this.restoredContext);
+		window.removeEventListener('engine-lab:webgpu-device-lost', this.deviceLost);
 		for (const entry of this.cache.values()) entry.asset.dispose();
 		this.cache.clear();
-		this.environment.dispose();
+		this.environment?.dispose();
 		this.renderer.dispose();
 		// Geometries are borrowed from the main scene; release this context, never their owners.
-		this.renderer.forceContextLoss();
 	}
 }

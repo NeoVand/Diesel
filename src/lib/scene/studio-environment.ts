@@ -1,4 +1,46 @@
 import * as THREE from 'three';
+import { WebGPURenderer } from 'three/webgpu';
+
+/** Every live viewport uses the WebGPU backend; unsupported devices receive an explicit error. */
+export function createStrictWebGPURenderer(
+	options: ConstructorParameters<typeof WebGPURenderer>[0] = {}
+): WebGPURenderer {
+	const renderer = new WebGPURenderer(options);
+	// r186's WebGPURenderer installs an unconditional fallback, overriding the supplied
+	// Renderer option. Disable that hook before init so a lost/unsupported GPU never
+	// silently creates a WebGL renderer while the interface reports WebGPU.
+	(renderer as unknown as { _getFallback: null })._getFallback = null;
+	const markDeviceLost = renderer.onDeviceLost.bind(renderer);
+	renderer.onDeviceLost = (info) => {
+		if (info.reason === 'destroyed') return;
+		// Preserve Three's lost-state bookkeeping; otherwise its RAF loop keeps
+		// submitting work to a dead device even after the interface shows an error.
+		markDeviceLost(info);
+		window.dispatchEvent(
+			new CustomEvent('engine-lab:webgpu-device-lost', {
+				detail: `The graphics device stopped responding. Reload the page to restart WebGPU. ${info.message}`
+			})
+		);
+	};
+	return renderer;
+}
+
+export async function initializeWebGPURenderer(renderer: WebGPURenderer): Promise<void> {
+	if (!navigator.gpu)
+		throw new Error(
+			'This engine studio requires WebGPU. Open it in a current desktop Chrome or Edge browser with hardware acceleration enabled.'
+		);
+	try {
+		await renderer.init();
+		if (!(renderer.backend as unknown as { isWebGPUBackend?: boolean }).isWebGPUBackend)
+			throw new Error('A WebGPU rendering device could not be initialized.');
+	} catch (error) {
+		throw new Error(
+			`WebGPU rendering is unavailable on this device. ${error instanceof Error ? error.message : 'Enable hardware acceleration or use another desktop browser.'}`,
+			{ cause: error }
+		);
+	}
+}
 
 /** Authored reflection cards: a dark photographic studio with controlled warm/cool highlights. */
 export function createStudioEnvironment(): { scene: THREE.Scene; dispose: () => void } {

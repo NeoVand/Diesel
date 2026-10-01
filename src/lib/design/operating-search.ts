@@ -1,4 +1,5 @@
 import type { DesignParams } from './design-core';
+import type { GpuComputationReport, GpuComputePreference } from './gpu-types';
 import {
 	evaluateOperatingEnvelope,
 	type OperatingScenario,
@@ -47,24 +48,30 @@ export interface OperatingSearchResult {
 	massReductionPercent: number | null;
 	method: string;
 	limitations: string[];
+	/** Present on browser worker searches; absent on legacy saved studies. */
+	computation?: GpuComputationReport;
 }
 export type OperatingSearchRequest = {
 	type: 'search';
 	revision: string;
 	params: DesignParams;
 	scenarios: OperatingScenario[];
+	compute?: GpuComputePreference;
 };
 export type OperatingSearchResponse =
 	| { type: 'progress'; revision: string; progress: OperatingSearchProgress }
 	| { type: 'result'; revision: string; result: OperatingSearchResult }
 	| { type: 'error'; revision: string; message: string };
 
-function designId(p: DesignParams): string {
+export function operatingDesignId(p: DesignParams): string {
 	return [p.rodWidthMm, p.rodDepthMm, p.webMm, p.flangeMm].join('/');
 }
-function summarize(screen: OperatingDesignScreen, angularSamples: number): OperatingDesignSummary {
+export function summarizeOperatingScreen(
+	screen: OperatingDesignScreen,
+	angularSamples: number
+): OperatingDesignSummary {
 	return {
-		id: designId(screen.params),
+		id: operatingDesignId(screen.params),
 		params: { ...screen.params },
 		massKg: screen.massKg,
 		peakNominalStressMpa: screen.peakNominalStressMpa,
@@ -79,6 +86,18 @@ function summarize(screen: OperatingDesignScreen, angularSamples: number): Opera
 	};
 }
 
+export function createOperatingSearchGrid(params: DesignParams): DesignParams[] {
+	const designs: DesignParams[] = [];
+	for (const rodWidthMm of OPERATING_SEARCH_GRID.rodWidthMm)
+		for (const rodDepthMm of OPERATING_SEARCH_GRID.rodDepthMm)
+			for (const webMm of OPERATING_SEARCH_GRID.webMm)
+				for (const flangeMm of OPERATING_SEARCH_GRID.flangeMm)
+					designs.push({ ...params, rodWidthMm, rodDepthMm, webMm, flangeMm });
+	if (!designs.some((p) => operatingDesignId(p) === operatingDesignId(params)))
+		designs.push({ ...params });
+	return designs;
+}
+
 /**500 combinations (+ current geometry if outside grid). Full720° cycles at6° then1°.
  * Refine in increasing mass until three designs pass. A6° grid is a subset of1°,
  * so a coarse rejection cannot become a pass when adding the finer sample angles.
@@ -89,14 +108,8 @@ export function searchOperatingDesigns(
 	onProgress?: (progress: OperatingSearchProgress) => void,
 	shouldCancel?: () => boolean
 ): OperatingSearchResult {
-	const baseline = summarize(evaluateOperatingEnvelope(params, scenarios, 721), 721);
-	const designs: DesignParams[] = [];
-	for (const rodWidthMm of OPERATING_SEARCH_GRID.rodWidthMm)
-		for (const rodDepthMm of OPERATING_SEARCH_GRID.rodDepthMm)
-			for (const webMm of OPERATING_SEARCH_GRID.webMm)
-				for (const flangeMm of OPERATING_SEARCH_GRID.flangeMm)
-					designs.push({ ...params, rodWidthMm, rodDepthMm, webMm, flangeMm });
-	if (!designs.some((p) => designId(p) === designId(params))) designs.push({ ...params });
+	const baseline = summarizeOperatingScreen(evaluateOperatingEnvelope(params, scenarios, 721), 721);
+	const designs = createOperatingSearchGrid(params);
 	const candidates: OperatingDesignSummary[] = [],
 		finalists: OperatingDesignSummary[] = [];
 	let coarsePassCount = 0,
@@ -107,7 +120,10 @@ export function searchOperatingDesigns(
 			cancelled = true;
 			break;
 		}
-		const summary = summarize(evaluateOperatingEnvelope(design, scenarios, 121), 121);
+		const summary = summarizeOperatingScreen(
+			evaluateOperatingEnvelope(design, scenarios, 121),
+			121
+		);
 		candidates.push(summary);
 		if (summary.passesNominalScreen) coarsePassCount++;
 		onProgress?.({
@@ -129,7 +145,10 @@ export function searchOperatingDesigns(
 			const refined =
 				candidate.id === baseline.id
 					? baseline
-					: summarize(evaluateOperatingEnvelope(candidate.params, scenarios, 721), 721);
+					: summarizeOperatingScreen(
+							evaluateOperatingEnvelope(candidate.params, scenarios, 721),
+							721
+						);
 			refinedCount++;
 			if (refined.passesNominalScreen) finalists.push(refined);
 			onProgress?.({

@@ -1,0 +1,278 @@
+{
+  "snapshots": [
+    {
+      "name": "assembly",
+      "backend": "webgpu",
+      "display": "assembly",
+      "phase": 0,
+      "frames": 1,
+      "renderMilliseconds": 146.36500000953674,
+      "drawCalls": 1518,
+      "triangles": 6711705,
+      "casingOpacity": 1,
+      "section": {
+        "active": false,
+        "normal": [
+          -1,
+          0,
+          0
+        ],
+        "constant": 3.050000238418579,
+        "cappedComponents": 0
+      },
+      "processes": {
+        "visible": false,
+        "channels": [],
+        "depthPasses": 0,
+        "activeVolumes": 0
+      },
+      "layout": 0,
+      "explosion": 0
+    },
+    {
+      "name": "running-exterior",
+      "backend": "webgpu",
+      "display": "assembly",
+      "phase": 79.19700000000012,
+      "frames": 133,
+      "renderMilliseconds": 7.375,
+      "drawCalls": 1518,
+      "triangles": 6711705,
+      "casingOpacity": 1,
+      "section": {
+        "active": false,
+        "normal": [
+          -1,
+          0,
+          0
+        ],
+        "constant": 3.050000238418579,
+        "cappedComponents": 0
+      },
+      "processes": {
+        "visible": false,
+        "channels": [],
+        "depthPasses": 0,
+        "activeVolumes": 0
+      },
+      "layout": 0,
+      "explosion": 0
+    },
+    {
+      "name": "xray",
+      "backend": "webgpu",
+      "display": "xray",
+      "phase": 154.6738800000006,
+      "frames": 252,
+      "renderMilliseconds": 7.074999809265137,
+      "drawCalls": 1344,
+      "triangles": 5486812,
+      "casingOpacity": 0.12,
+      "section": {
+        "active": false,
+        "normal": [
+          -1,
+          0,
+          0
+        ],
+        "constant": 3.050000238418579,
+        "cappedComponents": 0
+      },
+      "processes": {
+        "visible": false,
+        "channels": [],
+        "depthPasses": 0,
+        "activeVolumes": 0
+      },
+      "layout": 0,
+      "explosion": 0
+    },
+    {
+      "name": "returned-exterior",
+      "backend": "webgpu",
+      "display": "assembly",
+      "phase": 232.6707600000011,
+      "frames": 382,
+      "renderMilliseconds": 7.3500001430511475,
+      "drawCalls": 1518,
+      "triangles": 6711705,
+      "casingOpacity": 1,
+      "section": {
+        "active": false,
+        "normal": [
+          -1,
+          0,
+          0
+        ],
+        "constant": 3.050000238418579,
+        "cappedComponents": 0
+      },
+      "processes": {
+        "visible": false,
+        "channels": [],
+        "depthPasses": 0,
+        "activeVolumes": 0
+      },
+      "layout": 0,
+      "explosion": 0
+    },
+    {
+      "name": "section",
+      "backend": "webgpu",
+      "display": "section",
+      "phase": 288.10860000000093,
+      "frames": 437,
+      "renderMilliseconds": 8.960000038146973,
+      "drawCalls": 1638,
+      "triangles": 8991653,
+      "casingOpacity": 1,
+      "section": {
+        "active": true,
+        "normal": [
+          -1,
+          0,
+          0
+        ],
+        "constant": -1.1920928955078125e-7,
+        "cappedComponents": 33
+      },
+      "processes": {
+        "visible": false,
+        "channels": [],
+        "depthPasses": 0,
+        "activeVolumes": 0
+      },
+      "layout": 0,
+      "explosion": 0
+    },
+    {
+      "name": "mechanism-processes",
+      "backend": "webgpu",
+      "display": "mechanism",
+      "phase": 478.54103999999666,
+      "frames": 729,
+      "renderMilliseconds": 9.334999799728394,
+      "drawCalls": 1873,
+      "triangles": 4619658,
+      "casingOpacity": 0,
+      "section": {
+        "active": false,
+        "normal": [
+          -1,
+          0,
+          0
+        ],
+        "constant": 3.050000238418579,
+        "cappedComponents": 0
+      },
+      "processes": {
+        "visible": true,
+        "channels": [
+          "air",
+          "fuel",
+          "combustion",
+          "exhaust"
+        ],
+        "depthPasses": 187,
+        "activeVolumes": 7
+      },
+      "layout": 0,
+      "explosion": 0
+    },
+    {
+      "name": "exploded",
+      "backend": "webgpu",
+      "display": "assembly",
+      "phase": 483.3407399999966,
+      "frames": 806,
+      "renderMilliseconds": 7.8999998569488525,
+      "drawCalls": 1289,
+      "triangles": 4673330,
+      "casingOpacity": 1,
+      "section": {
+        "active": false,
+        "normal": [
+          -1,
+          0,
+          0
+        ],
+        "constant": 3.050000238418579,
+        "cappedComponents": 0
+      },
+      "processes": {
+        "visible": false,
+        "channels": [
+          "air",
+          "fuel",
+          "combustion",
+          "exhaust"
+        ],
+        "depthPasses": 195,
+        "activeVolumes": 0
+      },
+      "layout": 0,
+      "explosion": 1
+    },
+    {
+      "name": "arranged",
+      "backend": "webgpu",
+      "display": "layout",
+      "phase": 483.3407399999966,
+      "frames": 910,
+      "renderMilliseconds": 8.069999933242798,
+      "drawCalls": 1311,
+      "triangles": 4673330,
+      "casingOpacity": 1,
+      "section": {
+        "active": false,
+        "normal": [
+          -1,
+          0,
+          0
+        ],
+        "constant": 3.050000238418579,
+        "cappedComponents": 0
+      },
+      "processes": {
+        "visible": false,
+        "channels": [],
+        "depthPasses": 195,
+        "activeVolumes": 0
+      },
+      "layout": 1,
+      "explosion": 1
+    },
+    {
+      "name": "atlas",
+      "backend": "webgpu",
+      "display": "layout",
+      "phase": 483.3407399999966,
+      "frames": 911,
+      "renderMilliseconds": 8.069999933242798,
+      "drawCalls": 1334,
+      "triangles": 5605702,
+      "casingOpacity": 1,
+      "section": {
+        "active": false,
+        "normal": [
+          -1,
+          0,
+          0
+        ],
+        "constant": 3.050000238418579,
+        "cappedComponents": 0
+      },
+      "processes": {
+        "visible": false,
+        "channels": [],
+        "depthPasses": 195,
+        "activeVolumes": 0
+      },
+      "layout": 1,
+      "explosion": 1
+    }
+  ],
+  "errors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+}

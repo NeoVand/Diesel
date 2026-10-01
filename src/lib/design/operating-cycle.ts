@@ -254,7 +254,7 @@ export function cylinderPressureBar(
 }
 
 /** Mass moments of the rod portion from the big eye through a free-shank section. */
-function lowerSegmentMoments(p: DesignParams, sectionMm: number) {
+export function lowerSegmentMoments(p: DesignParams, sectionMm: number) {
 	const { bigEndOuterRadiusMm: r, bigEndInnerRadiusMm: h } = ROD_INTERFACES;
 	let mass = 0,
 		firstY = 0,

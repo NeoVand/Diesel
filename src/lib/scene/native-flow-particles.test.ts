@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import * as THREE from 'three';
+import { ProcessParticles } from './process-particles';
+import { ClippingGroup } from 'three/webgpu';
 import { NativeFlowParticles, type NativeFlowState } from './native-flow-particles';
 import { v12NativeToDisplay } from '../engine/v12-kinematics';
 import { DIRECTED_FLOW_SPEED_MM_S, DIRECTED_FLOW_PITCH_MM } from './directed-flow-volume';
@@ -31,8 +33,8 @@ describe('soft native flow presentation', () => {
 		});
 		// First parcel begins at source fraction0: it must disappear through alpha, not RGB.
 		flow.update((-0.03 * 12) / DIRECTED_FLOW_SPEED_MM_S, [{ mask: 1, gains: [1] }]);
-		const points = flow.group.children[0] as THREE.Points;
-		const color = points.geometry.attributes.color;
+		const points = flow.group.getObjectByName('Soft native-passage advection') as ProcessParticles;
+		const color = points.sourceGeometry.attributes.color;
 		const base = new THREE.Color(0x88ddff);
 		expect(color.itemSize).toBe(4);
 		expect(color.getW(0)).toBeCloseTo(0, 7);
@@ -64,16 +66,13 @@ describe('soft native flow presentation', () => {
 		const flow = new TestFlow([path(1)], { color: 0x88ddff, name: 'test' });
 		const states = [{ mask: 1, gains: [0.5] }];
 		flow.update(0.1, states);
-		const points = flow.group.children[0] as THREE.Points<
-			THREE.BufferGeometry,
-			THREE.PointsMaterial
-		>;
-		const attribute = points.geometry.attributes.position as THREE.BufferAttribute;
+		const points = flow.group.getObjectByName('Soft native-passage advection') as ProcessParticles;
+		const attribute = points.sourceGeometry.attributes.position as THREE.BufferAttribute;
 		const version = attribute.version;
 		flow.update(0.1, states, true, new THREE.Plane(new THREE.Vector3(1, 0, 0), 5));
 		expect(attribute.version).toBe(version);
 		expect(flow.getDiagnostics().frameUploads).toBe(1);
-		expect(points.material.clippingPlanes?.[0].constant).toBe(5);
+		expect((points.parent as ClippingGroup).clippingPlanes?.[0].constant).toBe(5);
 		// A changed valve gain is not incorrectly treated as a paused replay.
 		flow.update(0.1, [{ mask: 1, gains: [0.75] }]);
 		expect(attribute.version).toBeGreaterThan(version);
@@ -83,8 +82,8 @@ describe('soft native flow presentation', () => {
 	it('advects downstream at the same spatial pace as connected envelopes, with no eightfold pulse alias', () => {
 		const flow = new TestFlow([path(1)], { color: 0x88ddff, name: 'test' });
 		flow.update(0.1, [{ mask: 1, gains: [1] }]);
-		const points = flow.group.children[0] as THREE.Points;
-		const position = points.geometry.attributes.position;
+		const points = flow.group.getObjectByName('Soft native-passage advection') as ProcessParticles;
+		const position = points.sourceGeometry.attributes.position;
 		expect(position.getX(0)).toBeCloseTo(
 			(0.1 * DIRECTED_FLOW_SPEED_MM_S + 0.03 * 12) * nativeScale,
 			6

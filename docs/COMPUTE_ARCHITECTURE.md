@@ -1,64 +1,84 @@
-# Compute architecture and WebGPU
+# Browser computation and verification
 
-This document distinguishes implemented execution paths from proposed GPU work. Status checked on 30 September 2026.
+Status: **1 October 2026**, `browser-first` branch. Engineering computation has moved into the browser and numerical WebGPU screening is implemented. Graphics migration from WebGL to WebGPU is in progress and must pass its separate visual acceptance checks before it is described as complete.
 
-## Current execution paths
+## Execution boundaries
 
 ```mermaid
 flowchart LR
-  UI[Browser UI] --> GL[Three.js WebGL graphics]
-  UI --> CPU[CPU mechanism and cycle calculations]
-  UI --> WW[Web Workers: bounded searches]
-  UI <-->|HTTP and SSE| NODE[SvelteKit Node server]
-  NODE --> CAD[Python: OCCT exact solids]
-  NODE --> FEA[Python: Gmsh and solid elasticity]
-  NODE <-->|Codex SDK| AI[OpenAI API]
+  HOST[Static files] --> UI[Browser interface]
+  UI --> VIEW[3D renderer and process visualisation]
+  UI --> SEARCH[Operating-search worker]
+  SEARCH --> GPU[JAX-JS WebGPU float32 screen]
+  SEARCH --> REF[Float64 checks and finalist refinement]
+  UI --> CAD[Browser worker: Gmsh / OCCT WASM]
+  CAD --> FEA[Float64 tetrahedral elasticity]
+  UI --> TOOLS[Local validated scene tools]
+  TOOLS <-->|Visitor BYOK: direct HTTPS| AI[OpenAI Responses and speech]
 ```
 
-| Work                                | Implementation evidence                                              | Where it runs                                                          |
-| ----------------------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| Engine, atlas and design rendering  | `src/lib/scene/v12-studio.ts`, `design-studio.ts` and atlas renderer | Browser GPU through Three.js WebGL                                     |
-| Flow envelopes and chamber volumes  | `src/lib/scene/directed-flow-volume.ts`, `v12-chamber-volume.ts`     | GLSL fragment work, including visual advection and volume ray marching |
-| Cylinder cycle                      | `src/lib/engine/v12-cylinder-cycle.ts`                               | Browser CPU, RK4 integration of mass and internal energy               |
-| Geometry properties and beam screen | `src/lib/design/design-core.ts`                                      | JavaScript number/Float64 calculations on CPU                          |
-| Design-space searches               | Workers under `src/lib/design`                                       | Browser CPU workers, separate from the UI thread                       |
-| Exact solid and STEP                | `src/lib/server/design-cad.ts`, `cad/rod_step.py`                    | Native Python/OCP launched by Node                                     |
-| Tetrahedral elasticity              | `src/lib/server/design-structural.ts`, `cad/rod_elasticity.py`       | Native meshing, sparse assembly and solution                           |
+There is no application server between these stages. A static host serves bytes; Node is used for development, building and tests. Historical Python/native implementations remain comparison references and are not browser runtime dependencies. OpenAI language/audio inference is remote; scene execution and numerical calculations are local.
 
-Rendering and process visualization already use GPU shaders. The shader effects are distinct from the engineering solver: animating a flow field does not establish a transient CFD calculation.
+| Work                                        | Implementation                                                      | Execution                                                                    |
+| ------------------------------------------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Linkage and measured kinematics             | `src/lib/engine/v12-kinematics.ts`, `v12-analysis.ts`               | Browser JavaScript                                                           |
+| Declared cylinder cycle                     | `src/lib/engine/v12-cylinder-cycle.ts`                              | Ideal-air mass/energy integration, RK4 on browser CPU                        |
+| Parametric properties and reference screens | `src/lib/design/design-core.ts`, `operating-cycle.ts`               | Analytic/Float64 browser calculations                                        |
+| Operating design search                     | `src/lib/design/gpu-operating-kernel.ts`, `gpu-operating-search.ts` | JAX-JS WebGPU batch plus Float64 verification/refinement; local CPU fallback |
+| Exact rod solid and STEP                    | `src/lib/browser-cad/kernel.ts`                                     | Open CASCADE via Gmsh WebAssembly in a module worker                         |
+| Solid elasticity                            | `src/lib/browser-cad/analysis.ts`, `elasticity.ts`                  | Gmsh WASM mesh; browser Float64 sparse assembly and IC(0)-PCG                |
+| Assistant                                   | `src/lib/ai/client.ts`, `scene.ts`, `design.ts`                     | Browser Responses loop; direct remote OpenAI inference                       |
 
-There is currently no JAX-JS package, WebGPU numerical backend or Three.js WebGPU renderer in the app.
+## Implemented numerical WebGPU
 
-## Proposed first implementation: batched engineering calculations
+The accelerated kernel batches **design × operating condition × crank angle × rod section**. JAX-JS 0.1.25 evaluates rigid-body endpoint forces and nominal section stress in float32. Exact geometry integrals, shared prescribed pressure/kinematics and finalist refinement remain Float64 browser work. This is an operating-load screen, not a GPU combustion solver or a GPU tetrahedral elasticity solve.
 
-The strongest initial candidate is the repeated numerical work across **geometry × operating condition × crank angle**. It has a clearer validation target than replacing the complete CAD/FEA pipeline.
+The coarse screen uses 121 phases per condition and 17 rod sections. A typical 500-design, three-condition batch therefore performs **3,085,500 section evaluations**. Five spread-out designs are checked independently in Float64 before ranking. Designs close to the utilisation threshold are conservatively recomputed. Finalists use 721 crank-angle samples. The comparison tolerance is `3e-4`, with a threshold guard at twice that value.
 
-1. **Establish a benchmark and reference contract.** Preserve the existing CPU implementation and its units, parameter bounds, equations and case identifiers. Measure realistic batch sizes and complete user-visible latency, including data transfer and compilation.
-2. **Port smooth screening kernels.** Batch slider-crank derivatives, generated mass/inertia, cycle bearing loads and beam responses. Use the GPU for sufficiently large batches, with CPU/Wasm fallback for unsupported hardware and small cases.
-3. **Add sensitivity views.** Differentiate the supported smooth kernels to show how mass, load and displacement respond to each parameter. Compare automatic derivatives with finite differences. Discrete feasibility and selected extrema need explicit treatment; they are not automatically smooth objectives.
-4. **Keep native finalist checks.** Regenerate exact solids and independently mesh/solve selected candidates with the existing native service. GPU screening does not replace the current residual, reaction and refinement checks.
-5. **Consider reduced-order fields and further physics only after validation.** A surrogate needs a documented training domain and error bounds. Thermal or flow models need boundary conditions and benchmark cases before they can support engine-efficiency claims.
+If WebGPU is unavailable, device initialisation fails, or GPU/reference agreement fails, the same worker uses the independent Float64 CPU search. Cancellation and stale-result guards remain active. Saved study provenance records backend, precision, device, validation count/error, timing and fallback reason. A GPU label is based on the executed path, not just `navigator.gpu` availability.
 
-[JAX-JS](https://github.com/ekzhang/jax-js) provides differentiable array operations and compilation across browser backends. Its [compatibility table](https://github.com/ekzhang/jax-js/blob/main/FEATURES.md) documents `jit`, differentiation and operation-dependent `vmap` support. It is not a drop-in port of Python JAX. Float64 is supported on CPU/Wasm but not on its WebGPU backend; a float32 port therefore needs deliberate nondimensionalization, conditioning checks and error tolerances against the current reference results.
+### Recorded browser measurements
 
-Automatic differentiation applies to kernels actually expressed in the supported array operations. It will not differentiate the purchased asset, Open CASCADE topology operations or Gmsh remeshing automatically. Exact CAD can remain on the server while a differentiable screening model operates in the browser.
+[The complete machine-readable report](verification/browser-webgpu.json) was captured in Chrome 154 on an `apple / metal-3` WebGPU adapter. Each of three 500-design cases was compared candidate-by-candidate against the independent Float64 implementation. Pass/fail decisions and finalist identities agreed in all three cases.
 
-### Acceptance criteria
+| Case                                  | GPU-path total | CPU-path total | Largest all-candidate relative error |
+| ------------------------------------- | -------------: | -------------: | -----------------------------------: |
+| Reference, three operating conditions |       194.1 ms |       527.6 ms |                            `3.79e-7` |
+| Maximum bore and speed                |        57.2 ms |       490.1 ms |                            `4.05e-7` |
+| Short rod, zero speed                 |       102.4 ms |       160.6 ms |                            `1.18e-7` |
 
-- Compare randomized and boundary parameter cases against the independent CPU reference; report absolute and relative errors with units.
-- Check gradients against finite differences, including behavior near active constraints and phase extrema.
-- Preserve case identity, cancellation, stale-result handling and exports when switching backends.
-- Measure cold compilation, repeated calculation time, transfers, memory, and frame cadence while the engine is moving. The renderer and compute backend share the user's GPU.
-- Retain a functional fallback and show which backend produced a result. Do not claim acceleration until the measured end-to-end task improves.
+These are wall-clock task measurements on one machine, including preparation, verification and finalist work; they are not pure GPU timestamp measurements or universal speed guarantees. Browser caches, device compilation, concurrent rendering and batch size affect results. The report separately records a fresh-worker run and confirms no backend requests.
 
-The current searches contain hundreds or a few thousand candidates. Their size alone does not guarantee a GPU win; launch/transfer overhead can dominate small kernels. Larger operating maps and uncertainty sweeps are stronger candidates for batching.
+Run `node scripts/verify-webgpu.mjs --output /tmp/engine-lab-webgpu.json` to launch the development harness and repeat the checks in Chrome. A supported physical/software GPU adapter must actually be available for a GPU result.
 
-## Renderer migration is a separate project
+JAX-JS supports multiple array backends, but its [operation/precision compatibility](https://github.com/ekzhang/jax-js/blob/main/FEATURES.md) matters: WebGPU float32 does not replace Float64 reference calculations. The current mass-sensitivity view uses bounded finite differences of the analytic rod evaluation. Automatic differentiation of operating or solid objectives and broader sensitivity visualisations remain future work; dependency support alone does not establish that they are implemented.
 
-Three.js offers [WebGPURenderer](https://threejs.org/docs/pages/WebGPURenderer.html), including a WebGL2 fallback. The existing app has custom GLSL volumes, clipping/cap behavior and shader customizations. Three documents [`onBeforeCompile`](https://threejs.org/docs/pages/Material.html#onBeforeCompile) as a WebGL renderer feature; a migration needs node-material/TSL equivalents and visual regression checks.
+## Browser CAD and solid elasticity
 
-Test material appearance, sections, X-ray fades, flow direction, picking, shadows and performance across the supported browsers before changing the default renderer. A WebGPU compute prototype can coexist with the current WebGL viewer, so renderer migration does not need to block the first numerical experiment.
+The authored rod’s five geometry parameters produce a real OCCT solid: two eyes, three I-section layers and two through-bores. The browser checks one connected volume against an independent analytic union-volume calculation. STEP export retains curved analytic faces and is imported back into the kernel for a solid-count/volume round trip.
 
-## Hosting remains an independent concern
+Gmsh constructs a conforming first-order tetrahedral mesh of that same domain. The elasticity worker assembles a Float64 sparse CSR matrix, diagonally scales it, and solves with incomplete-Cholesky IC(0)-preconditioned conjugate gradients. The problem retains the fixed big-bore fixture, cosine-weighted small-bore traction and optional consistent D’Alembert rigid-body inertia. It returns actual solved fields, reactions, energy, residuals and volume-weighted stress statistics. It does not substitute a beam solution for a solid field.
 
-GPU screening would reduce some backend work, but it would not remove the current native CAD/FEA services, private AI credentials or process-local scene broker. GitHub Pages remains insufficient for this full application. A static edition would require an explicit feature boundary and a different server/service arrangement. See [deployment](DEPLOYMENT.md).
+Checks include an affine displacement patch, rigid-motion invariance, rejected collapsed elements, baseline/bound-extreme STEP exports, independent remeshing comparisons and three-level refinement with inertia. Browser/reference displacement differences were **−0.4784%** for the baseline and **+0.0485%** for a thin inertial candidate. Different Gmsh versions produce different meshes; comparisons concern integral responses, not matching node indices.
+
+In the recorded browser worker run, a two-level calculation produced **11,897 tetrahedra / 3,784 nodes**, a true residual of **`7.89e-11`**, and force/moment equilibrium errors below **`3e-11`**. Geometry, both meshes and solves took about **1.22 seconds** after module loading on that machine. A separate static UI test exported STEP and displayed a solved load case with `/api` returning 404. [Full verification and limitations](verification/browser-cad-solid.md) accompany [the raw report](verification/browser-cad-solid.json).
+
+The approximately 40 MB WASM module loads on the first CAD/FEA request. The worker is reused; cancellation terminates it and the next request starts cleanly. The mesh budget is 45,000 nodes / 160,000 tetrahedra. Nonconvergence, invalid volumes and failed equilibrium checks are errors, not accepted results. The threaded WASM build requires cross-origin isolation; see [deployment](DEPLOYMENT.md).
+
+This stage deliberately uses browser CPU Float64 and WASM. It is not a WebGPU FEA solver. Sharp edges and fixed fixtures retain stress singularities; an integral refinement gate is not proof of pointwise stress convergence or physical durability.
+
+## Graphics status
+
+The verified migration baseline rendered through Three.js WebGL, including custom GLSL flow materials, clipping caps, X-ray fades and ray-marched chamber volumes. Moving those paths to Three.js WebGPU/node materials is now a separate active implementation. Numerical WebGPU screening already works independently of that renderer change.
+
+Before marking graphics migration complete, verify exterior/mechanism materials, all section axes and retained sides, X-ray transitions, process direction and depth, picking/isolation, atlas previews, design/analysis fields, shadows, cancellation and device compatibility. Confirm the actual renderer backend from diagnostics. A successful compile or `WebGPURenderer` constructor alone does not establish visual parity.
+
+The relevant upstream contract is [Three.js WebGPURenderer](https://threejs.org/docs/pages/WebGPURenderer.html); existing GLSL and [`onBeforeCompile`](https://threejs.org/docs/pages/Material.html#onBeforeCompile) customisations need explicit node-material/TSL equivalents. Volume visuals remain educational fields, regardless of graphics API; moving the shader does not establish CFD.
+
+## AI and retained historical code
+
+The native Codex process and HTTP/MCP scene broker are removed from the deployed runtime. The browser owns the Responses tool loop, exact component IDs, revision validation, checkpoints, serial commands and visual acknowledgements. It sends only bounded context/summaries to OpenAI using the visitor’s in-memory key. Narration uses a direct speech request. No shared app key is embedded or proxied.
+
+The historical Node/Python code and saved numerical fixtures remain useful references. Their presence in the repository or a test project named `server` does not make them deployment requirements. [The archived architecture](archive/COMPUTE_ARCHITECTURE_NODE_BASELINE.md) documents the superseded paths.
+
+Remaining engineering extensions include differentiated operating/solid objectives, a wider parametric geometry family, contact/nonlinear/fatigue/thermal models and any reacting-flow calculation. None is implied by the current renderer, optimizer or library selection.

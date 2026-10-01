@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import * as THREE from 'three';
+import { ProcessParticles } from './process-particles';
+import { ClippingGroup } from 'three/webgpu';
 import { v12CylinderValveState } from '../engine/v12-valve-events';
 import {
 	V12ExhaustFlow,
@@ -99,21 +101,18 @@ describe('native exhaust potential-flow tracers', () => {
 	it('replays deterministic source-registered frames and releases shared drawing resources', () => {
 		const flow = new V12ExhaustFlow();
 		flow.update(1.4, true, null, 380);
-		const points = flow.group.children[0] as THREE.Points<
-			THREE.BufferGeometry,
-			THREE.PointsMaterial
-		>;
-		const positions = points.geometry.getAttribute('position');
+		const points = flow.group.getObjectByName('Soft native-passage advection') as ProcessParticles;
+		const positions = points.sourceGeometry.getAttribute('position');
 		const snapshot = Array.from(positions.array);
-		const colorSnapshot = Array.from(points.geometry.getAttribute('color').array);
+		const colorSnapshot = Array.from(points.sourceGeometry.getAttribute('color').array);
 		flow.update(8, true, null, 100);
 		flow.update(1.4, true, new THREE.Plane(new THREE.Vector3(0, 1, 0), 1), 380);
 		expect(Array.from(positions.array)).toEqual(snapshot);
-		expect(Array.from(points.geometry.getAttribute('color').array)).toEqual(colorSnapshot);
+		expect(Array.from(points.sourceGeometry.getAttribute('color').array)).toEqual(colorSnapshot);
 		expect(flow.getDiagnostics().drawObjects).toBe(2);
 		expect(flow.getDiagnostics().outlet.activeVolumes).toBeGreaterThan(0);
 		expect(flow.getDiagnostics().activeParticles).toBeGreaterThan(0);
-		expect(points.material.clippingPlanes).toHaveLength(1);
+		expect((points.parent as ClippingGroup).clippingPlanes).toHaveLength(1);
 		flow.dispose();
 		expect(flow.getDiagnostics()).toMatchObject({ activeParticles: 0, drawObjects: 0 });
 	});

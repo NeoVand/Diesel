@@ -1,4 +1,6 @@
 import * as THREE from 'three';
+import { ClippingGroup, PointsNodeMaterial } from 'three/webgpu';
+import { ProcessParticles } from './process-particles';
 import { v12NativeToDisplay } from '../engine/v12-kinematics';
 import { DIRECTED_FLOW_SPEED_MM_S, DIRECTED_FLOW_PITCH_MM } from './directed-flow-volume';
 
@@ -102,9 +104,11 @@ export function softFlowParticleTexture() {
 /** Shared one-draw presentation for verified native fluid-domain advection paths. */
 export class NativeFlowParticles {
 	readonly group = new THREE.Group();
+	private readonly parcelClip = new ClippingGroup();
 	private readonly geometry = new THREE.BufferGeometry();
 	private readonly texture = softFlowParticleTexture();
-	private readonly material: THREE.PointsMaterial;
+	private readonly material: PointsNodeMaterial;
+	private readonly particles: ProcessParticles;
 	private readonly color: THREE.Color;
 	private readonly point = new THREE.Vector3();
 	private readonly plane = new THREE.Plane();
@@ -137,7 +141,7 @@ export class NativeFlowParticles {
 		this.group.visible = false;
 		this.group.renderOrder = -1;
 		this.color = new THREE.Color(options.color);
-		this.material = new THREE.PointsMaterial({
+		this.material = new PointsNodeMaterial({
 			size: options.size ?? NATIVE_FLOW_PRESENTATION.particleSize,
 			sizeAttenuation: true,
 			map: this.texture,
@@ -167,12 +171,13 @@ export class NativeFlowParticles {
 			'color',
 			new THREE.BufferAttribute(this.colors, 4).setUsage(THREE.DynamicDrawUsage)
 		);
-		const particles = new THREE.Points(this.geometry, this.material);
+		const particles = (this.particles = new ProcessParticles(this.geometry, this.material));
 		particles.frustumCulled = false;
 		particles.renderOrder = -1;
 		particles.name = 'Soft native-passage advection';
-		this.geometry.setDrawRange(0, 0);
-		this.group.add(particles);
+		this.particles.setCount(0);
+		this.parcelClip.add(particles);
+		this.group.add(this.parcelClip);
 	}
 	protected updateParticles(
 		timeSeconds: number,
@@ -184,7 +189,7 @@ export class NativeFlowParticles {
 		this.group.visible = visible;
 		if (!visible) {
 			this.activeParticles = 0;
-			this.geometry.setDrawRange(0, 0);
+			this.particles.setCount(0);
 			this.lastTime = NaN;
 			return;
 		}
@@ -193,8 +198,8 @@ export class NativeFlowParticles {
 		if (clipPlane) this.plane.copy(clipPlane);
 		if (clipping !== this.clipping) {
 			this.clipping = clipping;
-			this.material.clippingPlanes = clipping ? this.clips : null;
-			this.material.needsUpdate = true;
+			this.parcelClip.clippingPlanes = this.clips;
+			this.parcelClip.enabled = clipping;
 		}
 		// Paused frames still accept a moved section plane, but neither resample nor upload buffers.
 		const sameState =
@@ -250,7 +255,7 @@ export class NativeFlowParticles {
 		for (let i = cursor / 3; i < previousCount; i++) this.colors[i * 4 + 3] = 0;
 		this.activeParticles = cursor / 3;
 		this.bufferedParticles = this.activeParticles;
-		this.geometry.setDrawRange(0, this.activeParticles);
+		this.particles.setCount(this.activeParticles);
 		for (const attribute of [this.geometry.attributes.position, this.geometry.attributes.color]) {
 			const buffer = attribute as THREE.BufferAttribute;
 			buffer.clearUpdateRanges();
@@ -279,9 +284,10 @@ export class NativeFlowParticles {
 		if (this.disposed) return;
 		this.disposed = true;
 		this.activeParticles = 0;
-		this.geometry.setDrawRange(0, 0);
+		this.particles.setCount(0);
 		this.group.visible = false;
 		this.group.clear();
+		this.particles.dispose();
 		this.geometry.dispose();
 		this.material.dispose();
 		this.texture.dispose();

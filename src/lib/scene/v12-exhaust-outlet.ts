@@ -1,4 +1,7 @@
 import * as THREE from 'three';
+import { screenCoordinate } from 'three/tsl';
+import { ProcessNodeMaterial } from './process-node-material';
+import { exhaustVolume } from './process-volume-wgsl';
 import datums from '../engine/v12-exhaust-outlet-datums.json';
 import { v12NativeToDisplay, v12NativeVectorToDisplay } from '../engine/v12-kinematics';
 import { DIRECTED_FLOW_PITCH_MM, DIRECTED_FLOW_SPEED_MM_S } from './directed-flow-volume';
@@ -14,6 +17,21 @@ export const V12_EXHAUST_PLUME = {
 	speedMmS: DIRECTED_FLOW_SPEED_MM_S,
 	pitchMm: DIRECTED_FLOW_PITCH_MM
 } as const;
+
+type ExhaustUniforms = {
+	uMin: { value: THREE.Vector3 };
+	uMax: { value: THREE.Vector3 };
+	uCamera: { value: THREE.Vector3 };
+	uModel: { value: THREE.Matrix4 };
+	uViewProjection: { value: THREE.Matrix4 };
+	uDepth: { value: THREE.Texture | null };
+	uResolution: { value: THREE.Vector2 };
+	uHasDepth: { value: number };
+	uHasClip: { value: number };
+	uPlane: { value: THREE.Vector4 };
+	uTime: { value: number };
+	uGain: { value: number };
+};
 
 /** Local z is strictly outward. Local x/y span the recovered 60 mm diameter mouth. */
 export function v12ExhaustOutletFrame(instance: number): THREE.Matrix4 {
@@ -31,84 +49,11 @@ export function v12ExhaustOutletFrame(instance: number): THREE.Matrix4 {
 		.setPosition(...v12NativeToDisplay(outlet.centerMm));
 }
 
-const vertexShader = `
- varying vec3 vPoint;
- uniform vec3 uMin;
- uniform vec3 uMax;
- void main() {
-   vPoint=mix(uMin,uMax,position+0.5);
-   gl_Position=projectionMatrix*modelViewMatrix*vec4(vPoint,1.0);
- }`;
-const fragmentShader = `
- precision highp float;
- varying vec3 vPoint;
- uniform vec3 uCamera;
- uniform vec3 uMin;
- uniform vec3 uMax;
- uniform sampler2D uDepth;
- uniform vec2 uResolution;
- uniform mat4 uModel;
- uniform mat4 uViewProjection;
- uniform float uTime;
- uniform float uGain;
- uniform float uHasDepth;
- uniform float uHasClip;
- uniform vec4 uPlane;
- vec2 hitBox(vec3 o,vec3 d) {
-   // Camera-aligned views can have exactly zero ray components.
-   vec3 safe=sign(d+vec3(1e-8))*max(abs(d),vec3(1e-7));
-   vec3 t0=(uMin-o)/safe,t1=(uMax-o)/safe;
-   vec3 mn=min(t0,t1),mx=max(t0,t1);
-   return vec2(max(max(mn.x,mn.y),mn.z),min(min(mx.x,mx.y),mx.z));
- }
- void main() {
-   vec3 direction=normalize(vPoint-uCamera);
-   vec2 hit=hitBox(uCamera,direction);
-   float start=max(hit.x,0.0),finish=hit.y;
-   if(finish<=start)discard;
-   float stepSize=(finish-start)/${V12_EXHAUST_PLUME.steps.toFixed(1)};
-   float depth=texture2D(uDepth,gl_FragCoord.xy/uResolution).r;
-   vec4 accum=vec4(0.0);
-   for(int i=0;i<${V12_EXHAUST_PLUME.steps};i++) {
-     vec3 p=uCamera+direction*(start+(float(i)+0.5)*stepSize);
-     vec4 world=uModel*vec4(p,1.0);
-     if(uHasClip>0.5&&dot(uPlane,world)<0.0)continue;
-     if(uHasDepth>0.5) {
-       vec4 projected=uViewProjection*vec4(p,1.0);
-       if(projected.z/projected.w*0.5+0.5>depth+0.000001)break;
-     }
-     float progress=clamp(p.z/${V12_EXHAUST_PLUME.lengthMm.toFixed(1)},0.0,1.0);
-     float radius=${V12_EXHAUST_PLUME.coreRadiusMm.toFixed(1)}+${V12_EXHAUST_PLUME.spreadMm.toFixed(1)}*progress;
-     // All time-dependent structure is transported toward +z. There is no reverse/noise velocity.
-     float tail=mod(uTime*${DIRECTED_FLOW_SPEED_MM_S.toFixed(1)}-p.z,${DIRECTED_FLOW_PITCH_MM.toFixed(1)});
-     float frontWidth=mix(3.0,18.0,smoothstep(0.0,0.7,progress));
-     float pulse=exp(-tail/(16.0+progress*10.0))*smoothstep(0.0,frontWidth,${DIRECTED_FLOW_PITCH_MM.toFixed(1)}-tail);
-     vec2 radial=p.xy-vec2(0.0,8.0*progress*progress);
-     float normalizedRadius=length(radial)/radius;
-     float envelope=exp(-2.8*normalizedRadius*normalizedRadius);
-     envelope*=1.0-smoothstep(1.1,1.8,normalizedRadius);
-     envelope*=smoothstep(${V12_EXHAUST_PLUME.startMm.toFixed(1)},0.0,p.z);
-     envelope*=1.0-smoothstep(40.0,${V12_EXHAUST_PLUME.lengthMm.toFixed(1)},p.z);
-     float convected=p.z-uTime*${DIRECTED_FLOW_SPEED_MM_S.toFixed(1)};
-     float wisps=0.86+0.14*sin(convected*0.047+radial.x*0.11)*sin(radial.y*0.13+convected*0.037);
-     float density=0.015*envelope*(0.52+0.48*pulse)*wisps*uGain;
-     float alpha=1.0-exp(-density*stepSize);
-     // Warm neutral at the measured rim, cooling to a faint neutral haze. This color is a process key.
-     vec3 color=mix(vec3(0.77,0.56,0.41),vec3(0.51,0.60,0.65),smoothstep(0.0,0.8,progress));
-     accum.rgb+=(1.0-accum.a)*alpha*color;
-     accum.a+=(1.0-accum.a)*alpha;
-   }
-   if(accum.a<0.001)discard;
-   gl_FragColor=vec4(accum.rgb/accum.a,accum.a);
-   #include <colorspace_fragment>
-   #include <premultiplied_alpha_fragment>
- }`;
-
 /** Continuous optical density at measured rims; no particles, smoke/emissions claim, or solved jet. */
 export class V12ExhaustOutlet {
 	readonly group = new THREE.Group();
 	private readonly geometry = new THREE.BoxGeometry(1, 1, 1);
-	private readonly meshes: THREE.Mesh<THREE.BoxGeometry, THREE.ShaderMaterial>[];
+	private readonly meshes: THREE.Mesh<THREE.BoxGeometry, ProcessNodeMaterial<ExhaustUniforms>>[];
 	private disposed = false;
 	constructor() {
 		this.group.name = 'Measured exhaust mouths · bounded illustrative exit volumes';
@@ -117,7 +62,7 @@ export class V12ExhaustOutlet {
 			const toWorld = v12ExhaustOutletFrame(index);
 			const inverse = toWorld.clone().invert();
 			const camera = new THREE.Vector3();
-			const uniforms = {
+			const uniforms: ExhaustUniforms = {
 				uMin: { value: new THREE.Vector3(-48, -48, V12_EXHAUST_PLUME.startMm) },
 				uMax: { value: new THREE.Vector3(48, 56, V12_EXHAUST_PLUME.lengthMm) },
 				uCamera: { value: camera },
@@ -131,16 +76,18 @@ export class V12ExhaustOutlet {
 				uTime: { value: 0 },
 				uGain: { value: 0 }
 			};
-			const material = new THREE.ShaderMaterial({
-				uniforms,
-				vertexShader,
-				fragmentShader,
+			const material = new ProcessNodeMaterial(uniforms, {
 				side: THREE.BackSide,
 				transparent: true,
 				depthTest: false,
 				depthWrite: false,
 				premultipliedAlpha: true,
 				toneMapped: false
+			});
+			material.fragmentNode = exhaustVolume({
+				...material.processNodes,
+				vPoint: material.boundedPosition(),
+				pixel: screenCoordinate
 			});
 			const mesh = new THREE.Mesh(this.geometry, material);
 			mesh.name = `Continuous outward exhaust volume · ${outlet.componentId}`;

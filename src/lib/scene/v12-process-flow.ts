@@ -1,4 +1,8 @@
+import { fetchEngineAsset } from '../engine/local-assets';
 import * as THREE from 'three';
+import { ClippingGroup, PointsNodeMaterial, type WebGPURenderer } from 'three/webgpu';
+import { ProcessParticles } from './process-particles';
+import { prepareProcessDepthView } from './process-depth-view';
 import { V12IntakeFlow } from './v12-intake-flow';
 import { V12ExhaustFlow } from './v12-exhaust-flow';
 import { V12ChamberDomain, V12_CHAMBER_DATUMS } from './v12-chamber-domain';
@@ -44,6 +48,7 @@ function dropletTexture() {
 /** Source-contained field tracers, reduced fuel parcels and bounded ray-marched optical envelopes. */
 export class V12ProcessFlow {
 	readonly group = new THREE.Group();
+	private readonly parcelClip = new ClippingGroup();
 	private readonly glow = new V12CombustionGlow();
 	private readonly flowClock = new V12FlowClock();
 	// Separate from the process meshes: hiding overlays must not change the scene's light count.
@@ -58,7 +63,8 @@ export class V12ProcessFlow {
 	private readonly volumes: V12ChamberVolume[];
 	private readonly geometry = new THREE.BufferGeometry();
 	private readonly texture = dropletTexture();
-	private readonly material = new THREE.PointsMaterial({
+	private readonly pointCloud: ProcessParticles;
+	private readonly material = new PointsNodeMaterial({
 		size: 0.014,
 		sizeAttenuation: true,
 		map: this.texture,
@@ -80,7 +86,7 @@ export class V12ProcessFlow {
 		side: THREE.DoubleSide
 	});
 	private depthSources: THREE.Mesh[] = [];
-	private depthTarget: THREE.WebGLRenderTarget | null = null;
+	private depthTarget: THREE.RenderTarget | null = null;
 	private readonly drawingSize = new THREE.Vector2();
 	private phase = 0;
 	private channels: string[] = [];
@@ -98,7 +104,7 @@ export class V12ProcessFlow {
 	private depthPasses = 0;
 
 	static async load(): Promise<V12ProcessFlow> {
-		const response = await fetch(V12_CHAMBER_DATUMS.binaryUrl);
+		const response = await fetchEngineAsset(V12_CHAMBER_DATUMS.binaryUrl);
 		if (!response.ok) throw new Error(`Chamber domains could not be loaded (${response.status}).`);
 		const data = new Float32Array(await response.arrayBuffer());
 		if (data.length !== V12_CHAMBER_DATUMS.floats || data.some((v) => !Number.isFinite(v)))
@@ -120,14 +126,15 @@ export class V12ProcessFlow {
 			'color',
 			new THREE.BufferAttribute(this.colors, 3).setUsage(THREE.DynamicDrawUsage)
 		);
-		const points = new THREE.Points(this.geometry, this.material);
+		const points = (this.pointCloud = new ProcessParticles(this.geometry, this.material));
 		points.frustumCulled = false;
 		points.name = 'Reduced liquid-fuel parcels';
+		this.parcelClip.add(points);
 		this.group.add(
 			this.intake.group,
 			this.exhaust.group,
 			this.connections.group,
-			points,
+			this.parcelClip,
 			...this.volumes.map((v) => v.mesh)
 		);
 	}
@@ -167,15 +174,16 @@ export class V12ProcessFlow {
 	}
 
 	/** Compile the bounded volume and depth variants while the engine loading screen is still visible. */
-	async warmup(renderer: THREE.WebGLRenderer, scene: THREE.Scene, camera: THREE.Camera) {
+	async warmup(renderer: WebGPURenderer, scene: THREE.Scene, camera: THREE.Camera) {
 		this.warming = true;
 		const visible = this.group.visible;
 		const depthScene = new THREE.Scene();
 		const geometry = new THREE.BoxGeometry(1, 1, 1);
 		const proxy = new THREE.Mesh(geometry, this.depthMaterial);
 		proxy.frustumCulled = false;
-		depthScene.add(proxy);
-		const originalPlanes = this.depthMaterial.clippingPlanes;
+		const depthClip = new ClippingGroup();
+		depthClip.add(proxy);
+		depthScene.add(depthClip);
 		this.group.visible = true;
 		for (const volume of this.volumes) volume.mesh.visible = true;
 		const connectionVisibility = this.connections.group.children.map((mesh) => mesh.visible);
@@ -184,13 +192,13 @@ export class V12ProcessFlow {
 		try {
 			await renderer.compileAsync(scene, camera);
 			for (const planes of [null, [new THREE.Plane(new THREE.Vector3(1, 0, 0), 0)]]) {
-				this.depthMaterial.clippingPlanes = planes;
+				depthClip.clippingPlanes = planes ?? [];
+				depthClip.enabled = !!planes;
 				this.depthMaterial.needsUpdate = true;
 				await renderer.compileAsync(depthScene, camera);
 			}
 		} finally {
 			restoreExhaust();
-			this.depthMaterial.clippingPlanes = originalPlanes;
 			this.depthMaterial.needsUpdate = true;
 			geometry.dispose();
 			depthScene.clear();
@@ -252,13 +260,10 @@ export class V12ProcessFlow {
 			flowSeconds
 		);
 		const clipping = !!state.clipPlane;
-		if (clipping !== this.clips.length > 0) this.material.needsUpdate = true;
 		this.clips.length = 0;
 		if (state.clipPlane) this.clips.push(state.clipPlane);
-		this.material.clippingPlanes = clipping ? this.clips : null;
-		if (clipping !== !!this.depthMaterial.clippingPlanes?.length)
-			this.depthMaterial.needsUpdate = true;
-		this.depthMaterial.clippingPlanes = clipping ? this.clips : null;
+		this.parcelClip.clippingPlanes = this.clips;
+		this.parcelClip.enabled = clipping;
 		const fuel = state.flows.includes('fuel'),
 			burn = state.flows.includes('combustion');
 		for (let cylinderIndex = 0; cylinderIndex < this.domains.length; cylinderIndex++) {
@@ -315,14 +320,14 @@ export class V12ProcessFlow {
 			}
 		}
 		this.glow.update(this.volumes, burn && state.interiorVisible !== false, state.clipPlane);
-		this.geometry.setDrawRange(0, this.particles);
+		this.pointCloud.setCount(this.particles);
 		this.geometry.getAttribute('position').needsUpdate = true;
 		this.geometry.getAttribute('color').needsUpdate = true;
 	}
 
 	/** Exact opaque/section depth for volume integration. Ghost shells intentionally do not occlude inspection. */
 	prepareDepth(
-		renderer: THREE.WebGLRenderer,
+		renderer: WebGPURenderer,
 		scene: THREE.Scene,
 		camera: THREE.Camera,
 		ghosts: readonly THREE.Object3D[],
@@ -342,7 +347,7 @@ export class V12ProcessFlow {
 		if (!this.depthTarget) {
 			const texture = new THREE.DepthTexture(width, height, THREE.UnsignedInt248Type);
 			texture.format = THREE.DepthStencilFormat;
-			this.depthTarget = new THREE.WebGLRenderTarget(width, height, {
+			this.depthTarget = new THREE.RenderTarget(width, height, {
 				depthTexture: texture,
 				stencilBuffer: true,
 				depthBuffer: true
@@ -360,8 +365,7 @@ export class V12ProcessFlow {
 			this.depthProjection.equals(camera.projectionMatrix)
 		)
 			return;
-		const target = renderer.getRenderTarget(),
-			shadow = renderer.shadowMap.needsUpdate;
+		const target = renderer.getRenderTarget();
 		const hidden = this.hiddenDepthObjects;
 		hidden.length = 0;
 		for (const object of ghosts) if (object.visible) hidden.push(object);
@@ -374,18 +378,17 @@ export class V12ProcessFlow {
 		for (const object of hidden) object.visible = false;
 		for (const mesh of this.depthSources) mesh.material = this.depthMaterial;
 		try {
-			renderer.shadowMap.needsUpdate = false;
 			renderer.setRenderTarget(this.depthTarget);
 			renderer.render(scene, camera);
 		} finally {
 			renderer.setRenderTarget(target);
-			renderer.shadowMap.needsUpdate = shadow;
 			this.group.visible = true;
 			for (const object of hidden) object.visible = true;
 			this.depthSources.forEach((mesh, index) => {
 				mesh.material = materials[index];
 			});
 		}
+		prepareProcessDepthView(renderer, this.depthTarget.depthTexture!);
 		for (const volume of this.volumes)
 			volume.setDepth(this.depthTarget.depthTexture!, width, height);
 		this.connections.setDepth(this.depthTarget.depthTexture!, width, height);
@@ -428,6 +431,7 @@ export class V12ProcessFlow {
 		this.glow.dispose();
 		this.volumes.forEach((v) => v.dispose());
 		this.domains.forEach((d) => d.dispose());
+		this.pointCloud.dispose();
 		this.geometry.dispose();
 		this.material.dispose();
 		this.depthMaterial.dispose();

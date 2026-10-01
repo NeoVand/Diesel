@@ -208,11 +208,15 @@ describe('corrected valve rig geometry and ownership', () => {
 				materialDispose: vi.spyOn(material, 'dispose')
 			};
 		});
+		const download = vi
+			.spyOn(globalThis, 'fetch')
+			.mockResolvedValue(new Response(new Uint8Array([1, 2, 3])));
 		const load = vi
-			.spyOn(GLTFLoader.prototype, 'loadAsync')
+			.spyOn(GLTFLoader.prototype, 'parseAsync')
 			.mockResolvedValue({ scene } as unknown as GLTF);
 		await Promise.all([rig.loadRefinedCams(), rig.loadRefinedCams()]);
 		expect(load).toHaveBeenCalledTimes(1);
+		expect(download).toHaveBeenCalledTimes(1);
 		expect(rig.getDiagnostics().refinedCamsLoaded).toBe(true);
 		for (const resource of resources) {
 			expect(rig.prepareGeometry(resource.id, new THREE.BufferGeometry())).toBe(resource.geometry);
@@ -222,5 +226,6 @@ describe('corrected valve rig geometry and ownership', () => {
 		rig.dispose();
 		resources.forEach((resource) => expect(resource.geometryDispose).toHaveBeenCalledTimes(1));
 		load.mockRestore();
+		download.mockRestore();
 	});
 });

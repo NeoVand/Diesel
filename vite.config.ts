@@ -1,10 +1,25 @@
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vitest/config';
 import { playwright } from '@vitest/browser-playwright';
-import adapter from '@sveltejs/adapter-node';
+import adapter from '@sveltejs/adapter-static';
 import { sveltekit } from '@sveltejs/kit/vite';
 
 export default defineConfig({
+	define: {
+		__ENGINE_ASSET_PACKAGE_KEY__: JSON.stringify(process.env.ENGINE_ASSET_PACKAGE_KEY ?? '')
+	},
+	server: {
+		headers: {
+			'Cross-Origin-Opener-Policy': 'same-origin',
+			'Cross-Origin-Embedder-Policy': 'require-corp'
+		}
+	},
+	preview: {
+		headers: {
+			'Cross-Origin-Opener-Policy': 'same-origin',
+			'Cross-Origin-Embedder-Policy': 'require-corp'
+		}
+	},
 	// Avoid a dependency-optimizer reload on the first workspace-tour interaction.
 	optimizeDeps: { include: ['driver.js'] },
 	plugins: [
@@ -16,8 +31,12 @@ export default defineConfig({
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
 
-			// The Codex harness needs a Node server with native subprocess support.
-			adapter: adapter()
+			adapter: adapter({
+				fallback: '404.html',
+				pages: process.env.STATIC_OUT_DIR ?? 'build',
+				assets: process.env.STATIC_OUT_DIR ?? 'build'
+			}),
+			paths: { base: (process.env.BASE_PATH ?? '') as '' | `/${string}` }
 		})
 	],
 	test: {

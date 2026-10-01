@@ -1,9 +1,14 @@
 <script lang="ts">
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
+	import LocalEngineAssets from '$lib/components/LocalEngineAssets.svelte';
+	import DesktopGate from '$lib/components/DesktopGate.svelte';
 
 	let { children } = $props();
 </script>
 
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
-{@render children()}
+<DesktopGate>
+	{@render children()}
+	<LocalEngineAssets />
+</DesktopGate>

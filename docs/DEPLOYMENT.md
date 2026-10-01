@@ -1,67 +1,89 @@
-# Hosting the invited Diesel demo
+# Static deployment
 
-Visitors can explore the engine and authored tour immediately. Paid guide/narration access uses a demo password and the host's private OpenAI key; visitors do not need an API key. Optional advanced BYOK remains available. No public deployment has been performed.
+The `browser-first` build has **no application backend**. SvelteKit’s static adapter emits the interface, JavaScript, workers and WASM into `build/`. Exact CAD, meshing, structural solves and operating searches execute on the visitor’s machine. Optional assistant/speech inference calls OpenAI directly with the visitor’s memory-only API key.
 
-**Current deployment status (30 September 2026):** GitHub reports no Pages site, no Actions workflows and no deployment records for this repository. This is a persistent Node application. Actions can automate a future deployment to a runtime host, but Pages cannot execute its server components.
+This replaces the earlier persistent Node/Codex/Python architecture. [Historical deployment notes](archive/DEPLOYMENT_NODE_BASELINE.md) are retained for reference, not as current instructions. Deployment is being prepared; the presence of a workflow or configured URL alone does not establish a successfully published and tested site.
 
-**Native analysis is an additional runtime requirement.** The Docker profile below currently installs Node and Codex only. It does not install Python, OCP, Gmsh, SciPy, scikit-fem or PyAMG. To host the complete demonstrated Design/Analyze workflow, provision the pinned environment from `src/lib/server/cad/requirements.txt` and configure `DESIGN_CAD_PYTHON` / `DESIGN_STRUCTURAL_PYTHON`, then test native jobs on the deployment OS/CPU. [The rerun guide](RUNNING.md#5-enable-exact-cad-and-native-fea) documents the local setup. The image has not been validated as a full CAD/FEA deployment.
-
-## Concrete first profile: one Node container
-
-The checked-in `Dockerfile` builds the SvelteKit Node adapter on Linux, installs the matching optional native Codex runtime, and starts one unprivileged Node 22 process. `.dockerignore` excludes credentials, local dependencies, purchased original files/reference manuals, and development state. The served converted mesh is included in the app build; verify its license permits the intended audience before publishing. The image/profile is prepared, not yet built or host-tested in this workspace.
-
-Build on the target OS/CPU with `docker build -t diesel-demo .`. Run one instance behind an HTTPS reverse proxy. Inject these values through the host's secret manager or a private runtime env file:
-
-| Variable                | Requirement                                                                               |
-| ----------------------- | ----------------------------------------------------------------------------------------- |
-| `OPENAI_API_KEY`        | Dedicated private project/service key with guide/audio access; never a `PUBLIC_` variable |
-| `DIESEL_DEMO_PASSWORD`  | Random invite password of at least 12 characters; prefer 24+                              |
-| `DIESEL_SESSION_SECRET` | Independent random signing secret of at least 32 characters                               |
-| `ORIGIN`                | Exact browser-visible HTTPS origin, for example `https://diesel.example.com`              |
-| `DIESEL_AGENT_MODEL`    | Pinned hosted guide model; defaults to `gpt-6-sol`                                        |
-| `DIESEL_AUDIO_MODEL`    | Pinned hosted narration model; defaults to `gpt-audio-1.5`                                |
-
-The example file contains placeholders only. Generate secrets locally (for example `openssl rand -hex 32`) and keep them out of version control, image build arguments, client data and logs. The built Node server does not automatically load `.env`; inject runtime environment, or use Node's `--env-file` with a protected file. See [Node adapter guidance](https://svelte.dev/docs/kit/adapter-node). Optional `DIESEL_CODEX_PATH` is a trusted server-only executable override.
-
-A representative launch after supplying a protected runtime file is:
+## Build contract
 
 ```sh
-docker run --name diesel-demo --init --read-only --tmpfs /tmp:rw,nosuid,size=256m \
-  --cap-drop=ALL --security-opt=no-new-privileges \
-  --env-file /secure/path/diesel-demo.env -p 127.0.0.1:3000:3000 diesel-demo
+pnpm install --frozen-lockfile
+pnpm build
 ```
 
-The reverse proxy terminates TLS and forwards the whole application to that process. Use unbuffered SSE and allow long-lived `/api/scene/events` responses; live guide deadlines are 90 seconds, narration 45 seconds and browser acknowledgement 12 seconds. Do not cache HTML, `/api/access/*` or other private API responses. Keep request bodies, cookie/bearer headers and query/token details out of proxy logs. `ORIGIN` fixes the expected origin rather than trusting visitor Host headers.
+Publish **`build/`**. Node 24 and pnpm 12.4.2 are required during the build, not to execute the hosted application. There are no server-held runtime secrets, model-serving functions, Python subprocesses or `/api` endpoints to provision. Protected model resources are decoded client-side; any required client key is delivered to the browser and is not a server-secret boundary. Archived route code under `src/lib/server/archive-routes/` is not an active SvelteKit route.
 
-The bundled native process must be able to create its private temporary state, contact OpenAI over HTTPS, and reach this same process at `/api/scene/mcp`. The container sets `DIESEL_MCP_ORIGIN=http://127.0.0.1:3000`, pinning native callbacks to its own process while browser `ORIGIN` stays HTTPS. If changing the Node port, change this origin too. Without the override, callbacks use the browser origin. The trusted server-only override accepts an HTTPS origin or loopback HTTP, and rejects credentials, paths, query strings and fragments. Test DNS/TLS/self-routing and the native Linux read-only sandbox on the actual host. Container restrictions can affect native sandbox startup; retain isolation rather than enabling privileged mode to work around a failed test. Do not mount private home directories or unrelated credentials. The installed harness retains some native file/image helpers beyond the MCP allowlist, so its configuration is not a complete operating-system boundary. Temporary state is removed on normal completion/cancellation; add host cleanup for crash leftovers.
+The build preparation step copies the pinned Gmsh WASM package and isolation service worker into static assets. Serve `.wasm` as `application/wasm` and JavaScript modules with a JavaScript MIME type. Keep the runtime, licence and source-provenance files together. Avoid caching `coi-serviceworker.js` indefinitely across updates.
 
-## Access and operating limits
+## Cross-origin isolation
 
-Unlock uses a signed HttpOnly/Secure/SameSite=Strict cookie plus a live server ledger. It lasts two hours; logout revokes it and aborts active paid work. Locked or expired keyless inference returns 401 before calling OpenAI. HTTPS, a password of 12+ characters and a signing secret of 32+ characters are all required in production. A remote request cannot gain owner access by claiming localhost. Local development auto-enables a saved workspace key only for direct loopback requests; set `DIESEL_USE_LOCAL_SERVER_KEY=false` to disable it.
+The threaded Gmsh WASM package needs `SharedArrayBuffer`. On a configurable static host, send:
 
-The defaults allow 30 guide/30 narration attempts per visit, one paid request at a time, four guide/six narration attempts per minute, 60 of each per address/day and 200 of each per process/day. Failed/cancelled requests consume an attempt. Password guessing is limited to five attempts per address/15 minutes and 100 globally/15 minutes. Server-sponsored models are pinned, history is bounded, narration has a 2,400-output-token limit and tools have a 24-operation limit. Timeouts and request allowances reduce exposure but are not an exact dollar cap. Monitor a dedicated OpenAI project; keep model access constrained and a host kill switch ready. See [OpenAI production guidance](https://developers.openai.com/api/docs/guides/production-best-practices).
+```text
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Embedder-Policy: require-corp
+```
 
-The broker, cookie ledger, revocation, counters and pending acknowledgements are process-local. Restart logs visitors out and resets quotas. Do not enable multiple replicas or autoscaling yet. All session creation, SSE, state/ack/cancel, inference and native MCP callbacks must reach the same process; sticky browser routing alone does not guarantee native self-routing. Before scaling, implement shared durable visit/quota storage and a routed broker/worker channel. Configure trusted proxy client addresses only when the origin is unreachable directly and the proxy strips incoming spoofed forwarding headers. Without this, address limits conservatively group the proxy's visitors; cookie/global limits still apply.
+Serve over HTTPS; loopback HTTP is suitable for local checks. The project’s Vite server, preview and static verification helper set these headers. The included `coi-serviceworker` provides an alternative for hosts where response headers cannot be customised, such as GitHub Pages. A first visit may reload once to become isolated. If isolation remains unavailable, the CAD worker reports a capability error; it does not fall back to a hidden native service.
 
-## Vercel and Cloudflare fit
+Primary references: [Gmsh browser integration](https://loumalouomega.github.io/GMSH-JS/guide/browser/) and [the isolation service worker](https://github.com/gzuidhof/coi-serviceworker).
 
-| Option                             | Fit for this exact implementation                                                                                                                                                                                                              |
-| ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Persistent Node container/VM       | First supported profile; one process owns native inference, cookies, quotas and live broker                                                                                                                                                    |
-| Vercel frontend/CDN + Node backend | Future split: same-origin proxy **all** `/api/access`, AI and scene routes, cookies and unbuffered SSE to the persistent worker; root HTML/access initialization also needs that origin's session state                                        |
-| Vercel Functions                   | Node support/time limits alone do not preserve a shared in-memory session across invocations. Binary packaging, request routing and durable broker/auth storage need an implementation and host acceptance test; no drop-in deployment claimed |
-| Cloudflare Workers                 | Cannot run this native SDK directly: documented `node:child_process` compatibility is a nonfunctional stub                                                                                                                                     |
-| Cloudflare Containers              | Plausible Linux-worker home with explicit instance routing/lifecycle. Container restart/sleep and native self-callback must be tested; a Durable Object router does not automatically persist the Node broker/quotas                           |
+## GitHub Pages and Actions
 
-This assessment follows [Vercel's function limits](https://vercel.com/docs/functions/limitations), [Cloudflare's Node compatibility table](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) and [Container lifecycle](https://developers.cloudflare.com/containers/concepts/architecture/). It is not a provider deployment certification. Keep the current same-app container until a split is deliberately implemented.
+For this repository’s project site, build with `/Diesel` as the base path:
 
-## Acceptance before invitations
+```sh
+BASE_PATH=/Diesel pnpm build
+```
 
-- Verify HTTPS password unlock, page reload/status, wrong password, expiry, logout and tampered-cookie rejection; inspect browser data to confirm the server key is absent.
-- Complete actual Codex MCP → browser operation → acknowledgement → answer, with exact IDs/revisions/source links, on the deployed origin.
-- Stop during connection, execution and narration, then ask again; confirm old request UUIDs cannot mutate the new view. Logout must cancel active paid requests.
-- Check Linux binary/sandbox startup, native self-routing, unbuffered SSE, runtime restart/reconnection, same-origin checks, limits and redacted errors.
-- Verify whole-engine plane, cylinder mode, internal explosion, selection and tour on the target device. Check a known reference operating point and finite WAV playback with an authorized key.
-- Confirm converted-mesh distribution rights and keep original/manual reference files outside served assets; see [rights and AI use](../references/99_Archive/Caterpillar_3512_2026-09-29/RIGHTS_AND_AI_USE.md).
+The repository includes [push/PR CI](../.github/workflows/ci.yml) and a [Pages deployment workflow](../.github/workflows/deploy-pages.yml) triggered by pushes to `main` or manual dispatch. CI checks the source; deployment uploads the static artifact and publishes it through the Pages action. Actions is the build/deployment runner; **Pages serves the resulting files**.
 
-Offline auth/route tests exercise the above access boundaries without billable calls. Owner-authorized local live samples are recorded in [VERIFICATION.md](VERIFICATION.md); public hosting remains untested.
+In repository **Settings → Pages**, select **GitHub Actions** as the publishing source. Run the Pages workflow against the intended release branch and inspect the workflow’s resulting deployment URL and status. A successful build alone is insufficient; verify the live application at that URL. The target project path is `/Diesel/`; no live-site verification is claimed by this document before that check completes.
+
+For a matching local subdirectory check:
+
+```sh
+node scripts/serve-static.mjs --port 4198 --base /Diesel
+```
+
+Then open `http://127.0.0.1:4198/Diesel/`. Route navigation, hard reloads, source links, module workers, WASM paths and the isolation service worker must remain inside that base path. [SvelteKit’s static adapter guidance](https://svelte.dev/docs/kit/adapter-static) and [GitHub’s custom Pages workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages) describe the hosting primitives.
+
+## Other static hosts
+
+For root-path hosting, omit `BASE_PATH` and publish `build/`. Cloudflare Pages, a static Vercel deployment, Nginx or another ordinary web server can serve the output; no Worker/Function API is required. Configure isolation headers where supported and preserve the generated route directories and fallback page. Provider-specific publication still needs an actual deployed-origin check.
+
+The container profile builds assets with Node, then serves them through Nginx. Its final image is a static web server, not the previous Node application runtime. Do not add the old native solver or private `.env` to this image. Build and run commands follow the current `Dockerfile`; validate a built image before describing it as deployment-tested.
+
+## Assets and credentials
+
+The release packages the complete processed Explorer geometry as compressed, encrypted application resources, while the original editable vendor files and loose runtime bundle remain outside the public source checkout. The browser necessarily receives enough information to decode and render those resources; encryption discourages straightforward reuse but cannot guarantee that geometry is unextractable. The application does not grant visitors a separate model licence.
+
+Independent clones without the release package/key retain the five-file local import path into IndexedDB. Import verifies the matching bundle and uploads nothing. Design and Analyze run without the purchased mesh. The checked-in metadata and authored parametric geometry are separate from the commercial model.
+
+`static/engine-runtime/` contains `manifest.json`, content-addressed `.elres` chunks and `NOTICE.txt`. The package preserves all five verified runtime files, without mesh simplification: 99,440,937 source bytes become 63,217,187 compressed/encrypted bytes. `scripts/pack-engine-assets.mjs` verifies source lengths and SHA-256 hashes, gzip-compresses each file, applies AES-256-GCM and writes chunks of at most 8 MiB. Loading checks package integrity and decodes resources locally.
+
+To regenerate that package, place the exact owned runtime files under `static/models/`, then run:
+
+```sh
+node scripts/pack-engine-assets.mjs
+```
+
+The script takes `ENGINE_ASSET_PACKAGE_KEY` from the environment or reuses/creates `work/private-assets/package-key`. The generated key file is excluded from Git. Supply the matching value through the deployment runner’s environment; the Pages workflow reads the repository Actions secret named `ENGINE_ASSET_PACKAGE_KEY`. Do not print it in build logs. It is a client-delivered resource key, not an OpenAI key. The runtime loader tries imported local files, the configured encrypted package, then loose development files.
+
+`pnpm build` runs `scripts/finalize-browser-build.mjs` after compilation to strip standalone GLB, OBJ, BIN and private correction JSON from the distributable `models/` directory. Original editable vendor projects are never packaged. The resource notice excludes purchased geometry from any application-source licence and grants no standalone reuse rights. [CGTrader’s Royalty Free License](https://help.cgtrader.com/hc/en-us/articles/360015124437-Royalty-Free-License) describes incorporation into software and measures to prevent direct access; review the applicable purchase terms when making an independent distribution.
+
+Anything placed under `static/` is copied into a build. Inspect the artifact before publication and only distribute engine geometry when its rights permit it. Keep the Gmsh GPL licence and source notices with the shipped WASM; the package has GPL-2.0-or-later corresponding-source obligations.
+
+There is no server-sponsored secret on this static host. Visitors enter their own OpenAI key, which the app holds in memory and sends only to OpenAI. Meshes stay local; question context and bounded study summaries are transmitted for inference. A shared password cannot securely conceal a paid API key embedded in static JavaScript. Any future sponsored-AI service would be an explicit optional network service with its own access boundary, not a prerequisite for engineering computation.
+
+## Deployment acceptance
+
+- Load the application and hard-reload Design/Analyze at the final base path. Confirm no application `/api` requests.
+- Verify cross-origin isolation, the first WASM download, exact solid verification and STEP export.
+- Solve and inspect a real solid case; check residuals, refinement and cancellation/restart.
+- Run operating screening and confirm its executed backend is displayed. Test the numerical CPU fallback independently from the graphics capability gate; the WebGPU renderer itself does not fall back to WebGL.
+- Confirm the published protected model loads from a fresh profile, then check mechanism, section planes, X-ray, disassembly and process views. Separately verify local import for an independent build without the release package.
+- Exercise direct OpenAI actions and narration with an authorised visitor key; cancel a request, navigate workspaces, then reload and confirm the key is cleared.
+- Verify the renderer’s actual backend and visual regression results after the in-progress WebGPU graphics migration; do not infer that from numerical WebGPU support.
+
+Recorded local static checks are in [browser CAD/solid verification](verification/browser-cad-solid.md) and [the numerical GPU report](verification/browser-webgpu.json). They establish browser execution on the tested machine; they are distinct from a final public-origin acceptance check.

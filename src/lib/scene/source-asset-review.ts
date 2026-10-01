@@ -1,8 +1,14 @@
+import { fetchEngineAsset } from '../engine/local-assets';
 import * as THREE from 'three';
+import { WebGPURenderer, PMREMGenerator } from 'three/webgpu';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
-import { createStudioEnvironment } from './studio-environment';
+import {
+	createStudioEnvironment,
+	createStrictWebGPURenderer,
+	initializeWebGPURenderer
+} from './studio-environment';
 
 export type ReviewMode = 'assembly' | 'internal';
 export interface ReviewPart {
@@ -40,7 +46,8 @@ interface PartInstance {
 export class SourceAssetReview {
 	private readonly scene = new THREE.Scene();
 	private readonly camera = new THREE.PerspectiveCamera(36, 1, 0.025, 400);
-	private readonly renderer: THREE.WebGLRenderer;
+	private readonly renderer: WebGPURenderer;
+	private readonly rendererReady: Promise<void>;
 	private readonly controls: OrbitControls;
 	private readonly abort = new AbortController();
 	private readonly observer: ResizeObserver;
@@ -52,7 +59,7 @@ export class SourceAssetReview {
 	private readonly pointerStart = new THREE.Vector2();
 	private readonly floor: THREE.Mesh;
 	private readonly key: THREE.DirectionalLight;
-	private readonly environment: THREE.WebGLRenderTarget;
+	private environment: THREE.RenderTarget | undefined;
 	private readonly selectionBox: THREE.Box3Helper;
 	private selected: string | null = null;
 	private isolated = false;
@@ -75,10 +82,9 @@ export class SourceAssetReview {
 		private readonly host: HTMLElement,
 		private readonly callbacks: Callbacks
 	) {
-		this.renderer = new THREE.WebGLRenderer({
+		this.renderer = createStrictWebGPURenderer({
 			antialias: true,
-			alpha: false,
-			powerPreference: 'high-performance'
+			alpha: false
 		});
 		this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.25));
 		this.renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -86,7 +92,6 @@ export class SourceAssetReview {
 		this.renderer.toneMappingExposure = 0.95;
 		this.renderer.shadowMap.enabled = true;
 		this.renderer.shadowMap.type = THREE.PCFShadowMap;
-		this.renderer.shadowMap.autoUpdate = false;
 		this.renderer.domElement.style.cssText =
 			'display:block;width:100%;height:100%;touch-action:none;';
 		this.renderer.domElement.setAttribute(
@@ -95,17 +100,21 @@ export class SourceAssetReview {
 		);
 		this.host.appendChild(this.renderer.domElement);
 		this.scene.background = new THREE.Color(0x0a0d12);
-		const studio = createStudioEnvironment();
-		const pmrem = new THREE.PMREMGenerator(this.renderer);
-		this.environment = pmrem.fromScene(studio.scene, 0.08);
-		this.scene.environment = this.environment.texture;
-		this.scene.environmentIntensity = 0.65;
-		studio.dispose();
-		pmrem.dispose();
+		this.rendererReady = initializeWebGPURenderer(this.renderer).then(() => {
+			if (this.disposed) return;
+			const studio = createStudioEnvironment();
+			const pmrem = new PMREMGenerator(this.renderer);
+			this.environment = pmrem.fromScene(studio.scene, 0.08);
+			this.scene.environment = this.environment.texture;
+			this.scene.environmentIntensity = 0.65;
+			studio.dispose();
+			pmrem.dispose();
+		});
 		this.scene.add(new THREE.HemisphereLight(0xb2c7df, 0x333039, 1.1));
 		this.key = new THREE.DirectionalLight(0xffefd9, 3.1);
 		this.key.position.set(-7, 10, 7);
 		this.key.castShadow = true;
+		this.key.shadow.autoUpdate = false;
 		this.key.shadow.mapSize.set(2048, 2048);
 		this.key.shadow.normalBias = 0.018;
 		this.key.shadow.bias = -0.00008;
@@ -151,8 +160,10 @@ export class SourceAssetReview {
 	}
 
 	async load(url: string): Promise<void> {
+		await this.rendererReady;
+		if (this.disposed) return;
 		this.callbacks.onprogress(null, 'Opening purchased geometry');
-		const response = await fetch(url, { signal: this.abort.signal });
+		const response = await fetchEngineAsset(url, { signal: this.abort.signal });
 		if (!response.ok)
 			throw new Error(`The V12 review asset could not be loaded (${response.status}).`);
 		const total = Number(response.headers.get('content-length'));
@@ -496,7 +507,7 @@ export class SourceAssetReview {
 		}
 		moving = this.controls.update(delta) || moving;
 		if (this.shadowsDirty) {
-			this.renderer.shadowMap.needsUpdate = true;
+			this.key.shadow.needsUpdate = true;
 			this.shadowsDirty = false;
 		}
 		this.renderer.render(this.scene, this.camera);
@@ -570,10 +581,9 @@ export class SourceAssetReview {
 		(this.floor.material as THREE.Material).dispose();
 		this.selectionBox.geometry.dispose();
 		(this.selectionBox.material as THREE.Material).dispose();
-		this.environment.dispose();
+		this.environment?.dispose();
 		this.key.shadow.map?.dispose();
 		this.renderer.dispose();
-		this.renderer.forceContextLoss();
 		this.renderer.domElement.remove();
 		this.instances.clear();
 	}

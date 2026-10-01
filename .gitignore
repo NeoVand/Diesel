@@ -44,3 +44,7 @@ static/models/v12-chamber-domains.bin
 # Python bytecode is generated locally.
 __pycache__/
 *.py[cod]
+
+# Reproduced from pinned npm packages during install/build.
+/static/vendor/
+/static/coi-serviceworker.js

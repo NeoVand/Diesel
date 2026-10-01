@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
-	import { replaceState } from '$app/navigation';
+	import { goto, replaceState } from '$app/navigation';
 	import { resolve } from '$app/paths';
 	import WorkbenchHeader from '$lib/components/WorkbenchHeader.svelte';
 	import StudyLibrary from '$lib/components/StudyLibrary.svelte';
@@ -30,6 +30,7 @@
 		type OperatingScenario
 	} from '$lib/design/operating-cycle';
 	import type { StructuralResult, StructuralRequest } from '$lib/design/structural';
+	import { exportRodCad, runStructuralAnalysis, disposeBrowserCad } from '$lib/browser-cad/client';
 	import type {
 		OperatingSearchResult,
 		OperatingSearchResponse
@@ -538,7 +539,7 @@
 	}
 	function changeWorkspace(next: 'explore' | 'design' | 'analyze') {
 		if (next === 'explore') {
-			window.location.assign('/');
+			void goto(resolve('/'));
 			return;
 		}
 		const current = tab === 'operating' ? 'analyze' : 'design';
@@ -577,7 +578,7 @@
 		let cancelled = false;
 		let instance: DesignStudio | null = null;
 		void import('$lib/scene/design-studio')
-			.then(({ DesignStudio }) => {
+			.then(async ({ DesignStudio }) => {
 				if (cancelled) return;
 				instance = new DesignStudio(canvas, {
 					onPhase: (value: number) => {
@@ -587,6 +588,8 @@
 						probe = value;
 					}
 				});
+				await instance.ready;
+				if (cancelled) return;
 				instance.setDesign(params);
 				instance.setView(study);
 				instance.setPhase(phase);
@@ -724,16 +727,12 @@
 		request: StructuralRequest,
 		signal: AbortSignal
 	): Promise<StructuralResult> {
-		const response = await fetch('/api/design/rod-analysis', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(request),
-			signal
+		return runStructuralAnalysis(request, {
+			signal,
+			onProgress: (message) => {
+				if (!signal.aborted) comparisonProgress = message;
+			}
 		});
-		const data = await response.json();
-		if (!response.ok)
-			throw new Error(data.error ?? 'The native solid analysis could not complete.');
-		return data as StructuralResult;
 	}
 	async function solveStructural(refine: boolean, existing?: StructuralResult) {
 		if (structuralBusy || comparing) return;
@@ -776,7 +775,8 @@
 			dimensions = false;
 			structuralField = 'stress';
 			deformationScale = 1;
-			notice = 'Native solid solution ready. The field uses the solved mesh.';
+			notice = 'Browser solid solution ready. The field uses the solved mesh.';
+			comparisonProgress = '';
 		} catch (e) {
 			if (
 				!disposed &&
@@ -788,6 +788,7 @@
 		} finally {
 			if (!disposed && generation === analysisGeneration) {
 				structuralBusy = false;
+				comparisonProgress = '';
 				structuralAbort = null;
 			}
 		}
@@ -999,7 +1000,7 @@
 		verification = null;
 		revision++;
 		selectedId = 'current';
-		notice = `${experiment.label} · native solution displayed`;
+		notice = `${experiment.label} · browser solution displayed`;
 	}
 	function exportStructural() {
 		const report = structural ?? previousAnalysis?.structural;
@@ -1268,7 +1269,7 @@
 					}
 				: null,
 			scope:
-				'Authored design family. Ideal solid mass; Timoshenko beam screening and separately scoped operating/native elastic fixture analyses when present. No combustion, bearing contact, fatigue, fuel-efficiency or manufacturing validation.'
+				'Authored design family. Ideal solid mass; Timoshenko beam screening and separately scoped operating/solid elastic fixture analyses when present. No combustion, bearing contact, fatigue, fuel-efficiency or manufacturing validation.'
 		};
 		download(
 			new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' }),
@@ -1298,29 +1299,18 @@
 		const selected = { ...params },
 			key = geometryKey(selected);
 		try {
-			const response = await fetch('/api/design/rod-step', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ params: selected, format }),
-				signal: cadAbort.signal
-			});
-			if (!response.ok) {
-				const data = await response.json();
-				throw new Error(data.error ?? 'Solid generation failed.');
-			}
+			const response = await exportRodCad(selected, { signal: cadAbort.signal });
+			if (disposed || cadAbort.signal.aborted) return;
 			if (format === 'step') {
-				const blob = await response.blob();
-				if (!disposed) {
-					download(blob, 'engine-lab-parametric-rod.step');
-					notice = 'Exact solid exported for the requested design.';
-				}
-			} else {
-				const report = await response.json();
-				if (!disposed && key === geometryKey(params)) {
-					cad = report;
-					tab = 'evidence';
-					notice = 'Solid regenerated, measured and reimported successfully.';
-				}
+				download(
+					new Blob([new Uint8Array(response.step)], { type: 'application/step' }),
+					'engine-lab-parametric-rod.step'
+				);
+				notice = 'Exact solid exported in this browser.';
+			} else if (key === geometryKey(params)) {
+				cad = response.report;
+				tab = 'evidence';
+				notice = 'Solid regenerated, measured and reimported in this browser.';
 			}
 		} catch (e) {
 			if (!disposed && e instanceof Error && e.name !== 'AbortError') error = e.message;
@@ -1360,6 +1350,7 @@
 	}
 	onDestroy(() => {
 		disposed = true;
+		disposeBrowserCad();
 		cancelSearch();
 		cadAbort?.abort();
 		structuralAbort?.abort();
@@ -1635,7 +1626,7 @@
 				<h2>{study === 'rod' ? 'Connecting rod' : 'V12 cranktrain'}</h2>
 				<p>
 					{structuralActive
-						? `Native solid analysis · ${structural?.analysisHash.slice(0, 8)}`
+						? `Browser solid analysis · ${structural?.analysisHash.slice(0, 8)}`
 						: study === 'rod'
 							? 'Generated solid · fixed bearing interfaces'
 							: 'Parametric design derivative · 12 cylinders'}
@@ -1884,7 +1875,7 @@
 				<div class="view-hint">
 					<span>Drag to orbit · Scroll to zoom</span><span
 						>{structuralActive
-							? 'Native solid mesh · amplified deformation is visual only'
+							? 'Solved solid mesh · amplified deformation is visual only'
 							: tab === 'operating'
 								? 'Forces on Bank A / station 1 · prescribed pressure'
 								: study === 'rod'
@@ -2230,6 +2221,19 @@
 								<div class="map-note">
 									<span class="eyebrow">{operatingSearch.evaluated} SHAPES · 3 CONDITIONS</span>
 									<h3>Operating design search</h3>
+									{#if operatingSearch.computation}
+										{@const compute = operatingSearch.computation}
+										<p
+											aria-label="Operating search computation"
+											class="compute-provenance"
+											title={compute.fallbackReason ?? compute.note}
+										>
+											<strong
+												>{compute.backend === 'webgpu' ? 'WebGPU · JAX-JS' : 'Browser CPU'}</strong
+											>
+											· {fmt(compute.totalMs, 0)} ms · {compute.precision}
+										</p>
+									{/if}
 									<p>
 										Each shape carries its own mass and inertia. Finalists are checked through 720°
 										at 1° intervals.
@@ -2591,7 +2595,7 @@
 					<dt>Operating loads & solid analysis</dt>
 					<dd>
 						The operating study uses an explicit pressure curve and assumed piston mass over 720°.
-						Rigid-body dynamics supplies bearing forces and distributed rod inertia. Native
+						Rigid-body dynamics supplies bearing forces and distributed rod inertia. Browser
 						tetrahedral elasticity uses fixed big-bore restraints and prescribed small-bore
 						traction. Refinement checks displacement and energy; sharp shoulders, contact pressure,
 						local strength and fatigue require further investigation. The 500-shape operating search

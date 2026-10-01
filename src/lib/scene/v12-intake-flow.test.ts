@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import * as THREE from 'three';
+import { ProcessParticles } from './process-particles';
+import { ClippingGroup } from 'three/webgpu';
 import both from '../engine/v12-intake-flow-field.json';
 import right from '../engine/v12-intake-flow-field-1.json';
 import left from '../engine/v12-intake-flow-field-2.json';
@@ -94,11 +96,8 @@ describe('native intake potential-flow tracers', () => {
 	it('reuses one draw object/buffer and gives identical pause/seek frames with normal depth clipping', () => {
 		const flow = new V12IntakeFlow();
 		expect(flow.group.children).toHaveLength(1);
-		const points = flow.group.children[0] as THREE.Points<
-			THREE.BufferGeometry,
-			THREE.PointsMaterial
-		>;
-		const geometry = points.geometry;
+		const points = flow.group.getObjectByName('Soft native-passage advection') as ProcessParticles;
+		const geometry = points.sourceGeometry;
 		const attribute = geometry.getAttribute('position');
 		flow.update(0.2, true, null, 123);
 		const snapshot = Array.from(attribute.array);
@@ -107,12 +106,12 @@ describe('native intake potential-flow tracers', () => {
 		flow.update(0.2, true, new THREE.Plane(new THREE.Vector3(1, 0, 0), 2), 123);
 		expect(Array.from(attribute.array)).toEqual(snapshot);
 		expect(Array.from(geometry.getAttribute('color').array)).toEqual(colors);
-		expect(points.geometry).toBe(geometry);
+		expect(points.sourceGeometry).toBe(geometry);
 		expect(points.material.depthTest).toBe(true);
 		expect(points.material.depthWrite).toBe(false);
-		expect(points.material.clippingPlanes).toHaveLength(1);
+		expect((points.parent as ClippingGroup).clippingPlanes).toHaveLength(1);
 		flow.update(0.2, true, null, 123);
-		expect(points.material.clippingPlanes).toBeNull();
+		expect((points.parent as ClippingGroup).enabled).toBe(false);
 		flow.update(0.2, false);
 		expect(flow.group.visible).toBe(false);
 		flow.dispose();

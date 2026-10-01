@@ -1,3 +1,4 @@
+import { fetchEngineAsset, engineAssetUrl } from '../engine/local-assets';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import {
@@ -212,7 +213,12 @@ export class V12Valvetrain {
 		if (this.disposed) return Promise.reject(new Error('Valvetrain is disposed.'));
 		if (this.refinedCamPromise) return this.refinedCamPromise;
 		this.refinedCamPromise = (async () => {
-			const result = await new GLTFLoader().loadAsync(url);
+			const response = await fetchEngineAsset(url);
+			if (!response.ok) throw new Error('The corrected cams could not be loaded.');
+			const result = await new GLTFLoader().parseAsync(
+				await response.arrayBuffer(),
+				engineAssetUrl('/models/')
+			);
 			const found = new Map<string, THREE.BufferGeometry>();
 			const materials = new Set<THREE.Material>();
 			result.scene.traverse((object) => {

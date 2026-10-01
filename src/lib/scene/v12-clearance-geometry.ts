@@ -1,3 +1,4 @@
+import { fetchEngineAsset } from '../engine/local-assets';
 import * as THREE from 'three';
 import { prepareV12PistonSurface } from './v12-piston-surface';
 
@@ -104,7 +105,7 @@ export function decodeV12ClearanceGeometry(
 
 /** Load once per studio. The caller owns disposal, source replacement, bounds and section caps. */
 export async function loadV12ClearanceGeometry(
-	fetcher: typeof fetch = fetch
+	fetcher: typeof fetch = (input, options) => fetchEngineAsset(String(input), options)
 ): Promise<Map<string, THREE.BufferGeometry>> {
 	const [manifestResponse, binaryResponse] = await Promise.all([
 		fetcher('/models/v12-clearance-refined.json'),

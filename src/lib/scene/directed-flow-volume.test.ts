@@ -45,7 +45,8 @@ describe('directed connection envelopes', () => {
 		expect(volume.getDiagnostics()).toMatchObject({ routes: 2, activeRoutes: 1, drawCalls: 1 });
 		volume.update(2, true, [0, 1], new THREE.Plane(new THREE.Vector3(1, 0, 0), 2));
 		expect(attribute.version).toBe(version);
-		expect(volume.mesh.material.clippingPlanes?.[0].constant).toBe(2);
+		expect(volume.mesh.material.uniforms.uHasClip.value).toBe(1);
+		expect(volume.mesh.material.uniforms.uPlane.value.toArray()).toEqual([1, 0, 0, 2]);
 		volume.update(3, false, [1, 1], null);
 		expect(volume.mesh.visible).toBe(false);
 		volume.dispose();

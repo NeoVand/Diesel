@@ -7,7 +7,7 @@ vi.mock('./design-cad', async (original) => ({
 	exportRodCad: fixture.export
 }));
 
-import { POST } from '../../routes/api/design/rod-step/+server';
+import { POST } from './archive-routes/api/design/rod-step/+server';
 import { DEFAULT_DESIGN_PARAMS } from '$lib/design/design-core';
 import { ApiProblem } from './validation';
 

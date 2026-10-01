@@ -1,9 +1,15 @@
+import { fetchEngineAsset, engineAssetUrl } from '../engine/local-assets';
 import * as THREE from 'three';
+import { WebGPURenderer, PMREMGenerator, ClippingGroup } from 'three/webgpu';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { createStudioEnvironment } from './studio-environment';
-import { MovingSectionCaps } from './section-plane';
+import {
+	createStudioEnvironment,
+	createStrictWebGPURenderer,
+	initializeWebGPURenderer
+} from './studio-environment';
+import { WebGPUSectionCaps } from './webgpu-section-caps';
 import { sectionGuidePolygon } from './v12-section-guide';
 import { sectionCoordinates, sectionProjection } from './v12-section-coordinates';
 import { perspectiveFitDistance } from './v12-camera-fit';
@@ -79,10 +85,12 @@ export class EngineStudio {
 	private scene = new THREE.Scene();
 	private perspective = new THREE.PerspectiveCamera(35, 1, 0.025, 2000);
 	private camera = this.perspective;
-	private renderer: THREE.WebGLRenderer;
+	private renderer: WebGPURenderer;
+	private rendererReady = false;
+	private sourceClip = new ClippingGroup();
 	private readonly renderQuality: V12RenderQuality;
 	private controls: OrbitControls;
-	private environment: THREE.WebGLRenderTarget;
+	private environment: THREE.RenderTarget | null = null;
 	private floor: THREE.Mesh;
 	private key: THREE.DirectionalLight;
 	private components = new Map<string, Component>();
@@ -92,7 +100,7 @@ export class EngineStudio {
 	private runningRig = new V12RunningRig();
 	private replacedSourceGeometry = new Set<THREE.BufferGeometry>();
 	private processFlow: V12ProcessFlow | null = null;
-	private caps = new MovingSectionCaps();
+	private caps = new WebGPUSectionCaps();
 	private plane = new THREE.Plane();
 	private guide: THREE.LineSegments;
 	private sectionActive = false;
@@ -177,7 +185,7 @@ export class EngineStudio {
 		private onisolate: (id: string) => void = () => {}
 	) {
 		this.renderQuality = new V12RenderQuality(devicePixelRatio);
-		this.renderer = new THREE.WebGLRenderer({
+		this.renderer = createStrictWebGPURenderer({
 			antialias: true,
 			stencil: true,
 			powerPreference: 'high-performance'
@@ -186,10 +194,9 @@ export class EngineStudio {
 		this.renderer.outputColorSpace = THREE.SRGBColorSpace;
 		this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
 		this.renderer.toneMappingExposure = 1.05;
+		this.renderer.info.autoReset = false;
 		this.renderer.shadowMap.enabled = true;
 		this.renderer.shadowMap.type = THREE.PCFShadowMap;
-		this.renderer.shadowMap.autoUpdate = false;
-		this.renderer.localClippingEnabled = true;
 		this.renderer.domElement.style.cssText =
 			'display:block;width:100%;height:100%;touch-action:none;';
 		this.renderer.domElement.setAttribute(
@@ -204,17 +211,11 @@ export class EngineStudio {
 		this.flowLabels = new V12FlowLabels(host);
 		this.scene.background = new THREE.Color(BACKGROUND);
 		this.scene.fog = new THREE.Fog(BACKGROUND, 28, 75);
-		const studio = createStudioEnvironment();
-		const pmrem = new THREE.PMREMGenerator(this.renderer);
-		this.environment = pmrem.fromScene(studio.scene, 0.055);
-		this.scene.environment = this.environment.texture;
-		this.scene.environmentIntensity = 0.9;
-		studio.dispose();
-		pmrem.dispose();
 		this.scene.add(new THREE.HemisphereLight(0xc4d3e5, 0x343945, 1.0));
 		this.key = new THREE.DirectionalLight(0xffeddb, 2.8);
 		this.key.position.set(-8, 13, 9);
 		this.key.castShadow = true;
+		this.key.shadow.autoUpdate = false;
 		this.key.shadow.mapSize.set(2048, 2048);
 		this.key.shadow.bias = -0.00003;
 		this.key.shadow.normalBias = 0.008;
@@ -257,7 +258,8 @@ export class EngineStudio {
 			})
 		);
 		this.guide.visible = false;
-		this.scene.add(this.guide, this.caps.group, this.atlasPanels);
+		this.sourceClip.clipShadows = true;
+		this.scene.add(this.sourceClip, this.guide, this.caps.group, this.atlasPanels);
 		this.perspective.position.set(8, 4.2, 9);
 		this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 		this.controls.enableDamping = true;
@@ -283,7 +285,19 @@ export class EngineStudio {
 		onprogress: (percent: number) => void,
 		oncomponents: (registry: ComponentRecord[]) => void = () => {}
 	): Promise<SceneStats> {
-		const response = await fetch(engineDefinition.modelUrl, { signal: this.abort.signal });
+		await initializeWebGPURenderer(this.renderer);
+		if (this.disposed) throw new Error('Scene closed');
+		const studio = createStudioEnvironment();
+		const pmrem = new PMREMGenerator(this.renderer);
+		this.environment = pmrem.fromScene(studio.scene, 0.055);
+		this.scene.environment = this.environment.texture;
+		this.scene.environmentIntensity = 0.9;
+		studio.dispose();
+		pmrem.dispose();
+		this.rendererReady = true;
+		const response = await fetchEngineAsset(engineDefinition.modelUrl, {
+			signal: this.abort.signal
+		});
 		if (!response.ok)
 			throw new Error(`The purchased V12 asset could not be loaded (${response.status}).`);
 		const total = Number(response.headers.get('content-length'));
@@ -312,13 +326,13 @@ export class EngineStudio {
 		await this.runningRig.loadGeometry();
 		const gltf = await new GLTFLoader()
 			.setMeshoptDecoder(MeshoptDecoder)
-			.parseAsync(bytes.buffer, '/models/');
+			.parseAsync(bytes.buffer, engineAssetUrl('/models/'));
 		if (this.disposed) {
 			this.disposeGraph(gltf.scene);
 			throw new Error('Scene closed');
 		}
 		this.sourceRoot = gltf.scene;
-		this.scene.add(gltf.scene);
+		this.sourceClip.add(gltf.scene);
 		gltf.scene.updateMatrixWorld(true);
 		const registry = new Map(v12Components.map((r) => [r.id, r]));
 		let triangles = 0;
@@ -432,7 +446,25 @@ export class EngineStudio {
 		this.refreshSection();
 		this.fit(false);
 		onprogress(95);
-		await this.processFlow.warmup(this.renderer, this.scene, this.camera);
+		// Compile the clipped material variants before the first section animation.
+		// Compilation is asynchronous; keep the temporary plane out of the live frame.
+		this.rendererReady = false;
+		try {
+			await this.processFlow.warmup(this.renderer, this.scene, this.camera);
+			const warmupPlane = new THREE.Plane(new THREE.Vector3(-1, 0, 0), center.x);
+			this.sourceClip.clippingPlanes = [warmupPlane];
+			this.caps.update(
+				[...this.components.values()]
+					.filter((part) => !part.decorative)
+					.flatMap((part) => part.meshes),
+				[warmupPlane]
+			);
+			await this.renderer.compileAsync(this.scene, this.camera);
+		} finally {
+			this.refreshSection();
+			this.updateCaps();
+			this.rendererReady = !this.disposed;
+		}
 		if (this.disposed) throw new Error('Scene closed');
 		this.invalidate();
 		oncomponents(v12Components.map((r) => ({ ...r })));
@@ -441,7 +473,7 @@ export class EngineStudio {
 			parts: engineDefinition.mechanicalDisplayCount,
 			triangles: Math.round(triangles),
 			educationalParts: this.runningRig.getAttachments().length,
-			renderer: 'Purchased V12 · physical component transforms'
+			renderer: 'WebGPU · purchased V12 · physical component transforms'
 		};
 	}
 
@@ -811,11 +843,7 @@ export class EngineStudio {
 		const sign = section.flipped ? 1 : -1;
 		this.plane.normal.copy(axis).multiplyScalar(sign);
 		this.plane.constant = -coordinate * sign;
-		const planes = this.sectionActive ? [this.plane] : [];
-		for (const part of this.components.values())
-			for (const mesh of part.meshes)
-				for (const material of Array.isArray(mesh.material) ? mesh.material : [mesh.material])
-					material.clippingPlanes = planes;
+		this.sourceClip.clippingPlanes = this.sectionActive ? [this.plane] : [];
 		this.guide.visible = this.sectionActive && section.visible;
 		if (this.guide.visible) {
 			const polygon = sectionGuidePolygon(this.sourceBounds, this.plane);
@@ -1046,7 +1074,7 @@ export class EngineStudio {
 			if (light instanceof THREE.DirectionalLight) previewScene.add(light.target);
 		}
 		const camera = new THREE.PerspectiveCamera(30, width / height, 0.025, 1000);
-		const target = new THREE.WebGLRenderTarget(width, height, {
+		const target = new THREE.RenderTarget(width, height, {
 			format: THREE.RGBAFormat,
 			type: THREE.UnsignedByteType,
 			colorSpace: THREE.SRGBColorSpace,
@@ -1062,7 +1090,6 @@ export class EngineStudio {
 			target.dispose();
 			throw new Error('Atlas previews need a 2D canvas context.');
 		}
-		const pixels = new Uint8Array(width * height * 4);
 		const image = context.createImageData(width, height);
 		const results: Record<string, string> = {};
 		try {
@@ -1090,23 +1117,29 @@ export class EngineStudio {
 				camera.lookAt(center);
 				camera.updateMatrixWorld(true);
 				const previousTarget = this.renderer.getRenderTarget();
-				const shadowUpdate = this.renderer.shadowMap.needsUpdate;
+				const shadowUpdate = this.key.shadow.needsUpdate;
 				try {
 					// setRenderTarget installs its physical-pixel viewport. setViewport would
 					// multiply these dimensions by the live canvas DPR and crop the preview.
 					this.renderer.setRenderTarget(target);
 					this.renderer.render(previewScene, camera);
-					this.renderer.readRenderTargetPixels(target, 0, 0, width, height, pixels);
+					// GPU readback yields to the event loop. Restore the live target before
+					// that await so a running engine frame cannot render into this thumbnail.
+					this.renderer.setRenderTarget(previousTarget);
+					const pixels = await this.renderer.readRenderTargetPixelsAsync(
+						target,
+						0,
+						0,
+						width,
+						height
+					);
 					for (let y = 0; y < height; y++)
-						image.data.set(
-							pixels.subarray((height - y - 1) * width * 4, (height - y) * width * 4),
-							y * width * 4
-						);
+						image.data.set(pixels.subarray(y * width * 4, (y + 1) * width * 4), y * width * 4);
 					context.putImageData(image, 0, 0);
 					results[category.id] = canvas.toDataURL('image/png');
 				} finally {
 					this.renderer.setRenderTarget(previousTarget);
-					this.renderer.shadowMap.needsUpdate = shadowUpdate;
+					this.key.shadow.needsUpdate = shadowUpdate;
 					previewScene.remove(group);
 					asset.dispose();
 				}
@@ -1186,7 +1219,8 @@ export class EngineStudio {
 			},
 			renderMilliseconds: this.lastRenderMilliseconds,
 			frames: this.renderCount,
-			drawCalls: this.renderer.info.render.calls,
+			drawCalls: this.renderer.info.render.drawCalls,
+			renderingBackend: 'webgpu',
 			triangles: this.renderer.info.render.triangles,
 			unitScale: [...this.components.values()].every(
 				(p) => Math.abs(p.object.matrix.determinant() - 1) < 1e-6
@@ -1220,7 +1254,7 @@ export class EngineStudio {
 	};
 	private render = (now: number) => {
 		this.frame = 0;
-		if (this.disposed || document.hidden) return;
+		if (this.disposed || document.hidden || !this.rendererReady) return;
 		const elapsed = this.lastTime ? Math.min((now - this.lastTime) / 1000, 0.08) : 1 / 60;
 		this.lastTime = now;
 		const previousExplosion = this.explosion;
@@ -1334,10 +1368,11 @@ export class EngineStudio {
 		);
 		if (pixelRatio !== this.renderer.getPixelRatio()) this.renderer.setPixelRatio(pixelRatio);
 		if (this.shadowDirty || moving || running) {
-			this.renderer.shadowMap.needsUpdate = true;
+			this.key.shadow.needsUpdate = true;
 			this.shadowDirty = false;
 		}
 		const start = performance.now();
+		this.renderer.info.reset();
 		this.processFlow?.prepareDepth(
 			this.renderer,
 			this.scene,
@@ -1493,10 +1528,9 @@ export class EngineStudio {
 		(this.floor.material as THREE.Material).dispose();
 		this.guide.geometry.dispose();
 		(this.guide.material as THREE.Material).dispose();
-		this.environment.dispose();
+		this.environment?.dispose();
 		this.key.shadow.map?.dispose();
 		this.renderer.dispose();
-		this.renderer.forceContextLoss();
 		this.renderer.domElement.remove();
 		this.components.clear();
 	}

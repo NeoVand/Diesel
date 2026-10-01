@@ -1,0 +1,46 @@
+name: Deploy static browser app to Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      - name: Require the complete hosted engine resource key
+        run: node -e 'if (!process.env.ENGINE_ASSET_PACKAGE_KEY) throw new Error("Set ENGINE_ASSET_PACKAGE_KEY before publishing the complete engine demo")'
+        env:
+          ENGINE_ASSET_PACKAGE_KEY: ${{ secrets.ENGINE_ASSET_PACKAGE_KEY }}
+      - run: pnpm build
+        env:
+          BASE_PATH: /${{ github.event.repository.name }}
+          ENGINE_ASSET_PACKAGE_KEY: ${{ secrets.ENGINE_ASSET_PACKAGE_KEY }}
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: build
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v5
+        id: deployment

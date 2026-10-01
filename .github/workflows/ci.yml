@@ -1,0 +1,24 @@
+name: Browser application checks
+on:
+  push:
+    branches: [main, browser-first]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium chrome
+      - run: pnpm check
+      - run: pnpm test:unit --run
+      - run: pnpm build
+      - run: pnpm exec playwright test --config tests/playwright.static.config.ts

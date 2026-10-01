@@ -1,0 +1,4 @@
+Licensed engine display resources incorporated into Engine Lab.
+These resources are excluded from any licence covering the application source code.
+No permission is granted to extract, redistribute, sell or reuse the geometry separately.
+Original purchased CAD and editable source files are not included.

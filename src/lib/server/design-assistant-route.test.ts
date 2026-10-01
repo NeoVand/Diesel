@@ -16,9 +16,9 @@ vi.mock('./design-assistant', async (importOriginal) => ({
 	...(await importOriginal<typeof import('./design-assistant')>()),
 	runDesignAssistant: fixture.run
 }));
-import { POST } from '../../routes/api/design/explain/+server';
-import { POST as unlock } from '../../routes/api/access/unlock/+server';
-import { POST as logout } from '../../routes/api/access/logout/+server';
+import { POST } from './archive-routes/api/design/explain/+server';
+import { POST as unlock } from './archive-routes/api/access/unlock/+server';
+import { POST as logout } from './archive-routes/api/access/logout/+server';
 
 let revision = 0;
 beforeEach(() => {

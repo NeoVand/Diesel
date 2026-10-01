@@ -1,4 +1,6 @@
 import * as THREE from 'three';
+import { WebGPURenderer, PMREMGenerator, MeshStandardNodeMaterial } from 'three/webgpu';
+import { attribute, uniform, positionLocal, min, max, abs, clamp, mix } from 'three/tsl';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { BASELINE_DESIGN, type DesignParams } from '$lib/design/design-core';
 import { deriveDesignLayout } from '$lib/design/design-layout';
@@ -17,9 +19,13 @@ import {
 } from './design-camera';
 export type { DesignCameraPose, DesignCameraView, DesignProjection } from './design-camera';
 export type { StructuralProbe } from './design-structural';
-import { designFieldCoefficients, DESIGN_FIELD_FRAGMENT } from './design-field';
+import { designFieldCoefficients } from './design-field';
 import { normalizeOperatingPhase, operatingVisualSample } from './design-operating';
-import { createStudioEnvironment } from './studio-environment';
+import {
+	createStudioEnvironment,
+	createStrictWebGPURenderer,
+	initializeWebGPURenderer
+} from './studio-environment';
 import {
 	createStructuralGeometry,
 	probeStructuralGeometry,
@@ -27,7 +33,6 @@ import {
 	deformStructuralGeometry,
 	structuralSurfaceLimits,
 	DEFAULT_STRUCTURAL_DISPLAY,
-	STRUCTURAL_FIELD_FRAGMENT,
 	type StructuralDisplay
 } from './design-structural';
 import {
@@ -111,10 +116,12 @@ export class DesignStudio {
 	);
 	private triad = new THREE.Scene();
 	private triadCamera = new THREE.OrthographicCamera(-54, 54, 54, -54, 0.1, 500);
-	private renderer: THREE.WebGLRenderer;
+	private renderer: WebGPURenderer;
+	readonly ready: Promise<void>;
+	private rendererReady = false;
 	private controls: OrbitControls;
 	private observer: ResizeObserver;
-	private environment: THREE.WebGLRenderTarget;
+	private environment: THREE.RenderTarget | undefined;
 	private root = new THREE.Group();
 	private rod = new THREE.Group();
 	private engine = new THREE.Group();
@@ -133,7 +140,7 @@ export class DesignStudio {
 	};
 	private structuralResult: StructuralResult | null = null;
 	private structuralDisplay: StructuralDisplay = { ...DEFAULT_STRUCTURAL_DISPLAY };
-	private structuralSurface: THREE.Mesh<THREE.BufferGeometry, THREE.MeshStandardMaterial> | null =
+	private structuralSurface: THREE.Mesh<THREE.BufferGeometry, MeshStandardNodeMaterial> | null =
 		null;
 	private structuralWire: THREE.Mesh | null = null;
 	private structuralGhost = new THREE.Group();
@@ -168,12 +175,12 @@ export class DesignStudio {
 		uDesignMid: { value: MID },
 		uDesignHot: { value: HOT }
 	};
-	private rodMaterial = new THREE.MeshStandardMaterial({
+	private rodMaterial = new MeshStandardNodeMaterial({
 		color: 0xffffff,
 		metalness: 0.78,
 		roughness: 0.25,
 		envMapIntensity: 1.6,
-		vertexColors: true
+		vertexColors: false
 	});
 	private mechanismMaterial = new THREE.MeshStandardMaterial({
 		color: 0xaab4c0,
@@ -218,7 +225,7 @@ export class DesignStudio {
 		private canvas: HTMLCanvasElement,
 		private callbacks: StudioCallbacks = {}
 	) {
-		this.renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+		this.renderer = createStrictWebGPURenderer({ canvas, antialias: true, alpha: false });
 		this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
 		this.renderer.setClearColor(0x070b10);
 		this.renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -227,25 +234,29 @@ export class DesignStudio {
 		this.renderer.shadowMap.enabled = true;
 		this.renderer.shadowMap.type = THREE.PCFShadowMap;
 		this.scene.fog = new THREE.Fog(0x070b10, 1500, 3300);
-		const studio = createStudioEnvironment();
-		const reflectionCardGeometry = new THREE.PlaneGeometry(3.8, 7);
-		const reflectionCardMaterial = new THREE.MeshBasicMaterial({
-			color: new THREE.Color(0xd8e2f0).multiplyScalar(2.4),
-			side: THREE.DoubleSide,
-			toneMapped: false
+		this.ready = initializeWebGPURenderer(this.renderer).then(() => {
+			if (this.disposed) return;
+			const studio = createStudioEnvironment();
+			const reflectionCardGeometry = new THREE.PlaneGeometry(3.8, 7);
+			const reflectionCardMaterial = new THREE.MeshBasicMaterial({
+				color: new THREE.Color(0xd8e2f0).multiplyScalar(2.4),
+				side: THREE.DoubleSide,
+				toneMapped: false
+			});
+			const reflectionCard = new THREE.Mesh(reflectionCardGeometry, reflectionCardMaterial);
+			reflectionCard.position.set(-6, 0.5, 6);
+			reflectionCard.lookAt(0, 0, 0);
+			studio.scene.add(reflectionCard);
+			const pmrem = new PMREMGenerator(this.renderer);
+			this.environment = pmrem.fromScene(studio.scene, 0.06);
+			this.scene.environment = this.environment.texture;
+			this.scene.environmentIntensity = 0.8;
+			studio.dispose();
+			reflectionCardGeometry.dispose();
+			reflectionCardMaterial.dispose();
+			pmrem.dispose();
+			this.rendererReady = true;
 		});
-		const reflectionCard = new THREE.Mesh(reflectionCardGeometry, reflectionCardMaterial);
-		reflectionCard.position.set(-6, 0.5, 6);
-		reflectionCard.lookAt(0, 0, 0);
-		studio.scene.add(reflectionCard);
-		const pmrem = new THREE.PMREMGenerator(this.renderer);
-		this.environment = pmrem.fromScene(studio.scene, 0.06);
-		this.scene.environment = this.environment.texture;
-		this.scene.environmentIntensity = 0.8;
-		studio.dispose();
-		reflectionCardGeometry.dispose();
-		reflectionCardMaterial.dispose();
-		pmrem.dispose();
 		this.lighting.hemisphere = new THREE.HemisphereLight(0xdceaff, 0x7b858f, 1.55);
 		this.scene.add(this.lighting.hemisphere);
 		const key = (this.lighting.key = new THREE.DirectionalLight(0xffeed4, 3.2));
@@ -622,15 +633,17 @@ export class DesignStudio {
 	}
 
 	private renderScene() {
+		if (!this.rendererReady || this.disposed) return;
 		this.renderer.setViewport(0, 0, this.viewportWidth, this.viewportHeight);
 		this.renderer.render(this.scene, this.camera);
 		if (this.viewportWidth < 260 || this.viewportHeight < 240) return;
 		this.triad.quaternion.copy(this.camera.quaternion).invert();
 		const size = 96;
+		const bottom = this.viewportWidth < 600 && this.viewportHeight > 450 ? 100 : 60;
 		this.renderer.clearDepth();
 		this.renderer.setViewport(
 			this.viewportWidth - size - 8,
-			this.viewportWidth < 600 && this.viewportHeight > 450 ? 100 : 60,
+			this.viewportHeight - size - bottom,
 			size,
 			size
 		);
@@ -656,30 +669,35 @@ export class DesignStudio {
 	}
 
 	private configureFieldMaterial() {
-		this.rodMaterial.onBeforeCompile = (shader) => {
-			Object.assign(shader.uniforms, this.fieldUniforms);
-			shader.vertexShader = shader.vertexShader
-				.replace('#include <common>', '#include <common>\nvarying vec3 vDesignPosition;')
-				.replace('#include <begin_vertex>', '#include <begin_vertex>\nvDesignPosition = position;');
-			shader.fragmentShader = shader.fragmentShader
-				.replace(
-					'#include <common>',
-					`#include <common>
-varying vec3 vDesignPosition;
-uniform vec4 uDesignBeam;
-uniform vec3 uDesignStress;
-uniform vec3 uDesignDeflection;
-uniform vec3 uDesignUnassessed;
-uniform vec3 uDesignCool;
-uniform vec3 uDesignMid;
-uniform vec3 uDesignHot;`
-				)
-				.replace(
-					'#include <color_fragment>',
-					'#include <color_fragment>\n' + DESIGN_FIELD_FRAGMENT
-				);
-		};
-		this.rodMaterial.customProgramCacheKey = () => 'design-local-field-v1';
+		const beam = uniform(this.fieldUniforms.uDesignBeam.value);
+		const stress = uniform(this.fieldUniforms.uDesignStress.value);
+		const deflection = uniform(this.fieldUniforms.uDesignDeflection.value);
+		const x = min(positionLocal.y.sub(beam.x), beam.y.sub(positionLocal.y));
+		const stressValue = abs(stress.x.negate().add(stress.y.mul(x).mul(positionLocal.z))).div(
+			max(stress.z, 1e-12)
+		);
+		const displacement = deflection.x
+			.mul(x)
+			.mul(beam.z.pow(2).mul(3).sub(x.pow(2).mul(4)))
+			.add(deflection.y.mul(x));
+		const fraction = clamp(
+			beam.w.lessThan(1.5).select(stressValue, abs(displacement).div(max(deflection.z, 1e-12))),
+			0,
+			1
+		);
+		const cool = uniform(COOL).rgb,
+			mid = uniform(MID).rgb,
+			hot = uniform(HOT).rgb;
+		const ramp = fraction
+			.lessThan(0.55)
+			.select(mix(cool, mid, fraction.div(0.55)), mix(mid, hot, fraction.sub(0.55).div(0.45)));
+		const outside = positionLocal.y.lessThan(beam.x).or(positionLocal.y.greaterThan(beam.y));
+		this.rodMaterial.colorNode = beam.w
+			.greaterThan(0.5)
+			.select(
+				outside.select(uniform(this.fieldUniforms.uDesignUnassessed.value).rgb, ramp),
+				attribute('color', 'vec3')
+			);
 	}
 
 	private buildBaseline() {
@@ -926,47 +944,27 @@ uniform vec3 uDesignHot;`
 		this.structuralResult = result;
 		if (result && geometry) {
 			this.structuralLimits = structuralSurfaceLimits(result.surface);
-			const material = new THREE.MeshStandardMaterial({
+			const material = new MeshStandardNodeMaterial({
 				color: STEEL,
 				metalness: 0.12,
 				roughness: 0.58,
 				envMapIntensity: 0.65
 			});
-			material.onBeforeCompile = (shader) => {
-				Object.assign(shader.uniforms, this.structuralUniforms);
-				shader.vertexShader = shader.vertexShader
-					.replace(
-						'#include <common>',
-						`#include <common>
-attribute float resultStress;
-attribute float resultMagnitude;
-varying float vStructuralStress;
-varying float vStructuralDisplacement;`
-					)
-					.replace(
-						'#include <begin_vertex>',
-						`#include <begin_vertex>
-vStructuralStress = resultStress;
-vStructuralDisplacement = resultMagnitude;`
-					);
-				shader.fragmentShader = shader.fragmentShader
-					.replace(
-						'#include <common>',
-						`#include <common>
-varying float vStructuralStress;
-varying float vStructuralDisplacement;
-uniform float uStructuralMode;
-uniform float uStructuralMaximum;
-uniform vec3 uStructuralCool;
-uniform vec3 uStructuralMid;
-uniform vec3 uStructuralHot;`
-					)
-					.replace(
-						'#include <color_fragment>',
-						'#include <color_fragment>\n' + STRUCTURAL_FIELD_FRAGMENT
-					);
-			};
-			material.customProgramCacheKey = () => 'native-structural-field-v1';
+			const mode = uniform(1).onRenderUpdate(() => this.structuralUniforms.uStructuralMode.value);
+			const maximum = uniform(1).onRenderUpdate(
+				() => this.structuralUniforms.uStructuralMaximum.value
+			);
+			const scalar = mode
+				.lessThan(1.5)
+				.select(attribute('resultStress', 'float'), attribute('resultMagnitude', 'float'));
+			const fraction = clamp(scalar.div(max(maximum, 1e-12)), 0, 1);
+			const ramp = fraction
+				.lessThan(0.5)
+				.select(
+					mix(uniform(COOL).rgb, uniform(MID).rgb, fraction.mul(2)),
+					mix(uniform(MID).rgb, uniform(HOT).rgb, fraction.sub(0.5).mul(2))
+				);
+			material.colorNode = mode.greaterThan(0.5).select(ramp, uniform(new THREE.Color(STEEL)).rgb);
 			this.structuralSurface = new THREE.Mesh(geometry, material);
 			this.structuralSurface.castShadow = true;
 			this.structural.add(this.structuralSurface);
@@ -1648,7 +1646,7 @@ uniform vec3 uStructuralHot;`
 		this.frame = requestAnimationFrame(this.tick);
 		const dt = this.lastTime ? Math.min((now - this.lastTime) / 1000, 0.05) : 1 / 60;
 		this.lastTime = now;
-		if (document.hidden || this.contextLost) return;
+		if (!this.rendererReady || document.hidden || this.contextLost) return;
 		this.updateDesign(dt, now);
 		if (this.running && this.exploded < 0.005)
 			this.phase = this.operatingCycle
@@ -1727,7 +1725,7 @@ uniform vec3 uStructuralHot;`
 		this.canvas.removeEventListener('webglcontextrestored', this.onContextRestored);
 		disposeTree(this.scene);
 		disposeTree(this.triad);
-		this.environment.dispose();
+		this.environment?.dispose();
 		this.renderer.dispose();
 	}
 }
