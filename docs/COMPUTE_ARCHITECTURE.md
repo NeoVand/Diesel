@@ -1,6 +1,6 @@
 # Browser computation and verification
 
-Status: **1 October 2026**, `browser-first` branch. Engineering computation has moved into the browser. Native WebGPU graphics and JAX-JS numerical WebGPU screening are implemented and verified separately.
+Status: **1 October 2026**, browser application on `main`. Engineering computation has moved into the browser. Native WebGPU graphics and JAX-JS numerical WebGPU screening are implemented and verified separately.
 
 ## Execution boundaries
 
@@ -76,6 +76,8 @@ Every live viewport now initializes a real Three.js WebGPU backend: Explorer, so
 The process layers use node materials and WGSL ray-march functions. Soft passage tracers and fuel parcels use instanced sprite billboards because WebGPU point primitives have a one-pixel size. The GPU verification exercises movement, visibility, section clipping and opaque-depth occlusion. [Implementation and compatibility details](verification/process-webgpu.md) explain the depth/stencil sampling contract; [pixel-test evidence](verification/process-webgpu.json) records the checks. Volume presentation remains educational, not reacting CFD.
 
 The relevant upstream contract is [Three.js WebGPURenderer](https://threejs.org/docs/pages/WebGPURenderer.html). The prior GLSL and `onBeforeCompile` paths were replaced explicitly rather than assumed compatible. These checks establish the tested implementation, not universal browser/device support or a fixed frame-rate guarantee. Public deployment acceptance is a separate final-origin check.
+
+That [public-origin acceptance check](verification/public-pages.md) passed on 1 October 2026 for release `fc63ea2`. Fresh Chrome contexts loaded the complete protected model, used native WebGPU without WebGL contexts, and established cross-origin isolation through the Pages service worker. The hosted JAX-JS search executed on an Apple Metal adapter; browser CAD, STEP and all four refined structural cases completed without application API requests. Phone inspection loaded the screenshot without engine resources or WASM.
 
 ## AI and retained historical code
 

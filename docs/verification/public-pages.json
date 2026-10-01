@@ -1,0 +1,589 @@
+{
+	"checkedAt": "2026-10-01T06:41:04.569Z",
+	"commit": "fc63ea2ad54e7399bb6285a3f066e1baa0e9d917",
+	"url": "https://neovand.github.io/Diesel/",
+	"engine": {
+		"crossOriginIsolated": true,
+		"controller": "https://neovand.github.io/Diesel/coi-serviceworker.js",
+		"gpu": {
+			"contexts": ["webgpu", "webgpu"],
+			"gpuErrors": [],
+			"adapters": [
+				{
+					"vendor": "apple",
+					"architecture": "metal-3",
+					"description": ""
+				},
+				{
+					"vendor": "apple",
+					"architecture": "metal-3",
+					"description": ""
+				}
+			],
+			"deviceLosses": []
+		},
+		"runningCanvasChanged": true,
+		"flowChannels": ["intake", "fuel", "combustion", "exhaust"],
+		"inspections": ["X-ray", "section X", "section Y", "section Z", "explode", "arrange", "atlas"]
+	},
+	"design": {
+		"cad": {
+			"schemaVersion": "rod-solid-v1",
+			"parameterHash": "b4c7deba5b7f087724c937b4abc2edde3594893fc4d500f9d8d734f4fbd3bac6",
+			"params": {
+				"rodLengthMm": 125,
+				"rodWidthMm": 20,
+				"rodDepthMm": 16,
+				"webMm": 4,
+				"flangeMm": 3
+			},
+			"kernel": "OpenCASCADE through Gmsh 5.0.0 / WebAssembly (gmsh-wasm 0.3.0)",
+			"units": "mm",
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 39984.269681048725,
+			"massKg": 0.3138765169962325,
+			"densityKgM3": 7850,
+			"densityProvenance": "Assumed representative steel; not a verified source material",
+			"boundsMm": {
+				"min": [-32.00000015, -32.00000015, -8.00000015],
+				"max": [32.00000015, 140.00000015, 8.00000015]
+			},
+			"analyticVolumeMm3": 39984.26968104874,
+			"relativeVolumeError": 3.639410034107486e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 4.458277291781672e-14,
+			"limitations": [
+				"New parametric concept derivative; not the purchased rod feature history.",
+				"Sharp shoulders without fillets, cap joint, bolts, bearings or manufacturing tolerances.",
+				"Checks cover a connected OCCT volume, independent analytic volume, and STEP round-trip; they do not certify engineering fitness.",
+				"Solid analysis uses its separately declared fixture, mesh and material assumptions."
+			]
+		},
+		"step": {
+			"bytes": 54596,
+			"iso10303": true,
+			"solid": true
+		},
+		"search": {
+			"backend": "webgpu",
+			"library": "JAX-JS",
+			"precision": "float32 + Float64 verification",
+			"device": "apple / metal-3",
+			"requested": "auto",
+			"totalMs": 415.27500009536743,
+			"batchMs": 298.7999999523163,
+			"geometryPreparationMs": 11.610000133514404,
+			"verificationMs": 71.78000020980835,
+			"validatedDesigns": 5,
+			"maxRelativeError": 1.0639751069641693e-7,
+			"relativeTolerance": 0.0003,
+			"guardedThresholdDesigns": 0,
+			"coarseDesigns": 500,
+			"coarsePhasesPerCondition": 121,
+			"sectionEvaluations": 3085500,
+			"note": "JAX-JS WebGPU float32 evaluates rigid-body endpoint forces and nominal section stress for every coarse design × phase × section. Exact shape integrals, shared prescribed pressure/kinematics and finalist refinement run in browser Float64. Five spread-out designs and every near-threshold result are checked independently before ranking."
+		},
+		"experiments": [
+			{
+				"caseCount": 2,
+				"expectedCaseCount": 2,
+				"cases": [
+					{
+						"runtime": {
+							"solver": "Browser Float64 sparse PCG / IC(0)",
+							"mesher": "Gmsh 5.0.0 / WebAssembly (gmsh-wasm 0.3.0)",
+							"durationSeconds": 2.6105149998664854
+						},
+						"stats": {
+							"meshSizeMm": 2.73,
+							"nodes": 3784,
+							"elements": 11897,
+							"dofs": 11352,
+							"volumeMm3": 40000.819633948806,
+							"volumeRelativeError": 0.0004139115965377999,
+							"maxDisplacementMm": 0.09437789826962456,
+							"loadedMeanDisplacementMm": [
+								-0.00005984479583178044, -0.09250942682322855, -0.00003585258813892813
+							],
+							"strainEnergyNmm": 1637.2304036679957,
+							"p95VonMisesMpa": 223.80037209593746,
+							"p99VonMisesMpa": 237.56932708239918,
+							"interiorP95VonMisesMpa": 226.0470322978978,
+							"interiorP99VonMisesMpa": 232.20291167407066,
+							"rawMaxElementVonMisesMpa": 288.8681989883905,
+							"interiorElementCount": 3396,
+							"interiorExclusionMm": 8,
+							"appliedN": [33.470311486566104, -35012.36990926018, 0],
+							"reactionN": [-33.4703113536094, 35012.36990855576, 1.494149333980399e-7],
+							"appliedMomentNmm": [-6.96899745355748, 0.015115486281995542, -218.53865712215],
+							"reactionMomentNmm": [6.969002904211091, -0.015109508792372495, 218.53867336836439],
+							"bodyForceN": [42.576292034447235, 635.6403987802842, 0],
+							"forceBalanceRelative": 2.054154619102547e-11,
+							"momentBalanceRelative": 4.072892558631926e-12,
+							"solveResidualRelative": 1.0213063835195493e-10,
+							"solveIterations": 372,
+							"durationSeconds": 0.92925
+						},
+						"convergence": {
+							"performed": true,
+							"meshes": [
+								{
+									"meshSizeMm": 3.9000000000000004,
+									"nodes": 1970,
+									"elements": 5881,
+									"dofs": 5910,
+									"volumeMm3": 39976.44364665065,
+									"volumeRelativeError": 0.0001957278314822416,
+									"maxDisplacementMm": 0.09449275415630488,
+									"loadedMeanDisplacementMm": [
+										0.003661152887920805, -0.09217817409282644, 0.00013605089118781655
+									],
+									"strainEnergyNmm": 1631.387680113729,
+									"p95VonMisesMpa": 223.5614658324422,
+									"p99VonMisesMpa": 237.366231708735,
+									"interiorP95VonMisesMpa": 225.5136165499146,
+									"interiorP99VonMisesMpa": 231.75344703328088,
+									"rawMaxElementVonMisesMpa": 261.1286688280626,
+									"interiorElementCount": 1807,
+									"interiorExclusionMm": 8,
+									"appliedN": [33.45209803123279, -35012.847614765604, 0],
+									"reactionN": [-33.45209821189173, 35012.84761510532, 6.846613875843843e-8],
+									"appliedMomentNmm": [
+										-4.889033196802167, -0.013560121204443186, -675.0218700770031
+									],
+									"reactionMomentNmm": [4.889029154738395, 0.013551185831495616, 675.0218803111424],
+									"bodyForceN": [42.55807857911392, 635.1626932748622, 0],
+									"forceBalanceRelative": 1.0962978093467661e-11,
+									"momentBalanceRelative": 3.1809934744842353e-12,
+									"solveResidualRelative": 1.1038527751566984e-10,
+									"solveIterations": 272,
+									"durationSeconds": 0.3054500000476837
+								},
+								{
+									"meshSizeMm": 2.73,
+									"nodes": 3784,
+									"elements": 11897,
+									"dofs": 11352,
+									"volumeMm3": 40000.819633948806,
+									"volumeRelativeError": 0.0004139115965377999,
+									"maxDisplacementMm": 0.09437789826962456,
+									"loadedMeanDisplacementMm": [
+										-0.00005984479583178044, -0.09250942682322855, -0.00003585258813892813
+									],
+									"strainEnergyNmm": 1637.2304036679957,
+									"p95VonMisesMpa": 223.80037209593746,
+									"p99VonMisesMpa": 237.56932708239918,
+									"interiorP95VonMisesMpa": 226.0470322978978,
+									"interiorP99VonMisesMpa": 232.20291167407066,
+									"rawMaxElementVonMisesMpa": 288.8681989883905,
+									"interiorElementCount": 3396,
+									"interiorExclusionMm": 8,
+									"appliedN": [33.470311486566104, -35012.36990926018, 0],
+									"reactionN": [-33.4703113536094, 35012.36990855576, 1.494149333980399e-7],
+									"appliedMomentNmm": [-6.96899745355748, 0.015115486281995542, -218.53865712215],
+									"reactionMomentNmm": [
+										6.969002904211091, -0.015109508792372495, 218.53867336836439
+									],
+									"bodyForceN": [42.576292034447235, 635.6403987802842, 0],
+									"forceBalanceRelative": 2.054154619102547e-11,
+									"momentBalanceRelative": 4.072892558631926e-12,
+									"solveResidualRelative": 1.0213063835195493e-10,
+									"solveIterations": 372,
+									"durationSeconds": 0.92925
+								}
+							],
+							"displacementRelativeChange": 0.0012169786442181208,
+							"strainEnergyRelativeChange": 0.003568662994027536,
+							"interiorP95RelativeChange": 0.002359755589625467,
+							"withinScreeningTolerance": true,
+							"note": "Successive independently remeshed domains compare displacement and strain energy. The 8% criterion is a screening tolerance, not proof of asymptotic stress convergence."
+						}
+					},
+					{
+						"runtime": {
+							"solver": "Browser Float64 sparse PCG / IC(0)",
+							"mesher": "Gmsh 5.0.0 / WebAssembly (gmsh-wasm 0.3.0)",
+							"durationSeconds": 2.5149700000286104
+						},
+						"stats": {
+							"meshSizeMm": 2.73,
+							"nodes": 3784,
+							"elements": 11897,
+							"dofs": 11352,
+							"volumeMm3": 40000.819633948806,
+							"volumeRelativeError": 0.0004139115965377999,
+							"maxDisplacementMm": 0.02879831946186842,
+							"loadedMeanDisplacementMm": [
+								-0.0006158933025722644, 0.026560103123546414, -0.000025476619049231298
+							],
+							"strainEnergyNmm": 83.80430977253552,
+							"p95VonMisesMpa": 45.96887728074806,
+							"p99VonMisesMpa": 74.84305992114912,
+							"interiorP95VonMisesMpa": 42.36347588702331,
+							"interiorP99VonMisesMpa": 43.643290637928274,
+							"rawMaxElementVonMisesMpa": 129.09659740507809,
+							"interiorElementCount": 3396,
+							"interiorExclusionMm": 8,
+							"appliedN": [23.28367641802762, 7561.528689111812, 0],
+							"reactionN": [-23.2836764474375, -7561.528688884901, -5.902811646418815e-8],
+							"appliedMomentNmm": [1.6130673499629262, 0.007575585954563813, 36.52582463040963],
+							"reactionMomentNmm": [
+								-1.6130676170727583, -0.0075755230403400375, -36.52582293281007
+							],
+							"bodyForceN": [29.63265402712621, 1773.4584074285367, 0],
+							"forceBalanceRelative": 3.125016184979439e-11,
+							"momentBalanceRelative": 1.819344783679274e-12,
+							"solveResidualRelative": 8.727178211535524e-11,
+							"solveIterations": 373,
+							"durationSeconds": 0.7642149999141693
+						},
+						"convergence": {
+							"performed": true,
+							"meshes": [
+								{
+									"meshSizeMm": 3.9000000000000004,
+									"nodes": 1970,
+									"elements": 5881,
+									"dofs": 5910,
+									"volumeMm3": 39976.44364665065,
+									"volumeRelativeError": 0.0001957278314822416,
+									"maxDisplacementMm": 0.027681726162742393,
+									"loadedMeanDisplacementMm": [
+										-0.0018612626163366534, 0.025603688896017173, -0.00007519705026963128
+									],
+									"strainEnergyNmm": 80.9141087608939,
+									"p95VonMisesMpa": 45.967755110366895,
+									"p99VonMisesMpa": 69.02761032509656,
+									"interiorP95VonMisesMpa": 42.28100750590959,
+									"interiorP99VonMisesMpa": 43.55722759272832,
+									"rawMaxElementVonMisesMpa": 113.50328747345323,
+									"interiorElementCount": 1807,
+									"interiorExclusionMm": 8,
+									"appliedN": [23.25956109357534, 7560.197697953885, 0],
+									"reactionN": [-23.259561045623517, -7560.197697999574, 3.116572239170168e-8],
+									"appliedMomentNmm": [
+										1.1659576937069183, -0.021886599627799264, 103.20336089720986
+									],
+									"reactionMomentNmm": [
+										-1.1659571214623767, 0.021887021292553932, -103.20335836568124
+									],
+									"bodyForceN": [29.60853870267393, 1772.1274162706095, 0],
+									"forceBalanceRelative": 9.682203218896304e-12,
+									"momentBalanceRelative": 2.782379683631828e-12,
+									"solveResidualRelative": 9.17935988845886e-11,
+									"solveIterations": 271,
+									"durationSeconds": 0.4544700000286102
+								},
+								{
+									"meshSizeMm": 2.73,
+									"nodes": 3784,
+									"elements": 11897,
+									"dofs": 11352,
+									"volumeMm3": 40000.819633948806,
+									"volumeRelativeError": 0.0004139115965377999,
+									"maxDisplacementMm": 0.02879831946186842,
+									"loadedMeanDisplacementMm": [
+										-0.0006158933025722644, 0.026560103123546414, -0.000025476619049231298
+									],
+									"strainEnergyNmm": 83.80430977253552,
+									"p95VonMisesMpa": 45.96887728074806,
+									"p99VonMisesMpa": 74.84305992114912,
+									"interiorP95VonMisesMpa": 42.36347588702331,
+									"interiorP99VonMisesMpa": 43.643290637928274,
+									"rawMaxElementVonMisesMpa": 129.09659740507809,
+									"interiorElementCount": 3396,
+									"interiorExclusionMm": 8,
+									"appliedN": [23.28367641802762, 7561.528689111812, 0],
+									"reactionN": [-23.2836764474375, -7561.528688884901, -5.902811646418815e-8],
+									"appliedMomentNmm": [1.6130673499629262, 0.007575585954563813, 36.52582463040963],
+									"reactionMomentNmm": [
+										-1.6130676170727583, -0.0075755230403400375, -36.52582293281007
+									],
+									"bodyForceN": [29.63265402712621, 1773.4584074285367, 0],
+									"forceBalanceRelative": 3.125016184979439e-11,
+									"momentBalanceRelative": 1.819344783679274e-12,
+									"solveResidualRelative": 8.727178211535524e-11,
+									"solveIterations": 373,
+									"durationSeconds": 0.7642149999141693
+								}
+							],
+							"displacementRelativeChange": 0.03877286313892375,
+							"strainEnergyRelativeChange": 0.034487498548538886,
+							"interiorP95RelativeChange": 0.0019466858983349406,
+							"withinScreeningTolerance": true,
+							"note": "Successive independently remeshed domains compare displacement and strain energy. The 8% criterion is a screening tolerance, not proof of asymptotic stress convergence."
+						}
+					}
+				]
+			},
+			{
+				"caseCount": 2,
+				"expectedCaseCount": 2,
+				"cases": [
+					{
+						"runtime": {
+							"solver": "Browser Float64 sparse PCG / IC(0)",
+							"mesher": "Gmsh 5.0.0 / WebAssembly (gmsh-wasm 0.3.0)",
+							"durationSeconds": 4.387134999990463
+						},
+						"stats": {
+							"meshSizeMm": 1.8199999999999998,
+							"nodes": 7766,
+							"elements": 28473,
+							"dofs": 23298,
+							"volumeMm3": 31820.45445261059,
+							"volumeRelativeError": 0.0000896365164984217,
+							"maxDisplacementMm": 0.10914414523761541,
+							"loadedMeanDisplacementMm": [
+								0.000305553337093625, -0.10446090139252082, -0.0003540140920392001
+							],
+							"strainEnergyNmm": 1851.1490740889553,
+							"p95VonMisesMpa": 247.07388935924521,
+							"p99VonMisesMpa": 260.14638512157836,
+							"interiorP95VonMisesMpa": 247.70175474942604,
+							"interiorP99VonMisesMpa": 251.49877216385144,
+							"rawMaxElementVonMisesMpa": 434.30436161117143,
+							"interiorElementCount": 8640,
+							"interiorExclusionMm": 6,
+							"appliedN": [25.853091224645453, -35140.35612746181, 0],
+							"reactionN": [-25.85309110226568, 35140.35612782163, 2.7245153599864125e-7],
+							"appliedMomentNmm": [
+								-2.6171079834901563, 0.00006292452609696938, -232.98238824018466
+							],
+							"reactionMomentNmm": [2.6171123730483004, -0.00006746456386608202, 232.9823758517781],
+							"bodyForceN": [33.568328645837795, 507.6930010280703, 0],
+							"forceBalanceRelative": 1.3117901883569787e-11,
+							"momentBalanceRelative": 3.1205376033256592e-12,
+							"solveResidualRelative": 1.0278879076938528e-10,
+							"solveIterations": 397,
+							"durationSeconds": 1.6473999998569488
+						},
+						"convergence": {
+							"performed": true,
+							"meshes": [
+								{
+									"meshSizeMm": 2.6,
+									"nodes": 3364,
+									"elements": 10910,
+									"dofs": 10092,
+									"volumeMm3": 31821.95698839748,
+									"volumeRelativeError": 0.0001368599297027348,
+									"maxDisplacementMm": 0.10860329345900985,
+									"loadedMeanDisplacementMm": [
+										0.002991580998561312, -0.10412054911413623, 0.0005480780457694174
+									],
+									"strainEnergyNmm": 1845.1280649215494,
+									"p95VonMisesMpa": 247.11628895031555,
+									"p99VonMisesMpa": 260.6986370416709,
+									"interiorP95VonMisesMpa": 247.6831829938968,
+									"interiorP99VonMisesMpa": 251.5659247289416,
+									"rawMaxElementVonMisesMpa": 391.1989193586027,
+									"interiorElementCount": 3651,
+									"interiorExclusionMm": 6,
+									"appliedN": [25.85380527089543, -35140.32932942991, 0],
+									"reactionN": [-25.853804735297658, 35140.32932639476, -2.3683808697549935e-7],
+									"appliedMomentNmm": [
+										27.966856884647754, -0.01194213356005798, -452.1019113343308
+									],
+									"reactionMomentNmm": [
+										-27.966853948650122, 0.011931035777028698, 452.10189692581093
+									],
+									"bodyForceN": [33.56904269208777, 507.7197990599743, 0],
+									"forceBalanceRelative": 8.671232548187352e-11,
+									"momentBalanceRelative": 4.134294143234695e-12,
+									"solveResidualRelative": 9.895145156107894e-11,
+									"solveIterations": 254,
+									"durationSeconds": 0.6004500000476837
+								},
+								{
+									"meshSizeMm": 1.8199999999999998,
+									"nodes": 7766,
+									"elements": 28473,
+									"dofs": 23298,
+									"volumeMm3": 31820.45445261059,
+									"volumeRelativeError": 0.0000896365164984217,
+									"maxDisplacementMm": 0.10914414523761541,
+									"loadedMeanDisplacementMm": [
+										0.000305553337093625, -0.10446090139252082, -0.0003540140920392001
+									],
+									"strainEnergyNmm": 1851.1490740889553,
+									"p95VonMisesMpa": 247.07388935924521,
+									"p99VonMisesMpa": 260.14638512157836,
+									"interiorP95VonMisesMpa": 247.70175474942604,
+									"interiorP99VonMisesMpa": 251.49877216385144,
+									"rawMaxElementVonMisesMpa": 434.30436161117143,
+									"interiorElementCount": 8640,
+									"interiorExclusionMm": 6,
+									"appliedN": [25.853091224645453, -35140.35612746181, 0],
+									"reactionN": [-25.85309110226568, 35140.35612782163, 2.7245153599864125e-7],
+									"appliedMomentNmm": [
+										-2.6171079834901563, 0.00006292452609696938, -232.98238824018466
+									],
+									"reactionMomentNmm": [
+										2.6171123730483004, -0.00006746456386608202, 232.9823758517781
+									],
+									"bodyForceN": [33.568328645837795, 507.6930010280703, 0],
+									"forceBalanceRelative": 1.3117901883569787e-11,
+									"momentBalanceRelative": 3.1205376033256592e-12,
+									"solveResidualRelative": 1.0278879076938528e-10,
+									"solveIterations": 397,
+									"durationSeconds": 1.6473999998569488
+								}
+							],
+							"displacementRelativeChange": 0.0049553897502068196,
+							"strainEnergyRelativeChange": 0.0032525793042190343,
+							"interiorP95RelativeChange": 0.00007497627761272172,
+							"withinScreeningTolerance": true,
+							"note": "Successive independently remeshed domains compare displacement and strain energy. The 8% criterion is a screening tolerance, not proof of asymptotic stress convergence."
+						}
+					},
+					{
+						"runtime": {
+							"solver": "Browser Float64 sparse PCG / IC(0)",
+							"mesher": "Gmsh 5.0.0 / WebAssembly (gmsh-wasm 0.3.0)",
+							"durationSeconds": 4.090339999914169
+						},
+						"stats": {
+							"meshSizeMm": 1.8199999999999998,
+							"nodes": 7766,
+							"elements": 28473,
+							"dofs": 23298,
+							"volumeMm3": 31820.45445261059,
+							"volumeRelativeError": 0.0000896365164984217,
+							"maxDisplacementMm": 0.038665720002640055,
+							"loadedMeanDisplacementMm": [
+								-0.00163231510666995, 0.035038535765151306, 0.0000261690297460538
+							],
+							"strainEnergyNmm": 108.01284597079875,
+							"p95VonMisesMpa": 63.84453958628857,
+							"p99VonMisesMpa": 106.61676014920504,
+							"interiorP95VonMisesMpa": 45.69384349298181,
+							"interiorP99VonMisesMpa": 46.44683843586181,
+							"rawMaxElementVonMisesMpa": 189.96315875687264,
+							"interiorElementCount": 8640,
+							"interiorExclusionMm": 6,
+							"appliedN": [17.985416503315783, 7204.541077953924, 0],
+							"reactionN": [-17.985416525082503, -7204.541078012429, -5.0566794806972126e-8],
+							"appliedMomentNmm": [1.0186939059909603, 0.0016296586879840915, 39.196732141730806],
+							"reactionMomentNmm": [-1.018696134727648, -0.0016290444458344489, -39.19673044897377],
+							"bodyForceN": [23.364011991041664, 1416.4775706369937, 0],
+							"forceBalanceRelative": 1.1150503427686853e-11,
+							"momentBalanceRelative": 3.181658383852393e-12,
+							"solveResidualRelative": 1.2500372163335082e-10,
+							"solveIterations": 412,
+							"durationSeconds": 1.6336449999809266
+						},
+						"convergence": {
+							"performed": true,
+							"meshes": [
+								{
+									"meshSizeMm": 2.6,
+									"nodes": 3364,
+									"elements": 10910,
+									"dofs": 10092,
+									"volumeMm3": 31821.95698839748,
+									"volumeRelativeError": 0.0001368599297027348,
+									"maxDisplacementMm": 0.036168282696264806,
+									"loadedMeanDisplacementMm": [
+										-0.001944961514306172, 0.03302411141951292, -0.00016692753474182516
+									],
+									"strainEnergyNmm": 102.020423285116,
+									"p95VonMisesMpa": 61.13950698542933,
+									"p99VonMisesMpa": 100.19660839848774,
+									"interiorP95VonMisesMpa": 45.716151369637224,
+									"interiorP99VonMisesMpa": 46.499027733406756,
+									"rawMaxElementVonMisesMpa": 151.64920405148672,
+									"interiorElementCount": 3651,
+									"interiorExclusionMm": 6,
+									"appliedN": [17.98498243633487, 7204.615978156022, 0],
+									"reactionN": [-17.98498249008642, -7204.615977948934, -1.5363614559033012e-7],
+									"appliedMomentNmm": [
+										-4.406040792841749, -0.007473042126191959, 72.30259094583057
+									],
+									"reactionMomentNmm": [
+										4.406041126985341, 0.0074704782826569005, -72.3025892980389
+									],
+									"bodyForceN": [23.363577924060753, 1416.5524708390913, 0],
+									"forceBalanceRelative": 3.655949704432015e-11,
+									"momentBalanceRelative": 3.4044384721848365e-12,
+									"solveResidualRelative": 1.2416817238311527e-10,
+									"solveIterations": 253,
+									"durationSeconds": 0.551125
+								},
+								{
+									"meshSizeMm": 1.8199999999999998,
+									"nodes": 7766,
+									"elements": 28473,
+									"dofs": 23298,
+									"volumeMm3": 31820.45445261059,
+									"volumeRelativeError": 0.0000896365164984217,
+									"maxDisplacementMm": 0.038665720002640055,
+									"loadedMeanDisplacementMm": [
+										-0.00163231510666995, 0.035038535765151306, 0.0000261690297460538
+									],
+									"strainEnergyNmm": 108.01284597079875,
+									"p95VonMisesMpa": 63.84453958628857,
+									"p99VonMisesMpa": 106.61676014920504,
+									"interiorP95VonMisesMpa": 45.69384349298181,
+									"interiorP99VonMisesMpa": 46.44683843586181,
+									"rawMaxElementVonMisesMpa": 189.96315875687264,
+									"interiorElementCount": 8640,
+									"interiorExclusionMm": 6,
+									"appliedN": [17.985416503315783, 7204.541077953924, 0],
+									"reactionN": [-17.985416525082503, -7204.541078012429, -5.0566794806972126e-8],
+									"appliedMomentNmm": [
+										1.0186939059909603, 0.0016296586879840915, 39.196732141730806
+									],
+									"reactionMomentNmm": [
+										-1.018696134727648, -0.0016290444458344489, -39.19673044897377
+									],
+									"bodyForceN": [23.364011991041664, 1416.4775706369937, 0],
+									"forceBalanceRelative": 1.1150503427686853e-11,
+									"momentBalanceRelative": 3.181658383852393e-12,
+									"solveResidualRelative": 1.2500372163335082e-10,
+									"solveIterations": 412,
+									"durationSeconds": 1.6336449999809266
+								}
+							],
+							"displacementRelativeChange": 0.06459047720318482,
+							"strainEnergyRelativeChange": 0.05547879635819247,
+							"interiorP95RelativeChange": 0.00048820311337647286,
+							"withinScreeningTolerance": true,
+							"note": "Successive independently remeshed domains compare displacement and strain energy. The 8% criterion is a screening tolerance, not proof of asymptotic stress convergence."
+						}
+					}
+				]
+			}
+		],
+		"environment": {
+			"crossOriginIsolated": true,
+			"controller": "https://neovand.github.io/Diesel/coi-serviceworker.js",
+			"gpu": {
+				"contexts": ["2d", "2d", "2d", "2d", "2d", "2d", "2d", "2d", "2d", "webgpu"],
+				"gpuErrors": [],
+				"adapters": [
+					{
+						"vendor": "apple",
+						"architecture": "metal-3",
+						"description": ""
+					}
+				],
+				"deviceLosses": []
+			}
+		}
+	},
+	"phone": {
+		"canvasCount": 0,
+		"heavyRequests": [],
+		"image": {
+			"width": 1440,
+			"height": 1000,
+			"src": "https://neovand.github.io/Diesel/engine-preview.png"
+		}
+	},
+	"errors": [],
+	"httpFailures": [],
+	"backendRequests": [],
+	"rawGeometryRequests": []
+}

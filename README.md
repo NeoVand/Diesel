@@ -2,11 +2,13 @@
 
 A browser-based workspace for inspecting a V12 diesel concept, changing parametric geometry, and comparing engineering calculations with their assumptions and verification evidence.
 
-![Engine Lab showing the assembled V12 diesel concept and inspection controls](docs/verification/webgpu-engine-assembly.png)
+![Engine Lab showing the complete V12 diesel concept on the verified public site](docs/verification/public-assembly.png)
 
-[Run locally](docs/RUNNING.md) · [Computation and verification](docs/COMPUTE_ARCHITECTURE.md) · [Static deployment](docs/DEPLOYMENT.md) · [Engineering scope](#engineering-scope)
+[Open the application](https://neovand.github.io/Diesel/) · [Run locally](docs/RUNNING.md) · [Computation and verification](docs/COMPUTE_ARCHITECTURE.md) · [Engineering scope](#engineering-scope)
 
-**The `browser-first` branch runs geometry, meshing, structural analysis and design searches in the browser.** Its built application is static files: no application server, Python installation or native solver service is required. Optional AI uses the visitor’s own OpenAI key and calls OpenAI directly; language-model inference is remote.
+Use a desktop browser with WebGPU support. Phones receive an application preview and desktop guidance instead of loading the engine and solver assets.
+
+**Geometry, meshing, structural analysis and design searches run in the browser.** The built application is static files: no application server, Python installation or native solver service is required. Optional AI uses the visitor’s own OpenAI key and calls OpenAI directly; language-model inference is remote.
 
 ## Workspaces
 
@@ -45,7 +47,7 @@ All screenshots above show the current native-WebGPU application. The parametric
 Use **Node 24** and **pnpm 12.4.2** to build or develop the project. Visitors to a hosted build need only a supported browser.
 
 ```sh
-git clone --branch browser-first https://github.com/NeoVand/Diesel.git
+git clone https://github.com/NeoVand/Diesel.git
 cd Diesel
 npm install --global pnpm@12.4.2
 pnpm install --frozen-lockfile
@@ -107,11 +109,13 @@ pnpm build
 
 The Vitest project named `server` is the Node-based **test runner**, not a deployed application backend. The WebGPU check launches an actual browser. Complete Explorer tests additionally need the licensed files; see [verification instructions](docs/RUNNING.md#verification).
 
+The [public-origin acceptance report](docs/verification/public-pages.md) records the deployed release, matching artifact hashes, real GPU screening, browser CAD/FEA, model loading and phone behavior. The GitHub verification run passed all eight static-browser checks; the public unit run passed 520 tests, with ten explicit skips for private licensed fixtures. Local checks with those fixtures passed all 530.
+
 ## Deployment
 
 Deploy the generated `build/` directory to a static host. GitHub Pages, a static Cloudflare/Vercel site, or an ordinary web server can serve this application. The CAD/meshing WASM build needs cross-origin isolation: the project supplies COOP/COEP headers for local serving and an isolation service worker for hosts such as Pages.
 
-The branch includes CI and a GitHub Pages workflow that runs on pushes to `main` or manual dispatch. **A workflow file is not evidence of a published site; no public deployment is claimed here.** [Deployment instructions](docs/DEPLOYMENT.md) cover the `/Diesel` base path, isolation, assets and the static container profile.
+The application is published through GitHub Actions at **[neovand.github.io/Diesel](https://neovand.github.io/Diesel/)**. Pushes to `main` run the verification workflow before building and deploying to Pages. The published site has passed a fresh-browser acceptance check, including the complete protected model and actual browser calculations. [Deployment instructions](docs/DEPLOYMENT.md) cover the `/Diesel` base path, isolation, assets and the static container profile.
 
 ## Engineering scope
 

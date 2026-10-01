@@ -1,13 +1,15 @@
 # Running Engine Lab
 
-This guide describes the `browser-first` branch. The built application needs a static file host, not a Node application backend or Python solver installation. The former setup is preserved in [the historical running guide](archive/RUNNING_NODE_BASELINE.md).
+This guide describes the browser application on `main`. The built application needs a static file host, not a Node application backend or Python solver installation. The former setup is preserved in [the historical running guide](archive/RUNNING_NODE_BASELINE.md).
+
+To use it without installing anything, open **[the published application](https://neovand.github.io/Diesel/)** on a desktop browser with WebGPU. The [public acceptance report](verification/public-pages.md) records the tested release and computational results.
 
 ## Install and start
 
 Use **Node 24** and **pnpm 12.4.2**, as declared in `package.json`. The verified development environment used Node 24.21.0. These are developer/build tools; visitors do not install them.
 
 ```sh
-git clone --branch browser-first https://github.com/NeoVand/Diesel.git
+git clone https://github.com/NeoVand/Diesel.git
 cd Diesel
 npm install --global pnpm@12.4.2
 pnpm install --frozen-lockfile

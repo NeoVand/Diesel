@@ -1,0 +1,20 @@
+{
+	"backend": "cpu",
+	"library": "JavaScript",
+	"precision": "Float64",
+	"device": "Browser CPU worker",
+	"requested": "auto",
+	"totalMs": 5173.315000000002,
+	"batchMs": 2376.140000000014,
+	"geometryPreparationMs": 0,
+	"verificationMs": 0,
+	"validatedDesigns": 500,
+	"maxRelativeError": 0,
+	"relativeTolerance": 0,
+	"guardedThresholdDesigns": 0,
+	"coarseDesigns": 500,
+	"coarsePhasesPerCondition": 121,
+	"sectionEvaluations": 3085500,
+	"fallbackReason": "Automatic compute selected the browser Float64 CPU worker because WebGPU reports a software/fallback adapter (swiftshader); GPU shader emulation would run on the CPU. Rendering continues to use WebGPU.",
+	"note": "All geometry, prescribed-load screening and finalist refinement ran locally in a JavaScript Float64 worker. CPU batch time includes refinement; no native server is used."
+}

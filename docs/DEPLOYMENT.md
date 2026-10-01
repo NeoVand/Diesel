@@ -1,8 +1,8 @@
 # Static deployment
 
-The `browser-first` build has **no application backend**. SvelteKit’s static adapter emits the interface, JavaScript, workers and WASM into `build/`. Exact CAD, meshing, structural solves and operating searches execute on the visitor’s machine. Optional assistant/speech inference calls OpenAI directly with the visitor’s memory-only API key.
+The application on `main` has **no application backend**. SvelteKit’s static adapter emits the interface, JavaScript, workers and WASM into `build/`. Exact CAD, meshing, structural solves and operating searches execute on the visitor’s machine. Optional assistant/speech inference calls OpenAI directly with the visitor’s memory-only API key.
 
-This replaces the earlier persistent Node/Codex/Python architecture. [Historical deployment notes](archive/DEPLOYMENT_NODE_BASELINE.md) are retained for reference, not as current instructions. Deployment is being prepared; the presence of a workflow or configured URL alone does not establish a successfully published and tested site.
+This replaces the earlier persistent Node/Codex/Python architecture. [Historical deployment notes](archive/DEPLOYMENT_NODE_BASELINE.md) are retained for reference, not as current instructions. The published application is **[neovand.github.io/Diesel](https://neovand.github.io/Diesel/)**. [Public acceptance evidence](verification/public-pages.md) ties actual browser calculations and served-file hashes to successful deployment run 36825264191, release `fc63ea2`.
 
 ## Build contract
 
@@ -88,4 +88,4 @@ There is no server-sponsored secret on this static host. Visitors enter their ow
 - Exercise direct OpenAI actions and narration with an authorised visitor key; cancel a request, navigate workspaces, then reload and confirm the key is cleared.
 - Confirm the native WebGPU renderer on the deployed device, including sections, X-ray transitions, process depths and atlas previews. Do not infer renderer success from numerical WebGPU support alone.
 
-Recorded local static checks are in [browser CAD/solid verification](verification/browser-cad-solid.md) and [the numerical GPU report](verification/browser-webgpu.json). They establish browser execution on the tested machine; they are distinct from a final public-origin acceptance check.
+Recorded local static checks are in [browser CAD/solid verification](verification/browser-cad-solid.md) and [the numerical GPU report](verification/browser-webgpu.json). The separate [public-origin check](verification/public-pages.md) passed against the actual GitHub Pages site, including fresh-profile model loading, service-worker isolation, WebGPU calculation, exact STEP export, independently meshed structural cases and phone gating. These are dated checks of the identified release and environment, not a universal device guarantee.
