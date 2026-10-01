@@ -2114,7 +2114,11 @@
 					>
 				</div>
 			{/if}
-			<div class="analysis-content" class:operating-content={tab === 'operating'}>
+			<div
+				class="analysis-content"
+				class:operating-content={tab === 'operating'}
+				class:comparison-content={tab === 'operating' && cycleChart === 'comparison'}
+			>
 				{#if tab === 'operating'}
 					<div class="operating-dashboard">
 						<div class="cycle-toolbar">
@@ -4752,6 +4756,24 @@
 	.operating-dashboard {
 		min-height: 0;
 		height: 100%;
+	}
+	/* Keep the toolbar fixed while the complete result, including its field scale, scrolls. */
+	.analysis-content.comparison-content {
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+	}
+	.comparison-content .operating-dashboard {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		height: auto;
+		overflow: hidden;
+	}
+	.comparison-content .experiment-table {
+		min-height: 0;
+		overscroll-behavior-y: contain;
+		scrollbar-gutter: stable;
 	}
 	.cycle-toolbar {
 		min-height: 43px;

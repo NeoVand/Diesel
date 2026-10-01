@@ -1,0 +1,264 @@
+[
+  {
+    "spec": {
+      "id": "150",
+      "width": 2560,
+      "height": 1440,
+      "zoom": 1.5
+    },
+    "before": {
+      "innerWidth": 1707,
+      "innerHeight": 960,
+      "dpr": 1.5,
+      "panel": {
+        "top": 172.6666717529297,
+        "bottom": 930.0000457763672,
+        "height": 757.3333740234375,
+        "clientHeight": 757,
+        "scrollHeight": 805,
+        "scrollTop": 0,
+        "clientWidth": 1423,
+        "scrollWidth": 1423
+      },
+      "footer": {
+        "top": 883.4479370117188,
+        "bottom": 947.4479370117188,
+        "height": 64
+      },
+      "fullyVisible": false,
+      "canvases": [
+        {
+          "width": 1008,
+          "height": 390,
+          "cssHeight": 260,
+          "webgpu": true
+        },
+        {
+          "width": 1008,
+          "height": 390,
+          "cssHeight": 260,
+          "webgpu": true
+        }
+      ]
+    },
+    "after": {
+      "innerWidth": 1707,
+      "innerHeight": 960,
+      "dpr": 1.5,
+      "panel": {
+        "top": 172.6666717529297,
+        "bottom": 930.0000457763672,
+        "height": 757.3333740234375,
+        "clientHeight": 757,
+        "scrollHeight": 805,
+        "scrollTop": 48,
+        "clientWidth": 1423,
+        "scrollWidth": 1423
+      },
+      "footer": {
+        "top": 835.4479370117188,
+        "bottom": 899.4479370117188,
+        "height": 64
+      },
+      "fullyVisible": true,
+      "canvases": [
+        {
+          "width": 1008,
+          "height": 390,
+          "cssHeight": 260,
+          "webgpu": true
+        },
+        {
+          "width": 1008,
+          "height": 390,
+          "cssHeight": 260,
+          "webgpu": true
+        }
+      ]
+    },
+    "end": {
+      "innerWidth": 1707,
+      "innerHeight": 960,
+      "dpr": 1.5,
+      "panel": {
+        "top": 172.6666717529297,
+        "bottom": 930.0000457763672,
+        "height": 757.3333740234375,
+        "clientHeight": 757,
+        "scrollHeight": 805,
+        "scrollTop": 48,
+        "clientWidth": 1423,
+        "scrollWidth": 1423
+      },
+      "footer": {
+        "top": 835.4479370117188,
+        "bottom": 899.4479370117188,
+        "height": 64
+      },
+      "fullyVisible": true,
+      "canvases": [
+        {
+          "width": 1008,
+          "height": 390,
+          "cssHeight": 260,
+          "webgpu": true
+        },
+        {
+          "width": 1008,
+          "height": 390,
+          "cssHeight": 260,
+          "webgpu": true
+        }
+      ]
+    },
+    "diagnostics": {
+      "origin": "http://127.0.0.1:4202/Diesel/",
+      "pageErrors": [],
+      "backendRequests": [],
+      "renderers": [
+        {
+          "selector": "canvas[aria-label=\"Interactive parametric 3D design\"]",
+          "width": 1687,
+          "height": 819,
+          "webgpu": true,
+          "cssWidth": 1124.666748046875,
+          "cssHeight": 546,
+          "dpr": 1.5,
+          "isolated": true
+        }
+      ],
+      "operations": []
+    }
+  },
+  {
+    "spec": {
+      "id": "normal",
+      "width": 1440,
+      "height": 1000,
+      "zoom": 1
+    },
+    "before": {
+      "innerWidth": 1440,
+      "innerHeight": 1000,
+      "dpr": 1,
+      "panel": {
+        "top": 173,
+        "bottom": 970,
+        "height": 797,
+        "clientHeight": 797,
+        "scrollHeight": 814,
+        "scrollTop": 0,
+        "clientWidth": 1156,
+        "scrollWidth": 1156
+      },
+      "footer": {
+        "top": 887.75,
+        "bottom": 956.3125,
+        "height": 68.5625
+      },
+      "fullyVisible": true,
+      "canvases": [
+        {
+          "width": 538,
+          "height": 260,
+          "cssHeight": 260,
+          "webgpu": true
+        },
+        {
+          "width": 538,
+          "height": 260,
+          "cssHeight": 260,
+          "webgpu": true
+        }
+      ]
+    },
+    "after": {
+      "innerWidth": 1440,
+      "innerHeight": 1000,
+      "dpr": 1,
+      "panel": {
+        "top": 173,
+        "bottom": 970,
+        "height": 797,
+        "clientHeight": 797,
+        "scrollHeight": 814,
+        "scrollTop": 17,
+        "clientWidth": 1156,
+        "scrollWidth": 1156
+      },
+      "footer": {
+        "top": 870.75,
+        "bottom": 939.3125,
+        "height": 68.5625
+      },
+      "fullyVisible": true,
+      "canvases": [
+        {
+          "width": 538,
+          "height": 260,
+          "cssHeight": 260,
+          "webgpu": true
+        },
+        {
+          "width": 538,
+          "height": 260,
+          "cssHeight": 260,
+          "webgpu": true
+        }
+      ]
+    },
+    "end": {
+      "innerWidth": 1440,
+      "innerHeight": 1000,
+      "dpr": 1,
+      "panel": {
+        "top": 173,
+        "bottom": 970,
+        "height": 797,
+        "clientHeight": 797,
+        "scrollHeight": 814,
+        "scrollTop": 17,
+        "clientWidth": 1156,
+        "scrollWidth": 1156
+      },
+      "footer": {
+        "top": 870.75,
+        "bottom": 939.3125,
+        "height": 68.5625
+      },
+      "fullyVisible": true,
+      "canvases": [
+        {
+          "width": 538,
+          "height": 260,
+          "cssHeight": 260,
+          "webgpu": true
+        },
+        {
+          "width": 538,
+          "height": 260,
+          "cssHeight": 260,
+          "webgpu": true
+        }
+      ]
+    },
+    "diagnostics": {
+      "origin": "http://127.0.0.1:4202/Diesel/",
+      "pageErrors": [],
+      "backendRequests": [],
+      "renderers": [
+        {
+          "selector": "canvas[aria-label=\"Interactive parametric 3D design\"]",
+          "width": 858,
+          "height": 586,
+          "webgpu": true,
+          "cssWidth": 858,
+          "cssHeight": 586,
+          "dpr": 1,
+          "isolated": true
+        }
+      ],
+      "operations": []
+    }
+  }
+]

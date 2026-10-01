@@ -6,7 +6,8 @@ import { DEFAULT_OPERATING_SCENARIO } from './operating-cycle';
 import {
 	searchOperatingDesignsBrowser,
 	needsFloat64ThresholdCheck,
-	operatingSummaryError
+	operatingSummaryError,
+	softwareComputeAdapterReason
 } from './gpu-operating-search';
 import {
 	createSavedStudy,
@@ -17,7 +18,7 @@ import {
 
 vi.mock('@jax-js/jax', async (importOriginal) => {
 	const actual = await importOriginal<typeof import('@jax-js/jax')>();
-	return { ...actual, init: vi.fn(actual.init) };
+	return { ...actual, init: vi.fn(actual.init), getWebGPUDevice: vi.fn(actual.getWebGPUDevice) };
 });
 vi.mock('./gpu-operating-kernel', async (importOriginal) => {
 	const actual = await importOriginal<typeof import('./gpu-operating-kernel')>();
@@ -29,10 +30,71 @@ const params = { ...DEFAULT_DESIGN_PARAMS },
 
 afterEach(() => {
 	vi.mocked(jax.init).mockReset();
+	vi.mocked(jax.getWebGPUDevice).mockReset();
 	vi.mocked(kernel.executeOperatingBatch).mockReset();
 });
 
 describe('browser operating search backend safeguards', () => {
+	it('recognizes explicit software adapters without classifying unknown or physical adapters as software', () => {
+		for (const info of [
+			{ isFallbackAdapter: true },
+			{ architecture: 'swiftshader' },
+			{ architecture: 'LLVMpipe' },
+			{ architecture: 'lavapipe-vulkan' },
+			{ architecture: 'softpipe' }
+		])
+			expect(softwareComputeAdapterReason(info)).toContain('Float64 CPU worker');
+		for (const info of [
+			undefined,
+			{},
+			{ vendor: 'google' },
+			{ architecture: 'apple-m2' },
+			{ architecture: 'rdna-3', isFallbackAdapter: false }
+		])
+			expect(softwareComputeAdapterReason(info)).toBeUndefined();
+	});
+	it('auto compute on a software adapter completes the full CPU search with honest provenance and never dispatches a GPU graph', async () => {
+		vi.mocked(jax.init).mockResolvedValue(['webgpu']);
+		vi.mocked(jax.getWebGPUDevice).mockReturnValue({
+			adapterInfo: { vendor: 'google', architecture: 'swiftshader', isFallbackAdapter: true }
+		} as ReturnType<typeof jax.getWebGPUDevice>);
+		const result = await searchOperatingDesignsBrowser(params, scenarios);
+		expect(kernel.executeOperatingBatch).not.toHaveBeenCalled();
+		expect(result.evaluated).toBe(500);
+		expect(result.best?.angularSamples).toBe(721);
+		expect(result.computation).toMatchObject({
+			backend: 'cpu',
+			precision: 'Float64',
+			requested: 'auto',
+			coarseDesigns: 500
+		});
+		expect(result.computation?.fallbackReason).toContain('swiftshader');
+		const forcedError = new Error('Forced software GPU diagnostic dispatch reached');
+		vi.mocked(kernel.executeOperatingBatch).mockRejectedValue(forcedError);
+		const forced = await searchOperatingDesignsBrowser(
+			params,
+			scenarios,
+			undefined,
+			undefined,
+			'webgpu'
+		);
+		expect(kernel.executeOperatingBatch).toHaveBeenCalledOnce();
+		expect(forced.computation?.fallbackReason).toBe(forcedError.message);
+		expect(forced.computation?.requested).toBe('webgpu');
+	});
+	it('auto compute continues to dispatch on physical or unidentified WebGPU adapters', async () => {
+		vi.mocked(jax.init).mockResolvedValue(['webgpu']);
+		vi.mocked(jax.getWebGPUDevice).mockReturnValue({
+			adapterInfo: { vendor: 'apple', architecture: 'apple-m2', isFallbackAdapter: false }
+		} as ReturnType<typeof jax.getWebGPUDevice>);
+		vi.mocked(kernel.executeOperatingBatch).mockRejectedValue(
+			new Error('Hardware GPU dispatch reached')
+		);
+		const result = await searchOperatingDesignsBrowser(params, scenarios);
+		expect(kernel.executeOperatingBatch).toHaveBeenCalledOnce();
+		expect(result.computation?.fallbackReason).toBe('Hardware GPU dispatch reached');
+	});
+
 	it('records CPU provenance and the failure reason when a GPU device is lost after initialization', async () => {
 		vi.mocked(jax.init).mockResolvedValue(['webgpu']);
 		vi.mocked(kernel.executeOperatingBatch).mockRejectedValue(

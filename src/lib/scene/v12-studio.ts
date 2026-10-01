@@ -577,7 +577,12 @@ export class EngineStudio {
 						next.display === 'mechanism' &&
 						next.flows.length > 0
 					),
-				false,
+				// Reset/Fit can arrive before the returning parts reach their assembled
+				// matrices. Frame the destination, not the temporary exploded envelope.
+				next.explosion !== previous.explosion ||
+					(previous.display === 'layout' && next.display !== 'layout') ||
+					this.explosionTransition.active ||
+					this.layoutTransition.active,
 				undefined,
 				canonicalView
 			);

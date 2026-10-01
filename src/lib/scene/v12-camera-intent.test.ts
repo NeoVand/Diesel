@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import * as THREE from 'three';
 import { EngineStudio } from './v12-studio';
-import { SceneTransition } from './v12-transition';
+import { SceneTransition, TrackingTransition } from './v12-transition';
 import { initialLabState } from '$lib/engine/lab-state';
 
 function returningFromAtlas() {
@@ -56,6 +56,60 @@ function returningFromAtlas() {
 afterEach(() => vi.unstubAllGlobals());
 
 describe('interrupted presentation camera intent', () => {
+	it.each(['explosion', 'layout'])(
+		'restores assembled framing while %s parts are still returning',
+		(presentation) => {
+			const baseline = returningFromAtlas().studio;
+			const reset = { ...initialLabState, resetSignal: 1, focusToken: 1 };
+			baseline.update(reset);
+			const expected = Reflect.get(baseline, 'cameraGoal');
+			const { studio, camera } = returningFromAtlas();
+			const parts = Reflect.get(studio, 'components') as Map<
+				string,
+				{
+					id: string;
+					object: THREE.Group;
+					offset: THREE.Vector3;
+					removalTransition: SceneTransition;
+				}
+			>;
+			const first = parts.get('sample')!;
+			first.object.matrix.makeTranslation(30, 0, 0);
+			first.offset.set(30, 0, 0);
+			const second = {
+				...first,
+				id: 'opposite',
+				object: new THREE.Group(),
+				offset: new THREE.Vector3(-30, 0, 0),
+				removalTransition: new SceneTransition()
+			};
+			second.object.matrix.makeTranslation(-30, 0, 0);
+			parts.set(second.id, second);
+			Reflect.set(studio, 'state', {
+				...initialLabState,
+				explosion: presentation === 'explosion' ? 1 : 0,
+				display: presentation === 'layout' ? 'layout' : 'assembly'
+			});
+			Reflect.set(
+				studio,
+				'explosionTransition',
+				new TrackingTransition(presentation === 'explosion' ? 1 : 0)
+			);
+			Reflect.set(
+				studio,
+				'layoutTransition',
+				new SceneTransition(presentation === 'layout' ? 1 : 0)
+			);
+			studio.update(reset);
+			const goal = Reflect.get(studio, 'cameraGoal');
+			expect(goal.height).toBeCloseTo(expected.height, 12);
+			expect(goal.target.distanceTo(expected.target)).toBeLessThan(1e-12);
+			// Framing must not snap the actual parts or camera to the destination.
+			expect(first.object.matrix.elements[12]).toBe(30);
+			expect(camera.position.toArray()).toEqual([0, 50, 0.1]);
+		}
+	);
+
 	it('frames the actual family geometry instead of unused atlas panel space', () => {
 		const { studio } = returningFromAtlas();
 		const bounds = new THREE.Box3(new THREE.Vector3(1, 0, 5), new THREE.Vector3(2, 2, 7));

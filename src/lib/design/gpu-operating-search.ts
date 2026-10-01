@@ -50,6 +50,22 @@ function errorMessage(error: unknown) {
 	return message.slice(0, 1500);
 }
 
+/**
+ * WebGPU fallback adapters execute shaders on the CPU. Automatic numerical work
+ * uses the independent Float64 implementation instead of compiling a large GPU
+ * graph for CPU emulation. Unknown adapters retain the normal GPU path.
+ * https://gpuweb.github.io/gpuweb/#dom-gpuadapterinfo-isfallbackadapter
+ */
+export function softwareComputeAdapterReason(
+	info: Partial<GPUAdapterInfo> | undefined
+): string | undefined {
+	const architecture = info?.architecture?.trim().toLowerCase() ?? '';
+	const knownSoftware = /^(swiftshader|llvmpipe|lavapipe|softpipe)(?:$|[- _])/.test(architecture);
+	if (!info?.isFallbackAdapter && !knownSoftware) return undefined;
+	const identity = architecture || 'reported fallback adapter';
+	return `Automatic compute selected the browser Float64 CPU worker because WebGPU reports a software/fallback adapter (${identity}); GPU shader emulation would run on the CPU. Rendering continues to use WebGPU.`;
+}
+
 /** No engineering request leaves the browser; CPU fallback executes in this same worker. */
 export async function searchOperatingDesignsBrowser(
 	params: DesignParams,
@@ -67,6 +83,10 @@ export async function searchOperatingDesignsBrowser(
 			assertSearchActive(shouldCancel);
 			if (!available.includes('webgpu'))
 				throw new Error('WebGPU is unavailable in this browser or worker.');
+			if (requested === 'auto') {
+				const reason = softwareComputeAdapterReason(getWebGPUDevice().adapterInfo);
+				if (reason) throw new Error(reason);
+			}
 			const result = await searchWithWebGpu(params, scenarios, onProgress, shouldCancel, requested);
 			assertSearchActive(shouldCancel);
 			result.computation!.totalMs = performance.now() - start;
