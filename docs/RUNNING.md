@@ -32,7 +32,7 @@ No `.env` file is needed. A historical local `.env` does not configure or enable
 - A current desktop browser with hardware acceleration. Verified captures and numerical checks used Chrome 154 on macOS; equivalent results across every browser/device are not claimed.
 - A secure context: HTTPS when hosted, or loopback HTTP during development.
 - Web Workers and WebAssembly. Exact CAD and solid meshing require `SharedArrayBuffer` and cross-origin isolation because the shipped Gmsh build is threaded.
-- WebGPU for the 3D renderer and GPU operating searches. The migrating renderer explicitly rejects unsupported devices instead of silently using WebGL. The numerical search separately retains a browser Float64 CPU fallback and records the actual backend and fallback reason. Graphics visual acceptance is still being verified; see [current architecture status](COMPUTE_ARCHITECTURE.md).
+- WebGPU for the 3D renderer and GPU operating searches. The renderer explicitly rejects unsupported devices instead of silently using WebGL. The numerical search separately retains a browser Float64 CPU fallback and records the actual backend and fallback reason. See [graphics and numerical verification](COMPUTE_ARCHITECTURE.md).
 - Browser storage permission for persistent local Explorer files and saved studies. The OpenAI key is deliberately excluded from persistent storage.
 
 Vite and the included static file server set isolation headers. The bundled service worker supplies isolation on static hosts without configurable headers and may reload the first visit once. If CAD reports an isolation error, see [troubleshooting](#troubleshooting) rather than starting a native service.

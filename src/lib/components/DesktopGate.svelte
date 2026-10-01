@@ -33,7 +33,7 @@
 		<header><span class="mark">EL</span><span>Engine Lab</span></header>
 		<div class="preview">
 			<img
-				src={asset('/engine-preview.webp')}
+				src={asset('/engine-preview.png')}
 				alt="Engine Lab desktop workspace showing the complete V12 diesel engine and its inspection tools"
 			/>
 		</div>

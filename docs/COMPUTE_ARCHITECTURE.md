@@ -1,6 +1,6 @@
 # Browser computation and verification
 
-Status: **1 October 2026**, `browser-first` branch. Engineering computation has moved into the browser and numerical WebGPU screening is implemented. Graphics migration from WebGL to WebGPU is in progress and must pass its separate visual acceptance checks before it is described as complete.
+Status: **1 October 2026**, `browser-first` branch. Engineering computation has moved into the browser. Native WebGPU graphics and JAX-JS numerical WebGPU screening are implemented and verified separately.
 
 ## Execution boundaries
 
@@ -67,13 +67,13 @@ The approximately 40 MB WASM module loads on the first CAD/FEA request. The work
 
 This stage deliberately uses browser CPU Float64 and WASM. It is not a WebGPU FEA solver. Sharp edges and fixed fixtures retain stress singularities; an integral refinement gate is not proof of pointwise stress convergence or physical durability.
 
-## Graphics status
+## Native WebGPU graphics
 
-The verified migration baseline rendered through Three.js WebGL, including custom GLSL flow materials, clipping caps, X-ray fades and ray-marched chamber volumes. Moving those paths to Three.js WebGPU/node materials is now a separate active implementation. Numerical WebGPU screening already works independently of that renderer change.
+Every live viewport now initializes a real Three.js WebGPU backend: Explorer, source review, component-atlas previews, parametric geometry and solid comparison. The initializer disables Three.js’s automatic WebGL fallback and reports unsupported devices explicitly. The source assembly, motion, X-ray, sections, explosion and arranged views have been exercised on the actual backend; [runtime snapshots](verification/webgpu-engine-smoke.json) record the executed backend and scene state. [Atlas checks](verification/webgpu-atlas-smoke.json) cover visible/scrolled preview viewports.
 
-Before marking graphics migration complete, verify exterior/mechanism materials, all section axes and retained sides, X-ray transitions, process direction and depth, picking/isolation, atlas previews, design/analysis fields, shadows, cancellation and device compatibility. Confirm the actual renderer backend from diagnostics. A successful compile or `WebGPURenderer` constructor alone does not establish visual parity.
+The process layers use node materials and WGSL ray-march functions. Soft passage tracers and fuel parcels use instanced sprite billboards because WebGPU point primitives have a one-pixel size. The GPU verification exercises movement, visibility, section clipping and opaque-depth occlusion. [Implementation and compatibility details](verification/process-webgpu.md) explain the depth/stencil sampling contract; [pixel-test evidence](verification/process-webgpu.json) records the checks. Volume presentation remains educational, not reacting CFD.
 
-The relevant upstream contract is [Three.js WebGPURenderer](https://threejs.org/docs/pages/WebGPURenderer.html); existing GLSL and [`onBeforeCompile`](https://threejs.org/docs/pages/Material.html#onBeforeCompile) customisations need explicit node-material/TSL equivalents. Volume visuals remain educational fields, regardless of graphics API; moving the shader does not establish CFD.
+The relevant upstream contract is [Three.js WebGPURenderer](https://threejs.org/docs/pages/WebGPURenderer.html). The prior GLSL and `onBeforeCompile` paths were replaced explicitly rather than assumed compatible. These checks establish the tested implementation, not universal browser/device support or a fixed frame-rate guarantee. Public deployment acceptance is a separate final-origin check.
 
 ## AI and retained historical code
 

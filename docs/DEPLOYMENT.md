@@ -84,6 +84,6 @@ There is no server-sponsored secret on this static host. Visitors enter their ow
 - Run operating screening and confirm its executed backend is displayed. Test the numerical CPU fallback independently from the graphics capability gate; the WebGPU renderer itself does not fall back to WebGL.
 - Confirm the published protected model loads from a fresh profile, then check mechanism, section planes, X-ray, disassembly and process views. Separately verify local import for an independent build without the release package.
 - Exercise direct OpenAI actions and narration with an authorised visitor key; cancel a request, navigate workspaces, then reload and confirm the key is cleared.
-- Verify the renderer’s actual backend and visual regression results after the in-progress WebGPU graphics migration; do not infer that from numerical WebGPU support.
+- Confirm the native WebGPU renderer on the deployed device, including sections, X-ray transitions, process depths and atlas previews. Do not infer renderer success from numerical WebGPU support alone.
 
 Recorded local static checks are in [browser CAD/solid verification](verification/browser-cad-solid.md) and [the numerical GPU report](verification/browser-webgpu.json). They establish browser execution on the tested machine; they are distinct from a final public-origin acceptance check.

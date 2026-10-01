@@ -1,15 +1,16 @@
-import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import * as THREE from 'three';
 import { V12ChamberDomain, V12_CHAMBER_DATUMS } from './v12-chamber-domain';
 import { V12ChamberVolume } from './v12-chamber-volume';
 import { V12CombustionGlow } from './v12-combustion-glow';
 
-const bytes = readFileSync('static/models/v12-chamber-domains.bin');
-const data = new Float32Array(
-	bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength)
-);
-function fixture() {
+import {
+	licensedChamberAvailable,
+	readLicensedChamberBounds,
+	syntheticChamberBounds
+} from './chamber-test-fixture';
+
+function fixture(data = syntheticChamberBounds()) {
 	const volumes = V12_CHAMBER_DATUMS.cylinders.map(
 		(_, i) => new V12ChamberVolume(new V12ChamberDomain(i, data))
 	);
@@ -35,33 +36,43 @@ function fixture() {
 	};
 }
 
-describe('cycle-synchronized combustion illumination', () => {
-	it('illuminates firing chambers from inside their moving gas domains over the full cycle', () => {
-		const f = fixture();
-		const covered = new Set<string>();
-		try {
-			for (let phase = 0; phase < 720; phase += 4) {
-				f.update(phase);
-				expect(f.glow.group.children).toHaveLength(2);
-				for (const child of f.glow.group.children) {
-					const light = child as THREE.PointLight;
-					expect(light.visible).toBe(true);
-					expect(light.castShadow).toBe(false);
-					expect(light.intensity).toBeLessThanOrEqual(0.24);
-					if (!light.intensity) continue;
-					const owner = f.volumes.find((v) => {
-						const p = light.position.clone().applyMatrix4(v.domain.toWorld.clone().invert());
-						return v.heatRelease > 0 && v.domain.contains(p.x, p.y, p.z);
-					});
-					expect(owner).toBeDefined();
-					covered.add(owner!.domain.datum.pistonId);
-				}
+function assertFullCycleIllumination(data: Float32Array) {
+	const f = fixture(data);
+	const covered = new Set<string>();
+	try {
+		for (let phase = 0; phase < 720; phase += 4) {
+			f.update(phase);
+			expect(f.glow.group.children).toHaveLength(2);
+			for (const child of f.glow.group.children) {
+				const light = child as THREE.PointLight;
+				expect(light.visible).toBe(true);
+				expect(light.castShadow).toBe(false);
+				expect(light.intensity).toBeLessThanOrEqual(0.24);
+				if (!light.intensity) continue;
+				const owner = f.volumes.find((v) => {
+					const p = light.position.clone().applyMatrix4(v.domain.toWorld.clone().invert());
+					return v.heatRelease > 0 && v.domain.contains(p.x, p.y, p.z);
+				});
+				expect(owner).toBeDefined();
+				covered.add(owner!.domain.datum.pistonId);
 			}
-			expect(covered.size).toBe(12);
-		} finally {
-			f.dispose();
 		}
+		expect(covered.size).toBe(12);
+	} finally {
+		f.dispose();
+	}
+}
+
+describe('cycle-synchronized combustion illumination with synthetic chamber bounds', () => {
+	it('illuminates all firing chambers from inside the moving analytic gas domains', () => {
+		assertFullCycleIllumination(syntheticChamberBounds());
 	});
+	it.skipIf(!licensedChamberAvailable)(
+		'licensed asset: glow stays inside source chamber bounds for the full cycle',
+		() => {
+			assertFullCycleIllumination(readLicensedChamberBounds());
+		}
+	);
 	it('retains fixed light identities, reproduces seek and suppresses disabled/sectioned glow', () => {
 		const f = fixture();
 		const lights = [...f.glow.group.children] as THREE.PointLight[];

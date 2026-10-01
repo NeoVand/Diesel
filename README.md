@@ -2,7 +2,7 @@
 
 A browser-based workspace for inspecting a V12 diesel concept, changing parametric geometry, and comparing engineering calculations with their assumptions and verification evidence.
 
-![Engine Lab showing the assembled V12 diesel concept and inspection controls](docs/images/engine-explorer.webp)
+![Engine Lab showing the assembled V12 diesel concept and inspection controls](docs/verification/webgpu-engine-assembly.png)
 
 [Run locally](docs/RUNNING.md) · [Computation and verification](docs/COMPUTE_ARCHITECTURE.md) · [Static deployment](docs/DEPLOYMENT.md) · [Engineering scope](#engineering-scope)
 
@@ -20,25 +20,25 @@ The assembly assistant can search registered components, execute acknowledged sc
 
 <table>
   <tr>
-    <td><a href="docs/images/section-inspection.webp"><img src="docs/images/section-inspection.webp" alt="Movable section plane cutting through the V12 engine" /></a><br /><strong>Section inspection</strong><br />Position and orient a plane through the source assembly.</td>
-    <td><a href="docs/images/mechanism-processes.webp"><img src="docs/images/mechanism-processes.webp" alt="Internal mechanism with intake, fuel, exhaust and combustion visualization" /></a><br /><strong>Mechanism and processes</strong><br />Connected motion with phase-aligned explanatory layers.</td>
+    <td><a href="docs/verification/webgpu-engine-section-settled.png"><img src="docs/verification/webgpu-engine-section-settled.png" alt="Movable section plane cutting through the V12 engine" /></a><br /><strong>Section inspection</strong><br />Position and orient a plane through the source assembly.</td>
+    <td><a href="docs/verification/webgpu-engine-mechanism-processes.png"><img src="docs/verification/webgpu-engine-mechanism-processes.png" alt="Internal mechanism with intake, fuel, exhaust and combustion visualization" /></a><br /><strong>Mechanism and processes</strong><br />Connected motion with phase-aligned explanatory layers.</td>
   </tr>
   <tr>
     <td><a href="docs/images/parametric-cranktrain.webp"><img src="docs/images/parametric-cranktrain.webp" alt="Parametric cranktrain with dimensions and live kinematic plots" /></a><br /><strong>Parametric geometry</strong><br />Dimensions, measurements and plots update together.</td>
-    <td><a href="docs/verification/browser-static-solid.png"><img src="docs/verification/browser-static-solid.png" alt="Browser-computed connecting-rod solid stress result from a static build, with 5881 tetrahedral elements and 1970 nodes" /></a><br /><strong>Browser solid analysis</strong><br />Actual static-build result; 3D elements, explicit loads and equilibrium checks.</td>
+    <td><a href="docs/verification/packaged-static-solid-result.png"><img src="docs/verification/packaged-static-solid-result.png" alt="Browser-computed connecting-rod solid stress result rendered with WebGPU from a static build, with 5881 tetrahedral elements and 1970 nodes" /></a><br /><strong>Browser solid analysis</strong><br />Actual static-build result; 3D elements, explicit loads and equilibrium checks.</td>
   </tr>
 </table>
 
 <details>
 <summary>Component atlas</summary>
 
-![Searchable component atlas with previews of 22 engine-part families](docs/images/component-atlas.webp)
+![Searchable component atlas with previews of 22 engine-part families](docs/verification/webgpu-engine-atlas.png)
 
 The atlas uses the same component identities as selection, isolation and the assistant. Gallery previews have independent fit scales; assembly views preserve component scale.
 
 </details>
 
-The solid-analysis image is from the verified browser-first static build. The other images are application captures from the earlier tour and **predate the runtime migration**; they illustrate the retained interface, not its former backend architecture. [Screenshot provenance](docs/images/README.md) records those original frames. Process overlays are explanatory; deformation magnification changes presentation, not calculated values.
+The Explorer images are current native-WebGPU captures, and the solid-analysis image is from the verified browser-first static build. The parametric-cranktrain image is retained from the earlier tour and **predates the runtime migration**; it illustrates the interface, not its former backend architecture. [Screenshot provenance](docs/images/README.md) records that original frame. [Renderer evidence](docs/verification/webgpu-engine-smoke.json) and [process verification](docs/verification/process-webgpu.md) accompany the current images. Process overlays are explanatory; deformation magnification changes presentation, not calculated values.
 
 ## Quick start
 
@@ -79,17 +79,17 @@ The browser implements the Responses API tool loop. It does not launch the nativ
 
 ## Where computation runs
 
-| Work                                                     | Implementation                                                                                      | Runtime                                        |
-| -------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| Interface                                                | Svelte 5, SvelteKit, TypeScript, Hugeicons                                                          | Browser                                        |
-| Geometry rendering and visual process layers             | Three.js materials, lighting, sections and volumetric layers; WebGPU graphics migration in progress | Browser GPU                                    |
-| Linkage, cylinder integration and reference calculations | Measured geometry, ideal-air RK4 cycle, analytic/Float64 calculations                               | Browser CPU and workers                        |
-| Operating design screening                               | JAX-JS batched force/stress calculations; independent Float64 checks and finalist refinement        | Browser WebGPU, with browser CPU fallback      |
-| Exact rod CAD and STEP                                   | Open CASCADE through Gmsh WebAssembly                                                               | Browser worker / WASM                          |
-| Solid finite-element analysis                            | Gmsh tetrahedral mesh; Float64 sparse CSR assembly and IC(0)-preconditioned conjugate gradients     | Browser worker                                 |
-| Assistant and narration                                  | Local tool execution; direct OpenAI Responses and speech requests                                   | Browser orchestration; remote OpenAI inference |
+| Work                                                     | Implementation                                                                                  | Runtime                                        |
+| -------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| Interface                                                | Svelte 5, SvelteKit, TypeScript, Hugeicons                                                      | Browser                                        |
+| Geometry rendering and visual process layers             | Three.js native WebGPU, node materials, filled sections and WGSL volumetric layers              | Browser GPU                                    |
+| Linkage, cylinder integration and reference calculations | Measured geometry, ideal-air RK4 cycle, analytic/Float64 calculations                           | Browser CPU and workers                        |
+| Operating design screening                               | JAX-JS batched force/stress calculations; independent Float64 checks and finalist refinement    | Browser WebGPU, with browser CPU fallback      |
+| Exact rod CAD and STEP                                   | Open CASCADE through Gmsh WebAssembly                                                           | Browser worker / WASM                          |
+| Solid finite-element analysis                            | Gmsh tetrahedral mesh; Float64 sparse CSR assembly and IC(0)-preconditioned conjugate gradients | Browser worker                                 |
+| Assistant and narration                                  | Local tool execution; direct OpenAI Responses and speech requests                               | Browser orchestration; remote OpenAI inference |
 
-**WebGPU numerical compute is implemented.** It accelerates the operating-search screen, while exact CAD, double-precision solid FEA and independent reference checks use browser CPU/WASM. The verified graphics baseline used WebGL; the requested WebGPU renderer migration is underway and will be reported complete only after visual verification.
+**WebGPU rendering and numerical compute are implemented.** Every live 3D viewport uses a native WebGPU backend. JAX-JS accelerates the operating-search screen, while exact CAD, double-precision solid FEA and independent reference checks use browser CPU/WASM. The renderer explicitly rejects unsupported devices instead of silently falling back to WebGL.
 
 For one recorded 500-design, three-condition search on an Apple Metal WebGPU adapter, total GPU-path wall time was **194 ms**, including verification and refinement, versus **528 ms** for the Float64 CPU path. All candidate pass/fail decisions and finalists agreed. These are machine-specific measurements, not a general speed guarantee. The [full report](docs/verification/browser-webgpu.json) includes other cases, precision errors and provenance.
 

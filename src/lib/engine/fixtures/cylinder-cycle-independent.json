@@ -1,0 +1,5827 @@
+{
+  "method": "Independent Python/SciPy DOP853, piecewise heat-support intervals;rtol2e-10,atol1e-14kg/1e-8J,maxstep0.5deg. Source valve table shared as measured input; integration and formulas separately implemented.",
+  "scenario": {
+    "id": "source-v12-air-standard-1800-v1",
+    "label": "Air-standard reference case",
+    "pistonId": "v12-0003",
+    "rpm": 1800,
+    "compressionRatio": 16,
+    "gasConstantJPerKgK": 287.05,
+    "gamma": 1.4,
+    "intakePressurePa": 110000,
+    "intakeTemperatureK": 320,
+    "exhaustPressurePa": 120000,
+    "exhaustTemperatureK": 650,
+    "dischargeCoefficient": 0.65,
+    "valveAreaScale": 1,
+    "heatInputPerCycleJ": 950,
+    "burnStartDeg": -4,
+    "burnDurationDeg": 74,
+    "wiebeShape": 6.9,
+    "wiebeExponent": 3,
+    "wallTemperatureK": 450,
+    "wallCoefficientWPerM2K": 250
+  },
+  "cycles": 17,
+  "periodicRelativeChange": [
+    1.0429553105758913e-10,
+    5.140718287606232e-10
+  ],
+  "balance": {
+    "massResidualKg": 1.0842021724855044e-18,
+    "energyResidualJ": 6.252776074688882e-13,
+    "heatInputJ": 949.9999998850965,
+    "wallHeatIntoGasJ": -147.1505543621267,
+    "workByGasJ": 459.7572315372274,
+    "enthalpyIntakeJ": 194.44278406830503,
+    "enthalpyExhaustJ": -537.5349977932974
+  },
+  "comparisonToTypescript0625Deg": {
+    "massKg": {
+      "maxAbsolute": 5.896120870187149e-10,
+      "maxRelative": 1.4654476860561896e-05
+    },
+    "internalEnergyJ": {
+      "maxAbsolute": 0.0002981107852910725,
+      "maxRelative": 1.7728293889478058e-05
+    },
+    "pressurePa": {
+      "maxAbsolute": 1.9354705101723084,
+      "maxRelative": 1.7728293889433728e-05
+    },
+    "temperatureK": {
+      "maxAbsolute": 0.002467606635377706,
+      "maxRelative": 4.594583840512904e-06
+    }
+  },
+  "samples": [
+    {
+      "angleDeg": 0,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 507.22599768719755,
+      "volumeM3": 3.7830011536977105e-05,
+      "pressurePa": 5363212.720053308,
+      "temperatureK": 1088.8445327198735
+    },
+    {
+      "angleDeg": 1,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 507.69341363506146,
+      "volumeM3": 3.789050821816139e-05,
+      "pressurePa": 5359584.101769505,
+      "temperatureK": 1089.847918393436
+    },
+    {
+      "angleDeg": 2,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 507.99743973428525,
+      "volumeM3": 3.8071966566268025e-05,
+      "pressurePa": 5337233.5137988245,
+      "temperatureK": 1090.5005607214187
+    },
+    {
+      "angleDeg": 3,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 508.24150543839704,
+      "volumeM3": 3.837429151108503e-05,
+      "pressurePa": 5297729.1350547355,
+      "temperatureK": 1091.0244881398837
+    },
+    {
+      "angleDeg": 4,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 508.5332879304218,
+      "volumeM3": 3.879732465603536e-05,
+      "pressurePa": 5242972.730093271,
+      "temperatureK": 1091.6508475391124
+    },
+    {
+      "angleDeg": 5,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 508.98306278609965,
+      "volumeM3": 3.9340844358903304e-05,
+      "pressurePa": 5175110.713361296,
+      "temperatureK": 1092.6163636892954
+    },
+    {
+      "angleDeg": 6,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 509.70185404783,
+      "volumeM3": 4.000456584497748e-05,
+      "pressurePa": 5096436.801968916,
+      "temperatureK": 1094.1593680681533
+    },
+    {
+      "angleDeg": 7,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 510.7994662401791,
+      "volumeM3": 4.0788141352733734e-05,
+      "pressurePa": 5009293.871204492,
+      "temperatureK": 1096.5155742565887
+    },
+    {
+      "angleDeg": 8,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 512.3824798410201,
+      "volumeM3": 4.169116031221838e-05,
+      "pressurePa": 4915981.958802491,
+      "temperatureK": 1099.913774885808
+    },
+    {
+      "angleDeg": 9,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 514.5522845127805,
+      "volumeM3": 4.2713149556326175e-05,
+      "pressurePa": 4818677.993616332,
+      "temperatureK": 1104.5716196427586
+    },
+    {
+      "angleDeg": 10,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 517.4032128074165,
+      "volumeM3": 4.385357356520128e-05,
+      "pressurePa": 4719371.0408858135,
+      "temperatureK": 1110.6916089590497
+    },
+    {
+      "angleDeg": 11,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 521.0208231952181,
+      "volumeM3": 4.511183474402169e-05,
+      "pressurePa": 4619814.965643929,
+      "temperatureK": 1118.4574082481815
+    },
+    {
+      "angleDeg": 12,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 525.4803671360648,
+      "volumeM3": 4.648727373446044e-05,
+      "pressurePa": 4521498.68058649,
+      "temperatureK": 1128.0305572203474
+    },
+    {
+      "angleDeg": 13,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 530.8454621140585,
+      "volumeM3": 4.797916976015096e-05,
+      "pressurePa": 4425632.746608729,
+      "temperatureK": 1139.5476213317058
+    },
+    {
+      "angleDeg": 14,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 537.1669821330348,
+      "volumeM3": 4.958674100650819e-05,
+      "pressurePa": 4333150.122227491,
+      "temperatureK": 1153.1178100494112
+    },
+    {
+      "angleDeg": 15,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 544.4821695789142,
+      "volumeM3": 5.130914503529234e-05,
+      "pressurePa": 4244718.318376959,
+      "temperatureK": 1168.821070317192
+    },
+    {
+      "angleDeg": 16,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 552.8139675514294,
+      "volumeM3": 5.31454792343237e-05,
+      "pressurePa": 4160760.0534677096,
+      "temperatureK": 1186.7066532949289
+    },
+    {
+      "angleDeg": 17,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 562.1705693462186,
+      "volumeM3": 5.5094781302788984e-05,
+      "pressurePa": 4081479.6323931357,
+      "temperatureK": 1206.7921472474213
+    },
+    {
+      "angleDeg": 18,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 572.5451811137133,
+      "volumeM3": 5.71560297725969e-05,
+      "pressurePa": 4006892.594826217,
+      "temperatureK": 1229.0629680524191
+    },
+    {
+      "angleDeg": 19,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 583.9159941478059,
+      "volumeM3": 5.932814456626845e-05,
+      "pressurePa": 3936856.602657326,
+      "temperatureK": 1253.472299713662
+    },
+    {
+      "angleDeg": 20,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 596.2463641130312,
+      "volumeM3": 6.160998759186202e-05,
+      "pressurePa": 3871101.9912088956,
+      "temperatureK": 1279.9414791016802
+    },
+    {
+      "angleDeg": 21,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 609.4851952537548,
+      "volumeM3": 6.40003633754554e-05,
+      "pressurePa": 3809260.8423376335,
+      "temperatureK": 1308.3608207223913
+    },
+    {
+      "angleDeg": 22,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 623.5675278285161,
+      "volumeM3": 6.64980197317176e-05,
+      "pressurePa": 3750893.81815737,
+      "temperatureK": 1338.590877742118
+    },
+    {
+      "angleDeg": 23,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 638.4153264079993,
+      "volumeM3": 6.910164847311661e-05,
+      "pressurePa": 3695514.3069061167,
+      "temperatureK": 1370.4641341996196
+    },
+    {
+      "angleDeg": 24,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 653.938465133795,
+      "volumeM3": 7.180988615831741e-05,
+      "pressurePa": 3642609.6746181916,
+      "temperatureK": 1403.7871200270504
+    },
+    {
+      "angleDeg": 25,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 670.0359035441691,
+      "volumeM3": 7.462131488032868e-05,
+      "pressurePa": 3591659.592805168,
+      "temperatureK": 1438.3429351545308
+    },
+    {
+      "angleDeg": 26,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 686.597043217593,
+      "volumeM3": 7.753446309496112e-05,
+      "pressurePa": 3542151.532676127,
+      "temperatureK": 1473.894161769966
+    },
+    {
+      "angleDeg": 27,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 703.5032514261238,
+      "volumeM3": 8.054780649014984e-05,
+      "pressurePa": 3493593.5915878965,
+      "temperatureK": 1510.1861350931374
+    },
+    {
+      "angleDeg": 28,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 720.62953344597,
+      "volumeM3": 8.36597688966964e-05,
+      "pressurePa": 3445524.8583620046,
+      "temperatureK": 1546.950533267042
+    },
+    {
+      "angleDeg": 29,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 737.8463303961431,
+      "volumeM3": 8.686872324096637e-05,
+      "pressurePa": 3397523.5406622505,
+      "temperatureK": 1583.9092367160417
+    },
+    {
+      "angleDeg": 30,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 755.0214147430502,
+      "volumeM3": 9.017299254006156e-05,
+      "pressurePa": 3349213.077996112,
+      "temperatureK": 1620.7783971601111
+    },
+    {
+      "angleDeg": 31,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 772.0218511998911,
+      "volumeM3": 9.357085093997101e-05,
+      "pressurePa": 3300266.4545400795,
+      "temperatureK": 1657.2726470098564
+    },
+    {
+      "angleDeg": 32,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 788.7159869372375,
+      "volumeM3": 9.706052479716926e-05,
+      "pressurePa": 3250408.9116989407,
+      "temperatureK": 1693.1093716828352
+    },
+    {
+      "angleDeg": 33,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 804.9754320563638,
+      "volumeM3": 0.0001006401938040999,
+      "pressurePa": 3199419.244455272,
+      "temperatureK": 1728.0129610172633
+    },
+    {
+      "angleDeg": 34,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 820.6769893778592,
+      "volumeM3": 0.0001043079921589434,
+      "pressurePa": 3147129.850327558,
+      "temperatureK": 1761.7189518825842
+    },
+    {
+      "angleDeg": 35,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 835.7044919387391,
+      "volumeM3": 0.00010806200978002013,
+      "pressurePa": 3093425.686381245,
+      "temperatureK": 1793.9779726710626
+    },
+    {
+      "angleDeg": 36,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 849.9505072922268,
+      "volumeM3": 0.00011190029356512702,
+      "pressurePa": 3038242.278774889,
+      "temperatureK": 1824.559401859269
+    },
+    {
+      "angleDeg": 37,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 863.3178698251874,
+      "volumeM3": 0.00011582084869604545,
+      "pressurePa": 2981562.9208203657,
+      "temperatureK": 1853.254657380999
+    },
+    {
+      "angleDeg": 38,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 875.7210058425229,
+      "volumeM3": 0.00011982163998838999,
+      "pressurePa": 2923415.1892007985,
+      "temperatureK": 1879.8800411401835
+    },
+    {
+      "angleDeg": 39,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 887.0870210412603,
+      "volumeM3": 0.00012390059328689254,
+      "pressurePa": 2863866.903323715,
+      "temperatureK": 1904.2790734539574
+    },
+    {
+      "angleDeg": 40,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 897.3565260683398,
+      "volumeM3": 0.00012805559690613313,
+      "pressurePa": 2803021.6491860696,
+      "temperatureK": 1926.3242652490565
+    },
+    {
+      "angleDeg": 41,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 906.4841829218226,
+      "volumeM3": 0.00013228450311663468,
+      "pressurePa": 2741013.9859619965,
+      "temperatureK": 1945.9182910024188
+    },
+    {
+      "angleDeg": 42,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 914.4389627580158,
+      "volumeM3": 0.00013658512967614452,
+      "pressurePa": 2678004.4501952203,
+      "temperatureK": 1962.9945421668372
+    },
+    {
+      "angleDeg": 43,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 921.204113907034,
+      "volumeM3": 0.00014095526140581267,
+      "pressurePa": 2614174.4684644896,
+      "temperatureK": 1977.5170585110698
+    },
+    {
+      "angleDeg": 44,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 926.7768472485325,
+      "volumeM3": 0.00014539265181086103,
+      "pressurePa": 2549721.2842755252,
+      "temperatureK": 1989.4798527267922
+    },
+    {
+      "angleDeg": 45,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 931.1677542178373,
+      "volumeM3": 0.00014989502474521734,
+      "pressurePa": 2484852.9984249463,
+      "temperatureK": 1998.9056610824546
+    },
+    {
+      "angleDeg": 46,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 934.3999802662215,
+      "volumeM3": 0.00015446007611944891,
+      "pressurePa": 2419783.814022259,
+      "temperatureK": 2005.844169119001
+    },
+    {
+      "angleDeg": 47,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 936.5081832766738,
+      "volumeM3": 0.00015908547565119448,
+      "pressurePa": 2354729.5677200104,
+      "temperatureK": 2010.3697757169698
+    },
+    {
+      "angleDeg": 48,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 937.5373119672383,
+      "volumeM3": 0.0001637688686571419,
+      "pressurePa": 2289903.617591737,
+      "temperatureK": 2012.57897073713
+    },
+    {
+      "angleDeg": 49,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 937.5412434815628,
+      "volumeM3": 0.0001685078778854419,
+      "pressurePa": 2225513.1457270836,
+      "temperatureK": 2012.5874103831595
+    },
+    {
+      "angleDeg": 50,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 936.5813220205968,
+      "volumeM3": 0.00017330010538728702,
+      "pressurePa": 2161755.9202922503,
+      "temperatureK": 2010.5267801327798
+    },
+    {
+      "angleDeg": 51,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 934.724841434364,
+      "volumeM3": 0.0001781431344262117,
+      "pressurePa": 2098817.5479118098,
+      "temperatureK": 2006.541537369914
+    },
+    {
+      "angleDeg": 52,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 932.0435141696554,
+      "volumeM3": 0.00018303453142349372,
+      "pressurePa": 2036869.233189997,
+      "temperatureK": 2000.7856247275754
+    },
+    {
+      "angleDeg": 53,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 928.6119669357664,
+      "volumeM3": 0.00018797184793785474,
+      "pressurePa": 1976066.0484494977,
+      "temperatureK": 1993.419240785453
+    },
+    {
+      "angleDeg": 54,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 924.5063000537234,
+      "volumeM3": 0.0001929526226774731,
+      "pressurePa": 1916545.7037587245,
+      "temperatureK": 1984.6057474746497
+    },
+    {
+      "angleDeg": 55,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 919.8027429029013,
+      "volumeM3": 0.00019797438354212456,
+      "pressurePa": 1858427.795446955,
+      "temperatureK": 1974.5087837713688
+    },
+    {
+      "angleDeg": 56,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 914.5764324276514,
+      "volumeM3": 0.00020303464969308118,
+      "pressurePa": 1801813.5009175574,
+      "temperatureK": 1963.2896435592738
+    },
+    {
+      "angleDeg": 57,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 908.9003356019009,
+      "volumeM3": 0.00020813093364819654,
+      "pressurePa": 1746785.6789384587,
+      "temperatureK": 1951.1049625214566
+    },
+    {
+      "angleDeg": 58,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 902.8443303720915,
+      "volumeM3": 0.0002132607433994116,
+      "pressurePa": 1693409.3279064922,
+      "temperatureK": 1938.1047452323826
+    },
+    {
+      "angleDeg": 59,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 896.4744532055839,
+      "volumeM3": 0.00021842158454972053,
+      "pressurePa": 1641732.349948252,
+      "temperatureK": 1924.4307498960352
+    },
+    {
+      "angleDeg": 60,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 889.8523152405576,
+      "volumeM3": 0.0002236109624664385,
+      "pressurePa": 1591786.5661422824,
+      "temperatureK": 1910.2152350150682
+    },
+    {
+      "angleDeg": 61,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 883.0346834087034,
+      "volumeM3": 0.00022882638444742713,
+      "pressurePa": 1543588.927546212,
+      "temperatureK": 1895.5800602013567
+    },
+    {
+      "angleDeg": 62,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 876.0732179830168,
+      "volumeM3": 0.0002340653618967451,
+      "pressurePa": 1497142.8679301722,
+      "temperatureK": 1880.6361227789066
+    },
+    {
+      "angleDeg": 63,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 869.0143539365937,
+      "volumeM3": 0.0002393254125060123,
+      "pressurePa": 1452439.7469320353,
+      "temperatureK": 1865.4831031008803
+    },
+    {
+      "angleDeg": 64,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 861.8993103750418,
+      "volumeM3": 0.00024460406243760776,
+      "pressurePa": 1409460.3364895298,
+      "temperatureK": 1850.2094847978271
+    },
+    {
+      "angleDeg": 65,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 854.7642101590789,
+      "volumeM3": 0.0002498988485056537,
+      "pressurePa": 1368176.308567089,
+      "temperatureK": 1834.8928115673853
+    },
+    {
+      "angleDeg": 66,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 847.6402906464327,
+      "volumeM3": 0.0002552073203505974,
+      "pressurePa": 1328551.6880659466,
+      "temperatureK": 1819.6001395666399
+    },
+    {
+      "angleDeg": 67,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 840.5541861883004,
+      "volumeM3": 0.00026052704260305903,
+      "pressurePa": 1290544.2410736224,
+      "temperatureK": 1804.3886438375162
+    },
+    {
+      "angleDeg": 68,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 833.5282635128806,
+      "volumeM3": 0.0002658555970324926,
+      "pressurePa": 1254106.774981318,
+      "temperatureK": 1789.306338263027
+    },
+    {
+      "angleDeg": 69,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 826.580992287096,
+      "volumeM3": 0.0002711905846761065,
+      "pressurePa": 1219188.333214907,
+      "temperatureK": 1774.392871039325
+    },
+    {
+      "angleDeg": 70,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 819.7273347063899,
+      "volumeM3": 0.00027652962794339804,
+      "pressurePa": 1185735.2730018168,
+      "temperatureK": 1759.6803609946642
+    },
+    {
+      "angleDeg": 71,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 812.7436312071351,
+      "volumeM3": 0.00028187037269158943,
+      "pressurePa": 1153358.0112676893,
+      "temperatureK": 1744.6886858676537
+    },
+    {
+      "angleDeg": 72,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 805.9305658144142,
+      "volumeM3": 0.0002872104902672098,
+      "pressurePa": 1122424.9714063113,
+      "temperatureK": 1730.0633136711324
+    },
+    {
+      "angleDeg": 73,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 799.2831119337037,
+      "volumeM3": 0.0002925476795090399,
+      "pressurePa": 1092858.5908116973,
+      "temperatureK": 1715.7934539882247
+    },
+    {
+      "angleDeg": 74,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 792.7964181789117,
+      "volumeM3": 0.0002978796687076365,
+      "pressurePa": 1064586.1419391157,
+      "temperatureK": 1701.868692515945
+    },
+    {
+      "angleDeg": 75,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 786.4658017789976,
+      "volumeM3": 0.0003032042175166775,
+      "pressurePa": 1037539.3960154775,
+      "temperatureK": 1688.2789769114145
+    },
+    {
+      "angleDeg": 76,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 780.2867421653634,
+      "volumeM3": 0.00030851911881141995,
+      "pressurePa": 1011654.3119550499,
+      "temperatureK": 1675.0146030261371
+    },
+    {
+      "angleDeg": 77,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 774.2548747496911,
+      "volumeM3": 0.0003138222004896329,
+      "pressurePa": 986870.7485215259,
+      "temperatureK": 1662.0662015490973
+    },
+    {
+      "angleDeg": 78,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 768.3659848989955,
+      "volumeM3": 0.00031911132721047406,
+      "pressurePa": 963132.1979269127,
+      "temperatureK": 1649.4247250732135
+    },
+    {
+      "angleDeg": 79,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 762.6160021122228,
+      "volumeM3": 0.00032438440206690526,
+      "pressurePa": 940385.5391973264,
+      "temperatureK": 1637.0814355944435
+    },
+    {
+      "angleDeg": 80,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 757.0009944006788,
+      "volumeM3": 0.00032963936818739253,
+      "pressurePa": 918580.8097658295,
+      "temperatureK": 1625.0278924484455
+    },
+    {
+      "angleDeg": 81,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 751.5171628728722,
+      "volumeM3": 0.00033487421026282384,
+      "pressurePa": 897670.9938732501,
+      "temperatureK": 1613.255940686045
+    },
+    {
+      "angleDeg": 82,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 746.1608365229382,
+      "volumeM3": 0.0003400869559947748,
+      "pressurePa": 877611.8264699365,
+      "temperatureK": 1601.7576998857269
+    },
+    {
+      "angleDeg": 83,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 740.9284672206555,
+      "volumeM3": 0.0003452756774614938,
+      "pressurePa": 858361.6114150247,
+      "temperatureK": 1590.525553398876
+    },
+    {
+      "angleDeg": 84,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 735.8166249001041,
+      "volumeM3": 0.00035043849239821764,
+      "pressurePa": 839881.05286558,
+      "temperatureK": 1579.552138021435
+    },
+    {
+      "angleDeg": 85,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 730.8219929432506,
+      "volumeM3": 0.00035557356538872285,
+      "pressurePa": 822133.0988362937,
+      "temperatureK": 1568.830334084008
+    },
+    {
+      "angleDeg": 86,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 725.9413637541264,
+      "volumeM3": 0.0003606791089652966,
+      "pressurePa": 805082.7959919065,
+      "temperatureK": 1558.3532559511002
+    },
+    {
+      "angleDeg": 87,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 721.171634518773,
+      "volumeM3": 0.0003657533846146405,
+      "pressurePa": 788697.1548094929,
+      "temperatureK": 1548.114242919139
+    },
+    {
+      "angleDeg": 88,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 716.5098031457604,
+      "volumeM3": 0.00037079470368754484,
+      "pressurePa": 772945.0243167841,
+      "temperatureK": 1538.106850502126
+    },
+    {
+      "angleDeg": 89,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 711.9529643817949,
+      "volumeM3": 0.0003758014282105207,
+      "pressurePa": 757796.97567617,
+      "temperatureK": 1528.3248420931452
+    },
+    {
+      "angleDeg": 90,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 707.4983060967335,
+      "volumeM3": 0.0003807719715979374,
+      "pressurePa": 743225.193942364,
+      "temperatureK": 1518.7621809895327
+    },
+    {
+      "angleDeg": 91,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 703.1431057321873,
+      "volumeM3": 0.0003857047992635775,
+      "pressurePa": 729203.3773753312,
+      "temperatureK": 1509.4130227692158
+    },
+    {
+      "angleDeg": 92,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 698.8847269078138,
+      "volumeM3": 0.00039059842913089925,
+      "pressurePa": 715706.6437393173,
+      "temperatureK": 1500.271708005558
+    },
+    {
+      "angleDeg": 93,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 694.7206161793697,
+      "volumeM3": 0.00039545143204167984,
+      "pressurePa": 702711.4430640346,
+      "temperatureK": 1491.3327553079819
+    },
+    {
+      "angleDeg": 94,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 690.6482999426013,
+      "volumeM3": 0.00040026243206308325,
+      "pressurePa": 690195.4763856046,
+      "temperatureK": 1482.5908546756605
+    },
+    {
+      "angleDeg": 95,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 686.6653814770945,
+      "volumeM3": 0.0004050301066935885,
+      "pressurePa": 678137.6200229651,
+      "temperatureK": 1474.0408611516482
+    },
+    {
+      "angleDeg": 96,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 682.7695381242722,
+      "volumeM3": 0.0004097531869685848,
+      "pressurePa": 666517.8549804607,
+      "temperatureK": 1465.677788764989
+    },
+    {
+      "angleDeg": 97,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 678.9585185938199,
+      "volumeM3": 0.00041443045746680204,
+      "pressurePa": 655317.2010994947,
+      "temperatureK": 1457.4968047485097
+    },
+    {
+      "angleDeg": 98,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 675.2301403929318,
+      "volumeM3": 0.00041906075621911724,
+      "pressurePa": 644517.6556116072,
+      "temperatureK": 1449.493224020275
+    },
+    {
+      "angleDeg": 99,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 671.5822873728968,
+      "volumeM3": 0.00042364297452161543,
+      "pressurePa": 634102.1357724705,
+      "temperatureK": 1441.6625039169248
+    },
+    {
+      "angleDeg": 100,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 668.0129073876781,
+      "volumeM3": 0.000428176056655118,
+      "pressurePa": 624054.4252811789,
+      "temperatureK": 1434.0002391674318
+    },
+    {
+      "angleDeg": 101,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 664.5200100592938,
+      "volumeM3": 0.0004326589995137108,
+      "pressurePa": 614359.1242120785,
+      "temperatureK": 1426.5021570961171
+    },
+    {
+      "angleDeg": 102,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 661.1016646449589,
+      "volumeM3": 0.00043709085214509776,
+      "pressurePa": 605001.6022074036,
+      "temperatureK": 1419.1641130441203
+    },
+    {
+      "angleDeg": 103,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 657.7559980011093,
+      "volumeM3": 0.00044147071520588644,
+      "pressurePa": 595967.9546982907,
+      "temperatureK": 1411.98208599884
+    },
+    {
+      "angleDeg": 104,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 654.4811926396012,
+      "volumeM3": 0.0004457977403351621,
+      "pressurePa": 587244.9619395069,
+      "temperatureK": 1404.952174421242
+    },
+    {
+      "angleDeg": 105,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 651.2754848715401,
+      "volumeM3": 0.0004500711294499438,
+      "pressurePa": 578820.050659547,
+      "temperatureK": 1398.0705922612844
+    },
+    {
+      "angleDeg": 106,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 648.13716303437,
+      "volumeM3": 0.0004542901339663206,
+      "pressurePa": 570681.2581427713,
+      "temperatureK": 1391.3336651520683
+    },
+    {
+      "angleDeg": 107,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 645.0645657980244,
+      "volumeM3": 0.0004584540539502418,
+      "pressurePa": 562817.1985740898,
+      "temperatureK": 1384.7378267737124
+    },
+    {
+      "angleDeg": 108,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 642.0560805461101,
+      "volumeM3": 0.0004625622372021036,
+      "pressurePa": 555217.0314893922,
+      "temperatureK": 1378.2796153782954
+    },
+    {
+      "angleDeg": 109,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 639.1101418282661,
+      "volumeM3": 0.000466614078279388,
+      "pressurePa": 547870.4321866559,
+      "temperatureK": 1371.9556704675883
+    },
+    {
+      "angleDeg": 110,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 636.2252298800115,
+      "volumeM3": 0.00047060901746172714,
+      "pressurePa": 540767.5639634365,
+      "temperatureK": 1365.7627296156638
+    },
+    {
+      "angleDeg": 111,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 633.3998692065587,
+      "volumeM3": 0.0004745465396628296,
+      "pressurePa": 533899.0520563871,
+      "temperatureK": 1359.6976254288156
+    },
+    {
+      "angleDeg": 112,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 630.6326272272389,
+      "volumeM3": 0.0004784261732937673,
+      "pressurePa": 527255.9591676121,
+      "temperatureK": 1353.757282635595
+    },
+    {
+      "angleDeg": 113,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 627.922112977339,
+      "volumeM3": 0.0004822474890821387,
+      "pressurePa": 520829.76247110177,
+      "temperatureK": 1347.9387153000878
+    },
+    {
+      "angleDeg": 114,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 625.2669758643173,
+      "volumeM3": 0.0004860100988516304,
+      "pressurePa": 514612.3320002856,
+      "temperatureK": 1342.2390241519258
+    },
+    {
+      "angleDeg": 115,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 622.6659044755119,
+      "volumeM3": 0.0004897136542664716,
+      "pressurePa": 508595.910324931,
+      "temperatureK": 1336.6553940268361
+    },
+    {
+      "angleDeg": 116,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 620.1176254346095,
+      "volumeM3": 0.000493357845545238,
+      "pressurePa": 502773.0934322383,
+      "temperatureK": 1331.185091411862
+    },
+    {
+      "angleDeg": 117,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 617.6209023042852,
+      "volumeM3": 0.0004969424001483882,
+      "pressurePa": 497136.81273311516,
+      "temperatureK": 1325.8254620896967
+    },
+    {
+      "angleDeg": 118,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 615.1745345325695,
+      "volumeM3": 0.0005004670814438388,
+      "pressurePa": 491680.3181202661,
+      "temperatureK": 1320.573928876887
+    },
+    {
+      "angleDeg": 119,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 612.7773564406315,
+      "volumeM3": 0.0005039316873547734,
+      "pressurePa": 486397.1620099607,
+      "temperatureK": 1315.4279894509427
+    },
+    {
+      "angleDeg": 120,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 610.4282362497985,
+      "volumeM3": 0.0005073360489937669,
+      "pressurePa": 481281.18430417153,
+      "temperatureK": 1310.3852142616713
+    },
+    {
+      "angleDeg": 121,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 608.1260751457652,
+      "volumeM3": 0.0005106800292871681,
+      "pressurePa": 476326.4982142473,
+      "temperatureK": 1305.4432445223504
+    },
+    {
+      "angleDeg": 122,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 605.8698063780599,
+      "volumeM3": 0.0005139635215935399,
+      "pressurePa": 471527.4768914067,
+      "temperatureK": 1300.5997902765814
+    },
+    {
+      "angleDeg": 123,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 603.6583943929563,
+      "volumeM3": 0.0005171864483197948,
+      "pressurePa": 466878.7408131721,
+      "temperatureK": 1295.8526285369417
+    },
+    {
+      "angleDeg": 124,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 601.4908339981316,
+      "volumeM3": 0.0005203487595384921,
+      "pressurePa": 462375.1458783958,
+      "temperatureK": 1291.1996014917852
+    },
+    {
+      "angleDeg": 125,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 599.3661495574763,
+      "volumeM3": 0.000523450431609599,
+      "pressurePa": 458011.77216680325,
+      "temperatureK": 1286.6386147767682
+    },
+    {
+      "angleDeg": 126,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 597.283394214563,
+      "volumeM3": 0.0005264914658098119,
+      "pressurePa": 453783.9133220243,
+      "temperatureK": 1282.1676358078969
+    },
+    {
+      "angleDeg": 127,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 595.2416491433812,
+      "volumeM3": 0.0005294718869723768,
+      "pressurePa": 449687.06651987776,
+      "temperatureK": 1277.784692173105
+    },
+    {
+      "angleDeg": 128,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 593.2400228250319,
+      "volumeM3": 0.0005323917421401236,
+      "pressurePa": 445716.92298630223,
+      "temperatureK": 1273.48787007956
+    },
+    {
+      "angleDeg": 129,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 591.2776503491664,
+      "volumeM3": 0.0005352510992342662,
+      "pressurePa": 441869.3590317158,
+      "temperatureK": 1269.2753128540846
+    },
+    {
+      "angleDeg": 130,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 589.353692739035,
+      "volumeM3": 0.0005380500457413027,
+      "pressurePa": 438140.42757085775,
+      "temperatureK": 1265.1452194942638
+    },
+    {
+      "angleDeg": 131,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 587.4673362990873,
+      "volumeM3": 0.0005407886874201752,
+      "pressurePa": 434526.35009921656,
+      "temperatureK": 1261.0958432679595
+    },
+    {
+      "angleDeg": 132,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 585.6177919841406,
+      "volumeM3": 0.0005434671470316433,
+      "pressurePa": 431023.50909910136,
+      "temperatureK": 1257.125490359127
+    },
+    {
+      "angleDeg": 133,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 583.8042947891995,
+      "volumeM3": 0.0005460855630916513,
+      "pressurePa": 427628.44085018785,
+      "temperatureK": 1253.2325185579614
+    },
+    {
+      "angleDeg": 134,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 582.0261031590752,
+      "volumeM3": 0.0005486440886502725,
+      "pressurePa": 424337.8286210473,
+      "temperatureK": 1249.4153359935472
+    },
+    {
+      "angleDeg": 135,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 580.2824984170128,
+      "volumeM3": 0.0005511428900976449,
+      "pressurePa": 421148.49621970457,
+      "temperatureK": 1245.672399907314
+    },
+    {
+      "angleDeg": 136,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 578.5727842115908,
+      "volumeM3": 0.0005535821459981308,
+      "pressurePa": 418057.4018827148,
+      "temperatureK": 1242.0022154657127
+    },
+    {
+      "angleDeg": 137,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 576.8962859812093,
+      "volumeM3": 0.0005559620459537745,
+      "pressurePa": 415061.632483578,
+      "temperatureK": 1238.403334610652
+    },
+    {
+      "angleDeg": 138,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 575.2523504355318,
+      "volumeM3": 0.0005582827894979644,
+      "pressurePa": 412158.3980425598,
+      "temperatureK": 1234.8743549463275
+    },
+    {
+      "angleDeg": 139,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 573.6403450532919,
+      "volumeM3": 0.0005605445850200537,
+      "pressurePa": 409345.02652114246,
+      "temperatureK": 1231.41391866118
+    },
+    {
+      "angleDeg": 140,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 572.0596575959169,
+      "volumeM3": 0.0005627476487215553,
+      "pressurePa": 406618.9588854019,
+      "temperatureK": 1228.0207114838086
+    },
+    {
+      "angleDeg": 141,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 570.5096956364595,
+      "volumeM3": 0.0005648922036043781,
+      "pressurePa": 403977.7444236178,
+      "temperatureK": 1224.693461671744
+    },
+    {
+      "angleDeg": 142,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 568.9898861033647,
+      "volumeM3": 0.0005669784784914546,
+      "pressurePa": 401419.03630434914,
+      "temperatureK": 1221.43093903207
+    },
+    {
+      "angleDeg": 143,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 567.4996748386333,
+      "volumeM3": 0.0005690067070799756,
+      "pressurePa": 398940.58736208844,
+      "temperatureK": 1218.2319539729463
+    },
+    {
+      "angleDeg": 144,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 566.0385261699715,
+      "volumeM3": 0.0005709771270273491,
+      "pressurePa": 396540.24609841075,
+      "temperatureK": 1215.0953565851594
+    },
+    {
+      "angleDeg": 145,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 564.6059224965477,
+      "volumeM3": 0.0005728899790698842,
+      "pressurePa": 394215.9528872987,
+      "temperatureK": 1212.0200357528784
+    },
+    {
+      "angleDeg": 146,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 563.2013638879988,
+      "volumeM3": 0.0005747455061741141,
+      "pressurePa": 391965.7363740269,
+      "temperatureK": 1209.0049182928578
+    },
+    {
+      "angleDeg": 147,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 561.824367696359,
+      "volumeM3": 0.0005765439527205778,
+      "pressurePa": 389787.71005765605,
+      "temperatureK": 1206.0489681213767
+    },
+    {
+      "angleDeg": 148,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 560.4744681805967,
+      "volumeM3": 0.0005782855637198052,
+      "pressurePa": 387680.0690477976,
+      "temperatureK": 1203.1511854482467
+    },
+    {
+      "angleDeg": 149,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 559.1512161434756,
+      "volumeM3": 0.0005799705840601775,
+      "pressurePa": 385641.08698689326,
+      "temperatureK": 1200.3106059972733
+    },
+    {
+      "angleDeg": 150,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 557.8541785804646,
+      "volumeM3": 0.0005815992577872702,
+      "pressurePa": 383669.11312978953,
+      "temperatureK": 1197.5263002525828
+    },
+    {
+      "angleDeg": 151,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 556.5829383404457,
+      "volumeM3": 0.0005831718274142295,
+      "pressurePa": 381762.56957289693,
+      "temperatureK": 1194.7973727302763
+    },
+    {
+      "angleDeg": 152,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 555.3370937979793,
+      "volumeM3": 0.000584688533262687,
+      "pressurePa": 379919.94862569263,
+      "temperatureK": 1192.1229612748916
+    },
+    {
+      "angleDeg": 153,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 554.1162585369036,
+      "volumeM3": 0.0005861496128336671,
+      "pressurePa": 378139.81031777716,
+      "temperatureK": 1189.5022363801997
+    },
+    {
+      "angleDeg": 154,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 552.9200610450561,
+      "volumeM3": 0.0005875553002079183,
+      "pressurePa": 376420.7800351007,
+      "temperatureK": 1186.93440053387
+    },
+    {
+      "angleDeg": 155,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 551.7481444199178,
+      "volumeM3": 0.0005889058254750586,
+      "pressurePa": 374761.54627937905,
+      "temperatureK": 1184.4186875855914
+    },
+    {
+      "angleDeg": 156,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 550.6001660849906,
+      "volumeM3": 0.0005902014141909067,
+      "pressurePa": 373160.85854507505,
+      "temperatureK": 1181.954362138225
+    },
+    {
+      "angleDeg": 157,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 549.4757975167306,
+      "volumeM3": 0.0005914422868623551,
+      "pressurePa": 371617.52530867554,
+      "temperatureK": 1179.5407189616246
+    },
+    {
+      "angleDeg": 158,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 548.3747239818663,
+      "volumeM3": 0.0005926286584591246,
+      "pressurePa": 370130.41212531185,
+      "temperatureK": 1177.1770824287455
+    },
+    {
+      "angleDeg": 159,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 547.2966442849419,
+      "volumeM3": 0.0005937607379517325,
+      "pressurePa": 368698.43982808583,
+      "temperatureK": 1174.8628059737039
+    },
+    {
+      "angleDeg": 160,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 546.2412705259317,
+      "volumeM3": 0.0005948387278750095,
+      "pressurePa": 367320.582825744,
+      "temperatureK": 1172.5972715714572
+    },
+    {
+      "angleDeg": 161,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 545.2083278677804,
+      "volumeM3": 0.000595862823916493,
+      "pressurePa": 365995.86749462207,
+      "temperatureK": 1170.37988923879
+    },
+    {
+      "angleDeg": 162,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 544.1975543137306,
+      "volumeM3": 0.0005968332145290406,
+      "pressurePa": 364723.3706610348,
+      "temperatureK": 1168.2100965563106
+    },
+    {
+      "angleDeg": 163,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 543.208700494303,
+      "volumeM3": 0.0005977500805670044,
+      "pressurePa": 363502.2181705334,
+      "temperatureK": 1166.0873582111697
+    },
+    {
+      "angleDeg": 164,
+      "massKg": 0.0006491395504009702,
+      "internalEnergyJ": 542.2415294638049,
+      "volumeM3": 0.0005986135949453354,
+      "pressurePa": 362331.5835406789,
+      "temperatureK": 1164.0111655602316
+    },
+    {
+      "angleDeg": 165,
+      "massKg": 0.0006490812016743798,
+      "internalEnergyJ": 541.2276929520012,
+      "volumeM3": 0.0005994239223209863,
+      "pressurePa": 361165.2273445159,
+      "temperatureK": 1161.9392401050927
+    },
+    {
+      "angleDeg": 166,
+      "massKg": 0.0006486240117657329,
+      "internalEnergyJ": 539.7704320839181,
+      "volumeM3": 0.0006001812187960162,
+      "pressurePa": 359738.30248584965,
+      "temperatureK": 1159.627508034894
+    },
+    {
+      "angleDeg": 167,
+      "massKg": 0.0006477053205622805,
+      "internalEnergyJ": 537.799088575018,
+      "volumeM3": 0.0006008856316418097,
+      "pressurePa": 358004.29250110744,
+      "temperatureK": 1157.0311129411114
+    },
+    {
+      "angleDeg": 168,
+      "massKg": 0.0006463245166954918,
+      "internalEnergyJ": 535.3159125098675,
+      "volumeM3": 0.0006015372990438556,
+      "pressurePa": 355965.2333185343,
+      "temperatureK": 1154.1492221148108
+    },
+    {
+      "angleDeg": 169,
+      "massKg": 0.0006444820014063446,
+      "internalEnergyJ": 532.324684791197,
+      "volumeM3": 0.0006021363498665537,
+      "pressurePa": 353624.01549693616,
+      "temperatureK": 1150.9812597390062
+    },
+    {
+      "angleDeg": 170,
+      "massKg": 0.0006421791985706054,
+      "internalEnergyJ": 528.830716963704,
+      "volumeM3": 0.0006026829034375462,
+      "pressurePa": 350984.38263132493,
+      "temperatureK": 1147.526911722582
+    },
+    {
+      "angleDeg": 171,
+      "massKg": 0.0006394185605045002,
+      "internalEnergyJ": 524.8408426537333,
+      "volumeM3": 0.0006031770693511036,
+      "pressurePa": 348050.92522390187,
+      "temperatureK": 1143.786129872379
+    },
+    {
+      "angleDeg": 172,
+      "massKg": 0.0006362035711639333,
+      "internalEnergyJ": 520.3634025172269,
+      "volumeM3": 0.0006036189472901229,
+      "pressurePa": 344829.0712896524,
+      "temperatureK": 1139.7591366130382
+    },
+    {
+      "angleDeg": 173,
+      "massKg": 0.0006325387406035354,
+      "internalEnergyJ": 515.4082157290029,
+      "volumeM3": 0.0006040086268663354,
+      "pressurePa": 341325.0690825384,
+      "temperatureK": 1135.4464258995429
+    },
+    {
+      "angleDeg": 174,
+      "massKg": 0.0006284296035664556,
+      "internalEnergyJ": 509.98655289122286,
+      "volumeM3": 0.0006043461874783492,
+      "pressurePa": 337545.97180080204,
+      "temperatureK": 1130.848769566413
+    },
+    {
+      "angleDeg": 175,
+      "massKg": 0.000623882705775356,
+      "internalEnergyJ": 504.11109165930213,
+      "volumeM3": 0.0006046316981871957,
+      "pressurePa": 333499.61186006345,
+      "temperatureK": 1125.9672173605136
+    },
+    {
+      "angleDeg": 176,
+      "massKg": 0.0006189055907078052,
+      "internalEnergyJ": 497.79586992370093,
+      "volumeM3": 0.0006048652176090767,
+      "pressurePa": 329194.57454763114,
+      "temperatureK": 1120.8030997928547
+    },
+    {
+      "angleDeg": 177,
+      "massKg": 0.0006135067797765303,
+      "internalEnergyJ": 491.0562286817999,
+      "volumeM3": 0.000605046793825059,
+      "pressurePa": 324640.16581420443,
+      "temperatureK": 1115.3580287211128
+    },
+    {
+      "angleDeg": 178,
+      "massKg": 0.000607695750101527,
+      "internalEnergyJ": 483.90874960421434,
+      "volumeM3": 0.0006051764643074904,
+      "pressurePa": 319846.37747467984,
+      "temperatureK": 1109.633898620908
+    },
+    {
+      "angleDeg": 179,
+      "massKg": 0.0006014829357447483,
+      "internalEnergyJ": 476.3712162047976,
+      "volumeM3": 0.0006052542558629551,
+      "pressurePa": 314823.8688718349,
+      "temperatureK": 1103.632907517462
+    },
+    {
+      "angleDeg": 180,
+      "massKg": 0.0005949078470132546,
+      "internalEnergyJ": 468.4935782040996,
+      "volumeM3": 0.0006052801845916337,
+      "pressurePa": 309604.4378324921,
+      "temperatureK": 1097.3783427098388
+    },
+    {
+      "angleDeg": 181,
+      "massKg": 0.000588027428913891,
+      "internalEnergyJ": 460.3442539205063,
+      "volumeM3": 0.0006052542558629551,
+      "pressurePa": 304231.98149290815,
+      "temperatureK": 1090.906632610698
+    },
+    {
+      "angleDeg": 182,
+      "massKg": 0.0005808617121421621,
+      "internalEnergyJ": 451.9502403263388,
+      "volumeM3": 0.0006051764643074904,
+      "pressurePa": 298722.94577318704,
+      "temperatureK": 1084.2272322957638
+    },
+    {
+      "angleDeg": 183,
+      "massKg": 0.0005734299117011955,
+      "internalEnergyJ": 443.3373388557415,
+      "volumeM3": 0.0006050467938250589,
+      "pressurePa": 293092.92661679746,
+      "temperatureK": 1077.3489854074758
+    },
+    {
+      "angleDeg": 184,
+      "massKg": 0.0005657512240888752,
+      "internalEnergyJ": 434.5310094184038,
+      "volumeM3": 0.0006048652176090767,
+      "pressurePa": 287357.24704821117,
+      "temperatureK": 1070.280744971446
+    },
+    {
+      "angleDeg": 185,
+      "massKg": 0.0005578447590517497,
+      "internalEnergyJ": 425.55626896112375,
+      "volumeM3": 0.0006046316981871956,
+      "pressurePa": 281530.9023572696,
+      "temperatureK": 1063.031357147285
+    },
+    {
+      "angleDeg": 186,
+      "massKg": 0.0005497294752155272,
+      "internalEnergyJ": 416.43759845480287,
+      "volumeM3": 0.0006043461874783493,
+      "pressurePa": 275628.51033603755,
+      "temperatureK": 1055.609645709382
+    },
+    {
+      "angleDeg": 187,
+      "massKg": 0.0005414241170105333,
+      "internalEnergyJ": 407.19885558407327,
+      "volumeM3": 0.0006040086268663354,
+      "pressurePa": 269664.2646954674,
+      "temperatureK": 1048.0243951523184
+    },
+    {
+      "angleDeg": 188,
+      "massKg": 0.0005329471635048807,
+      "internalEnergyJ": 397.86320432808026,
+      "volumeM3": 0.0006036189472901229,
+      "pressurePa": 263651.8990096257,
+      "temperatureK": 1040.284340500031
+    },
+    {
+      "angleDeg": 189,
+      "massKg": 0.0005243167686197769,
+      "internalEnergyJ": 388.4530396266031,
+      "volumeM3": 0.0006031770693511036,
+      "pressurePa": 257604.64670482237,
+      "temperatureK": 1032.3981479510005
+    },
+    {
+      "angleDeg": 190,
+      "massKg": 0.0005155507203898049,
+      "internalEnergyJ": 378.98993617719685,
+      "volumeM3": 0.0006026829034375462,
+      "pressurePa": 251535.21629071402,
+      "temperatureK": 1024.3744077067865
+    },
+    {
+      "angleDeg": 191,
+      "massKg": 0.0005066663908666628,
+      "internalEnergyJ": 369.4945913657701,
+      "volumeM3": 0.0006021363498665537,
+      "pressurePa": 245455.7619367493,
+      "temperatureK": 1016.2216168942125
+    },
+    {
+      "angleDeg": 192,
+      "massKg": 0.0004976807047178937,
+      "internalEnergyJ": 359.98679132096817,
+      "volumeM3": 0.0006015372990438556,
+      "pressurePa": 239377.868599781,
+      "temperatureK": 1007.9481746446895
+    },
+    {
+      "angleDeg": 193,
+      "massKg": 0.0004886100955116416,
+      "internalEnergyJ": 350.4853678847664,
+      "volumeM3": 0.0006008856316418097,
+      "pressurePa": 233312.53032436763,
+      "temperatureK": 999.562364752235
+    },
+    {
+      "angleDeg": 194,
+      "massKg": 0.0004794704817429196,
+      "internalEnergyJ": 341.0081791357842,
+      "volumeM3": 0.0006001812187960162,
+      "pressurePa": 227270.14338759752,
+      "temperatureK": 991.0723515311715
+    },
+    {
+      "angleDeg": 195,
+      "massKg": 0.0004702785204105354,
+      "internalEnergyJ": 331.5733540529907,
+      "volumeM3": 0.0005994239223209864,
+      "pressurePa": 221261.3422361451,
+      "temperatureK": 982.4872416017976
+    },
+    {
+      "angleDeg": 196,
+      "massKg": 0.00046105611526736585,
+      "internalEnergyJ": 322.20365984462234,
+      "volumeM3": 0.0005986135949453353,
+      "pressurePa": 215299.92807734048,
+      "temperatureK": 973.8209706654749
+    },
+    {
+      "angleDeg": 197,
+      "massKg": 0.0004518270573625458,
+      "internalEnergyJ": 312.9230037251936,
+      "volumeM3": 0.0005977500805670044,
+      "pressurePa": 209400.55979807876,
+      "temperatureK": 965.0897335064869
+    },
+    {
+      "angleDeg": 198,
+      "massKg": 0.00044261566342972835,
+      "internalEnergyJ": 303.7550266178226,
+      "volumeM3": 0.0005968332145290406,
+      "pressurePa": 203577.82993529591,
+      "temperatureK": 956.3109636602442
+    },
+    {
+      "angleDeg": 199,
+      "massKg": 0.0004334467664501303,
+      "internalEnergyJ": 294.7230577360495,
+      "volumeM3": 0.000595862823916493,
+      "pressurePa": 197846.24642221566,
+      "temperatureK": 947.5034217416737
+    },
+    {
+      "angleDeg": 200,
+      "massKg": 0.0004243456994127717,
+      "internalEnergyJ": 285.85006662752244,
+      "volumeM3": 0.0005948387278750095,
+      "pressurePa": 192220.21245905606,
+      "temperatureK": 938.6872798501608
+    },
+    {
+      "angleDeg": 201,
+      "massKg": 0.0004153382659342131,
+      "internalEnergyJ": 277.1586078607203,
+      "volumeM3": 0.0005937607379517325,
+      "pressurePa": 186714.00120986157,
+      "temperatureK": 929.8841946349453
+    },
+    {
+      "angleDeg": 202,
+      "massKg": 0.0004064507119850708,
+      "internalEnergyJ": 268.67077317484853,
+      "volumeM3": 0.0005926286584591246,
+      "pressurePa": 181341.73522651507,
+      "temperatureK": 921.1173795401029
+    },
+    {
+      "angleDeg": 203,
+      "massKg": 0.0003977096923048295,
+      "internalEnergyJ": 260.4081459397179,
+      "volumeM3": 0.0005914422868623551,
+      "pressurePa": 176117.36713734298,
+      "temperatureK": 912.4116683116475
+    },
+    {
+      "angleDeg": 204,
+      "massKg": 0.00038914221838520633,
+      "internalEnergyJ": 252.39174730815205,
+      "volumeM3": 0.0005902014141909067,
+      "pressurePa": 171054.6543871976,
+      "temperatureK": 903.7935550155933
+    },
+    {
+      "angleDeg": 205,
+      "massKg": 0.00038077559888698127,
+      "internalEnergyJ": 244.64198582450322,
+      "volumeM3": 0.0005889058254750586,
+      "pressurePa": 166167.13589284354,
+      "temperatureK": 895.2912162608937
+    },
+    {
+      "angleDeg": 206,
+      "massKg": 0.00037263736722518455,
+      "internalEnergyJ": 237.17860722303502,
+      "volumeM3": 0.0005875553002079183,
+      "pressurePa": 161468.10837318937,
+      "temperatureK": 886.9345068130781
+    },
+    {
+      "angleDeg": 207,
+      "massKg": 0.0003647551886515631,
+      "internalEnergyJ": 230.02063927776712,
+      "volumeM3": 0.0005861496128336672,
+      "pressurePa": 156970.5987969597,
+      "temperatureK": 878.7549163654238
+    },
+    {
+      "angleDeg": 208,
+      "massKg": 0.00035715674689663804,
+      "internalEnergyJ": 223.1863337291891,
+      "volumeM3": 0.000584688533262687,
+      "pressurePa": 152687.3342179376,
+      "temperatureK": 870.7854817789814
+    },
+    {
+      "angleDeg": 209,
+      "massKg": 0.0003498696027693047,
+      "internalEnergyJ": 216.69310043277306,
+      "volumeM3": 0.0005831718274142296,
+      "pressurePa": 148630.70556311694,
+      "temperatureK": 863.0606413624664
+    },
+    {
+      "angleDeg": 210,
+      "massKg": 0.0003429210183780613,
+      "internalEnergyJ": 210.55743009331513,
+      "volumeM3": 0.0005815992577872701,
+      "pressurePa": 144812.7226945878,
+      "temperatureK": 855.6160184327985
+    },
+    {
+      "angleDeg": 211,
+      "massKg": 0.00033633773681699997,
+      "internalEnergyJ": 204.794798553459,
+      "volumeM3": 0.0005799705840601775,
+      "pressurePa": 141244.9556456881,
+      "temperatureK": 848.4881174682495
+    },
+    {
+      "angleDeg": 212,
+      "massKg": 0.00033014570341577566,
+      "internalEnergyJ": 199.41954228771837,
+      "volumeM3": 0.0005782855637198052,
+      "pressurePa": 137938.45449293798,
+      "temperatureK": 841.7139125071476
+    },
+    {
+      "angleDeg": 213,
+      "massKg": 0.0003243697081973038,
+      "internalEnergyJ": 194.44468906814083,
+      "volumeM3": 0.0005765439527205778,
+      "pressurePa": 134903.63615859725,
+      "temperatureK": 835.3303014040896
+    },
+    {
+      "angleDeg": 214,
+      "massKg": 0.00031903291915928066,
+      "internalEnergyJ": 189.88171904692516,
+      "volumeM3": 0.0005747455061741143,
+      "pressurePa": 132150.12001461533,
+      "temperatureK": 829.3733902246022
+    },
+    {
+      "angleDeg": 215,
+      "massKg": 0.00031415625929764976,
+      "internalEnergyJ": 185.74021720187375,
+      "volumeM3": 0.0005728899790698841,
+      "pressurePa": 129686.48360959803,
+      "temperatureK": 823.8775561882723
+    },
+    {
+      "angleDeg": 216,
+      "massKg": 0.0003097575527118029,
+      "internalEnergyJ": 182.027354822602,
+      "volumeM3": 0.0005709771270273491,
+      "pressurePa": 127519.89262356778,
+      "temperatureK": 818.8742105785626
+    },
+    {
+      "angleDeg": 217,
+      "massKg": 0.0003058503184841399,
+      "internalEnergyJ": 178.74709885431247,
+      "volumeM3": 0.0005690067070799756,
+      "pressurePa": 125655.5303339783,
+      "temperatureK": 814.3901359985911
+    },
+    {
+      "angleDeg": 218,
+      "massKg": 0.0003024420129854314,
+      "internalEnergyJ": 175.89898353278906,
+      "volumeM3": 0.0005669784784914547,
+      "pressurePa": 124095.70395038556,
+      "temperatureK": 810.4451916910143
+    },
+    {
+      "angleDeg": 219,
+      "massKg": 0.0002995313976248096,
+      "internalEnergyJ": 173.47617739810946,
+      "volumeM3": 0.0005648922036043781,
+      "pressurePa": 122838.42920204531,
+      "temperatureK": 807.0490506041367
+    },
+    {
+      "angleDeg": 220,
+      "massKg": 0.00029710454900338563,
+      "internalEnergyJ": 171.462447787841,
+      "volumeM3": 0.0005627476487215553,
+      "pressurePa": 121875.1944516287,
+      "temperatureK": 804.1964620114255
+    },
+    {
+      "angleDeg": 221,
+      "massKg": 0.00029512900918466045,
+      "internalEnergyJ": 169.8276066071888,
+      "volumeM3": 0.0005605445850200537,
+      "pressurePa": 121187.58160949008,
+      "temperatureK": 801.8605165331849
+    },
+    {
+      "angleDeg": 222,
+      "massKg": 0.00029354648781750644,
+      "internalEnergyJ": 168.52175088682375,
+      "volumeM3": 0.0005582827894979644,
+      "pressurePa": 120742.93104279059,
+      "temperatureK": 799.9843927324606
+    },
+    {
+      "angleDeg": 223,
+      "massKg": 0.00029226851221573233,
+      "internalEnergyJ": 167.47180056493733,
+      "volumeM3": 0.0005559620459537745,
+      "pressurePa": 120491.5348331974,
+      "temperatureK": 798.4764301966122
+    },
+    {
+      "angleDeg": 224,
+      "massKg": 0.0002911862031943777,
+      "internalEnergyJ": 166.58925719896564,
+      "volumeM3": 0.0005535821459981306,
+      "pressurePa": 120371.84248317732,
+      "temperatureK": 797.2208312136455
+    },
+    {
+      "angleDeg": 225,
+      "massKg": 0.00029019894731938833,
+      "internalEnergyJ": 165.79296732792903,
+      "volumeM3": 0.000551142890097645,
+      "pressurePa": 120326.6668638732,
+      "temperatureK": 796.1093268220967
+    },
+    {
+      "angleDeg": 226,
+      "massKg": 0.0002892389621449842,
+      "internalEnergyJ": 165.0285024298694,
+      "volumeM3": 0.0005486440886502727,
+      "pressurePa": 120317.34659593865,
+      "temperatureK": 795.068604080262
+    },
+    {
+      "angleDeg": 227,
+      "massKg": 0.0002882709787292361,
+      "internalEnergyJ": 164.2676559560098,
+      "volumeM3": 0.0005460855630916513,
+      "pressurePa": 120323.74928647597,
+      "temperatureK": 794.060471824501
+    },
+    {
+      "angleDeg": 228,
+      "massKg": 0.00028727923808176983,
+      "internalEnergyJ": 163.4979013755344,
+      "volumeM3": 0.0005434671470316433,
+      "pressurePa": 120336.91623756218,
+      "temperatureK": 793.0679191860198
+    },
+    {
+      "angleDeg": 229,
+      "massKg": 0.00028625710853520133,
+      "internalEnergyJ": 162.71403244754697,
+      "volumeM3": 0.0005407886874201752,
+      "pressurePa": 120353.13329039625,
+      "temperatureK": 792.083867474706
+    },
+    {
+      "angleDeg": 230,
+      "massKg": 0.00028520179895430957,
+      "internalEnergyJ": 161.91391758914892,
+      "volumeM3": 0.0005380500457413029,
+      "pressurePa": 120370.89774135836,
+      "temperatureK": 791.1054208985945
+    },
+    {
+      "angleDeg": 231,
+      "massKg": 0.0002841120782483933,
+      "internalEnergyJ": 161.09667146404723,
+      "volumeM3": 0.0005352510992342661,
+      "pressurePa": 120389.6053231937,
+      "temperatureK": 790.1313805379042
+    },
+    {
+      "angleDeg": 232,
+      "massKg": 0.00028298735160849254,
+      "internalEnergyJ": 160.26191521103254,
+      "volumeM3": 0.0005323917421401236,
+      "pressurePa": 120409.01653869165,
+      "temperatureK": 789.1612351120153
+    },
+    {
+      "angleDeg": 233,
+      "massKg": 0.0002818272848089652,
+      "internalEnergyJ": 159.40947586141476,
+      "volumeM3": 0.0005294718869723766,
+      "pressurePa": 120429.03865808563,
+      "temperatureK": 788.1947492473068
+    },
+    {
+      "angleDeg": 234,
+      "massKg": 0.0002806316592110009,
+      "internalEnergyJ": 158.5392703166208,
+      "volumeM3": 0.0005264914658098121,
+      "pressurePa": 120449.64115250515,
+      "temperatureK": 787.2318038963062
+    },
+    {
+      "angleDeg": 235,
+      "massKg": 0.0002794003083826046,
+      "internalEnergyJ": 157.651254601794,
+      "volumeM3": 0.0005234504316095989,
+      "pressurePa": 120470.81830997423,
+      "temperatureK": 786.272325896633
+    },
+    {
+      "angleDeg": 236,
+      "massKg": 0.00027813309503811926,
+      "internalEnergyJ": 156.74540527917674,
+      "volumeM3": 0.0005203487595384924,
+      "pressurePa": 120492.57533981424,
+      "temperatureK": 785.3162617787493
+    },
+    {
+      "angleDeg": 237,
+      "massKg": 0.0002768299014599981,
+      "internalEnergyJ": 155.8217116126803,
+      "volumeM3": 0.0005171864483197948,
+      "pressurePa": 120514.92232165384,
+      "temperatureK": 784.3635663543712
+    },
+    {
+      "angleDeg": 238,
+      "massKg": 0.00027549062541967496,
+      "internalEnergyJ": 154.8801721109422,
+      "volumeM3": 0.0005139635215935399,
+      "pressurePa": 120537.87134988677,
+      "temperatureK": 783.4141973160334
+    },
+    {
+      "angleDeg": 239,
+      "massKg": 0.00027411517906748655,
+      "internalEnergyJ": 153.92079342669402,
+      "volumeM3": 0.0005106800292871681,
+      "pressurePa": 120561.4354189993,
+      "temperatureK": 782.4681131052151
+    },
+    {
+      "angleDeg": 240,
+      "massKg": 0.000272703489451794,
+      "internalEnergyJ": 152.9435905406828,
+      "volumeM3": 0.0005073360489937669,
+      "pressurePa": 120585.62827855494,
+      "temperatureK": 781.5252725887237
+    },
+    {
+      "angleDeg": 241,
+      "massKg": 0.0002712554979899965,
+      "internalEnergyJ": 151.94858612107674,
+      "volumeM3": 0.0005039316873547734,
+      "pressurePa": 120610.46362746645,
+      "temperatureK": 780.5856335145812
+    },
+    {
+      "angleDeg": 242,
+      "massKg": 0.00026977116105070736,
+      "internalEnergyJ": 150.935810755958,
+      "volumeM3": 0.0005004670814438389,
+      "pressurePa": 120635.95497271129,
+      "temperatureK": 779.6491522024605
+    },
+    {
+      "angleDeg": 243,
+      "massKg": 0.00026825045281980795,
+      "internalEnergyJ": 149.90530497139997,
+      "volumeM3": 0.0004969424001483882,
+      "pressurePa": 120662.11691869148,
+      "temperatureK": 778.7157858763809
+    },
+    {
+      "angleDeg": 244,
+      "massKg": 0.0002666933628545269,
+      "internalEnergyJ": 148.8571170833394,
+      "volumeM3": 0.0004933578455452381,
+      "pressurePa": 120688.96313492597,
+      "temperatureK": 777.7854888566525
+    },
+    {
+      "angleDeg": 245,
+      "massKg": 0.00026509989914548005,
+      "internalEnergyJ": 147.79130536406038,
+      "volumeM3": 0.000489713654266472,
+      "pressurePa": 120716.50776038312,
+      "temperatureK": 776.858215100653
+    },
+    {
+      "angleDeg": 246,
+      "massKg": 0.0002634700878836619,
+      "internalEnergyJ": 146.70793762552537,
+      "volumeM3": 0.0004860100988516304,
+      "pressurePa": 120744.76474639057,
+      "temperatureK": 775.9339169355338
+    },
+    {
+      "angleDeg": 247,
+      "massKg": 0.00026180397447809095,
+      "internalEnergyJ": 145.6070917806237,
+      "volumeM3": 0.00048224748908213877,
+      "pressurePa": 120773.74798384748,
+      "temperatureK": 775.0125452365342
+    },
+    {
+      "angleDeg": 248,
+      "massKg": 0.0002601016243376372,
+      "internalEnergyJ": 144.48885621887877,
+      "volumeM3": 0.0004784261732937673,
+      "pressurePa": 120803.47128513678,
+      "temperatureK": 774.0940493352456
+    },
+    {
+      "angleDeg": 249,
+      "massKg": 0.0002583631236384367,
+      "internalEnergyJ": 143.35333017062695,
+      "volumeM3": 0.0004745465396628296,
+      "pressurePa": 120833.94836045458,
+      "temperatureK": 773.1783769156395
+    },
+    {
+      "angleDeg": 250,
+      "massKg": 0.0002565885800930099,
+      "internalEnergyJ": 142.20062407281517,
+      "volumeM3": 0.0004706090174617274,
+      "pressurePa": 120865.19280041607,
+      "temperatureK": 772.2654739194983
+    },
+    {
+      "angleDeg": 251,
+      "massKg": 0.0002547781237074837,
+      "internalEnergyJ": 141.03085992641695,
+      "volumeM3": 0.00046661407827938814,
+      "pressurePa": 120897.21805776618,
+      "temperatureK": 771.3552844479196
+    },
+    {
+      "angleDeg": 252,
+      "massKg": 0.0002529319075299423,
+      "internalEnergyJ": 139.84417164844479,
+      "volumeM3": 0.00046256223720210347,
+      "pressurePa": 120930.03743177919,
+      "temperatureK": 770.4477506653172
+    },
+    {
+      "angleDeg": 253,
+      "massKg": 0.0002510501083862601,
+      "internalEnergyJ": 138.64070541635311,
+      "volumeM3": 0.00045845405395024196,
+      "pressurePa": 120963.6640546757,
+      "temperatureK": 769.5428127045003
+    },
+    {
+      "angleDeg": 254,
+      "massKg": 0.00024913292760207317,
+      "internalEnergyJ": 137.4206200044307,
+      "volumeM3": 0.00045429013396632045,
+      "pressurePa": 120998.11088093634,
+      "temperatureK": 768.640408574248
+    },
+    {
+      "angleDeg": 255,
+      "massKg": 0.00024718059170551727,
+      "internalEnergyJ": 136.18408710867627,
+      "volumeM3": 0.0004500711294499438,
+      "pressurePa": 121033.39067770391,
+      "temperatureK": 767.7404740658878
+    },
+    {
+      "angleDeg": 256,
+      "massKg": 0.0002451933531142462,
+      "internalEnergyJ": 134.9312916635293,
+      "volumeM3": 0.0004457977403351621,
+      "pressurePa": 121069.51602050246,
+      "temperatureK": 766.8429426663461
+    },
+    {
+      "angleDeg": 257,
+      "massKg": 0.00024317149079495495,
+      "internalEnergyJ": 133.66243214202373,
+      "volumeM3": 0.00044147071520588655,
+      "pressurePa": 121106.49928812443,
+      "temperatureK": 765.9477454662883
+    },
+    {
+      "angleDeg": 258,
+      "massKg": 0.0002411153109010665,
+      "internalEnergyJ": 132.37772084440135,
+      "volumeM3": 0.00043709085214509803,
+      "pressurePa": 121144.3526623676,
+      "temperatureK": 765.0548110734203
+    },
+    {
+      "angleDeg": 259,
+      "massKg": 0.0002390251473863111,
+      "internalEnergyJ": 131.07738417407558,
+      "volumeM3": 0.00043265899951371094,
+      "pressurePa": 121183.08813305682,
+      "temperatureK": 764.1640655314516
+    },
+    {
+      "angleDeg": 260,
+      "massKg": 0.0002369013625842629,
+      "internalEnergyJ": 129.76166289395516,
+      "volumeM3": 0.000428176056655118,
+      "pressurePa": 121222.71750330398,
+      "temperatureK": 763.2754322353394
+    },
+    {
+      "angleDeg": 261,
+      "massKg": 0.00023474434775855153,
+      "internalEnergyJ": 128.43081236740048,
+      "volumeM3": 0.00042364297452161543,
+      "pressurePa": 121263.25240013869,
+      "temperatureK": 762.3888318517862
+    },
+    {
+      "angleDeg": 262,
+      "massKg": 0.00023255452362432673,
+      "internalEnergyJ": 127.08510278486456,
+      "volumeM3": 0.0004190607562191171,
+      "pressurePa": 121304.70429296387,
+      "temperatureK": 761.5041822490779
+    },
+    {
+      "angleDeg": 263,
+      "massKg": 0.00023033234082562134,
+      "internalEnergyJ": 125.7248193650521,
+      "volumeM3": 0.00041443045746680204,
+      "pressurePa": 121347.08451067284,
+      "temperatureK": 760.6213984194363
+    },
+    {
+      "angleDeg": 264,
+      "massKg": 0.00022807828038095253,
+      "internalEnergyJ": 124.35026254064796,
+      "volumeM3": 0.0004097531869685848,
+      "pressurePa": 121390.40426810073,
+      "temperatureK": 759.7403924127365
+    },
+    {
+      "angleDeg": 265,
+      "massKg": 0.0002257928540896297,
+      "internalEnergyJ": 122.9617481233895,
+      "volumeM3": 0.0004050301066935885,
+      "pressurePa": 121434.67469830526,
+      "temperatureK": 758.8610732748654
+    },
+    {
+      "angleDeg": 266,
+      "massKg": 0.00022347660489537604,
+      "internalEnergyJ": 121.55960744642485,
+      "volumeM3": 0.00040026243206308325,
+      "pressurePa": 121479.90688995409,
+      "temperatureK": 757.9833469890316
+    },
+    {
+      "angleDeg": 267,
+      "massKg": 0.00022113010719793027,
+      "internalEnergyJ": 120.1441874773562,
+      "volumeM3": 0.00039545143204168016,
+      "pressurePa": 121526.1119243519,
+      "temperatureK": 757.1071164098563
+    },
+    {
+      "angleDeg": 268,
+      "massKg": 0.00021875396714218472,
+      "internalEnergyJ": 118.7158509249445,
+      "volumeM3": 0.0003905984291308996,
+      "pressurePa": 121573.30093630227,
+      "temperatureK": 756.2322812329359
+    },
+    {
+      "angleDeg": 269,
+      "massKg": 0.0002163488228437538,
+      "internalEnergyJ": 117.27497630856817,
+      "volumeM3": 0.0003857047992635775,
+      "pressurePa": 121621.48516946656,
+      "temperatureK": 755.358737946995
+    },
+    {
+      "angleDeg": 270,
+      "massKg": 0.00021391534456977843,
+      "internalEnergyJ": 115.82195800518089,
+      "volumeM3": 0.00038077197159793754,
+      "pressurePa": 121670.6760417533,
+      "temperatureK": 754.4863797958635
+    },
+    {
+      "angleDeg": 271,
+      "massKg": 0.0002114542348652878,
+      "internalEnergyJ": 114.35720626676785,
+      "volumeM3": 0.00037580142821052085,
+      "pressurePa": 121720.8852146308,
+      "temperatureK": 753.6150967388645
+    },
+    {
+      "angleDeg": 272,
+      "massKg": 0.00020896622864827815,
+      "internalEnergyJ": 112.8811472261556,
+      "volumeM3": 0.00037079470368754484,
+      "pressurePa": 121772.12468630772,
+      "temperatureK": 752.7447754443488
+    },
+    {
+      "angleDeg": 273,
+      "massKg": 0.000206452093242522,
+      "internalEnergyJ": 111.39422286791503,
+      "volumeM3": 0.0003657533846146405,
+      "pressurePa": 121824.406885837,
+      "temperatureK": 751.8752992749944
+    },
+    {
+      "angleDeg": 274,
+      "massKg": 0.0002039126283561048,
+      "internalEnergyJ": 109.89689097067217,
+      "volumeM3": 0.0003606791089652967,
+      "pressurePa": 121877.74477533829,
+      "temperatureK": 751.0065482770185
+    },
+    {
+      "angleDeg": 275,
+      "massKg": 0.00020134866602227407,
+      "internalEnergyJ": 108.3896250335135,
+      "volumeM3": 0.00035557356538872285,
+      "pressurePa": 121932.15197537976,
+      "temperatureK": 750.1383991990771
+    },
+    {
+      "angleDeg": 276,
+      "massKg": 0.0001987610704557128,
+      "internalEnergyJ": 106.87291415121663,
+      "volumeM3": 0.0003504384923982178,
+      "pressurePa": 121987.642875455,
+      "temperatureK": 749.2707254730191
+    },
+    {
+      "angleDeg": 277,
+      "massKg": 0.000196150737904875,
+      "internalEnergyJ": 105.34726289921377,
+      "volumeM3": 0.0003452756774614936,
+      "pressurePa": 122044.23279825432,
+      "temperatureK": 748.4033972766039
+    },
+    {
+      "angleDeg": 278,
+      "massKg": 0.00019351859642402762,
+      "internalEnergyJ": 103.8131911706729,
+      "volumeM3": 0.000340086955994775,
+      "pressurePa": 122101.93815521442,
+      "temperatureK": 747.536281567155
+    },
+    {
+      "angleDeg": 279,
+      "massKg": 0.00019086560559084198,
+      "internalEnergyJ": 102.27123398522585,
+      "volumeM3": 0.00033487421026282384,
+      "pressurePa": 122160.77661514623,
+      "temperatureK": 746.669242123701
+    },
+    {
+      "angleDeg": 280,
+      "massKg": 0.00018819275618832716,
+      "internalEnergyJ": 100.72194128337121,
+      "volumeM3": 0.0003296393681873927,
+      "pressurePa": 122220.76730363467,
+      "temperatureK": 745.8021396275241
+    },
+    {
+      "angleDeg": 281,
+      "massKg": 0.00018550106981768752,
+      "internalEnergyJ": 99.16587768132845,
+      "volumeM3": 0.0003243844020669054,
+      "pressurePa": 122281.93100465431,
+      "temperatureK": 744.9348317300471
+    },
+    {
+      "angleDeg": 282,
+      "massKg": 0.00018279159848376083,
+      "internalEnergyJ": 97.60362221743252,
+      "volumeM3": 0.0003191113272104744,
+      "pressurePa": 122344.29040252358,
+      "temperatureK": 744.0671731734888
+    },
+    {
+      "angleDeg": 283,
+      "massKg": 0.000180065424123077,
+      "internalEnergyJ": 96.03576806735785,
+      "volumeM3": 0.0003138222004896329,
+      "pressurePa": 122407.8703387084,
+      "temperatureK": 743.199015918443
+    },
+    {
+      "angleDeg": 284,
+      "massKg": 0.00017732365808274166,
+      "internalEnergyJ": 94.46292223409237,
+      "volumeM3": 0.0003085191188114201,
+      "pressurePa": 122472.69809146845,
+      "temperatureK": 742.330209291047
+    },
+    {
+      "angleDeg": 285,
+      "massKg": 0.00017456744055326296,
+      "internalEnergyJ": 92.88570521470184,
+      "volumeM3": 0.0003032042175166775,
+      "pressurePa": 122538.80368216544,
+      "temperatureK": 741.4606001549442
+    },
+    {
+      "angleDeg": 286,
+      "massKg": 0.0001717979399630829,
+      "internalEnergyJ": 91.3047506493302,
+      "volumeM3": 0.0002978796687076365,
+      "pressurePa": 122606.22021698854,
+      "temperatureK": 740.5900331216466
+    },
+    {
+      "angleDeg": 287,
+      "massKg": 0.00016901635233414902,
+      "internalEnergyJ": 89.72070495153979,
+      "volumeM3": 0.0002925476795090399,
+      "pressurePa": 122674.98426528089,
+      "temperatureK": 739.718350799589
+    },
+    {
+      "angleDeg": 288,
+      "massKg": 0.00016622390059697277,
+      "internalEnergyJ": 88.13422691841191,
+      "volumeM3": 0.00028721049026720984,
+      "pressurePa": 122745.13627467454,
+      "temperatureK": 738.8453940804029
+    },
+    {
+      "angleDeg": 289,
+      "massKg": 0.00016342183386798694,
+      "internalEnergyJ": 86.5459873220519,
+      "volumeM3": 0.0002818703726915896,
+      "pressurePa": 122816.72102764313,
+      "temperatureK": 737.9710024683976
+    },
+    {
+      "angleDeg": 290,
+      "massKg": 0.00016061142668600948,
+      "internalEnergyJ": 84.95666847966336,
+      "volumeM3": 0.0002765296279433982,
+      "pressurePa": 122889.78813807656,
+      "temperatureK": 737.0950144488141
+    },
+    {
+      "angleDeg": 291,
+      "massKg": 0.00015779397822987556,
+      "internalEnergyJ": 83.36696381803431,
+      "volumeM3": 0.00027119058467610667,
+      "pressurePa": 122964.39261356018,
+      "temperatureK": 736.2172679366564
+    },
+    {
+      "angleDeg": 292,
+      "massKg": 0.00015497081151825636,
+      "internalEnergyJ": 81.77757743257828,
+      "volumeM3": 0.0002658555970324926,
+      "pressurePa": 123040.59548926252,
+      "temperatureK": 735.3376008135249
+    },
+    {
+      "angleDeg": 293,
+      "massKg": 0.0001521432725590975,
+      "internalEnergyJ": 80.18922361625766,
+      "volumeM3": 0.00026052704260305914,
+      "pressurePa": 123118.4645018744,
+      "temperatureK": 734.4558514957106
+    },
+    {
+      "angleDeg": 294,
+      "massKg": 0.0001493127295043638,
+      "internalEnergyJ": 78.60262639898579,
+      "volumeM3": 0.0002552073203505974,
+      "pressurePa": 123198.07486870432,
+      "temperatureK": 733.571859641992
+    },
+    {
+      "angleDeg": 295,
+      "massKg": 0.00014648057177841798,
+      "internalEnergyJ": 77.01851907340769,
+      "volumeM3": 0.0002498988485056537,
+      "pressurePa": 123279.51014414574,
+      "temperatureK": 732.6854669501887
+    },
+    {
+      "angleDeg": 296,
+      "massKg": 0.00014364820918853581,
+      "internalEnergyJ": 75.43764371270397,
+      "volumeM3": 0.00024460406243760776,
+      "pressurePa": 123362.86316903862,
+      "temperatureK": 731.796518065457
+    },
+    {
+      "angleDeg": 297,
+      "massKg": 0.00014081707104608634,
+      "internalEnergyJ": 73.86075070071611,
+      "volumeM3": 0.00023932541250601245,
+      "pressurePa": 123448.23715510868,
+      "temperatureK": 730.9048616679898
+    },
+    {
+      "angleDeg": 298,
+      "massKg": 0.00013798860528284568,
+      "internalEnergyJ": 72.28859826217422,
+      "volumeM3": 0.0002340653618967451,
+      "pressurePa": 123535.74689801969,
+      "temperatureK": 730.0103517244845
+    },
+    {
+      "angleDeg": 299,
+      "massKg": 0.00013516427757148122,
+      "internalEnergyJ": 70.72195199890932,
+      "volumeM3": 0.00022882638444742727,
+      "pressurePa": 123625.52014216286,
+      "temperatureK": 729.1128489375993
+    },
+    {
+      "angleDeg": 300,
+      "massKg": 0.00013234557046331392,
+      "internalEnergyJ": 69.1615844408564,
+      "volumeM3": 0.0002236109624664385,
+      "pressurePa": 123717.69912888196,
+      "temperatureK": 728.2122224413738
+    },
+    {
+      "angleDeg": 301,
+      "massKg": 0.00012953398253577681,
+      "internalEnergyJ": 67.60827460543909,
+      "volumeM3": 0.0002184215845497207,
+      "pressurePa": 123812.4423368039,
+      "temperatureK": 727.3083517509259
+    },
+    {
+      "angleDeg": 302,
+      "massKg": 0.00012673102757641442,
+      "internalEnergyJ": 66.06280758411117,
+      "volumeM3": 0.0002132607433994117,
+      "pressurePa": 123909.92647040242,
+      "temperatureK": 726.4011290538382
+    },
+    {
+      "angleDeg": 303,
+      "massKg": 0.00012393823381544718,
+      "internalEnergyJ": 64.52597416384938,
+      "volumeM3": 0.00020813093364819654,
+      "pressurePa": 124010.3487411776,
+      "temperatureK": 725.4904619094182
+    },
+    {
+      "angleDeg": 304,
+      "massKg": 0.00012115714319672572,
+      "internalEnergyJ": 62.998570475131636,
+      "volumeM3": 0.00020303464969308142,
+      "pressurePa": 124113.92946054046,
+      "temperatureK": 724.5762763782323
+    },
+    {
+      "angleDeg": 305,
+      "massKg": 0.00011838931070747285,
+      "internalEnergyJ": 61.48139768025464,
+      "volumeM3": 0.00019797438354212456,
+      "pressurePa": 124220.91500979013,
+      "temperatureK": 723.658520680663
+    },
+    {
+      "angleDeg": 306,
+      "massKg": 0.00011563630379964667,
+      "internalEnergyJ": 59.975261724724064,
+      "volumeM3": 0.00019295262267747323,
+      "pressurePa": 124331.58128143137,
+      "temperatureK": 722.7371695289154
+    },
+    {
+      "angleDeg": 307,
+      "massKg": 0.00011289970189215923,
+      "internalEnergyJ": 58.480973142605755,
+      "volumeM3": 0.0001879718479378549,
+      "pressurePa": 124446.23763435055,
+      "temperatureK": 721.8122291880652
+    },
+    {
+      "angleDeg": 308,
+      "massKg": 0.00011018109598295366,
+      "internalEnergyJ": 56.99934693560663,
+      "volumeM3": 0.00018303453142349356,
+      "pressurePa": 124565.23147257976,
+      "temperatureK": 720.8837434309199
+    },
+    {
+      "angleDeg": 309,
+      "massKg": 0.00010748208841020481,
+      "internalEnergyJ": 55.53120255288178,
+      "volumeM3": 0.0001781431344262117,
+      "pressurePa": 124688.95359171585,
+      "temperatureK": 719.9518006041235
+    },
+    {
+      "angleDeg": 310,
+      "massKg": 0.00010480429276355393,
+      "internalEnergyJ": 54.077363970577096,
+      "volumeM3": 0.00017330010538728702,
+      "pressurePa": 124817.8443970966,
+      "temperatureK": 719.0165419516482
+    },
+    {
+      "angleDeg": 311,
+      "massKg": 0.00010214933399133364,
+      "internalEnergyJ": 52.63865990262862,
+      "volumeM3": 0.00016850787788544213,
+      "pressurePa": 124952.40118901576,
+      "temperatureK": 718.0781714867894
+    },
+    {
+      "angleDeg": 312,
+      "massKg": 9.951884874723449e-05,
+      "internalEnergyJ": 51.21592417222221,
+      "volumeM3": 0.00016376886865714207,
+      "pressurePa": 125093.18673854963,
+      "temperatureK": 717.1369677418847
+    },
+    {
+      "angleDeg": 313,
+      "massKg": 9.691448600041701e-05,
+      "internalEnergyJ": 49.80999625905274,
+      "volumeM3": 0.00015908547565119465,
+      "pressurePa": 125240.83937936464,
+      "temperatureK": 716.1932977179437
+    },
+    {
+      "angleDeg": 314,
+      "massKg": 9.433790799428901e-05,
+      "internalEnergyJ": 48.421722081392055,
+      "volumeM3": 0.00015446007611944908,
+      "pressurePa": 125396.08498948537,
+      "temperatureK": 715.2476335870485
+    },
+    {
+      "angleDeg": 315,
+      "massKg": 9.179079159473792e-05,
+      "internalEnergyJ": 47.05195503956868,
+      "volumeM3": 0.0001498950247452174,
+      "pressurePa": 125559.75121801347,
+      "temperatureK": 714.3005726516534
+    },
+    {
+      "angleDeg": 316,
+      "massKg": 8.92748301308907e-05,
+      "internalEnergyJ": 45.7015573919404,
+      "volumeM3": 0.00014539265181086103,
+      "pressurePa": 125732.78449145508,
+      "temperatureK": 713.352861336092
+    },
+    {
+      "angleDeg": 317,
+      "massKg": 8.679173581492157e-05,
+      "internalEnergyJ": 44.371402022063315,
+      "volumeM3": 0.0001409552614058125,
+      "pressurePa": 125916.2703953769,
+      "temperatureK": 712.4054240549157
+    },
+    {
+      "angleDeg": 318,
+      "massKg": 8.434324287746338e-05,
+      "internalEnergyJ": 43.06237469121389,
+      "volumeM3": 0.00013658512967614452,
+      "pressurePa": 126111.45823361182,
+      "temperatureK": 711.4593980988661
+    },
+    {
+      "angleDeg": 319,
+      "massKg": 8.193111157176169e-05,
+      "internalEnergyJ": 41.77537688175016,
+      "volumeM3": 0.00013228450311663468,
+      "pressurePa": 126319.79074651544,
+      "temperatureK": 710.5161759165977
+    },
+    {
+      "angleDeg": 320,
+      "massKg": 7.955713324005355e-05,
+      "internalEnergyJ": 40.511329365150175,
+      "volumeM3": 0.0001280555969061332,
+      "pressurePa": 126542.9402350781,
+      "temperatureK": 709.57745652788
+    },
+    {
+      "angleDeg": 321,
+      "massKg": 7.722313668508357e-05,
+      "internalEnergyJ": 39.27117666342376,
+      "volumeM3": 0.00012390059328689276,
+      "pressurePa": 126782.85267768183,
+      "temperatureK": 708.645308255758
+    },
+    {
+      "angleDeg": 322,
+      "massKg": 7.493099615385263e-05,
+      "internalEnergyJ": 38.05589261801765,
+      "volumeM3": 0.00011982163998839015,
+      "pressurePa": 127041.80187053017,
+      "temperatureK": 707.7222455474025
+    },
+    {
+      "angleDeg": 323,
+      "massKg": 7.268264135098596e-05,
+      "internalEnergyJ": 36.86648735877875,
+      "volumeM3": 0.00011582084869604545,
+      "pressurePa": 127322.45627220137,
+      "temperatureK": 706.8113235124214
+    },
+    {
+      "angleDeg": 324,
+      "massKg": 7.048006990353855e-05,
+      "internalEnergyJ": 35.70401596909014,
+      "volumeM3": 0.00011190029356512702,
+      "pressurePa": 127627.96175618633,
+      "temperatureK": 705.9162543936457
+    },
+    {
+      "angleDeg": 325,
+      "massKg": 6.832536299318092e-05,
+      "internalEnergyJ": 34.56958935375936,
+      "volumeM3": 0.00010806200978002013,
+      "pressurePa": 127962.04484492575,
+      "temperatureK": 705.0415520181793
+    },
+    {
+      "angleDeg": 326,
+      "massKg": 6.622070489420481e-05,
+      "internalEnergyJ": 33.46438783469613,
+      "volumeM3": 0.00010430799215894361,
+      "pressurePa": 128329.1419652806,
+      "temperatureK": 704.1927113160716
+    },
+    {
+      "angleDeg": 327,
+      "massKg": 6.416840746066037e-05,
+      "internalEnergyJ": 32.38967822110246,
+      "volumeM3": 0.0001006401938040999,
+      "pressurePa": 128734.56219351181,
+      "temperatureK": 703.3764323504221
+    },
+    {
+      "angleDeg": 328,
+      "massKg": 6.217094087478895e-05,
+      "internalEnergyJ": 31.34683530064227,
+      "volumeM3": 9.706052479716948e-05,
+      "pressurePa": 129184.69322579395,
+      "temperatureK": 702.6009008812191
+    },
+    {
+      "angleDeg": 329,
+      "massKg": 6.023097237200475e-05,
+      "internalEnergyJ": 30.337368999360123,
+      "volumeM3": 9.357085093997107e-05,
+      "pressurePa": 129687.26347833508,
+      "temperatureK": 701.8761410244035
+    },
+    {
+      "angleDeg": 330,
+      "massKg": 5.835141504964142e-05,
+      "internalEnergyJ": 29.362958762336433,
+      "volumeM3": 9.017299254006156e-05,
+      "pressurePa": 130251.67707189584,
+      "temperatureK": 701.2144595092061
+    },
+    {
+      "angleDeg": 331,
+      "massKg": 5.6540086943958256e-05,
+      "internalEnergyJ": 28.428733940382486,
+      "volumeM3": 8.686872324096637e-05,
+      "pressurePa": 130904.3479850561,
+      "temperatureK": 700.6538087453204
+    },
+    {
+      "angleDeg": 332,
+      "massKg": 5.481014753872955e-05,
+      "internalEnergyJ": 27.543575116395942,
+      "volumeM3": 8.36597688966964e-05,
+      "pressurePa": 131693.28808644888,
+      "temperatureK": 700.2639664475671
+    },
+    {
+      "angleDeg": 333,
+      "massKg": 5.3162414453885806e-05,
+      "internalEnergyJ": 26.707677603917602,
+      "volumeM3": 8.054780649014984e-05,
+      "pressurePa": 132630.19201985924,
+      "temperatureK": 700.0577508270665
+    },
+    {
+      "angleDeg": 334,
+      "massKg": 5.159877474024035e-05,
+      "internalEnergyJ": 25.92200614550185,
+      "volumeM3": 7.753446309496104e-05,
+      "pressurePa": 133731.5310418988,
+      "temperatureK": 700.0541916522075
+    },
+    {
+      "angleDeg": 335,
+      "massKg": 5.0122787658225094e-05,
+      "internalEnergyJ": 25.188722351719456,
+      "volumeM3": 7.462131488032893e-05,
+      "pressurePa": 135021.59479293495,
+      "temperatureK": 700.282643474979
+    },
+    {
+      "angleDeg": 336,
+      "massKg": 4.873953014501064e-05,
+      "internalEnergyJ": 24.511084607723454,
+      "volumeM3": 7.180988615831741e-05,
+      "pressurePa": 136533.20409774492,
+      "temperatureK": 700.7831178852703
+    },
+    {
+      "angleDeg": 337,
+      "massKg": 4.74555885428183e-05,
+      "internalEnergyJ": 23.893458063285728,
+      "volumeM3": 6.910164847311684e-05,
+      "pressurePa": 138309.0481413403,
+      "temperatureK": 701.6072777738304
+    },
+    {
+      "angleDeg": 338,
+      "massKg": 4.6279163572583384e-05,
+      "internalEnergyJ": 23.341414008255192,
+      "volumeM3": 6.64980197317176e-05,
+      "pressurePa": 140403.66376276928,
+      "temperatureK": 702.8199824785257
+    },
+    {
+      "angleDeg": 339,
+      "massKg": 4.522026557980714e-05,
+      "internalEnergyJ": 22.861906664109366,
+      "volumeM3": 6.40003633754554e-05,
+      "pressurePa": 142886.10538031455,
+      "temperatureK": 704.5012675812162
+    },
+    {
+      "angleDeg": 340,
+      "massKg": 4.4290986969483095e-05,
+      "internalEnergyJ": 22.463524460543557,
+      "volumeM3": 6.160998759186202e-05,
+      "pressurePa": 145843.39545304974,
+      "temperatureK": 706.7486357101035
+    },
+    {
+      "angleDeg": 341,
+      "massKg": 4.350584566582299e-05,
+      "internalEnergyJ": 22.156820454298746,
+      "volumeM3": 5.932814456626861e-05,
+      "pressurePa": 149384.88716464018,
+      "temperatureK": 709.6795056059905
+    },
+    {
+      "angleDeg": 342,
+      "massKg": 4.2882184375011644e-05,
+      "internalEnergyJ": 21.954723530038667,
+      "volumeM3": 5.715602977259698e-05,
+      "pressurePa": 153647.645698195,
+      "temperatureK": 713.4335240711875
+    },
+    {
+      "angleDeg": 343,
+      "massKg": 4.2440613524454724e-05,
+      "internalEnergyJ": 21.873038240153516,
+      "volumeM3": 5.509478130278882e-05,
+      "pressurePa": 158802.97714546934,
+      "temperatureK": 718.174364694076
+    },
+    {
+      "angleDeg": 344,
+      "massKg": 4.220547447686666e-05,
+      "internalEnergyJ": 21.931037382035196,
+      "volumeM3": 5.3145479234323774e-05,
+      "pressurePa": 165064.18004315314,
+      "temperatureK": 724.0904644383528
+    },
+    {
+      "angleDeg": 345,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 22.128247923150845,
+      "volumeM3": 5.130914503529234e-05,
+      "pressurePa": 172509.19233154407,
+      "temperatureK": 731.1683609203028
+    },
+    {
+      "angleDeg": 346,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 22.34149911437943,
+      "volumeM3": 4.958674100650819e-05,
+      "pressurePa": 180221.5564958958,
+      "temperatureK": 738.214672245827
+    },
+    {
+      "angleDeg": 347,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 22.545263641955014,
+      "volumeM3": 4.797916976015096e-05,
+      "pressurePa": 187958.764227554,
+      "temperatureK": 744.947522318664
+    },
+    {
+      "angleDeg": 348,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 22.7376837679171,
+      "volumeM3": 4.648727373446044e-05,
+      "pressurePa": 195646.52380173397,
+      "temperatureK": 751.3055271908249
+    },
+    {
+      "angleDeg": 349,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 22.916804115511525,
+      "volumeM3": 4.511183474402161e-05,
+      "pressurePa": 203199.92964638656,
+      "temperatureK": 757.224076703327
+    },
+    {
+      "angleDeg": 350,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 23.08059882644286,
+      "volumeM3": 4.385357356520128e-05,
+      "pressurePa": 210524.2236838622,
+      "temperatureK": 762.6362318244644
+    },
+    {
+      "angleDeg": 351,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 23.227006281559945,
+      "volumeM3": 4.2713149556326175e-05,
+      "pressurePa": 217516.21243411518,
+      "temperatureK": 767.4738719013579
+    },
+    {
+      "angleDeg": 352,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 23.353971251647966,
+      "volumeM3": 4.169116031221846e-05,
+      "pressurePa": 224066.40714006318,
+      "temperatureK": 771.669087419367
+    },
+    {
+      "angleDeg": 353,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 23.459493776433497,
+      "volumeM3": 4.078814135273381e-05,
+      "pressurePa": 230061.90523423915,
+      "temperatureK": 775.1557950771788
+    },
+    {
+      "angleDeg": 354,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 23.541683413664565,
+      "volumeM3": 4.000456584497748e-05,
+      "pressurePa": 235389.96528437702,
+      "temperatureK": 777.871530301566
+    },
+    {
+      "angleDeg": 355,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 23.598816811923548,
+      "volumeM3": 3.9340844358903304e-05,
+      "pressurePa": 239942.14863955096,
+      "temperatureK": 779.7593495859443
+    },
+    {
+      "angleDeg": 356,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 23.629395918959577,
+      "volumeM3": 3.8797324656035204e-05,
+      "pressurePa": 243618.81782777872,
+      "temperatureK": 780.7697538279606
+    },
+    {
+      "angleDeg": 357,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 23.6322036351457,
+      "volumeM3": 3.837429151108503e-05,
+      "pressurePa": 246333.7062868682,
+      "temperatureK": 780.8625272481097
+    },
+    {
+      "angleDeg": 358,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 23.606353454016325,
+      "volumeM3": 3.8071966566268025e-05,
+      "pressurePa": 248018.2200509882,
+      "temperatureK": 780.0083776276111
+    },
+    {
+      "angleDeg": 359,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 23.551329676999476,
+      "volumeM3": 3.789050821816139e-05,
+      "pressurePa": 248625.1125627397,
+      "temperatureK": 778.1902650959378
+    },
+    {
+      "angleDeg": 360,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 23.467015190144103,
+      "volumeM3": 3.7830011536977105e-05,
+      "pressurePa": 248131.19781585224,
+      "temperatureK": 775.404319937967
+    },
+    {
+      "angleDeg": 361,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 23.353704539022782,
+      "volumeM3": 3.789050821816139e-05,
+      "pressurePa": 246538.83663486002,
+      "temperatureK": 771.6602746189288
+    },
+    {
+      "angleDeg": 362,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 23.212101069627764,
+      "volumeM3": 3.8071966566268025e-05,
+      "pressurePa": 243876.039649539,
+      "temperatureK": 766.9813693130161
+    },
+    {
+      "angleDeg": 363,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 23.04329810302148,
+      "volumeM3": 3.837429151108503e-05,
+      "pressurePa": 240195.16395621325,
+      "temperatureK": 761.4037298704069
+    },
+    {
+      "angleDeg": 364,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 22.848745332454566,
+      "volumeM3": 3.8797324656035204e-05,
+      "pressurePa": 235570.3186755716,
+      "temperatureK": 754.9752575005231
+    },
+    {
+      "angleDeg": 365,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 22.63020272048411,
+      "volumeM3": 3.9340844358903386e-05,
+      "pressurePa": 230093.71648488854,
+      "temperatureK": 747.7541054264583
+    },
+    {
+      "angleDeg": 366,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 22.38968499966209,
+      "volumeM3": 4.000456584497748e-05,
+      "pressurePa": 223871.29595581483,
+      "temperatureK": 739.806845059688
+    },
+    {
+      "angleDeg": 367,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 22.12940035840163,
+      "volumeM3": 4.0788141352733734e-05,
+      "pressurePa": 217017.9824280564,
+      "temperatureK": 731.2064400396397
+    },
+    {
+      "angleDeg": 368,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 21.851686995975445,
+      "volumeM3": 4.1691160312218224e-05,
+      "pressurePa": 209652.95119955175,
+      "temperatureK": 722.030149864475
+    },
+    {
+      "angleDeg": 369,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 21.55895098619964,
+      "volumeM3": 4.2713149556326175e-05,
+      "pressurePa": 201895.21222516894,
+      "temperatureK": 712.3574767638544
+    },
+    {
+      "angleDeg": 370,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 21.25360837162623,
+      "volumeM3": 4.385357356520128e-05,
+      "pressurePa": 193859.7623295302,
+      "temperatureK": 702.2682523574707
+    },
+    {
+      "angleDeg": 371,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 20.93803371789994,
+      "volumeM3": 4.511183474402169e-05,
+      "pressurePa": 185654.46372738975,
+      "temperatureK": 691.8409377723137
+    },
+    {
+      "angleDeg": 372,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 20.614516595318804,
+      "volumeM3": 4.648727373446029e-05,
+      "pressurePa": 177377.72030315973,
+      "temperatureK": 681.1511856930347
+    },
+    {
+      "angleDeg": 373,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 20.285226713587154,
+      "volumeM3": 4.797916976015096e-05,
+      "pressurePa": 169116.94649985395,
+      "temperatureK": 670.2706883337531
+    },
+    {
+      "angleDeg": 374,
+      "massKg": 4.2172765240687896e-05,
+      "internalEnergyJ": 19.9521877853211,
+      "volumeM3": 4.958674100650835e-05,
+      "pressurePa": 160947.76450585722,
+      "temperatureK": 659.2663138279802
+    },
+    {
+      "angleDeg": 375,
+      "massKg": 4.214152389767298e-05,
+      "internalEnergyJ": 19.596916578824345,
+      "volumeM3": 5.130914503529234e-05,
+      "pressurePa": 152775.23385232672,
+      "temperatureK": 648.0073737119748
+    },
+    {
+      "angleDeg": 376,
+      "massKg": 4.1913338904540475e-05,
+      "internalEnergyJ": 19.116261764720026,
+      "volumeM3": 5.31454792343237e-05,
+      "pressurePa": 143878.74220070176,
+      "temperatureK": 635.5550149142969
+    },
+    {
+      "angleDeg": 377,
+      "massKg": 4.150586959810526e-05,
+      "internalEnergyJ": 18.530130871663708,
+      "volumeM3": 5.509478130278882e-05,
+      "pressurePa": 134532.74835470296,
+      "temperatureK": 622.1160551054049
+    },
+    {
+      "angleDeg": 378,
+      "massKg": 4.09926701664379e-05,
+      "internalEnergyJ": 17.891960393300767,
+      "volumeM3": 5.71560297725969e-05,
+      "pressurePa": 125214.85809624204,
+      "temperatureK": 608.2108454301188
+    },
+    {
+      "angleDeg": 379,
+      "massKg": 4.048248645667019e-05,
+      "internalEnergyJ": 17.272080404401216,
+      "volumeM3": 5.932814456626845e-05,
+      "pressurePa": 116451.17527724881,
+      "temperatureK": 594.5384025619119
+    },
+    {
+      "angleDeg": 380,
+      "massKg": 4.0234263742670886e-05,
+      "internalEnergyJ": 16.815537194360513,
+      "volumeM3": 6.160998759186202e-05,
+      "pressurePa": 109174.0988864062,
+      "temperatureK": 582.3943158635377
+    },
+    {
+      "angleDeg": 381,
+      "massKg": 4.081546194388897e-05,
+      "internalEnergyJ": 16.705543305825056,
+      "volumeM3": 6.400036337545524e-05,
+      "pressurePa": 104409.05285379545,
+      "temperatureK": 570.3459060397525
+    },
+    {
+      "angleDeg": 382,
+      "massKg": 4.183609070108926e-05,
+      "internalEnergyJ": 16.739708190310026,
+      "volumeM3": 6.64980197317176e-05,
+      "pressurePa": 100692.97255975683,
+      "temperatureK": 557.5697800996867
+    },
+    {
+      "angleDeg": 383,
+      "massKg": 4.321872009677305e-05,
+      "internalEnergyJ": 16.8920025717033,
+      "volumeM3": 6.910164847311637e-05,
+      "pressurePa": 97780.60549901378,
+      "temperatureK": 544.6426882877461
+    },
+    {
+      "angleDeg": 384,
+      "massKg": 4.493344812534173e-05,
+      "internalEnergyJ": 17.151707907848845,
+      "volumeM3": 7.180988615831718e-05,
+      "pressurePa": 95539.5354340764,
+      "temperatureK": 531.9123393295947
+    },
+    {
+      "angleDeg": 385,
+      "massKg": 4.696077353538581e-05,
+      "internalEnergyJ": 17.511440186385304,
+      "volumeM3": 7.462131488032868e-05,
+      "pressurePa": 93868.30137994036,
+      "temperatureK": 519.6238342650175
+    },
+    {
+      "angleDeg": 386,
+      "massKg": 4.928502310907249e-05,
+      "internalEnergyJ": 17.96505190445446,
+      "volumeM3": 7.753446309496112e-05,
+      "pressurePa": 92681.63439760497,
+      "temperatureK": 507.94413712006036
+    },
+    {
+      "angleDeg": 387,
+      "massKg": 5.1892188425385616e-05,
+      "internalEnergyJ": 18.506960438021547,
+      "volumeM3": 8.054780649014984e-05,
+      "pressurePa": 91905.47201448497,
+      "temperatureK": 496.97615341269125
+    },
+    {
+      "angleDeg": 388,
+      "massKg": 5.476418217802258e-05,
+      "internalEnergyJ": 19.130328732718127,
+      "volumeM3": 8.36597688966964e-05,
+      "pressurePa": 91467.27984075772,
+      "temperatureK": 486.7750012450571
+    },
+    {
+      "angleDeg": 389,
+      "massKg": 5.786484283063106e-05,
+      "internalEnergyJ": 19.822653079784363,
+      "volumeM3": 8.686872324096637e-05,
+      "pressurePa": 91276.36433563332,
+      "temperatureK": 477.3637567264173
+    },
+    {
+      "angleDeg": 390,
+      "massKg": 6.117647880122505e-05,
+      "internalEnergyJ": 20.57752077497125,
+      "volumeM3": 9.017299254006133e-05,
+      "pressurePa": 91280.19463623426,
+      "temperatureK": 468.71733175832793
+    },
+    {
+      "angleDeg": 391,
+      "massKg": 6.468485686159549e-05,
+      "internalEnergyJ": 21.389733472057785,
+      "volumeM3": 9.357085093997101e-05,
+      "pressurePa": 91437.59304179053,
+      "temperatureK": 460.7922771478764
+    },
+    {
+      "angleDeg": 392,
+      "massKg": 6.83763513562091e-05,
+      "internalEnergyJ": 22.254389191345393,
+      "volumeM3": 9.706052479716926e-05,
+      "pressurePa": 91713.45091261831,
+      "temperatureK": 453.5364500150577
+    },
+    {
+      "angleDeg": 393,
+      "massKg": 7.223797161639393e-05,
+      "internalEnergyJ": 23.166888547894498,
+      "volumeM3": 0.00010064019380409973,
+      "pressurePa": 92078.07605374763,
+      "temperatureK": 446.89408517737553
+    },
+    {
+      "angleDeg": 394,
+      "massKg": 7.625740632639987e-05,
+      "internalEnergyJ": 24.122944140119536,
+      "volumeM3": 0.00010430799215894324,
+      "pressurePa": 92506.5995072028,
+      "temperatureK": 440.80927246736246
+    },
+    {
+      "angleDeg": 395,
+      "massKg": 8.042307540684864e-05,
+      "internalEnergyJ": 25.118590736321785,
+      "volumeM3": 0.00010806200978002013,
+      "pressurePa": 92978.43261458949,
+      "temperatureK": 435.228206289524
+    },
+    {
+      "angleDeg": 396,
+      "massKg": 8.472417804919728e-05,
+      "internalEnergyJ": 26.150193190304538,
+      "volumeM3": 0.00011190029356512702,
+      "pressurePa": 93476.76349065117,
+      "temperatureK": 430.1005298384669
+    },
+    {
+      "angleDeg": 397,
+      "massKg": 8.915072869795187e-05,
+      "internalEnergyJ": 27.21444991408379,
+      "volumeM3": 0.00011582084869604528,
+      "pressurePa": 93988.0866716979,
+      "temperatureK": 425.38003545740315
+    },
+    {
+      "angleDeg": 398,
+      "massKg": 9.369357718025827e-05,
+      "internalEnergyJ": 28.308391081748763,
+      "volumeM3": 0.00011982163998838999,
+      "pressurePa": 94501.7647379611,
+      "temperatureK": 421.02492431262215
+    },
+    {
+      "angleDeg": 399,
+      "massKg": 9.834440619947144e-05,
+      "internalEnergyJ": 29.429369690176713,
+      "volumeM3": 0.00012390059328689238,
+      "pressurePa": 95009.61669177118,
+      "temperatureK": 416.99777559776925
+    },
+    {
+      "angleDeg": 400,
+      "massKg": 0.0001030957141222798,
+      "internalEnergyJ": 30.57504825654841,
+      "volumeM3": 0.00012805559690613313,
+      "pressurePa": 95505.54288996964,
+      "temperatureK": 413.26533706377955
+    },
+    {
+      "angleDeg": 401,
+      "massKg": 0.00010794077643636289,
+      "internalEnergyJ": 31.743379193323783,
+      "volumeM3": 0.00013228450311663452,
+      "pressurePa": 95985.17874867267,
+      "temperatureK": 409.79821226555083
+    },
+    {
+      "angleDeg": 402,
+      "massKg": 0.00011287359548893674,
+      "internalEnergyJ": 32.93258205592241,
+      "volumeM3": 0.00013658512967614468,
+      "pressurePa": 96445.58564759852,
+      "temperatureK": 406.57049957569456
+    },
+    {
+      "angleDeg": 403,
+      "massKg": 0.00011788883502206279,
+      "internalEnergyJ": 34.141116609573224,
+      "volumeM3": 0.0001409552614058125,
+      "pressurePa": 96884.97263335316,
+      "temperatureK": 403.55941613058144
+    },
+    {
+      "angleDeg": 404,
+      "massKg": 0.00012298175354362938,
+      "internalEnergyJ": 35.367656244080024,
+      "volumeM3": 0.00014539265181086103,
+      "pressurePa": 97302.45869671387,
+      "temperatureK": 400.74493289452005
+    },
+    {
+      "angleDeg": 405,
+      "massKg": 0.0001281481274062248,
+      "internalEnergyJ": 36.61105878817752,
+      "volumeM3": 0.000149895024745217,
+      "pressurePa": 97697.8624885166,
+      "temperatureK": 398.10942979990864
+    },
+    {
+      "angleDeg": 406,
+      "massKg": 0.00013338417897150757,
+      "internalEnergyJ": 37.870339635712675,
+      "volumeM3": 0.00015446007611944867,
+      "pressurePa": 98071.52912815189,
+      "temperatureK": 395.63738281370854
+    },
+    {
+      "angleDeg": 407,
+      "massKg": 0.0001386865031360546,
+      "internalEnergyJ": 39.144644965256944,
+      "volumeM3": 0.00015908547565119465,
+      "pressurePa": 98424.18311294273,
+      "temperatureK": 393.3150824785786
+    },
+    {
+      "angleDeg": 408,
+      "massKg": 0.00014405200213232986,
+      "internalEnergyJ": 40.43322817536404,
+      "volumeM3": 0.0001637688686571417,
+      "pressurePa": 98756.81136935255,
+      "temperatureK": 391.1303872704578
+    },
+    {
+      "angleDeg": 409,
+      "massKg": 0.00014947782226885337,
+      "internalEnergyJ": 41.735427430950025,
+      "volumeM3": 0.0001685078778854419,
+      "pressurePa": 99070.56680002429,
+      "temperatureK": 389.072507353738
+    },
+    {
+      "angleDeg": 410,
+      "massKg": 0.00015496130029908858,
+      "internalEnergyJ": 43.05064673181526,
+      "volumeM3": 0.00017330010538728702,
+      "pressurePa": 99366.69486866538,
+      "temperatureK": 387.1318190714406
+    },
+    {
+      "angleDeg": 411,
+      "massKg": 0.00016049991884197056,
+      "internalEnergyJ": 44.37834023134097,
+      "volumeM3": 0.00017814313442621193,
+      "pressurePa": 99646.4789379189,
+      "temperatureK": 385.29970667646074
+    },
+    {
+      "angleDeg": 412,
+      "massKg": 0.00016609125914072057,
+      "internalEnergyJ": 45.717996002217454,
+      "volumeM3": 0.0001830345314234935,
+      "pressurePa": 99911.19303370814,
+      "temperatureK": 383.56842384774814
+    },
+    {
+      "angleDeg": 413,
+      "massKg": 0.00017173297702672066,
+      "internalEnergyJ": 47.06912749659471,
+      "volumeM3": 0.00018797184793785474,
+      "pressurePa": 100162.07855158436,
+      "temperatureK": 381.93098206854773
+    },
+    {
+      "angleDeg": 414,
+      "massKg": 0.00017742276969811958,
+      "internalEnergyJ": 48.43126223233751,
+      "volumeM3": 0.00019295262267747285,
+      "pressurePa": 100400.31912557533,
+      "temperatureK": 380.3810504530125
+    },
+    {
+      "angleDeg": 415,
+      "massKg": 0.00018315835586686687,
+      "internalEnergyJ": 49.80393493431687,
+      "volumeM3": 0.0001979743835421244,
+      "pressurePa": 100627.02869580039,
+      "temperatureK": 378.91287366579945
+    },
+    {
+      "angleDeg": 416,
+      "massKg": 0.00018893745911672665,
+      "internalEnergyJ": 51.18668181663541,
+      "volumeM3": 0.00020303464969308118,
+      "pressurePa": 100843.24403546315,
+      "temperatureK": 377.52120177764004
+    },
+    {
+      "angleDeg": 417,
+      "massKg": 0.00019475779464468964,
+      "internalEnergyJ": 52.5790360384204,
+      "volumeM3": 0.00020813093364819654,
+      "pressurePa": 101049.92106035457,
+      "temperatureK": 376.20123044206673
+    },
+    {
+      "angleDeg": 418,
+      "massKg": 0.0002006170630888474,
+      "internalEnergyJ": 53.980525494269145,
+      "volumeM3": 0.00021326074339941145,
+      "pressurePa": 101247.93646277444,
+      "temperatureK": 374.94855122546585
+    },
+    {
+      "angleDeg": 419,
+      "massKg": 0.00020651294035838264,
+      "internalEnergyJ": 55.39066936706595,
+      "volumeM3": 0.00021842158454972053,
+      "pressurePa": 101438.08723163446,
+      "temperatureK": 373.7591068105512
+    },
+    {
+      "angleDeg": 420,
+      "massKg": 0.000212443078276397,
+      "internalEnergyJ": 56.80897818211793,
+      "volumeM3": 0.00022361096246643872,
+      "pressurePa": 101621.09684697459,
+      "temperatureK": 372.6291554453577
+    },
+    {
+      "angleDeg": 421,
+      "massKg": 0.0002184050998963278,
+      "internalEnergyJ": 58.23495216594036,
+      "volumeM3": 0.0002288263844474269,
+      "pressurePa": 101797.61797411068,
+      "temperatureK": 371.5552378732794
+    },
+    {
+      "angleDeg": 422,
+      "massKg": 0.0002243966003754518,
+      "internalEnergyJ": 59.66808140525923,
+      "volumeM3": 0.0002340653618967451,
+      "pressurePa": 101968.23813953475,
+      "temperatureK": 370.53415005590983
+    },
+    {
+      "angleDeg": 423,
+      "massKg": 0.00023041514736861407,
+      "internalEnergyJ": 61.107845852133536,
+      "volumeM3": 0.0002393254125060123,
+      "pressurePa": 102133.48463460541,
+      "temperatureK": 369.5629188622159
+    },
+    {
+      "angleDeg": 424,
+      "massKg": 0.0002364582828658647,
+      "internalEnergyJ": 62.55371579479057,
+      "volumeM3": 0.0002446040624376076,
+      "pressurePa": 102293.82974495192,
+      "temperatureK": 368.6387809755469
+    },
+    {
+      "angleDeg": 425,
+      "massKg": 0.00024252352555313389,
+      "internalEnergyJ": 64.00515249283487,
+      "volumeM3": 0.0002498988485056535,
+      "pressurePa": 102449.6957478167,
+      "temperatureK": 367.75916427950887
+    },
+    {
+      "angleDeg": 426,
+      "massKg": 0.0002486083735576846,
+      "internalEnergyJ": 65.46160893156657,
+      "volumeM3": 0.0002552073203505974,
+      "pressurePa": 102601.45961587159,
+      "temperatureK": 366.9216713583881
+    },
+    {
+      "angleDeg": 427,
+      "massKg": 0.00025471030756606805,
+      "internalEnergyJ": 66.92253069040319,
+      "volumeM3": 0.0002605270426030593,
+      "pressurePa": 102749.45744095638,
+      "temperatureK": 366.12406483723805
+    },
+    {
+      "angleDeg": 428,
+      "massKg": 0.0002608267941244834,
+      "internalEnergyJ": 68.3873568640129,
+      "volumeM3": 0.00026585559703249246,
+      "pressurePa": 102893.98850708369,
+      "temperatureK": 365.36425427329567
+    },
+    {
+      "angleDeg": 429,
+      "massKg": 0.0002669552890701415,
+      "internalEnergyJ": 69.85552101972613,
+      "volumeM3": 0.00027119058467610667,
+      "pressurePa": 103035.31902209252,
+      "temperatureK": 364.64028439412624
+    },
+    {
+      "angleDeg": 430,
+      "massKg": 0.0002730932410123053,
+      "internalEnergyJ": 71.32645216555328,
+      "volumeM3": 0.0002765296279433979,
+      "pressurePa": 103173.68550490783,
+      "temperatureK": 363.9503244985825
+    },
+    {
+      "angleDeg": 431,
+      "massKg": 0.00027923809483842163,
+      "internalEnergyJ": 72.79957572152614,
+      "volumeM3": 0.00028187037269158943,
+      "pressurePa": 103309.29785398953,
+      "temperatureK": 363.2926588791348
+    },
+    {
+      "angleDeg": 432,
+      "massKg": 0.0002853872952056234,
+      "internalEnergyJ": 74.27431448232107,
+      "volumeM3": 0.0002872104902672096,
+      "pressurePa": 103442.3421139236,
+      "temperatureK": 362.6656781390529
+    },
+    {
+      "angleDeg": 433,
+      "massKg": 0.00029153828996494874,
+      "internalEnergyJ": 75.75008955516144,
+      "volumeM3": 0.00029254767950904006,
+      "pressurePa": 103572.98295072705,
+      "temperatureK": 362.06787129160415
+    },
+    {
+      "angleDeg": 434,
+      "massKg": 0.00029768853354092287,
+      "internalEnergyJ": 77.22632128116359,
+      "volumeM3": 0.0002978796687076362,
+      "pressurePa": 103701.36587866275,
+      "temperatureK": 361.49781856456696
+    },
+    {
+      "angleDeg": 435,
+      "massKg": 0.0003038354902308496,
+      "internalEnergyJ": 78.70243012958126,
+      "volumeM3": 0.0003032042175166775,
+      "pressurePa": 103827.61925170422,
+      "temperatureK": 360.954184826798
+    },
+    {
+      "angleDeg": 436,
+      "massKg": 0.000309976637420928,
+      "internalEnergyJ": 80.17783756496348,
+      "volumeM3": 0.0003085191188114198,
+      "pressurePa": 103951.8560455524,
+      "temperatureK": 360.4357135732926
+    },
+    {
+      "angleDeg": 437,
+      "massKg": 0.0003161094687214496,
+      "internalEnergyJ": 81.65196688883748,
+      "volumeM3": 0.0003138222004896328,
+      "pressurePa": 104074.17545532742,
+      "temperatureK": 359.94122141422366
+    },
+    {
+      "angleDeg": 438,
+      "massKg": 0.0003222314969925068,
+      "internalEnergyJ": 83.12424404762965,
+      "volumeM3": 0.0003191113272104742,
+      "pressurePa": 104194.66431889319,
+      "temperatureK": 359.4695930116623
+    },
+    {
+      "angleDeg": 439,
+      "massKg": 0.000328340257307278,
+      "internalEnergyJ": 84.59409842279696,
+      "volumeM3": 0.0003243844020669051,
+      "pressurePa": 104313.39840483353,
+      "temperatureK": 359.01977643456735
+    },
+    {
+      "angleDeg": 440,
+      "massKg": 0.00033443330979374586,
+      "internalEnergyJ": 86.06096358495085,
+      "volumeM3": 0.00032963936818739253,
+      "pressurePa": 104430.4435579759,
+      "temperatureK": 358.59077887762646
+    },
+    {
+      "angleDeg": 441,
+      "massKg": 0.0003405082423972217,
+      "internalEnergyJ": 87.52427802636873,
+      "volumeM3": 0.0003348742102628237,
+      "pressurePa": 104545.8567354899,
+      "temperatureK": 358.1816627223277
+    },
+    {
+      "angleDeg": 442,
+      "massKg": 0.0003465626735437614,
+      "internalEnergyJ": 88.98348586623541,
+      "volumeM3": 0.000340086955994775,
+      "pressurePa": 104659.68693912802,
+      "temperatureK": 357.7915419048616
+    },
+    {
+      "angleDeg": 443,
+      "massKg": 0.0003525942547065423,
+      "internalEnergyJ": 90.4380375299245,
+      "volumeM3": 0.0003452756774614936,
+      "pressurePa": 104771.97605673855,
+      "temperatureK": 357.4195785645989
+    },
+    {
+      "angleDeg": 444,
+      "massKg": 0.0003586006728786937,
+      "internalEnergyJ": 91.88739040410552,
+      "volumeM3": 0.00035043849239821753,
+      "pressurePa": 104882.75962526412,
+      "temperatureK": 357.0649799502115
+    },
+    {
+      "angleDeg": 445,
+      "massKg": 0.00036457965294388187,
+      "internalEnergyJ": 93.3310094654665,
+      "volumeM3": 0.0003555735653887225,
+      "pressurePa": 104992.06752159375,
+      "temperatureK": 356.72699555963607
+    },
+    {
+      "angleDeg": 446,
+      "massKg": 0.0003705289599419754,
+      "internalEnergyJ": 94.76836788273856,
+      "volumeM3": 0.0003606791089652966,
+      "pressurePa": 105099.92458904166,
+      "temperatureK": 356.40491449394074
+    },
+    {
+      "angleDeg": 447,
+      "massKg": 0.0003764464012500323,
+      "internalEnergyJ": 96.19894759903586,
+      "volumeM3": 0.00036575338461464034,
+      "pressurePa": 105206.35121437527,
+      "temperatureK": 356.0980630126938
+    },
+    {
+      "angleDeg": 448,
+      "massKg": 0.0003823298286482837,
+      "internalEnergyJ": 97.62223988519784,
+      "volumeM3": 0.00037079470368754484,
+      "pressurePa": 105311.36385104412,
+      "temperatureK": 355.80580226729893
+    },
+    {
+      "angleDeg": 449,
+      "massKg": 0.0003881771402713219,
+      "internalEnergyJ": 99.03774586465595,
+      "volumeM3": 0.0003758014282105207,
+      "pressurePa": 105414.97549517118,
+      "temperatureK": 355.52752619847985
+    },
+    {
+      "angleDeg": 450,
+      "massKg": 0.0003939862824779064,
+      "internalEnergyJ": 100.44497702087949,
+      "volumeM3": 0.0003807719715979374,
+      "pressurePa": 105517.19613116983,
+      "temperatureK": 355.26265959279976
+    },
+    {
+      "angleDeg": 451,
+      "massKg": 0.00039975525157377343,
+      "internalEnergyJ": 101.84345566667271,
+      "volumeM3": 0.0003857047992635775,
+      "pressurePa": 105618.0331290888,
+      "temperatureK": 355.01065627082755
+    },
+    {
+      "angleDeg": 452,
+      "massKg": 0.00040548209546491785,
+      "internalEnergyJ": 103.23271540047543,
+      "volumeM3": 0.00039059842913089925,
+      "pressurePa": 105717.49162450375,
+      "temperatureK": 354.7709974146588
+    },
+    {
+      "angleDeg": 453,
+      "massKg": 0.00041116491515136023,
+      "internalEnergyJ": 104.61230152096896,
+      "volumeM3": 0.00039545143204167984,
+      "pressurePa": 105815.57485415098,
+      "temperatureK": 354.54319000375386
+    },
+    {
+      "angleDeg": 454,
+      "massKg": 0.0004168018661322973,
+      "internalEnergyJ": 105.98177142297888,
+      "volumeM3": 0.0004002624320630829,
+      "pressurePa": 105912.28447467757,
+      "temperatureK": 354.326765366975
+    },
+    {
+      "angleDeg": 455,
+      "massKg": 0.0004223911596847088,
+      "internalEnergyJ": 107.34069496260425,
+      "volumeM3": 0.00040503010669358833,
+      "pressurePa": 106007.62085452492,
+      "temperatureK": 354.1212778336214
+    },
+    {
+      "angleDeg": 456,
+      "massKg": 0.00042793106401602674,
+      "internalEnergyJ": 108.6886547918446,
+      "volumeM3": 0.00040975318696858466,
+      "pressurePa": 106101.58334185462,
+      "temperatureK": 353.9263034761616
+    },
+    {
+      "angleDeg": 457,
+      "massKg": 0.0004334199052903248,
+      "internalEnergyJ": 110.02524666263857,
+      "volumeM3": 0.00041443045746680204,
+      "pressurePa": 106194.17051069623,
+      "temperatureK": 353.7414389378312
+    },
+    {
+      "angleDeg": 458,
+      "massKg": 0.0004388560685326069,
+      "internalEnergyJ": 111.35007970175367,
+      "volumeM3": 0.0004190607562191171,
+      "pressurePa": 106285.38038864349,
+      "temperatureK": 353.5663003396208
+    },
+    {
+      "angleDeg": 459,
+      "massKg": 0.0004442379984108951,
+      "internalEnergyJ": 112.66277665640179,
+      "volumeM3": 0.0004236429745216151,
+      "pressurePa": 106375.21066754145,
+      "temperatureK": 353.4005222606595
+    },
+    {
+      "angleDeg": 460,
+      "massKg": 0.00044956419987232486,
+      "internalEnergyJ": 113.96297410286122,
+      "volumeM3": 0.00042817605665511783,
+      "pressurePa": 106463.65889128149,
+      "temperatureK": 353.2437567814663
+    },
+    {
+      "angleDeg": 461,
+      "massKg": 0.0004548332386776067,
+      "internalEnergyJ": 115.25032263221651,
+      "volumeM3": 0.0004326589995137108,
+      "pressurePa": 106550.72263538043,
+      "temperatureK": 353.0956725944119
+    },
+    {
+      "angleDeg": 462,
+      "massKg": 0.00046004374177957926,
+      "internalEnergyJ": 116.5244869956325,
+      "volumeM3": 0.00043709085214509803,
+      "pressurePa": 106636.3996626959,
+      "temperatureK": 352.95595416510196
+    },
+    {
+      "angleDeg": 463,
+      "massKg": 0.0004651943975863347,
+      "internalEnergyJ": 117.78514622195738,
+      "volumeM3": 0.00044147071520588644,
+      "pressurePa": 106720.6880683141,
+      "temperatureK": 352.8243009488397
+    },
+    {
+      "angleDeg": 464,
+      "massKg": 0.00047028395595914946,
+      "internalEnergyJ": 119.03199365937955,
+      "volumeM3": 0.0004457977403351621,
+      "pressurePa": 106803.58637070547,
+      "temperatureK": 352.7004266277646
+    },
+    {
+      "angleDeg": 465,
+      "massKg": 0.0004753112292473135,
+      "internalEnergyJ": 120.2647373586009,
+      "volumeM3": 0.0004500711294499438,
+      "pressurePa": 106885.09392333865,
+      "temperatureK": 352.5840586253114
+    },
+    {
+      "angleDeg": 466,
+      "massKg": 0.00048027508965048734,
+      "internalEnergyJ": 121.48309928590237,
+      "volumeM3": 0.0004542901339663208,
+      "pressurePa": 106965.21029436101,
+      "temperatureK": 352.474936950451
+    },
+    {
+      "angleDeg": 467,
+      "massKg": 0.0004851744725121458,
+      "internalEnergyJ": 122.68681644924857,
+      "volumeM3": 0.0004584540539502415,
+      "pressurePa": 107043.93637017717,
+      "temperatureK": 352.3728142947611
+    },
+    {
+      "angleDeg": 468,
+      "massKg": 0.000490008371632842,
+      "internalEnergyJ": 123.87563946742947,
+      "volumeM3": 0.0004625622372021036,
+      "pressurePa": 107121.27320787362,
+      "temperatureK": 352.277454592992
+    },
+    {
+      "angleDeg": 469,
+      "massKg": 0.0004947758429615053,
+      "internalEnergyJ": 125.04933384230446,
+      "volumeM3": 0.00046661407827938765,
+      "pressurePa": 107197.22328431804,
+      "temperatureK": 352.18863331251424
+    },
+    {
+      "angleDeg": 470,
+      "massKg": 0.0004994760023925234,
+      "internalEnergyJ": 126.20767933929379,
+      "volumeM3": 0.00047060901746172714,
+      "pressurePa": 107271.79009021666,
+      "temperatureK": 352.1061366086277
+    },
+    {
+      "angleDeg": 471,
+      "massKg": 0.0005041080244626203,
+      "internalEnergyJ": 127.35046966649612,
+      "volumeM3": 0.0004745465396628296,
+      "pressurePa": 107344.97801373071,
+      "temperatureK": 352.0297607243294
+    },
+    {
+      "angleDeg": 472,
+      "massKg": 0.0005086711420221798,
+      "internalEnergyJ": 128.47751247333602,
+      "volumeM3": 0.000478426173293767,
+      "pressurePa": 107416.7925126849,
+      "temperatureK": 351.9593116254204
+    },
+    {
+      "angleDeg": 473,
+      "massKg": 0.0005131646453143869,
+      "internalEnergyJ": 129.58862916439298,
+      "volumeM3": 0.00048224748908213855,
+      "pressurePa": 107487.24013973733,
+      "temperatureK": 351.8946045621636
+    },
+    {
+      "angleDeg": 474,
+      "massKg": 0.0005175878809785642,
+      "internalEnergyJ": 130.68365469431265,
+      "volumeM3": 0.00048601009885163043,
+      "pressurePa": 107556.32856444642,
+      "temperatureK": 351.83546365736936
+    },
+    {
+      "angleDeg": 475,
+      "massKg": 0.0005219402509475257,
+      "internalEnergyJ": 131.76243733363765,
+      "volumeM3": 0.0004897136542664717,
+      "pressurePa": 107624.06658315529,
+      "temperatureK": 351.7817215126573
+    },
+    {
+      "angleDeg": 476,
+      "massKg": 0.0005262212112726932,
+      "internalEnergyJ": 132.82483841593503,
+      "volumeM3": 0.000493357845545238,
+      "pressurePa": 107690.46412479173,
+      "temperatureK": 351.73321883681695
+    },
+    {
+      "angleDeg": 477,
+      "massKg": 0.0005304302708696229,
+      "internalEnergyJ": 133.87073206339568,
+      "volumeM3": 0.0004969424001483882,
+      "pressurePa": 107755.53224954968,
+      "temperatureK": 351.68980409252885
+    },
+    {
+      "angleDeg": 478,
+      "massKg": 0.0005345669901763211,
+      "internalEnergyJ": 134.90000488799623,
+      "volumeM3": 0.0005004670814438385,
+      "pressurePa": 107819.28313751395,
+      "temperatureK": 351.651333157887
+    },
+    {
+      "angleDeg": 479,
+      "massKg": 0.0005386309797653775,
+      "internalEnergyJ": 135.91255568094817,
+      "volumeM3": 0.0005039316873547736,
+      "pressurePa": 107881.73007685001,
+      "temperatureK": 351.61766900806344
+    },
+    {
+      "angleDeg": 480,
+      "massKg": 0.0005426218988739556,
+      "internalEnergyJ": 136.9082950784245,
+      "volumeM3": 0.0005073360489937667,
+      "pressurePa": 107942.8874411458,
+      "temperatureK": 351.58868140851496
+    },
+    {
+      "angleDeg": 481,
+      "massKg": 0.0005465394538967298,
+      "internalEnergyJ": 137.88714521761267,
+      "volumeM3": 0.0005106800292871681,
+      "pressurePa": 108002.77066646385,
+      "temperatureK": 351.56424662592286
+    },
+    {
+      "angleDeg": 482,
+      "massKg": 0.000550383396820886,
+      "internalEnergyJ": 138.84903937594302,
+      "volumeM3": 0.0005139635215935402,
+      "pressurePa": 108061.39622161709,
+      "temperatureK": 351.5442471511783
+    },
+    {
+      "angleDeg": 483,
+      "massKg": 0.0005541535236254942,
+      "internalEnergyJ": 139.79392160023986,
+      "volumeM3": 0.0005171864483197945,
+      "pressurePa": 108118.78157627236,
+      "temperatureK": 351.5285714365862
+    },
+    {
+      "angleDeg": 484,
+      "massKg": 0.0005578496726409203,
+      "internalEnergyJ": 140.72174632399125,
+      "volumeM3": 0.0005203487595384924,
+      "pressurePa": 108174.94516470077,
+      "temperatureK": 351.5171136447721
+    },
+    {
+      "angleDeg": 485,
+      "massKg": 0.0005614717228863847,
+      "internalEnergyJ": 141.63247797816942,
+      "volumeM3": 0.0005234504316095987,
+      "pressurePa": 108229.90634865088,
+      "temperatureK": 351.50977341081676
+    },
+    {
+      "angleDeg": 486,
+      "massKg": 0.0005650195923765536,
+      "internalEnergyJ": 142.52609059228013,
+      "volumeM3": 0.0005264914658098119,
+      "pressurePa": 108283.68537602527,
+      "temperatureK": 351.50645561441627
+    },
+    {
+      "angleDeg": 487,
+      "massKg": 0.0005684932364123347,
+      "internalEnergyJ": 143.40256739016814,
+      "volumeM3": 0.0005294718869723764,
+      "pressurePa": 108336.30333815982,
+      "temperatureK": 351.50707016324526
+    },
+    {
+      "angleDeg": 488,
+      "massKg": 0.0005718926458661734,
+      "internalEnergyJ": 144.26190038354164,
+      "volumeM3": 0.0005323917421401236,
+      "pressurePa": 108387.78212722346,
+      "temperatureK": 351.51153178783125
+    },
+    {
+      "angleDeg": 489,
+      "massKg": 0.0005752178454596199,
+      "internalEnergyJ": 145.10408996216918,
+      "volumeM3": 0.0005352510992342661,
+      "pressurePa": 108438.14439223464,
+      "temperatureK": 351.5197598461784
+    },
+    {
+      "angleDeg": 490,
+      "massKg": 0.0005784688920395505,
+      "internalEnergyJ": 145.9291444824949,
+      "volumeM3": 0.0005380500457413027,
+      "pressurePa": 108487.4134943636,
+      "temperatureK": 351.5316781379546
+    },
+    {
+      "angleDeg": 491,
+      "massKg": 0.0005816458728567988,
+      "internalEnergyJ": 146.7370798556014,
+      "volumeM3": 0.0005407886874201752,
+      "pressurePa": 108535.61346159701,
+      "temperatureK": 351.5472147277021
+    },
+    {
+      "angleDeg": 492,
+      "massKg": 0.0005847489038573867,
+      "internalEnergyJ": 147.52791913753006,
+      "volumeM3": 0.0005434671470316433,
+      "pressurePa": 108582.7689444052,
+      "temperatureK": 351.5663017776446
+    },
+    {
+      "angleDeg": 493,
+      "massKg": 0.0005877781279947403,
+      "internalEnergyJ": 148.30169212439571,
+      "volumeM3": 0.0005460855630916514,
+      "pressurePa": 108628.90517360606,
+      "temperatureK": 351.58887539036635
+    },
+    {
+      "angleDeg": 494,
+      "massKg": 0.0005907337135378533,
+      "internalEnergyJ": 149.0584349440413,
+      "volumeM3": 0.0005486440886502726,
+      "pressurePa": 108674.04791382486,
+      "temperatureK": 351.61487545630416
+    },
+    {
+      "angleDeg": 495,
+      "massKg": 0.0005936158524320665,
+      "internalEnergyJ": 149.79818966223328,
+      "volumeM3": 0.000551142890097645,
+      "pressurePa": 108718.22342528543,
+      "temperatureK": 351.64424551444324
+    },
+    {
+      "angleDeg": 496,
+      "massKg": 0.0005964247586574166,
+      "internalEnergyJ": 150.5210038855187,
+      "volumeM3": 0.0005535821459981305,
+      "pressurePa": 108761.4584203205,
+      "temperatureK": 351.6769326163056
+    },
+    {
+      "angleDeg": 497,
+      "massKg": 0.0005991606666300779,
+      "internalEnergyJ": 151.22693037521796,
+      "volumeM3": 0.0005559620459537745,
+      "pressurePa": 108803.7800247909,
+      "temperatureK": 351.71288719994027
+    },
+    {
+      "angleDeg": 498,
+      "massKg": 0.0006018238296313182,
+      "internalEnergyJ": 151.91602666739576,
+      "volumeM3": 0.0005582827894979644,
+      "pressurePa": 108845.21574022094,
+      "temperatureK": 351.7520629706136
+    },
+    {
+      "angleDeg": 499,
+      "massKg": 0.0006044145182714245,
+      "internalEnergyJ": 152.5883547010788,
+      "volumeM3": 0.0005605445850200537,
+      "pressurePa": 108885.79340793728,
+      "temperatureK": 351.7944167887524
+    },
+    {
+      "angleDeg": 500,
+      "massKg": 0.000606933018977937,
+      "internalEnergyJ": 153.24398045118699,
+      "volumeM3": 0.0005627476487215549,
+      "pressurePa": 108925.54117237113,
+      "temperatureK": 351.8399085628546
+    },
+    {
+      "angleDeg": 501,
+      "massKg": 0.0006093796325331083,
+      "internalEnergyJ": 153.88297357409624,
+      "volumeM3": 0.0005648922036043781,
+      "pressurePa": 108964.48744891373,
+      "temperatureK": 351.8885011508158
+    },
+    {
+      "angleDeg": 502,
+      "massKg": 0.0006117546726349706,
+      "internalEnergyJ": 154.50540705751737,
+      "volumeM3": 0.0005669784784914548,
+      "pressurePa": 109002.66089013181,
+      "temperatureK": 351.9401602650932
+    },
+    {
+      "angleDeg": 503,
+      "massKg": 0.0006140584645074262,
+      "internalEnergyJ": 155.11135688280902,
+      "volumeM3": 0.0005690067070799757,
+      "pressurePa": 109040.09035591743,
+      "temperatureK": 351.994854385337
+    },
+    {
+      "angleDeg": 504,
+      "massKg": 0.0006162913435332742,
+      "internalEnergyJ": 155.70090169128792,
+      "volumeM3": 0.0005709771270273489,
+      "pressurePa": 109076.8048814187,
+      "temperatureK": 352.0525546739878
+    },
+    {
+      "angleDeg": 505,
+      "massKg": 0.000618453653930734,
+      "internalEnergyJ": 156.2741224611175,
+      "volumeM3": 0.000572889979069884,
+      "pressurePa": 109112.83364728178,
+      "temperatureK": 352.1132348977736
+    },
+    {
+      "angleDeg": 506,
+      "massKg": 0.0006205457474567776,
+      "internalEnergyJ": 156.83110218939706,
+      "volumeM3": 0.000574745506174114,
+      "pressurePa": 109148.20594831163,
+      "temperatureK": 352.1768713522354
+    },
+    {
+      "angleDeg": 507,
+      "massKg": 0.0006225679821394661,
+      "internalEnergyJ": 157.37192558014894,
+      "volumeM3": 0.0005765439527205778,
+      "pressurePa": 109182.95116099795,
+      "temperatureK": 352.2434427894187
+    },
+    {
+      "angleDeg": 508,
+      "massKg": 0.0006245207210410557,
+      "internalEnergyJ": 157.89667873878045,
+      "volumeM3": 0.0005782855637198052,
+      "pressurePa": 109217.09871027358,
+      "temperatureK": 352.3129303488407
+    },
+    {
+      "angleDeg": 509,
+      "massKg": 0.0006264043310311796,
+      "internalEnergyJ": 158.40544886638676,
+      "volumeM3": 0.0005799705840601775,
+      "pressurePa": 109250.67803090555,
+      "temperatureK": 352.38531748843866
+    },
+    {
+      "angleDeg": 510,
+      "massKg": 0.000628219181577788,
+      "internalEnergyJ": 158.89832395639604,
+      "volumeM3": 0.0005815992577872702,
+      "pressurePa": 109283.71852531888,
+      "temperatureK": 352.46058991664523
+    },
+    {
+      "angleDeg": 511,
+      "massKg": 0.000629965643535364,
+      "internalEnergyJ": 159.3753924870088,
+      "volumeM3": 0.0005831718274142295,
+      "pressurePa": 109316.24951340712,
+      "temperatureK": 352.5387355224485
+    },
+    {
+      "angleDeg": 512,
+      "massKg": 0.0006316440879252755,
+      "internalEnergyJ": 159.83674310783013,
+      "volumeM3": 0.000584688533262687,
+      "pressurePa": 109348.30017336368,
+      "temperatureK": 352.61974430272903
+    },
+    {
+      "angleDeg": 513,
+      "massKg": 0.0006332548846896986,
+      "internalEnergyJ": 160.28246431478178,
+      "volumeM3": 0.0005861496128336672,
+      "pressurePa": 109379.89946963619,
+      "temperatureK": 352.70360828417233
+    },
+    {
+      "angleDeg": 514,
+      "massKg": 0.0006347984013978166,
+      "internalEnergyJ": 160.71264410651517,
+      "volumeM3": 0.0005875553002079183,
+      "pressurePa": 109411.07606357645,
+      "temperatureK": 352.7903214367374
+    },
+    {
+      "angleDeg": 515,
+      "massKg": 0.0006362750018748452,
+      "internalEnergyJ": 161.1273696129311,
+      "volumeM3": 0.0005889058254750586,
+      "pressurePa": 109441.85820064036,
+      "temperatureK": 352.87987957452555
+    },
+    {
+      "angleDeg": 516,
+      "massKg": 0.0006376850447271024,
+      "internalEnergyJ": 161.52672668727945,
+      "volumeM3": 0.0005902014141909064,
+      "pressurePa": 109472.27356865126,
+      "temperatureK": 352.97228024040515
+    },
+    {
+      "angleDeg": 517,
+      "massKg": 0.0006390288817102759,
+      "internalEnergyJ": 161.91079944493913,
+      "volumeM3": 0.0005914422868623551,
+      "pressurePa": 109502.34911601456,
+      "temperatureK": 353.06752256695825
+    },
+    {
+      "angleDeg": 518,
+      "massKg": 0.0006403068558834635,
+      "internalEnergyJ": 162.27966973051755,
+      "volumeM3": 0.0005926286584591247,
+      "pressurePa": 109532.1108178979,
+      "temperatureK": 353.16560710581496
+    },
+    {
+      "angleDeg": 519,
+      "massKg": 0.0006415192994718177,
+      "internalEnergyJ": 162.6334164885695,
+      "volumeM3": 0.0005937607379517325,
+      "pressurePa": 109561.58337420426,
+      "temperatureK": 353.26653561469186
+    },
+    {
+      "angleDeg": 520,
+      "massKg": 0.0006426665313224311,
+      "internalEnergyJ": 162.97211500097123,
+      "volumeM3": 0.0005948387278750095,
+      "pressurePa": 109590.78981502746,
+      "temperatureK": 353.37031078605406
+    },
+    {
+      "angleDeg": 521,
+      "massKg": 0.0006437488538076393,
+      "internalEnergyJ": 163.29583594420444,
+      "volumeM3": 0.000595862823916493,
+      "pressurePa": 109619.75098288021,
+      "temperatureK": 353.476935897167
+    },
+    {
+      "angleDeg": 522,
+      "massKg": 0.0006447665489709387,
+      "internalEnergyJ": 163.60464420086691,
+      "volumeM3": 0.0005968332145290405,
+      "pressurePa": 109648.48484846264,
+      "temperatureK": 353.5864143530644
+    },
+    {
+      "angleDeg": 523,
+      "massKg": 0.0006457198736194595,
+      "internalEnergyJ": 163.89859733040888,
+      "volumeM3": 0.0005977500805670044,
+      "pressurePa": 109677.00559734962,
+      "temperatureK": 353.69874908116043
+    },
+    {
+      "angleDeg": 524,
+      "massKg": 0.0006466090529429187,
+      "internalEnergyJ": 164.1777435642663,
+      "volumeM3": 0.0005986135949453353,
+      "pressurePa": 109705.32239867274,
+      "temperatureK": 353.8139417189395
+    },
+    {
+      "angleDeg": 525,
+      "massKg": 0.0006474342720350892,
+      "internalEnergyJ": 164.44211912506367,
+      "volumeM3": 0.0005994239223209862,
+      "pressurePa": 109733.43772356577,
+      "temperatureK": 353.93199150758727
+    },
+    {
+      "angleDeg": 526,
+      "massKg": 0.0006481956643858101,
+      "internalEnergyJ": 164.69174457061646,
+      "volumeM3": 0.0006001812187960162,
+      "pressurePa": 109761.34501575617,
+      "temperatureK": 354.0528937613294
+    },
+    {
+      "angleDeg": 527,
+      "massKg": 0.0006488932958843501,
+      "internalEnergyJ": 164.9266196940943,
+      "volumeM3": 0.0006008856316418095,
+      "pressurePa": 109789.02540469315,
+      "temperatureK": 354.1766377082868
+    },
+    {
+      "angleDeg": 528,
+      "massKg": 0.0006495271419907952,
+      "internalEnergyJ": 165.14671622766204,
+      "volumeM3": 0.0006015372990438556,
+      "pressurePa": 109816.44296382814,
+      "temperatureK": 354.30320337461825
+    },
+    {
+      "angleDeg": 529,
+      "massKg": 0.0006500970541338695,
+      "internalEnergyJ": 165.35196708343167,
+      "volumeM3": 0.0006021363498665537,
+      "pressurePa": 109843.53767719035,
+      "temperatureK": 354.43255695924836
+    },
+    {
+      "angleDeg": 530,
+      "massKg": 0.0006506027083712793,
+      "internalEnergyJ": 165.5422498945169,
+      "volumeM3": 0.0006026829034375462,
+      "pressurePa": 109870.21463546221,
+      "temperatureK": 354.56464372167636
+    },
+    {
+      "angleDeg": 531,
+      "massKg": 0.0006510435231174643,
+      "internalEnergyJ": 165.71736061686022,
+      "volumeM3": 0.0006031770693511035,
+      "pressurePa": 109896.32665919382,
+      "temperatureK": 354.69937652853747
+    },
+    {
+      "angleDeg": 532,
+      "massKg": 0.0006514185187183958,
+      "internalEnergyJ": 165.87696844589425,
+      "volumeM3": 0.000603618947290123,
+      "pressurePa": 109921.64456770587,
+      "temperatureK": 354.836616229163
+    },
+    {
+      "angleDeg": 533,
+      "massKg": 0.0006517260554712292,
+      "internalEnergyJ": 166.02053167543093,
+      "volumeM3": 0.0006040086268663355,
+      "pressurePa": 109945.80162655229,
+      "temperatureK": 354.9761349284669
+    },
+    {
+      "angleDeg": 534,
+      "massKg": 0.0006519632735116965,
+      "internalEnergyJ": 166.14711775608606,
+      "volumeM3": 0.0006043461874783492,
+      "pressurePa": 109968.17466448451,
+      "temperatureK": 355.11753724799354
+    },
+    {
+      "angleDeg": 535,
+      "massKg": 0.0006521245652699089,
+      "internalEnergyJ": 166.25491245510392,
+      "volumeM3": 0.0006046316981871957,
+      "pressurePa": 109987.55966884879,
+      "temperatureK": 355.2600450114722
+    },
+    {
+      "angleDeg": 536,
+      "massKg": 0.0006521920434136124,
+      "internalEnergyJ": 166.33814112342898,
+      "volumeM3": 0.0006048652176090767,
+      "pressurePa": 110000.13641447836,
+      "temperatureK": 355.4011164203478
+    },
+    {
+      "angleDeg": 537,
+      "massKg": 0.0006521577319940398,
+      "internalEnergyJ": 166.39304332498492,
+      "volumeM3": 0.000605046793825059,
+      "pressurePa": 110003.42123825559,
+      "temperatureK": 355.5371260569947
+    },
+    {
+      "angleDeg": 538,
+      "massKg": 0.0006520849836111795,
+      "internalEnergyJ": 166.43980657764553,
+      "volumeM3": 0.0006051764643074904,
+      "pressurePa": 110010.75976614804,
+      "temperatureK": 355.67672237601676
+    },
+    {
+      "angleDeg": 539,
+      "massKg": 0.0006519768349479534,
+      "internalEnergyJ": 166.47949340043962,
+      "volumeM3": 0.0006052542558629551,
+      "pressurePa": 110022.84860472572,
+      "temperatureK": 355.8205449282574
+    },
+    {
+      "angleDeg": 540,
+      "massKg": 0.000651837028118961,
+      "internalEnergyJ": 166.51342058800594,
+      "volumeM3": 0.0006052801845916337,
+      "pressurePa": 110040.55630887573,
+      "temperatureK": 355.96939069845905
+    },
+    {
+      "angleDeg": 541,
+      "massKg": 0.0006516691903147621,
+      "internalEnergyJ": 166.54286617477032,
+      "volumeM3": 0.0006052542558629551,
+      "pressurePa": 110064.73035852874,
+      "temperatureK": 356.12403529310814
+    },
+    {
+      "angleDeg": 542,
+      "massKg": 0.0006514771436752934,
+      "internalEnergyJ": 166.569180509329,
+      "volumeM3": 0.0006051764643074904,
+      "pressurePa": 110096.27130819489,
+      "temperatureK": 356.2853012219448
+    },
+    {
+      "angleDeg": 543,
+      "massKg": 0.0006512650580362402,
+      "internalEnergyJ": 166.593841221134,
+      "volumeM3": 0.000605046793825059,
+      "pressurePa": 110136.16991039031,
+      "temperatureK": 356.454091697744
+    },
+    {
+      "angleDeg": 544,
+      "massKg": 0.0006510374370309252,
+      "internalEnergyJ": 166.61844869254028,
+      "volumeM3": 0.0006048652176090767,
+      "pressurePa": 110185.50502946952,
+      "temperatureK": 356.63138809521155
+    },
+    {
+      "angleDeg": 545,
+      "massKg": 0.0006507991215372832,
+      "internalEnergyJ": 166.64472781702042,
+      "volumeM3": 0.0006046316981871956,
+      "pressurePa": 110245.44582538691,
+      "temperatureK": 356.81825122858686
+    },
+    {
+      "angleDeg": 546,
+      "massKg": 0.0006505552967000867,
+      "internalEnergyJ": 166.67453113522993,
+      "volumeM3": 0.0006043461874783492,
+      "pressurePa": 110317.25496982706,
+      "temperatureK": 357.01582343054565
+    },
+    {
+      "angleDeg": 547,
+      "massKg": 0.0006503114994539549,
+      "internalEnergyJ": 166.709842264676,
+      "volumeM3": 0.0006040086268663354,
+      "pressurePa": 110402.29218551754,
+      "temperatureK": 357.2253307512566
+    },
+    {
+      "angleDeg": 548,
+      "massKg": 0.0006500736256699495,
+      "internalEnergyJ": 166.75277932567394,
+      "volumeM3": 0.0006036189472901231,
+      "pressurePa": 110502.01791994176,
+      "temperatureK": 357.4480850754633
+    },
+    {
+      "angleDeg": 549,
+      "massKg": 0.0006498479366375272,
+      "internalEnergyJ": 166.80559827835182,
+      "volumeM3": 0.0006031770693511036,
+      "pressurePa": 110617.99710509607,
+      "temperatureK": 357.68548608283015
+    },
+    {
+      "angleDeg": 550,
+      "massKg": 0.0006496410647748005,
+      "internalEnergyJ": 166.87069615175636,
+      "volumeM3": 0.0006026829034375462,
+      "pressurePa": 110751.90299905265,
+      "temperatureK": 357.9390230149609
+    },
+    {
+      "angleDeg": 551,
+      "massKg": 0.0006494600185296449,
+      "internalEnergyJ": 166.95061417250497,
+      "volumeM3": 0.0006021363498665536,
+      "pressurePa": 110905.52112291829,
+      "temperatureK": 358.2102762262911
+    },
+    {
+      "angleDeg": 552,
+      "massKg": 0.0006493121864509868,
+      "internalEnergyJ": 167.04804080790615,
+      "volumeM3": 0.0006015372990438556,
+      "pressurePa": 111080.7533121748,
+      "temperatureK": 358.50091849834223
+    },
+    {
+      "angleDeg": 553,
+      "massKg": 0.0006492053404358296,
+      "internalEnergyJ": 167.16581474931456,
+      "volumeM3": 0.0006008856316418097,
+      "pressurePa": 111279.62190912411,
+      "temperatureK": 358.81271610127766
+    },
+    {
+      "angleDeg": 554,
+      "massKg": 0.0006491476381566563,
+      "internalEnergyJ": 167.3069278625504,
+      "volumeM3": 0.0006001812187960162,
+      "pressurePa": 111504.27412452106,
+      "temperatureK": 359.1475295853202
+    },
+    {
+      "angleDeg": 555,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 167.47161237319,
+      "volumeM3": 0.0005994239223209862,
+      "pressurePa": 111755.04088974974,
+      "temperatureK": 359.5055267884075
+    },
+    {
+      "angleDeg": 556,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 167.64493374921486,
+      "volumeM3": 0.0005986135949453353,
+      "pressurePa": 112022.13592527845,
+      "temperatureK": 359.8775898008102
+    },
+    {
+      "angleDeg": 557,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 167.82401490314916,
+      "volumeM3": 0.0005977500805670044,
+      "pressurePa": 112303.8007750378,
+      "temperatureK": 360.262017129542
+    },
+    {
+      "angleDeg": 558,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 168.00890114070953,
+      "volumeM3": 0.0005968332145290406,
+      "pressurePa": 112600.23540967627,
+      "temperatureK": 360.6589060308201
+    },
+    {
+      "angleDeg": 559,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 168.19964138540655,
+      "volumeM3": 0.000595862823916493,
+      "pressurePa": 112911.65324251125,
+      "temperatureK": 361.0683615270552
+    },
+    {
+      "angleDeg": 560,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 168.39628822302214,
+      "volumeM3": 0.0005948387278750095,
+      "pressurePa": 113238.28145796612,
+      "temperatureK": 361.4904965023292
+    },
+    {
+      "angleDeg": 561,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 168.59889794874866,
+      "volumeM3": 0.0005937607379517325,
+      "pressurePa": 113580.36136262969,
+      "temperatureK": 361.9254318035877
+    },
+    {
+      "angleDeg": 562,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 168.80753061701347,
+      "volumeM3": 0.0005926286584591248,
+      "pressurePa": 113938.14875974755,
+      "temperatureK": 362.3732963475957
+    },
+    {
+      "angleDeg": 563,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 169.0222500940148,
+      "volumeM3": 0.0005914422868623551,
+      "pressurePa": 114311.9143480188,
+      "temperatureK": 362.8342272337156
+    },
+    {
+      "angleDeg": 564,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 169.24312411299616,
+      "volumeM3": 0.0005902014141909067,
+      "pressurePa": 114701.94414563211,
+      "temperatureK": 363.30836986256196
+    },
+    {
+      "angleDeg": 565,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 169.47022433228847,
+      "volumeM3": 0.0005889058254750587,
+      "pressurePa": 115108.53994054491,
+      "temperatureK": 363.7958780605992
+    },
+    {
+      "angleDeg": 566,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 169.70362639615018,
+      "volumeM3": 0.0005875553002079183,
+      "pressurePa": 115532.01976807772,
+      "temperatureK": 364.2969142107446
+    },
+    {
+      "angleDeg": 567,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 169.94340999843854,
+      "volumeM3": 0.0005861496128336673,
+      "pressurePa": 115972.71841697088,
+      "temperatureK": 364.81164938904936
+    },
+    {
+      "angleDeg": 568,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 170.18965894914598,
+      "volumeM3": 0.000584688533262687,
+      "pressurePa": 116430.98796513163,
+      "temperatureK": 365.34026350752987
+    },
+    {
+      "angleDeg": 569,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 170.44246124383946,
+      "volumeM3": 0.0005831718274142295,
+      "pressurePa": 116907.19834637923,
+      "temperatureK": 365.882945463231
+    },
+    {
+      "angleDeg": 570,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 170.701909136041,
+      "volumeM3": 0.0005815992577872699,
+      "pressurePa": 117401.73794958879,
+      "temperatureK": 366.43989329360244
+    },
+    {
+      "angleDeg": 571,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 170.9680992125923,
+      "volumeM3": 0.0005799705840601775,
+      "pressurePa": 117915.01425172466,
+      "temperatureK": 367.0113143382818
+    },
+    {
+      "angleDeg": 572,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 171.24113247204775,
+      "volumeM3": 0.0005782855637198052,
+      "pressurePa": 118447.45448635728,
+      "temperatureK": 367.59742540737784
+    },
+    {
+      "angleDeg": 573,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 171.52111440614365,
+      "volumeM3": 0.000576543952720578,
+      "pressurePa": 118999.50634935986,
+      "temperatureK": 368.1984529563578
+    },
+    {
+      "angleDeg": 574,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 171.8081550843958,
+      "volumeM3": 0.0005747455061741141,
+      "pressurePa": 119571.63874359931,
+      "temperatureK": 368.8146332676501
+    },
+    {
+      "angleDeg": 575,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 172.10236924187953,
+      "volumeM3": 0.0005728899790698842,
+      "pressurePa": 120164.3425645506,
+      "temperatureK": 369.44621263907874
+    },
+    {
+      "angleDeg": 576,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 172.4038763702523,
+      "volumeM3": 0.0005709771270273491,
+      "pressurePa": 120778.131528897,
+      "temperatureK": 370.09344757925817
+    },
+    {
+      "angleDeg": 577,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 172.71280081208153,
+      "volumeM3": 0.0005690067070799756,
+      "pressurePa": 121413.54304831153,
+      "temperatureK": 370.7566050100838
+    },
+    {
+      "angleDeg": 578,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 173.02927185854733,
+      "volumeM3": 0.0005669784784914547,
+      "pressurePa": 122071.13915076418,
+      "temperatureK": 371.43596247646707
+    },
+    {
+      "angleDeg": 579,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 173.353423850593,
+      "volumeM3": 0.000564892203604378,
+      "pressurePa": 122751.50745185425,
+      "temperatureK": 372.1318083634715
+    },
+    {
+      "angleDeg": 580,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 173.6853962836034,
+      "volumeM3": 0.0005627476487215555,
+      "pressurePa": 123455.26217883284,
+      "temperatureK": 372.84444212102255
+    },
+    {
+      "angleDeg": 581,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 174.02533391569685,
+      "volumeM3": 0.0005605445850200539,
+      "pressurePa": 124183.04525016215,
+      "temperatureK": 373.5741744963736
+    },
+    {
+      "angleDeg": 582,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 174.3733868797238,
+      "volumeM3": 0.0005582827894979646,
+      "pressurePa": 124935.5274136456,
+      "temperatureK": 374.32132777453
+    },
+    {
+      "angleDeg": 583,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 174.72971079907205,
+      "volumeM3": 0.0005559620459537748,
+      "pressurePa": 125713.40944637061,
+      "temperatureK": 375.0862360268441
+    },
+    {
+      "angleDeg": 584,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 175.09446690738736,
+      "volumeM3": 0.0005535821459981308,
+      "pressurePa": 126517.42341992259,
+      "temperatureK": 375.8692453680152
+    },
+    {
+      "angleDeg": 585,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 175.46782217232627,
+      "volumeM3": 0.0005511428900976448,
+      "pressurePa": 127348.33403456512,
+      "temperatureK": 376.67071422174536
+    },
+    {
+      "angleDeg": 586,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 175.8499494234684,
+      "volumeM3": 0.0005486440886502727,
+      "pressurePa": 128206.94002633245,
+      "temperatureK": 377.4910135953247
+    },
+    {
+      "angleDeg": 587,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 176.2410274845243,
+      "volumeM3": 0.0005460855630916513,
+      "pressurePa": 129094.07565125113,
+      "temperatureK": 378.3305273634372
+    },
+    {
+      "angleDeg": 588,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 176.64124130998826,
+      "volumeM3": 0.000543467147031643,
+      "pressurePa": 130010.61225119715,
+      "temperatureK": 379.18965256150847
+    },
+    {
+      "angleDeg": 589,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 177.05078212639498,
+      "volumeM3": 0.0005407886874201752,
+      "pressurePa": 130957.45990620712,
+      "temperatureK": 380.0687996889366
+    },
+    {
+      "angleDeg": 590,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 177.46984757835364,
+      "volumeM3": 0.0005380500457413027,
+      "pressurePa": 131935.56917839724,
+      "temperatureK": 380.96839302257877
+    },
+    {
+      "angleDeg": 591,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 177.89864187954615,
+      "volumeM3": 0.0005352510992342661,
+      "pressurePa": 132945.93295300027,
+      "temperatureK": 381.88887094089347
+    },
+    {
+      "angleDeg": 592,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 178.33737596889063,
+      "volumeM3": 0.0005323917421401236,
+      "pressurePa": 133989.58838242298,
+      "temperatureK": 382.83068625917167
+    },
+    {
+      "angleDeg": 593,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 178.78626767208794,
+      "volumeM3": 0.0005294718869723767,
+      "pressurePa": 135067.6189396363,
+      "temperatureK": 383.794306576323
+    },
+    {
+      "angleDeg": 594,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 179.24554186878498,
+      "volumeM3": 0.0005264914658098121,
+      "pressurePa": 136181.15658766252,
+      "temperatureK": 384.78021463371937
+    },
+    {
+      "angleDeg": 595,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 179.71543066560713,
+      "volumeM3": 0.0005234504316095991,
+      "pressurePa": 137331.38407240272,
+      "temperatureK": 385.7889086866379
+    },
+    {
+      "angleDeg": 596,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 180.19617357533048,
+      "volumeM3": 0.0005203487595384924,
+      "pressurePa": 138519.53734656732,
+      "temperatureK": 386.82090288888367
+    },
+    {
+      "angleDeg": 597,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 180.6880177024859,
+      "volumeM3": 0.000517186448319795,
+      "pressurePa": 139746.90813302976,
+      "temperatureK": 387.87672769121957
+    },
+    {
+      "angleDeg": 598,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 181.19121793570702,
+      "volumeM3": 0.0005139635215935402,
+      "pressurePa": 141014.84663652777,
+      "temperatureK": 388.956930254273
+    },
+    {
+      "angleDeg": 599,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 181.70603714715753,
+      "volumeM3": 0.0005106800292871681,
+      "pressurePa": 142324.76441327974,
+      "temperatureK": 390.06207487663966
+    },
+    {
+      "angleDeg": 600,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 182.23274639939692,
+      "volumeM3": 0.0005073360489937669,
+      "pressurePa": 143678.13740878942,
+      "temperatureK": 391.1927434389551
+    },
+    {
+      "angleDeg": 601,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 182.7716251600687,
+      "volumeM3": 0.0005039316873547734,
+      "pressurePa": 145076.50917486002,
+      "temperatureK": 392.3495358647586
+    },
+    {
+      "angleDeg": 602,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 183.3229615248212,
+      "volumeM3": 0.0005004670814438389,
+      "pressurePa": 146521.49427765564,
+      "temperatureK": 393.5330705990291
+    },
+    {
+      "angleDeg": 603,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 183.88705244889871,
+      "volumeM3": 0.0004969424001483881,
+      "pressurePa": 148014.7819095248,
+      "temperatureK": 394.74398510533445
+    },
+    {
+      "angleDeg": 604,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 184.46420398786933,
+      "volumeM3": 0.0004933578455452381,
+      "pressurePa": 149558.1397182463,
+      "temperatureK": 395.9829363825933
+    },
+    {
+      "angleDeg": 605,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 185.0547315479857,
+      "volumeM3": 0.0004897136542664716,
+      "pressurePa": 151153.41786838594,
+      "temperatureK": 397.2506015025161
+    },
+    {
+      "angleDeg": 606,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 185.658960146706,
+      "volumeM3": 0.0004860100988516306,
+      "pressurePa": 152802.55335055004,
+      "temperatureK": 398.5476781688558
+    },
+    {
+      "angleDeg": 607,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 186.2772246839343,
+      "volumeM3": 0.00048224748908213877,
+      "pressurePa": 154507.57455552588,
+      "temperatureK": 399.8748852996712
+    },
+    {
+      "angleDeg": 608,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 186.90987022457387,
+      "volumeM3": 0.0004784261732937675,
+      "pressurePa": 156270.6061315803,
+      "temperatureK": 401.23296363387357
+    },
+    {
+      "angleDeg": 609,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 187.55725229301973,
+      "volumeM3": 0.0004745465396628298,
+      "pressurePa": 158093.87414459375,
+      "temperatureK": 402.6226763634039
+    },
+    {
+      "angleDeg": 610,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 188.21973718025424,
+      "volumeM3": 0.00047060901746172725,
+      "pressurePa": 159979.71156220895,
+      "temperatureK": 404.0448097924646
+    },
+    {
+      "angleDeg": 611,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 188.89770226424378,
+      "volumeM3": 0.0004666140782793884,
+      "pressurePa": 161930.56408481524,
+      "temperatureK": 405.5001740253035
+    },
+    {
+      "angleDeg": 612,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 189.59153634437382,
+      "volumeM3": 0.00046256223720210363,
+      "pressurePa": 163948.99634795485,
+      "temperatureK": 406.98960368413464
+    },
+    {
+      "angleDeg": 613,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 190.30163999069674,
+      "volumeM3": 0.000458454053950242,
+      "pressurePa": 166037.69852265366,
+      "temperatureK": 408.5139586588561
+    },
+    {
+      "angleDeg": 614,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 191.02842590880618,
+      "volumeM3": 0.00045429013396632066,
+      "pressurePa": 168199.49334225978,
+      "temperatureK": 410.0741248903132
+    },
+    {
+      "angleDeg": 615,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 191.7723193211904,
+      "volumeM3": 0.00045007112944994395,
+      "pressurePa": 170437.34358661537,
+      "temperatureK": 411.6710151889369
+    },
+    {
+      "angleDeg": 616,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 192.5337583659588,
+      "volumeM3": 0.0004457977403351618,
+      "pressurePa": 172754.36005683395,
+      "temperatureK": 413.3055700906759
+    },
+    {
+      "angleDeg": 617,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 193.31319451387424,
+      "volumeM3": 0.00044147071520588666,
+      "pressurePa": 175153.81007659328,
+      "temperatureK": 414.9787587522256
+    },
+    {
+      "angleDeg": 618,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 194.11109300466617,
+      "volumeM3": 0.00043709085214509776,
+      "pressurePa": 177639.12655873067,
+      "temperatureK": 416.6915798876465
+    },
+    {
+      "angleDeg": 619,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 194.92793330363904,
+      "volumeM3": 0.0004326589995137105,
+      "pressurePa": 180213.91767903068,
+      "temperatureK": 418.4450627485499
+    },
+    {
+      "angleDeg": 620,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 195.76420957963194,
+      "volumeM3": 0.000428176056655118,
+      "pressurePa": 182881.9772024886,
+      "temperatureK": 420.24026815011683
+    },
+    {
+      "angleDeg": 621,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 196.62043120542546,
+      "volumeM3": 0.00042364297452161527,
+      "pressurePa": 185647.29551099247,
+      "temperatureK": 422.0782895453047
+    },
+    {
+      "angleDeg": 622,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 197.4971232817313,
+      "volumeM3": 0.0004190607562191173,
+      "pressurePa": 188514.07138535733,
+      "temperatureK": 423.96025414967727
+    },
+    {
+      "angleDeg": 623,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 198.39482718593868,
+      "volumeM3": 0.00041443045746680204,
+      "pressurePa": 191486.72459898153,
+      "temperatureK": 425.8873241193801
+    },
+    {
+      "angleDeg": 624,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 199.3141011468306,
+      "volumeM3": 0.00040975318696858504,
+      "pressurePa": 194569.90938509683,
+      "temperatureK": 427.86069778486365
+    },
+    {
+      "angleDeg": 625,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 200.25552084651676,
+      "volumeM3": 0.00040503010669358866,
+      "pressurePa": 197768.52884470933,
+      "temperatureK": 429.881610943032
+    },
+    {
+      "angleDeg": 626,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 201.2196800508663,
+      "volumeM3": 0.0004002624320630836,
+      "pressurePa": 201087.75036789154,
+      "temperatureK": 431.95133821057135
+    },
+    {
+      "angleDeg": 627,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 202.20719126975305,
+      "volumeM3": 0.00039545143204168016,
+      "pressurePa": 204533.02214714506,
+      "temperatureK": 434.07119444127534
+    },
+    {
+      "angleDeg": 628,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 203.21868644845566,
+      "volumeM3": 0.0003905984291308999,
+      "pressurePa": 208110.0908681347,
+      "temperatureK": 436.24253621024985
+    },
+    {
+      "angleDeg": 629,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 204.25481769157827,
+      "volumeM3": 0.00038570479926357775,
+      "pressurePa": 211825.02067027413,
+      "temperatureK": 438.4667633679287
+    },
+    {
+      "angleDeg": 630,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 205.31625802087814,
+      "volumeM3": 0.00038077197159793754,
+      "pressurePa": 215684.21347742938,
+      "temperatureK": 440.74532066687607
+    },
+    {
+      "angleDeg": 631,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 206.4037021684001,
+      "volumeM3": 0.0003758014282105207,
+      "pressurePa": 219694.43080751091,
+      "temperatureK": 443.07969946438044
+    },
+    {
+      "angleDeg": 632,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 207.51786740632545,
+      "volumeM3": 0.00037079470368754517,
+      "pressurePa": 223862.8171789562,
+      "temperatureK": 445.47143950386317
+    },
+    {
+      "angleDeg": 633,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 208.65949441494197,
+      "volumeM3": 0.0003657533846146405,
+      "pressurePa": 228196.92524216726,
+      "temperatureK": 447.92213077811914
+    },
+    {
+      "angleDeg": 634,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 209.82934819013175,
+      "volumeM3": 0.00036067910896529646,
+      "pressurePa": 232704.74277490898,
+      "temperatureK": 450.43341547739
+    },
+    {
+      "angleDeg": 635,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 211.0282189917515,
+      "volumeM3": 0.00035557356538872285,
+      "pressurePa": 237394.72169259776,
+      "temperatureK": 453.0069900252191
+    },
+    {
+      "angleDeg": 636,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 212.2569233342449,
+      "volumeM3": 0.00035043849239821753,
+      "pressurePa": 242275.8092373582,
+      "temperatureK": 455.64460720496515
+    },
+    {
+      "angleDeg": 637,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 213.51630502077595,
+      "volumeM3": 0.00034527567746149394,
+      "pressurePa": 247357.48152383286,
+      "temperatureK": 458.3480783797402
+    },
+    {
+      "angleDeg": 638,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 214.80723622210044,
+      "volumeM3": 0.000340086955994775,
+      "pressurePa": 252649.77963506558,
+      "temperatureK": 461.119275808386
+    },
+    {
+      "angleDeg": 639,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 216.130618601303,
+      "volumeM3": 0.00033487421026282417,
+      "pressurePa": 258163.34847843202,
+      "temperatureK": 463.9601350599082
+    },
+    {
+      "angleDeg": 640,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 217.48738448540593,
+      "volumeM3": 0.0003296393681873927,
+      "pressurePa": 263909.4786297116,
+      "temperatureK": 466.87265752852835
+    },
+    {
+      "angleDeg": 641,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 218.87849808470853,
+      "volumeM3": 0.00032438440206690526,
+      "pressurePa": 269900.1514130314,
+      "temperatureK": 469.8589130511978
+    },
+    {
+      "angleDeg": 642,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 220.30495676052973,
+      "volumeM3": 0.0003191113272104744,
+      "pressurePa": 276148.08748575,
+      "temperatureK": 472.9210426290169
+    },
+    {
+      "angleDeg": 643,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 221.76779234179855,
+      "volumeM3": 0.00031382220048963304,
+      "pressurePa": 282666.7992204388,
+      "temperatureK": 476.06126125351415
+    },
+    {
+      "angleDeg": 644,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 223.26807249065988,
+      "volumeM3": 0.0003085191188114205,
+      "pressurePa": 289470.6472011291,
+      "temperatureK": 479.2818608381451
+    },
+    {
+      "angleDeg": 645,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 224.8069021169274,
+      "volumeM3": 0.00030320421751667785,
+      "pressurePa": 296574.901178031,
+      "temperatureK": 482.58521325464983
+    },
+    {
+      "angleDeg": 646,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 226.38542484081196,
+      "volumeM3": 0.0002978796687076365,
+      "pressurePa": 303995.80585408147,
+      "temperatureK": 485.97377347304086
+    },
+    {
+      "angleDeg": 647,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 228.0048245028707,
+      "volumeM3": 0.00029254767950903974,
+      "pressurePa": 311750.65190811094,
+      "temperatureK": 489.45008280295923
+    },
+    {
+      "angleDeg": 648,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 229.66632671954667,
+      "volumeM3": 0.00028721049026721,
+      "pressurePa": 319857.852693157,
+      "temperatureK": 493.01677223289767
+    },
+    {
+      "angleDeg": 649,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 231.3712004819856,
+      "volumeM3": 0.00028187037269158943,
+      "pressurePa": 328337.02708463377,
+      "temperatureK": 496.6765658623251
+    },
+    {
+      "angleDeg": 650,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 233.12075979500557,
+      "volumeM3": 0.0002765296279433983,
+      "pressurePa": 337209.08899168234,
+      "temperatureK": 500.43228442000645
+    },
+    {
+      "angleDeg": 651,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 234.91636535214172,
+      "volumeM3": 0.00027119058467610667,
+      "pressurePa": 346496.34408615076,
+      "temperatureK": 504.2868488597632
+    },
+    {
+      "angleDeg": 652,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 236.7594262415578,
+      "volumeM3": 0.00026585559703249306,
+      "pressurePa": 356222.5943471423,
+      "temperatureK": 508.2432840224948
+    },
+    {
+      "angleDeg": 653,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 238.6514016762947,
+      "volumeM3": 0.00026052704260305876,
+      "pressurePa": 366413.2510649284,
+      "temperatureK": 512.3047223504433
+    },
+    {
+      "angleDeg": 654,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 240.59380274076676,
+      "volumeM3": 0.0002552073203505974,
+      "pressurePa": 377095.4569958965,
+      "temperatureK": 516.474407636337
+    },
+    {
+      "angleDeg": 655,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 242.5881941435946,
+      "volumeM3": 0.00024989884850565406,
+      "pressurePa": 388298.2184099274,
+      "temperatureK": 520.7556987861359
+    },
+    {
+      "angleDeg": 656,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 244.63619596472765,
+      "volumeM3": 0.0002446040624376084,
+      "pressurePa": 400052.547822467,
+      "temperatureK": 525.1520735695194
+    },
+    {
+      "angleDeg": 657,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 246.73948538231198,
+      "volumeM3": 0.00023932541250601213,
+      "pressurePa": 412391.6182551045,
+      "temperatureK": 529.6671323268935
+    },
+    {
+      "angleDeg": 658,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 248.89979836184665,
+      "volumeM3": 0.00023406536189674525,
+      "pressurePa": 425350.9299195587,
+      "temperatureK": 534.3046015954451
+    },
+    {
+      "angleDeg": 659,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 251.11893128677104,
+      "volumeM3": 0.00022882638444742768,
+      "pressurePa": 438968.49026946886,
+      "temperatureK": 539.0683376094668
+    },
+    {
+      "angleDeg": 660,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 253.39874250566575,
+      "volumeM3": 0.00022361096246643889,
+      "pressurePa": 453285.00841043977,
+      "temperatureK": 543.9623296216799
+    },
+    {
+      "angleDeg": 661,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 255.74115376664088,
+      "volumeM3": 0.0002184215845497207,
+      "pressurePa": 468344.10489944014,
+      "temperatureK": 548.9907029823868
+    },
+    {
+      "angleDeg": 662,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 258.1481515041265,
+      "volumeM3": 0.00021326074339941145,
+      "pressurePa": 484192.5379968245,
+      "temperatureK": 554.1577219017782
+    },
+    {
+      "angleDeg": 663,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 260.62178793705573,
+      "volumeM3": 0.0002081309336481967,
+      "pressurePa": 500880.4474544551,
+      "temperatureK": 559.4677918073666
+    },
+    {
+      "angleDeg": 664,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 263.16418193020945,
+      "volumeM3": 0.00020303464969308118,
+      "pressurePa": 518461.6169270092,
+      "temperatureK": 564.9254611930035
+    },
+    {
+      "angleDeg": 665,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 265.7775195621193,
+      "volumeM3": 0.0001979743835421244,
+      "pressurePa": 536993.7560746447,
+      "temperatureK": 570.5354228379786
+    },
+    {
+      "angleDeg": 666,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 268.4640543332365,
+      "volumeM3": 0.00019295262267747323,
+      "pressurePa": 556538.8033765845,
+      "temperatureK": 576.3025142538875
+    },
+    {
+      "angleDeg": 667,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 271.22610693686295,
+      "volumeM3": 0.00018797184793785515,
+      "pressurePa": 577163.250587465,
+      "temperatureK": 582.2317171928984
+    },
+    {
+      "angleDeg": 668,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 274.06606450240145,
+      "volumeM3": 0.00018303453142349334,
+      "pressurePa": 598938.4896302113,
+      "temperatureK": 588.3281560232627
+    },
+    {
+      "angleDeg": 669,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 276.9863792055497,
+      "volumeM3": 0.00017814313442621193,
+      "pressurePa": 621941.1825164203,
+      "temperatureK": 594.5970947458669
+    },
+    {
+      "angleDeg": 670,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 279.9895661228779,
+      "volumeM3": 0.00017330010538728742,
+      "pressurePa": 646253.6546002971,
+      "temperatureK": 601.043932388728
+    },
+    {
+      "angleDeg": 671,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 283.0782001884706,
+      "volumeM3": 0.00016850787788544251,
+      "pressurePa": 671964.3110832287,
+      "temperatureK": 607.6741964739222
+    },
+    {
+      "angleDeg": 672,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 286.25491208765516,
+      "volumeM3": 0.0001637688686571419,
+      "pressurePa": 699168.0761670123,
+      "temperatureK": 614.4935342027932
+    },
+    {
+      "angleDeg": 673,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 289.5223828969007,
+      "volumeM3": 0.0001590854756511948,
+      "pressurePa": 727966.8535717168,
+      "temperatureK": 621.5077009496084
+    },
+    {
+      "angleDeg": 674,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 292.88333724937456,
+      "volumeM3": 0.00015446007611944948,
+      "pressurePa": 758470.0062503591,
+      "temperatureK": 628.7225455902953
+    },
+    {
+      "angleDeg": 675,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 296.34053477196295,
+      "volumeM3": 0.00014989502474521717,
+      "pressurePa": 790794.8519990314,
+      "temperatureK": 636.1439921205891
+    },
+    {
+      "angleDeg": 676,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 299.89675950138,
+      "volumeM3": 0.0001453926518108612,
+      "pressurePa": 825067.1702212585,
+      "temperatureK": 643.7780169359596
+    },
+    {
+      "angleDeg": 677,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 303.55480694388757,
+      "volumeM3": 0.00014095526140581267,
+      "pressurePa": 861421.7132908516,
+      "temperatureK": 651.6306210531586
+    },
+    {
+      "angleDeg": 678,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 307.3174683947359,
+      "volumeM3": 0.0001365851296761449,
+      "pressurePa": 900002.7136875354,
+      "temperatureK": 659.7077964493049
+    },
+    {
+      "angleDeg": 679,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 311.1875120793899,
+      "volumeM3": 0.00013228450311663468,
+      "pressurePa": 940964.3752602438,
+      "temperatureK": 668.0154855784053
+    },
+    {
+      "angleDeg": 680,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 315.1676606187059,
+      "volumeM3": 0.00012805559690613313,
+      "pressurePa": 984471.3334934636,
+      "temperatureK": 676.559532996629
+    },
+    {
+      "angleDeg": 681,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 319.26056425443375,
+      "volumeM3": 0.00012390059328689276,
+      "pressurePa": 1030699.0653876319,
+      "temperatureK": 685.3456278864163
+    },
+    {
+      "angleDeg": 682,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 323.46876919994355,
+      "volumeM3": 0.0001198216399883904,
+      "pressurePa": 1079834.2243731087,
+      "temperatureK": 694.3792361160775
+    },
+    {
+      "angleDeg": 683,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 327.7946804045199,
+      "volumeM3": 0.0001158208486960452,
+      "pressurePa": 1132074.8694037593,
+      "temperatureK": 703.665520307189
+    },
+    {
+      "angleDeg": 684,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 332.24051793902976,
+      "volumeM3": 0.00011190029356512702,
+      "pressurePa": 1187630.549854322,
+      "temperatureK": 713.2092462092124
+    },
+    {
+      "angleDeg": 685,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 336.8082661280905,
+      "volumeM3": 0.00010806200978002051,
+      "pressurePa": 1246722.198906808,
+      "temperatureK": 723.014673503277
+    },
+    {
+      "angleDeg": 686,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 341.49961447182955,
+      "volumeM3": 0.00010430799215894324,
+      "pressurePa": 1309581.7775936346,
+      "temperatureK": 733.0854289809607
+    },
+    {
+      "angleDeg": 687,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 346.31588932299184,
+      "volumeM3": 0.00010064019380409998,
+      "pressurePa": 1376451.599435943,
+      "temperatureK": 743.4243598778967
+    },
+    {
+      "angleDeg": 688,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 351.25797521819567,
+      "volumeM3": 9.706052479716948e-05,
+      "pressurePa": 1447583.2515937071,
+      "temperatureK": 754.0333649982966
+    },
+    {
+      "angleDeg": 689,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 356.3262247133396,
+      "volumeM3": 9.357085093997147e-05,
+      "pressurePa": 1523236.0126421575,
+      "temperatureK": 764.9132011617329
+    },
+    {
+      "angleDeg": 690,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 361.52035555286477,
+      "volumeM3": 9.017299254006156e-05,
+      "pressurePa": 1603674.6496674174,
+      "temperatureK": 776.0632624599444
+    },
+    {
+      "angleDeg": 691,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 366.8393340242984,
+      "volumeM3": 8.686872324096661e-05,
+      "pressurePa": 1689166.4587113431,
+      "temperatureK": 787.4813298580647
+    },
+    {
+      "angleDeg": 692,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 372.2812434305105,
+      "volumeM3": 8.365976889669664e-05,
+      "pressurePa": 1779977.393388234,
+      "temperatureK": 799.163288848556
+    },
+    {
+      "angleDeg": 693,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 377.8431367739995,
+      "volumeM3": 8.054780649014999e-05,
+      "pressurePa": 1876367.1078750235,
+      "temperatureK": 811.102813213654
+    },
+    {
+      "angleDeg": 694,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 383.52087301666523,
+      "volumeM3": 7.753446309496112e-05,
+      "pressurePa": 1978582.7241594184,
+      "temperatureK": 823.2910135298764
+    },
+    {
+      "angleDeg": 695,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 389.30893668626453,
+      "volumeM3": 7.462131488032868e-05,
+      "pressurePa": 2086851.1218844375,
+      "temperatureK": 835.7160499234309
+    },
+    {
+      "angleDeg": 696,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 395.20024118314103,
+      "volumeM3": 7.180988615831756e-05,
+      "pressurePa": 2201369.5457578213,
+      "temperatureK": 848.362709835565
+    },
+    {
+      "angleDeg": 697,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 401.1859169375972,
+      "volumeM3": 6.910164847311637e-05,
+      "pressurePa": 2322294.3348083883,
+      "temperatureK": 861.2119532673125
+    },
+    {
+      "angleDeg": 698,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 407.2550866207138,
+      "volumeM3": 6.64980197317176e-05,
+      "pressurePa": 2449727.605506214,
+      "temperatureK": 874.2404302323218
+    },
+    {
+      "angleDeg": 699,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 413.3946309586036,
+      "volumeM3": 6.40003633754554e-05,
+      "pressurePa": 2583701.7739005107,
+      "temperatureK": 887.4199780384024
+    },
+    {
+      "angleDeg": 700,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 419.5889503730868,
+      "volumeM3": 6.160998759186225e-05,
+      "pressurePa": 2724161.8885085317,
+      "temperatureK": 900.7171096097942
+    },
+    {
+      "angleDeg": 701,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 425.8197296852725,
+      "volumeM3": 5.932814456626845e-05,
+      "pressurePa": 2870945.874328765,
+      "temperatureK": 914.0925083844717
+    },
+    {
+      "angleDeg": 702,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 432.06571545941074,
+      "volumeM3": 5.715602977259698e-05,
+      "pressurePa": 3023762.9672910646,
+      "temperatureK": 927.5005503458802
+    },
+    {
+      "angleDeg": 703,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 438.3025181774559,
+      "volumeM3": 5.509478130278906e-05,
+      "pressurePa": 3182170.8540316336,
+      "temperatureK": 940.888879357903
+    },
+    {
+      "angleDeg": 704,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 444.50245420617097,
+      "volumeM3": 5.3145479234323774e-05,
+      "pressurePa": 3345552.3262576275,
+      "temperatureK": 954.1980679211011
+    },
+    {
+      "angleDeg": 705,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 450.6344452584525,
+      "volumeM3": 5.1309145035292423e-05,
+      "pressurePa": 3513092.6071637995,
+      "temperatureK": 967.3614013498129
+    },
+    {
+      "angleDeg": 706,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 456.6639954782197,
+      "volumeM3": 4.958674100650843e-05,
+      "pressurePa": 3683758.893679106,
+      "temperatureK": 980.3048285810754
+    },
+    {
+      "angleDeg": 707,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 462.553268014717,
+      "volumeM3": 4.797916976015096e-05,
+      "pressurePa": 3856284.0526589514,
+      "temperatureK": 992.9471265540355
+    },
+    {
+      "angleDeg": 708,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 468.26128352622624,
+      "volumeM3": 4.648727373446044e-05,
+      "pressurePa": 4029156.7640724843,
+      "temperatureK": 1005.2003263310148
+    },
+    {
+      "angleDeg": 709,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 473.74426192913165,
+      "volumeM3": 4.511183474402169e-05,
+      "pressurePa": 4200620.654134783,
+      "temperatureK": 1016.970446718424
+    },
+    {
+      "angleDeg": 710,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 478.95612534154225,
+      "volumeM3": 4.385357356520128e-05,
+      "pressurePa": 4368685.025218595,
+      "temperatureK": 1028.158573918469
+    },
+    {
+      "angleDeg": 711,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 483.8491740968393,
+      "volumeM3": 4.2713149556326175e-05,
+      "pressurePa": 4531149.579206594,
+      "temperatureK": 1038.6623127040882
+    },
+    {
+      "angleDeg": 712,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 488.3749386562497,
+      "volumeM3": 4.1691160312218224e-05,
+      "pressurePa": 4685644.966452267,
+      "temperatureK": 1048.377615190252
+    },
+    {
+      "angleDeg": 713,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 492.48519830104976,
+      "volumeM3": 4.0788141352733734e-05,
+      "pressurePa": 4829690.022323529,
+      "temperatureK": 1057.2009676253394
+    },
+    {
+      "angleDeg": 714,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 496.1331431684995,
+      "volumeM3": 4.000456584497771e-05,
+      "pressurePa": 4960765.179565475,
+      "temperatureK": 1065.0318848935458
+    },
+    {
+      "angleDeg": 715,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 499.27464059201367,
+      "volumeM3": 3.9340844358903304e-05,
+      "pressurePa": 5076399.845790516,
+      "temperatureK": 1071.7756289235979
+    },
+    {
+      "angleDeg": 716,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 501.8695514369629,
+      "volumeM3": 3.8797324656035204e-05,
+      "pressurePa": 5174269.678503653,
+      "temperatureK": 1077.3460344213584
+    },
+    {
+      "angleDeg": 717,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 503.8992352904567,
+      "volumeM3": 3.837429151108503e-05,
+      "pressurePa": 5252466.851614938,
+      "temperatureK": 1081.7030866562063
+    },
+    {
+      "angleDeg": 718,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 505.416412760268,
+      "volumeM3": 3.8071966566268025e-05,
+      "pressurePa": 5310116.165189845,
+      "temperatureK": 1084.9599591361857
+    },
+    {
+      "angleDeg": 719,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 506.497382914702,
+      "volumeM3": 3.789050821816139e-05,
+      "pressurePa": 5346957.924116008,
+      "temperatureK": 1087.2804404363021
+    },
+    {
+      "angleDeg": 720,
+      "massKg": 0.0006491395504686726,
+      "internalEnergyJ": 507.22599794794814,
+      "volumeM3": 3.7830011536977105e-05,
+      "pressurePa": 5363212.722810384,
+      "temperatureK": 1088.8445331660564
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 # Screenshot provenance
 
+The six WebP files in this directory are historical tour captures. The current README uses the native WebGPU captures in `docs/verification/` for the engine, section, process and atlas views. Those October 1, 2026 screenshots retain the complete 1440 × 1000 viewport and are documented in [renderer verification](../verification/webgpu-renderer.md). The mobile preview is an unchanged copy of `webgpu-engine-assembly.png`. Only the parametric-cranktrain image below is retained in the current README; its interface predates the graphics migration.
+
 These are actual Engine Lab application views captured during the September 30, 2026 tour recording. They are not rendered mockups. All six images retain the complete 2560 × 1440 application viewport at the recording's 150% browser zoom. The pointer and application state are preserved.
 
 Each file is lossless WebP. Decoded RGB pixels were checked against the source PNG; no resizing, cropping, recolouring, compositing, or promotional overlays were applied. Frames extracted from the tour preserve the recording's existing video compression.

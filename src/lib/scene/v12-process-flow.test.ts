@@ -1,4 +1,3 @@
-import { readFileSync } from 'node:fs';
 import { describe, expect, it, vi } from 'vitest';
 import * as THREE from 'three';
 import { ProcessParticles } from './process-particles';
@@ -9,10 +8,13 @@ import { V12ProcessFlow } from './v12-process-flow';
 import { V12ChamberDomain, V12_CHAMBER_DATUMS } from './v12-chamber-domain';
 import { v12CylinderValveState } from '../engine/v12-valve-events';
 
-const bytes = readFileSync('static/models/v12-chamber-domains.bin');
-const data = new Float32Array(
-	bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength)
-);
+import {
+	licensedChamberAvailable,
+	readLicensedChamberBounds,
+	syntheticChamberBounds
+} from './chamber-test-fixture';
+
+const data = syntheticChamberBounds();
 const state = {
 	phase: 185,
 	driveAngle: 185,
@@ -30,7 +32,34 @@ function parcels(flow: V12ProcessFlow) {
 	};
 }
 
-describe('source-contained engine process layer', () => {
+function assertFullCycleParcelContainment(data: Float32Array) {
+	const flow = new V12ProcessFlow(data),
+		domains = V12_CHAMBER_DATUMS.cylinders.map((_, i) => new V12ChamberDomain(i, data));
+	const inverses = domains.map((d) => d.toWorld.clone().invert()),
+		point = new THREE.Vector3();
+	let checked = 0;
+	try {
+		for (let phase = 0; phase < 720; phase += 12) {
+			flow.update({ ...state, phase, driveAngle: phase });
+			domains.forEach((d) => d.update(phase));
+			const { count, positions } = parcels(flow);
+			for (let i = 0; i < count; i++) {
+				const contained = domains.some((d, j) => {
+					point.fromBufferAttribute(positions, i).applyMatrix4(inverses[j]);
+					return d.contains(point.x, point.y, point.z);
+				});
+				expect(contained, `parcel${i} at${phase}°`).toBe(true);
+				checked++;
+			}
+		}
+		expect(checked).toBeGreaterThan(1000);
+	} finally {
+		flow.dispose();
+		domains.forEach((d) => d.dispose());
+	}
+}
+
+describe('engine process layer with synthetic chamber bounds', () => {
 	it('does not let loading-time animation race shader warmup visibility restoration', async () => {
 		const flow = new V12ProcessFlow(data);
 		const renderer = {
@@ -116,32 +145,15 @@ describe('source-contained engine process layer', () => {
 			flow.dispose();
 		}
 	});
-	it('every emitted parcel stays inside a registered moving gas domain over a full cycle', () => {
-		const flow = new V12ProcessFlow(data),
-			domains = V12_CHAMBER_DATUMS.cylinders.map((_, i) => new V12ChamberDomain(i, data));
-		const inverses = domains.map((d) => d.toWorld.clone().invert()),
-			point = new THREE.Vector3();
-		let checked = 0;
-		try {
-			for (let phase = 0; phase < 720; phase += 12) {
-				flow.update({ ...state, phase, driveAngle: phase });
-				domains.forEach((d) => d.update(phase));
-				const { count, positions } = parcels(flow);
-				for (let i = 0; i < count; i++) {
-					const contained = domains.some((d, j) => {
-						point.fromBufferAttribute(positions, i).applyMatrix4(inverses[j]);
-						return d.contains(point.x, point.y, point.z);
-					});
-					expect(contained, `parcel${i} at${phase}°`).toBe(true);
-					checked++;
-				}
-			}
-			expect(checked).toBeGreaterThan(1000);
-		} finally {
-			flow.dispose();
-			domains.forEach((d) => d.dispose());
-		}
+	it('every emitted parcel stays inside a moving analytic gas domain over a full cycle', () => {
+		assertFullCycleParcelContainment(data);
 	});
+	it.skipIf(!licensedChamberAvailable)(
+		'licensed asset: every parcel stays inside source chamber bounds for the full cycle',
+		() => {
+			assertFullCycleParcelContainment(readLicensedChamberBounds());
+		}
+	);
 	it('pause and backwards seek reconstruct identical parcel buffers', () => {
 		const flow = new V12ProcessFlow(data);
 		const snapshot = () => {

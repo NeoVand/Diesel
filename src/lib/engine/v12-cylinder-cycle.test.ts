@@ -11,7 +11,7 @@ import {
 import { V12_CYLINDERS, v12CylinderPose } from './v12-kinematics';
 import { V12_VALVE_CYCLES } from './v12-valve-events';
 import { V12_CYCLE_STUDY, sampleV12CycleStudy } from './v12-cycle-study';
-import reference from '../../../references/00_Active_V12/cycle-verification/independent-reference.json';
+import reference from './fixtures/cylinder-cycle-independent.json';
 
 describe('source-based open-cylinder air-standard cycle', () => {
 	it('uses the same measured piston motion while keeping assumed clearance volume explicit', () => {

@@ -5,17 +5,14 @@ import datums from './v12-spray-impact-datums.json';
 import { V12_VALVE_CYCLES } from './v12-valve-events';
 import { V12_SPRAY_ASSUMPTIONS, V12_SPRAY_LIFETIME_SECONDS } from './v12-spray';
 import { getV12SprayImpactAge, v12SpraySurvivesWall } from './v12-spray-impact';
+import { LICENSED_CHAMBER_PATH, licensedChamberAvailable } from '../scene/chamber-test-fixture';
 
 describe('deterministic first contact against moving chamber walls', () => {
-	it('covers all cylinders and parcel identities using the current chamber binary and spray assumptions', () => {
+	it('covers all cylinders and parcel identities in the precomputed impact table', () => {
 		expect(datums.cylinders.map((c) => c.pistonId).sort()).toEqual(
 			V12_VALVE_CYCLES.map((c) => c.pistonId).sort()
 		);
 		expect(datums.provenance.assumptions).toEqual(V12_SPRAY_ASSUMPTIONS);
-		const binary = readFileSync('static/models/v12-chamber-domains.bin');
-		expect(createHash('sha256').update(binary).digest('hex')).toBe(
-			datums.provenance.sourceBinarySha256
-		);
 		for (const cylinder of datums.cylinders) {
 			expect(cylinder.firstImpactAgeSeconds).toHaveLength(640);
 			for (const age of cylinder.firstImpactAgeSeconds) {
@@ -25,6 +22,15 @@ describe('deterministic first contact against moving chamber walls', () => {
 			}
 		}
 	});
+	it.skipIf(!licensedChamberAvailable)(
+		'licensed asset: impact table matches the source chamber binary',
+		() => {
+			const binary = readFileSync(LICENSED_CHAMBER_PATH);
+			expect(createHash('sha256').update(binary).digest('hex')).toBe(
+				datums.provenance.sourceBinarySha256
+			);
+		}
+	);
 	it('cannot resurrect an absorbed parcel during expansion or after reverse seeks', () => {
 		// This actual source-domain parcel previously reappeared at +6.4° ATDC.
 		const id = 'v12-0003',

@@ -8,9 +8,9 @@
   ],
   "backend": "webgpu",
   "variants": [
-    "source-smooth",
-    "corrected-smooth",
-    "corrected-flat"
+    "shadow-off",
+    "current-bias",
+    "larger-bias"
   ],
   "correctedVertices": 124581,
   "correctedTriangles": 134984,
