@@ -24,7 +24,7 @@ The assembly assistant can search registered components, execute acknowledged sc
     <td><a href="docs/verification/webgpu-engine-mechanism-processes.png"><img src="docs/verification/webgpu-engine-mechanism-processes.png" alt="Internal mechanism with intake, fuel, exhaust and combustion visualization" /></a><br /><strong>Mechanism and processes</strong><br />Connected motion with phase-aligned explanatory layers.</td>
   </tr>
   <tr>
-    <td><a href="docs/images/parametric-cranktrain.webp"><img src="docs/images/parametric-cranktrain.webp" alt="Parametric cranktrain with dimensions and live kinematic plots" /></a><br /><strong>Parametric geometry</strong><br />Dimensions, measurements and plots update together.</td>
+    <td><a href="docs/verification/browser-parametric-cranktrain.png"><img src="docs/verification/browser-parametric-cranktrain.png" alt="Parametric cranktrain with dimensions and live kinematic plots" /></a><br /><strong>Parametric geometry</strong><br />Dimensions, measurements and plots update together.</td>
     <td><a href="docs/verification/packaged-static-solid-result.png"><img src="docs/verification/packaged-static-solid-result.png" alt="Browser-computed connecting-rod solid stress result rendered with WebGPU from a static build, with 5881 tetrahedral elements and 1970 nodes" /></a><br /><strong>Browser solid analysis</strong><br />Actual static-build result; 3D elements, explicit loads and equilibrium checks.</td>
   </tr>
 </table>
@@ -38,7 +38,7 @@ The atlas uses the same component identities as selection, isolation and the ass
 
 </details>
 
-The Explorer images are current native-WebGPU captures, and the solid-analysis image is from the verified browser-first static build. The parametric-cranktrain image is retained from the earlier tour and **predates the runtime migration**; it illustrates the interface, not its former backend architecture. [Screenshot provenance](docs/images/README.md) records that original frame. [Renderer evidence](docs/verification/webgpu-engine-smoke.json) and [process verification](docs/verification/process-webgpu.md) accompany the current images. Process overlays are explanatory; deformation magnification changes presentation, not calculated values.
+All screenshots above show the current native-WebGPU application. The parametric-cranktrain frame comes from the browser tour rehearsal, and the solid-analysis image is from the verified static build. [Screenshot provenance](docs/images/README.md) records their origins. [Renderer evidence](docs/verification/webgpu-engine-smoke.json) and [process verification](docs/verification/process-webgpu.md) accompany the current images. Process overlays are explanatory; deformation magnification changes presentation, not calculated values.
 
 ## Quick start
 

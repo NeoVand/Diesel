@@ -110,14 +110,14 @@ pnpm build
 
 The named Vitest `server` project runs tests in Node during development. It does not imply a deployed backend. CAD tests exercise the shipped WASM and saved reference fixtures without Python. GPU unit tests cover tensor preparation and comparison guards; `verify-webgpu.mjs` starts a Vite harness and launches Chrome to execute real WebGPU when available. Its optional `--origin` expects that development harness, not a production static origin. The report path above is outside the repository so a rerun does not overwrite accepted evidence.
 
-For the full suite:
+For the full unit suite and the current static-application browser checks:
 
 ```sh
 pnpm test:unit --run
-pnpm test:e2e
+pnpm exec playwright test --config tests/playwright.static.config.ts
 ```
 
-Complete Explorer tests need licensed runtime files. The unit suite retains historical native/server-reference tests and fixtures; those are not current runtime routes. Some AI tests use mocked provider responses. Live browser checks separately exercised an authorised OpenAI key for scene actions, design replies, narration, cancellation, memory-only storage and static-host operation.
+The static browser suite builds and serves files, blocks application API and purchased-mesh requests, and checks generated geometry, real CAD/FEA, offline refinement, cancellation, saved studies, GPU provenance, phone gating and direct-AI contracts. Set `STATIC_TEST_PORT` if port 4198 is occupied. Complete Explorer checks additionally need licensed runtime files. The older default Playwright configuration contains historical workflow tests, including retired backend expectations; it is not the clean-clone acceptance command for this release. The unit suite retains historical native/server-reference tests and fixtures; those are not current runtime routes. Some AI tests use mocked provider responses. Live browser checks separately exercised an authorised OpenAI key for scene actions, design replies, narration, cancellation, memory-only storage and static-host operation.
 
 The recorded [CAD/solid browser report](verification/browser-cad-solid.md) and [WebGPU comparison report](verification/browser-webgpu.json) are dated evidence, not a blanket claim that every future environment passes. They include software, geometry and tolerance context.
 
@@ -138,4 +138,4 @@ The recorded [CAD/solid browser report](verification/browser-cad-solid.md) and [
 
 ## Dependency licences
 
-The build copies `LICENSE` and `SOURCE.txt` with the Gmsh WASM runtime under `build/vendor/gmsh/`. Gmsh is GPL-2.0-or-later; the source notice identifies the pinned package, upstream source and build instructions. Preserve applicable licence and corresponding-source obligations when redistributing a build. Purchased engine geometry has separate commercial terms and is not included in the public checkout.
+The build copies `LICENSE` and `SOURCE.txt` with the Gmsh WASM runtime under `build/vendor/gmsh/`. Gmsh is GPL-2.0-or-later; the source notice identifies the pinned package, upstream source and build instructions. Preserve applicable licence and corresponding-source obligations when redistributing a build. Purchased engine geometry has separate commercial terms: the protected runtime package is checked in for the hosted demonstration, while the original editable vendor files and loose meshes remain private. It grants no standalone model licence.
