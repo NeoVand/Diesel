@@ -24,8 +24,17 @@ export const guideResponseSchema = {
 	additionalProperties: false,
 	required: ['answer', 'sources'],
 	properties: {
-		answer: { type: 'string' },
-		sources: { type: 'array', items: { type: 'string', enum: sources.map((source) => source.id) } }
+		answer: {
+			type: 'string',
+			description:
+				'Concise plain-text explanation. Cite evidence through the sources field, without Markdown links or raw URLs in this text.'
+		},
+		sources: {
+			type: 'array',
+			description:
+				'IDs of the evidence used in the answer. The interface renders each as a named, clickable source link.',
+			items: { type: 'string', enum: sources.map((source) => source.id) }
+		}
 	}
 };
 
