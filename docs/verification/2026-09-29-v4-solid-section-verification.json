@@ -1,0 +1,434 @@
+{
+	"errors": [],
+	"fixtures": [
+		{
+			"fixture": "box",
+			"beautyCenter": [49, 58, 67, 255],
+			"beautyWall": [49, 58, 67, 255],
+			"normalCenter": [128, 128, 255, 255],
+			"normalWall": [128, 128, 255, 255],
+			"cappedDepth": 100,
+			"uncappedDepth": 121,
+			"capCount": 1
+		},
+		{
+			"fixture": "bore",
+			"beautyCenter": [0, 0, 0, 255],
+			"beautyWall": [49, 58, 67, 255],
+			"normalCenter": [0, 0, 0, 255],
+			"normalWall": [128, 128, 255, 255],
+			"cappedDepth": 255,
+			"uncappedDepth": 255,
+			"capCount": 1
+		},
+		{
+			"fixture": "union",
+			"beautyCenter": [49, 58, 67, 255],
+			"beautyWall": [49, 58, 67, 255],
+			"normalCenter": [128, 128, 255, 255],
+			"normalWall": [128, 128, 255, 255],
+			"cappedDepth": 100,
+			"uncappedDepth": 116,
+			"capCount": 1
+		},
+		{
+			"fixture": "oblique",
+			"beautyCenter": [49, 58, 67, 255],
+			"beautyWall": [49, 58, 67, 255],
+			"normalCenter": [128, 128, 255, 255],
+			"normalWall": [128, 128, 255, 255],
+			"cappedDepth": 100,
+			"uncappedDepth": 124,
+			"capCount": 1
+		},
+		{
+			"fixture": "slab",
+			"beautyCenter": [49, 58, 67, 255],
+			"beautyWall": [49, 58, 67, 255],
+			"normalCenter": [128, 128, 255, 255],
+			"normalWall": [128, 128, 255, 255],
+			"cappedDepth": 95,
+			"uncappedDepth": 255,
+			"capCount": 2
+		},
+		{
+			"renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+		}
+	],
+	"axes": [
+		{
+			"axis": "x",
+			"caps": [
+				[
+					"mech:crankshaft",
+					{
+						"planes": 1,
+						"triangles": 35568
+					}
+				],
+				[
+					"mech:liner:07",
+					{
+						"planes": 1,
+						"triangles": 1772
+					}
+				],
+				[
+					"mech:piston:07",
+					{
+						"planes": 1,
+						"triangles": 4960
+					}
+				],
+				[
+					"mech:rod:07",
+					{
+						"planes": 1,
+						"triangles": 2280
+					}
+				],
+				[
+					"mech:injector:07",
+					{
+						"planes": 1,
+						"triangles": 336
+					}
+				],
+				[
+					"mech:liner:08",
+					{
+						"planes": 1,
+						"triangles": 1772
+					}
+				],
+				[
+					"mech:piston:08",
+					{
+						"planes": 1,
+						"triangles": 4960
+					}
+				],
+				[
+					"mech:intake-valve:08",
+					{
+						"planes": 1,
+						"triangles": 1968
+					}
+				]
+			],
+			"normalStencil": true,
+			"beautyStencil": true
+		},
+		{
+			"axis": "y",
+			"caps": [
+				[
+					"mech:liner:01",
+					{
+						"planes": 1,
+						"triangles": 1772
+					}
+				],
+				[
+					"mech:piston:01",
+					{
+						"planes": 1,
+						"triangles": 4960
+					}
+				],
+				[
+					"mech:liner:02",
+					{
+						"planes": 1,
+						"triangles": 1772
+					}
+				],
+				[
+					"mech:piston:02",
+					{
+						"planes": 1,
+						"triangles": 4960
+					}
+				],
+				[
+					"mech:rod:02",
+					{
+						"planes": 1,
+						"triangles": 2280
+					}
+				],
+				[
+					"mech:liner:03",
+					{
+						"planes": 1,
+						"triangles": 1772
+					}
+				],
+				[
+					"mech:piston:03",
+					{
+						"planes": 1,
+						"triangles": 4960
+					}
+				],
+				[
+					"mech:rod:03",
+					{
+						"planes": 1,
+						"triangles": 2280
+					}
+				],
+				[
+					"mech:liner:04",
+					{
+						"planes": 1,
+						"triangles": 1772
+					}
+				],
+				[
+					"mech:piston:04",
+					{
+						"planes": 1,
+						"triangles": 4960
+					}
+				],
+				[
+					"mech:rod:04",
+					{
+						"planes": 1,
+						"triangles": 2280
+					}
+				],
+				[
+					"mech:liner:05",
+					{
+						"planes": 1,
+						"triangles": 1772
+					}
+				],
+				[
+					"mech:piston:05",
+					{
+						"planes": 1,
+						"triangles": 4960
+					}
+				],
+				[
+					"mech:liner:06",
+					{
+						"planes": 1,
+						"triangles": 1772
+					}
+				],
+				[
+					"mech:liner:07",
+					{
+						"planes": 1,
+						"triangles": 1772
+					}
+				],
+				[
+					"mech:piston:07",
+					{
+						"planes": 1,
+						"triangles": 4960
+					}
+				],
+				[
+					"mech:liner:08",
+					{
+						"planes": 1,
+						"triangles": 1772
+					}
+				],
+				[
+					"mech:piston:08",
+					{
+						"planes": 1,
+						"triangles": 4960
+					}
+				],
+				[
+					"mech:rod:08",
+					{
+						"planes": 1,
+						"triangles": 2280
+					}
+				],
+				[
+					"mech:liner:09",
+					{
+						"planes": 1,
+						"triangles": 1772
+					}
+				],
+				[
+					"mech:piston:09",
+					{
+						"planes": 1,
+						"triangles": 4960
+					}
+				],
+				[
+					"mech:rod:09",
+					{
+						"planes": 1,
+						"triangles": 2280
+					}
+				],
+				[
+					"mech:liner:10",
+					{
+						"planes": 1,
+						"triangles": 1772
+					}
+				],
+				[
+					"mech:piston:10",
+					{
+						"planes": 1,
+						"triangles": 4960
+					}
+				],
+				[
+					"mech:rod:10",
+					{
+						"planes": 1,
+						"triangles": 2280
+					}
+				],
+				[
+					"mech:liner:11",
+					{
+						"planes": 1,
+						"triangles": 1772
+					}
+				],
+				[
+					"mech:piston:11",
+					{
+						"planes": 1,
+						"triangles": 4960
+					}
+				],
+				[
+					"mech:liner:12",
+					{
+						"planes": 1,
+						"triangles": 1772
+					}
+				]
+			],
+			"normalStencil": true,
+			"beautyStencil": true
+		},
+		{
+			"axis": "z",
+			"caps": [
+				[
+					"mech:crankshaft",
+					{
+						"planes": 1,
+						"triangles": 35568
+					}
+				],
+				[
+					"mech:rod:01",
+					{
+						"planes": 1,
+						"triangles": 2280
+					}
+				],
+				[
+					"mech:rod:03",
+					{
+						"planes": 1,
+						"triangles": 2280
+					}
+				],
+				[
+					"mech:rod:04",
+					{
+						"planes": 1,
+						"triangles": 2280
+					}
+				],
+				[
+					"mech:rod:05",
+					{
+						"planes": 1,
+						"triangles": 2280
+					}
+				],
+				[
+					"mech:rod:06",
+					{
+						"planes": 1,
+						"triangles": 2280
+					}
+				],
+				[
+					"mech:rod:07",
+					{
+						"planes": 1,
+						"triangles": 2280
+					}
+				],
+				[
+					"mech:rod:09",
+					{
+						"planes": 1,
+						"triangles": 2280
+					}
+				],
+				[
+					"mech:rod:10",
+					{
+						"planes": 1,
+						"triangles": 2280
+					}
+				],
+				[
+					"mech:rod:11",
+					{
+						"planes": 1,
+						"triangles": 2280
+					}
+				],
+				[
+					"mech:rod:12",
+					{
+						"planes": 1,
+						"triangles": 2280
+					}
+				]
+			],
+			"normalStencil": true,
+			"beautyStencil": true
+		}
+	],
+	"performance": {
+		"median": 16.600000143051147,
+		"p95": 18.699999809265137,
+		"movingCaps": 8,
+		"cappedTriangles": 53616,
+		"phase": 717.829600010299
+	},
+	"warmedBenchmarks": [
+		{
+			"name": "moving-caps-and-GTAO",
+			"median": 16.600000143051147,
+			"p95": 18.09999990463257
+		},
+		{
+			"name": "control-caps-disabled",
+			"median": 16.5,
+			"p95": 18
+		},
+		{
+			"name": "control-GTAO-disabled",
+			"median": 16.700000047683716,
+			"p95": 18.200000047683716
+		}
+	]
+}

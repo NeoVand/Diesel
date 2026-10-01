@@ -1,0 +1,6858 @@
+{
+  "schemaVersion": 1,
+  "classification": "Final published-mesh continuous piston clearance certificate",
+  "runtimeSha256": "5f35f657addc4a1c1b891c1cde2b95d34365b04bf14f119df89962975e2d3f49",
+  "pairCount": 24,
+  "requiredClearanceMm": 0.1,
+  "pass": true,
+  "blockChecks": [
+    {
+      "piston": "v12-0014",
+      "target": "v12-0665",
+      "type": "block",
+      "phaseHits": 0,
+      "hitPhases": [],
+      "axialRangeMm": [
+        74.99999999999847,
+        175.00000000000193
+      ],
+      "queries": 155,
+      "maxDepth": 9,
+      "minimumCertifiedMeshClearanceMm": 0.10000999999999993,
+      "certifiedIntervals": [
+        {
+          "axialRangeMm": [
+            74.99999999999847,
+            75.19531249999847
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.19531249999847,
+            75.39062499999848
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.39062499999848,
+            75.5859374999985
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.5859374999985,
+            75.7812499999985
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.7812499999985,
+            75.9765624999985
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.9765624999985,
+            76.17187499999851
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.17187499999851,
+            76.36718749999852
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.36718749999852,
+            76.56249999999852
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.56249999999852,
+            76.75781249999852
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.75781249999852,
+            76.95312499999854
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.95312499999854,
+            77.14843749999855
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.14843749999855,
+            77.34374999999855
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.34374999999855,
+            77.53906249999855
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.53906249999855,
+            77.73437499999856
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.73437499999856,
+            78.12499999999858
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            78.12499999999858,
+            78.90624999999861
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            78.90624999999861,
+            79.68749999999864
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            79.68749999999864,
+            81.24999999999868
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            81.24999999999868,
+            82.81249999999872
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            82.81249999999872,
+            84.37499999999878
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            84.37499999999878,
+            85.93749999999883
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            85.93749999999883,
+            87.49999999999889
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            87.49999999999889,
+            89.06249999999895
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            89.06249999999895,
+            90.624999999999
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            90.624999999999,
+            92.18749999999906
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            92.18749999999906,
+            93.74999999999912
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            93.74999999999912,
+            95.31249999999918
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            95.31249999999918,
+            96.87499999999923
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            96.87499999999923,
+            98.43749999999929
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            98.43749999999929,
+            99.99999999999933
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            99.99999999999933,
+            101.56249999999937
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            101.56249999999937,
+            103.12499999999943
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            103.12499999999943,
+            104.68749999999949
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            104.68749999999949,
+            106.24999999999955
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            106.24999999999955,
+            107.8124999999996
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            107.8124999999996,
+            109.37499999999966
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            109.37499999999966,
+            110.93749999999972
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            110.93749999999972,
+            112.49999999999977
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            112.49999999999977,
+            114.06249999999983
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            114.06249999999983,
+            115.62499999999989
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            115.62499999999989,
+            117.18749999999994
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            117.18749999999994,
+            118.74999999999999
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            118.74999999999999,
+            120.31250000000003
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            120.31250000000003,
+            121.87500000000009
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            121.87500000000009,
+            123.43750000000014
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            123.43750000000014,
+            125.0000000000002
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            125.0000000000002,
+            126.56250000000024
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            126.56250000000024,
+            128.12500000000028
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            128.12500000000028,
+            129.68750000000034
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            129.68750000000034,
+            131.2500000000004
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            131.2500000000004,
+            132.81250000000045
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            132.81250000000045,
+            134.3750000000005
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            134.3750000000005,
+            135.93750000000057
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            135.93750000000057,
+            137.50000000000063
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            137.50000000000063,
+            139.06250000000068
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            139.06250000000068,
+            140.62500000000074
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            140.62500000000074,
+            142.1875000000008
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            142.1875000000008,
+            143.75000000000085
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            143.75000000000085,
+            145.3125000000009
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            145.3125000000009,
+            146.87500000000097
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            146.87500000000097,
+            148.43750000000102
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            148.43750000000102,
+            150.00000000000108
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            150.00000000000108,
+            151.56250000000114
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            151.56250000000114,
+            153.1250000000012
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            153.1250000000012,
+            154.68750000000125
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            154.68750000000125,
+            156.2500000000013
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            156.2500000000013,
+            157.81250000000136
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            157.81250000000136,
+            159.37500000000142
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            159.37500000000142,
+            160.93750000000148
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            160.93750000000148,
+            162.5000000000015
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            162.5000000000015,
+            164.06250000000153
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            164.06250000000153,
+            165.6250000000016
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            165.6250000000016,
+            167.18750000000165
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            167.18750000000165,
+            168.7500000000017
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            168.7500000000017,
+            170.31250000000176
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            170.31250000000176,
+            171.87500000000182
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            171.87500000000182,
+            173.43750000000188
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            173.43750000000188,
+            175.00000000000193
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        }
+      ],
+      "failures": [],
+      "partitionRunId": "c2321047-d86c-436a-95ba-b40ec5a46aea"
+    },
+    {
+      "piston": "v12-0012",
+      "target": "v12-0665",
+      "type": "block",
+      "phaseHits": 0,
+      "hitPhases": [],
+      "axialRangeMm": [
+        74.99999999999802,
+        175.00000000000182
+      ],
+      "queries": 155,
+      "maxDepth": 9,
+      "minimumCertifiedMeshClearanceMm": 0.10000999999999993,
+      "certifiedIntervals": [
+        {
+          "axialRangeMm": [
+            74.99999999999802,
+            75.19531249999804
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.19531249999804,
+            75.39062499999804
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.39062499999804,
+            75.58593749999805
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.58593749999805,
+            75.78124999999807
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.78124999999807,
+            75.97656249999807
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.97656249999807,
+            76.17187499999808
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.17187499999808,
+            76.3671874999981
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.3671874999981,
+            76.5624999999981
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.5624999999981,
+            76.7578124999981
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.7578124999981,
+            76.95312499999811
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.95312499999811,
+            77.14843749999812
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.14843749999812,
+            77.34374999999812
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.34374999999812,
+            77.53906249999812
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.53906249999812,
+            77.73437499999814
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.73437499999814,
+            78.12499999999815
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            78.12499999999815,
+            78.90624999999818
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            78.90624999999818,
+            79.68749999999821
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            79.68749999999821,
+            81.24999999999827
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            81.24999999999827,
+            82.81249999999832
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            82.81249999999832,
+            84.37499999999838
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            84.37499999999838,
+            85.93749999999844
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            85.93749999999844,
+            87.4999999999985
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            87.4999999999985,
+            89.06249999999855
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            89.06249999999855,
+            90.62499999999861
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            90.62499999999861,
+            92.18749999999866
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            92.18749999999866,
+            93.74999999999874
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            93.74999999999874,
+            95.3124999999988
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            95.3124999999988,
+            96.87499999999886
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            96.87499999999886,
+            98.43749999999892
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            98.43749999999892,
+            99.99999999999898
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            99.99999999999898,
+            101.56249999999903
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            101.56249999999903,
+            103.12499999999909
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            103.12499999999909,
+            104.68749999999915
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            104.68749999999915,
+            106.2499999999992
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            106.2499999999992,
+            107.81249999999926
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            107.81249999999926,
+            109.37499999999932
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            109.37499999999932,
+            110.93749999999937
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            110.93749999999937,
+            112.49999999999945
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            112.49999999999945,
+            114.06249999999952
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            114.06249999999952,
+            115.62499999999957
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            115.62499999999957,
+            117.18749999999963
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            117.18749999999963,
+            118.74999999999969
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            118.74999999999969,
+            120.31249999999974
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            120.31249999999974,
+            121.8749999999998
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            121.8749999999998,
+            123.43749999999986
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            123.43749999999986,
+            124.99999999999991
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            124.99999999999991,
+            126.56249999999999
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            126.56249999999999,
+            128.12500000000006
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            128.12500000000006,
+            129.6875000000001
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            129.6875000000001,
+            131.25000000000017
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            131.25000000000017,
+            132.81250000000023
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            132.81250000000023,
+            134.37500000000028
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            134.37500000000028,
+            135.93750000000034
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            135.93750000000034,
+            137.5000000000004
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            137.5000000000004,
+            139.06250000000045
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            139.06250000000045,
+            140.6250000000005
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            140.6250000000005,
+            142.18750000000057
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            142.18750000000057,
+            143.75000000000063
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            143.75000000000063,
+            145.31250000000068
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            145.31250000000068,
+            146.87500000000074
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            146.87500000000074,
+            148.4375000000008
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            148.4375000000008,
+            150.00000000000085
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            150.00000000000085,
+            151.5625000000009
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            151.5625000000009,
+            153.12500000000097
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            153.12500000000097,
+            154.68750000000102
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            154.68750000000102,
+            156.25000000000108
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            156.25000000000108,
+            157.81250000000114
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            157.81250000000114,
+            159.3750000000012
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            159.3750000000012,
+            160.93750000000125
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            160.93750000000125,
+            162.50000000000134
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            162.50000000000134,
+            164.06250000000142
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            164.06250000000142,
+            165.62500000000148
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            165.62500000000148,
+            167.18750000000153
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            167.18750000000153,
+            168.7500000000016
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            168.7500000000016,
+            170.31250000000165
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            170.31250000000165,
+            171.8750000000017
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            171.8750000000017,
+            173.43750000000176
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            173.43750000000176,
+            175.00000000000182
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        }
+      ],
+      "failures": [],
+      "partitionRunId": "c2321047-d86c-436a-95ba-b40ec5a46aea"
+    },
+    {
+      "piston": "v12-0010",
+      "target": "v12-0665",
+      "type": "block",
+      "phaseHits": 0,
+      "hitPhases": [],
+      "axialRangeMm": [
+        74.99999999999761,
+        175.00000000000148
+      ],
+      "queries": 155,
+      "maxDepth": 9,
+      "minimumCertifiedMeshClearanceMm": 0.10000999999999993,
+      "certifiedIntervals": [
+        {
+          "axialRangeMm": [
+            74.99999999999761,
+            75.19531249999761
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.19531249999761,
+            75.39062499999763
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.39062499999763,
+            75.58593749999764
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.58593749999764,
+            75.78124999999764
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.78124999999764,
+            75.97656249999764
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.97656249999764,
+            76.17187499999766
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.17187499999766,
+            76.36718749999767
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.36718749999767,
+            76.56249999999767
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.56249999999767,
+            76.75781249999767
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.75781249999767,
+            76.95312499999768
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.95312499999768,
+            77.1484374999977
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.1484374999977,
+            77.3437499999977
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.3437499999977,
+            77.5390624999977
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.5390624999977,
+            77.73437499999771
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.73437499999771,
+            78.12499999999773
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            78.12499999999773,
+            78.90624999999775
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            78.90624999999775,
+            79.68749999999778
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            79.68749999999778,
+            81.24999999999785
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            81.24999999999785,
+            82.81249999999793
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            82.81249999999793,
+            84.37499999999798
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            84.37499999999798,
+            85.93749999999804
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            85.93749999999804,
+            87.4999999999981
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            87.4999999999981,
+            89.06249999999815
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            89.06249999999815,
+            90.62499999999821
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            90.62499999999821,
+            92.18749999999827
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            92.18749999999827,
+            93.74999999999834
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            93.74999999999834,
+            95.31249999999841
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            95.31249999999841,
+            96.87499999999847
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            96.87499999999847,
+            98.43749999999852
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            98.43749999999852,
+            99.99999999999858
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            99.99999999999858,
+            101.56249999999864
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            101.56249999999864,
+            103.12499999999869
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            103.12499999999869,
+            104.68749999999875
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            104.68749999999875,
+            106.24999999999882
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            106.24999999999882,
+            107.81249999999889
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            107.81249999999889,
+            109.37499999999895
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            109.37499999999895,
+            110.937499999999
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            110.937499999999,
+            112.49999999999906
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            112.49999999999906,
+            114.06249999999912
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            114.06249999999912,
+            115.62499999999918
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            115.62499999999918,
+            117.18749999999923
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            117.18749999999923,
+            118.7499999999993
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            118.7499999999993,
+            120.31249999999937
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            120.31249999999937,
+            121.87499999999943
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            121.87499999999943,
+            123.43749999999949
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            123.43749999999949,
+            124.99999999999955
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            124.99999999999955,
+            126.5624999999996
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            126.5624999999996,
+            128.12499999999966
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            128.12499999999966,
+            129.68749999999972
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            129.68749999999972,
+            131.24999999999977
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            131.24999999999977,
+            132.81249999999983
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            132.81249999999983,
+            134.3749999999999
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            134.3749999999999,
+            135.93749999999994
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            135.93749999999994,
+            137.50000000000003
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            137.50000000000003,
+            139.0625000000001
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            139.0625000000001,
+            140.62500000000017
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            140.62500000000017,
+            142.18750000000023
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            142.18750000000023,
+            143.75000000000028
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            143.75000000000028,
+            145.31250000000034
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            145.31250000000034,
+            146.8750000000004
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            146.8750000000004,
+            148.43750000000045
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            148.43750000000045,
+            150.0000000000005
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            150.0000000000005,
+            151.56250000000057
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            151.56250000000057,
+            153.12500000000063
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            153.12500000000063,
+            154.68750000000068
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            154.68750000000068,
+            156.25000000000074
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            156.25000000000074,
+            157.8125000000008
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            157.8125000000008,
+            159.37500000000085
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            159.37500000000085,
+            160.9375000000009
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            160.9375000000009,
+            162.500000000001
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            162.500000000001,
+            164.06250000000108
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            164.06250000000108,
+            165.62500000000114
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            165.62500000000114,
+            167.1875000000012
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            167.1875000000012,
+            168.75000000000125
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            168.75000000000125,
+            170.3125000000013
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            170.3125000000013,
+            171.87500000000136
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            171.87500000000136,
+            173.43750000000142
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            173.43750000000142,
+            175.00000000000148
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        }
+      ],
+      "failures": [],
+      "partitionRunId": "c2321047-d86c-436a-95ba-b40ec5a46aea"
+    },
+    {
+      "piston": "v12-0003",
+      "target": "v12-0665",
+      "type": "block",
+      "phaseHits": 0,
+      "hitPhases": [],
+      "axialRangeMm": [
+        74.99999999999832,
+        175.00000000000207
+      ],
+      "queries": 127,
+      "maxDepth": 6,
+      "minimumCertifiedMeshClearanceMm": 0.10000999999999993,
+      "certifiedIntervals": [
+        {
+          "axialRangeMm": [
+            74.99999999999832,
+            76.56249999999838
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            76.56249999999838,
+            78.12499999999844
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            78.12499999999844,
+            79.6874999999985
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            79.6874999999985,
+            81.24999999999855
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            81.24999999999855,
+            82.81249999999861
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            82.81249999999861,
+            84.37499999999866
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            84.37499999999866,
+            85.93749999999872
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            85.93749999999872,
+            87.49999999999879
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            87.49999999999879,
+            89.06249999999886
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            89.06249999999886,
+            90.62499999999892
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            90.62499999999892,
+            92.18749999999898
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            92.18749999999898,
+            93.74999999999903
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            93.74999999999903,
+            95.31249999999909
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            95.31249999999909,
+            96.87499999999915
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            96.87499999999915,
+            98.4374999999992
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            98.4374999999992,
+            99.99999999999926
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            99.99999999999926,
+            101.56249999999932
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            101.56249999999932,
+            103.12499999999937
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            103.12499999999937,
+            104.68749999999943
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            104.68749999999943,
+            106.24999999999949
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            106.24999999999949,
+            107.81249999999955
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            107.81249999999955,
+            109.3749999999996
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            109.3749999999996,
+            110.93749999999966
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            110.93749999999966,
+            112.49999999999973
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            112.49999999999973,
+            114.0624999999998
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            114.0624999999998,
+            115.62499999999986
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            115.62499999999986,
+            117.18749999999991
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            117.18749999999991,
+            118.74999999999997
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            118.74999999999997,
+            120.31250000000003
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            120.31250000000003,
+            121.87500000000009
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            121.87500000000009,
+            123.43750000000014
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            123.43750000000014,
+            125.0000000000002
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            125.0000000000002,
+            126.56250000000027
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            126.56250000000027,
+            128.12500000000034
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            128.12500000000034,
+            129.6875000000004
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            129.6875000000004,
+            131.25000000000045
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            131.25000000000045,
+            132.8125000000005
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            132.8125000000005,
+            134.37500000000057
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            134.37500000000057,
+            135.93750000000063
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            135.93750000000063,
+            137.50000000000068
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            137.50000000000068,
+            139.06250000000074
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            139.06250000000074,
+            140.6250000000008
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            140.6250000000008,
+            142.18750000000085
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            142.18750000000085,
+            143.7500000000009
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            143.7500000000009,
+            145.31250000000097
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            145.31250000000097,
+            146.87500000000102
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            146.87500000000102,
+            148.43750000000108
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            148.43750000000108,
+            150.00000000000114
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            150.00000000000114,
+            151.5625000000012
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            151.5625000000012,
+            153.12500000000125
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            153.12500000000125,
+            154.6875000000013
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            154.6875000000013,
+            156.25000000000136
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            156.25000000000136,
+            157.81250000000142
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            157.81250000000142,
+            159.37500000000148
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            159.37500000000148,
+            160.93750000000153
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            160.93750000000153,
+            162.5000000000016
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            162.5000000000016,
+            164.06250000000165
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            164.06250000000165,
+            165.6250000000017
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            165.6250000000017,
+            167.18750000000176
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            167.18750000000176,
+            168.75000000000182
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            168.75000000000182,
+            170.31250000000188
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            170.31250000000188,
+            171.87500000000193
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            171.87500000000193,
+            173.437500000002
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            173.437500000002,
+            175.00000000000207
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        }
+      ],
+      "failures": [],
+      "partitionRunId": "c2321047-d86c-436a-95ba-b40ec5a46aea"
+    },
+    {
+      "piston": "v12-0005",
+      "target": "v12-0665",
+      "type": "block",
+      "phaseHits": 0,
+      "hitPhases": [],
+      "axialRangeMm": [
+        74.99999999999795,
+        175.00000000000188
+      ],
+      "queries": 155,
+      "maxDepth": 9,
+      "minimumCertifiedMeshClearanceMm": 0.10000999999999993,
+      "certifiedIntervals": [
+        {
+          "axialRangeMm": [
+            74.99999999999795,
+            75.19531249999795
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.19531249999795,
+            75.39062499999797
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.39062499999797,
+            75.58593749999798
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.58593749999798,
+            75.78124999999798
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.78124999999798,
+            75.97656249999798
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.97656249999798,
+            76.171874999998
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.171874999998,
+            76.36718749999801
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.36718749999801,
+            76.56249999999801
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.56249999999801,
+            76.75781249999801
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.75781249999801,
+            76.95312499999802
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.95312499999802,
+            77.14843749999804
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.14843749999804,
+            77.34374999999804
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.34374999999804,
+            77.53906249999804
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.53906249999804,
+            77.73437499999805
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.73437499999805,
+            78.12499999999807
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            78.12499999999807,
+            78.9062499999981
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            78.9062499999981,
+            79.68749999999812
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            79.68749999999812,
+            81.2499999999982
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            81.2499999999982,
+            82.81249999999827
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            82.81249999999827,
+            84.37499999999832
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            84.37499999999832,
+            85.93749999999838
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            85.93749999999838,
+            87.49999999999844
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            87.49999999999844,
+            89.0624999999985
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            89.0624999999985,
+            90.62499999999856
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            90.62499999999856,
+            92.18749999999864
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            92.18749999999864,
+            93.74999999999869
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            93.74999999999869,
+            95.31249999999875
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            95.31249999999875,
+            96.8749999999988
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            96.8749999999988,
+            98.43749999999886
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            98.43749999999886,
+            99.99999999999893
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            99.99999999999893,
+            101.562499999999
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            101.562499999999,
+            103.12499999999906
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            103.12499999999906,
+            104.68749999999912
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            104.68749999999912,
+            106.24999999999918
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            106.24999999999918,
+            107.81249999999923
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            107.81249999999923,
+            109.3749999999993
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            109.3749999999993,
+            110.93749999999937
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            110.93749999999937,
+            112.49999999999943
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            112.49999999999943,
+            114.06249999999949
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            114.06249999999949,
+            115.62499999999955
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            115.62499999999955,
+            117.1874999999996
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            117.1874999999996,
+            118.74999999999967
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            118.74999999999967,
+            120.31249999999974
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            120.31249999999974,
+            121.8749999999998
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            121.8749999999998,
+            123.43749999999986
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            123.43749999999986,
+            124.99999999999991
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            124.99999999999991,
+            126.56249999999999
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            126.56249999999999,
+            128.12500000000006
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            128.12500000000006,
+            129.6875000000001
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            129.6875000000001,
+            131.25000000000017
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            131.25000000000017,
+            132.81250000000023
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            132.81250000000023,
+            134.37500000000028
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            134.37500000000028,
+            135.93750000000034
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            135.93750000000034,
+            137.5000000000004
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            137.5000000000004,
+            139.06250000000045
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            139.06250000000045,
+            140.6250000000005
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            140.6250000000005,
+            142.18750000000057
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            142.18750000000057,
+            143.75000000000065
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            143.75000000000065,
+            145.31250000000074
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            145.31250000000074,
+            146.8750000000008
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            146.8750000000008,
+            148.43750000000085
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            148.43750000000085,
+            150.0000000000009
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            150.0000000000009,
+            151.56250000000097
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            151.56250000000097,
+            153.12500000000102
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            153.12500000000102,
+            154.68750000000108
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            154.68750000000108,
+            156.25000000000114
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            156.25000000000114,
+            157.8125000000012
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            157.8125000000012,
+            159.37500000000125
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            159.37500000000125,
+            160.9375000000013
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            160.9375000000013,
+            162.5000000000014
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            162.5000000000014,
+            164.06250000000148
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            164.06250000000148,
+            165.62500000000153
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            165.62500000000153,
+            167.1875000000016
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            167.1875000000016,
+            168.75000000000165
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            168.75000000000165,
+            170.3125000000017
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            170.3125000000017,
+            171.87500000000176
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            171.87500000000176,
+            173.43750000000182
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            173.43750000000182,
+            175.00000000000188
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        }
+      ],
+      "failures": [],
+      "partitionRunId": "c2321047-d86c-436a-95ba-b40ec5a46aea"
+    },
+    {
+      "piston": "v12-0007",
+      "target": "v12-0665",
+      "type": "block",
+      "phaseHits": 0,
+      "hitPhases": [],
+      "axialRangeMm": [
+        74.9999999999979,
+        175.00000000000125
+      ],
+      "queries": 155,
+      "maxDepth": 9,
+      "minimumCertifiedMeshClearanceMm": 0.10000999999999993,
+      "certifiedIntervals": [
+        {
+          "axialRangeMm": [
+            74.9999999999979,
+            75.1953124999979
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.1953124999979,
+            75.39062499999791
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.39062499999791,
+            75.58593749999793
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.58593749999793,
+            75.78124999999793
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.78124999999793,
+            75.97656249999793
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.97656249999793,
+            76.17187499999794
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.17187499999794,
+            76.36718749999795
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.36718749999795,
+            76.56249999999795
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.56249999999795,
+            76.75781249999795
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.75781249999795,
+            76.95312499999797
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.95312499999797,
+            77.14843749999798
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.14843749999798,
+            77.34374999999798
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.34374999999798,
+            77.53906249999798
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.53906249999798,
+            77.734374999998
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.734374999998,
+            78.12499999999801
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            78.12499999999801,
+            78.90624999999804
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            78.90624999999804,
+            79.68749999999807
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            79.68749999999807,
+            81.24999999999811
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            81.24999999999811,
+            82.81249999999815
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            82.81249999999815,
+            84.37499999999821
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            84.37499999999821,
+            85.93749999999827
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            85.93749999999827,
+            87.49999999999832
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            87.49999999999832,
+            89.06249999999838
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            89.06249999999838,
+            90.62499999999842
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            90.62499999999842,
+            92.18749999999847
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            92.18749999999847,
+            93.74999999999852
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            93.74999999999852,
+            95.31249999999858
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            95.31249999999858,
+            96.87499999999864
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            96.87499999999864,
+            98.43749999999869
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            98.43749999999869,
+            99.99999999999874
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            99.99999999999874,
+            101.56249999999878
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            101.56249999999878,
+            103.12499999999883
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            103.12499999999883,
+            104.68749999999889
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            104.68749999999889,
+            106.24999999999895
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            106.24999999999895,
+            107.812499999999
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            107.812499999999,
+            109.37499999999905
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            109.37499999999905,
+            110.93749999999909
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            110.93749999999909,
+            112.49999999999915
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            112.49999999999915,
+            114.0624999999992
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            114.0624999999992,
+            115.62499999999926
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            115.62499999999926,
+            117.18749999999932
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            117.18749999999932,
+            118.74999999999936
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            118.74999999999936,
+            120.3124999999994
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            120.3124999999994,
+            121.87499999999946
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            121.87499999999946,
+            123.43749999999952
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            123.43749999999952,
+            124.99999999999957
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            124.99999999999957,
+            126.56249999999962
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            126.56249999999962,
+            128.12499999999966
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            128.12499999999966,
+            129.68749999999972
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            129.68749999999972,
+            131.24999999999977
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            131.24999999999977,
+            132.81249999999983
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            132.81249999999983,
+            134.3749999999999
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            134.3749999999999,
+            135.93749999999994
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            135.93749999999994,
+            137.5
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            137.5,
+            139.06250000000006
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            139.06250000000006,
+            140.6250000000001
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            140.6250000000001,
+            142.18750000000017
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            142.18750000000017,
+            143.7500000000002
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            143.7500000000002,
+            145.31250000000023
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            145.31250000000023,
+            146.87500000000028
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            146.87500000000028,
+            148.43750000000034
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            148.43750000000034,
+            150.0000000000004
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            150.0000000000004,
+            151.56250000000045
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            151.56250000000045,
+            153.1250000000005
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            153.1250000000005,
+            154.68750000000057
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            154.68750000000057,
+            156.25000000000063
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            156.25000000000063,
+            157.81250000000068
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            157.81250000000068,
+            159.37500000000074
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            159.37500000000074,
+            160.9375000000008
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            160.9375000000008,
+            162.50000000000082
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            162.50000000000082,
+            164.06250000000085
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            164.06250000000085,
+            165.6250000000009
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            165.6250000000009,
+            167.18750000000097
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            167.18750000000097,
+            168.75000000000102
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            168.75000000000102,
+            170.31250000000108
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            170.31250000000108,
+            171.87500000000114
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            171.87500000000114,
+            173.4375000000012
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            173.4375000000012,
+            175.00000000000125
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        }
+      ],
+      "failures": [],
+      "partitionRunId": "c2321047-d86c-436a-95ba-b40ec5a46aea"
+    },
+    {
+      "piston": "v12-0013",
+      "target": "v12-0665",
+      "type": "block",
+      "phaseHits": 0,
+      "hitPhases": [],
+      "axialRangeMm": [
+        74.99999999999815,
+        175.000000000002
+      ],
+      "queries": 155,
+      "maxDepth": 9,
+      "minimumCertifiedMeshClearanceMm": 0.10000999999999993,
+      "certifiedIntervals": [
+        {
+          "axialRangeMm": [
+            74.99999999999815,
+            75.19531249999815
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.19531249999815,
+            75.39062499999817
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.39062499999817,
+            75.58593749999818
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.58593749999818,
+            75.78124999999818
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.78124999999818,
+            75.97656249999818
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.97656249999818,
+            76.1718749999982
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.1718749999982,
+            76.36718749999821
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.36718749999821,
+            76.56249999999821
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.56249999999821,
+            76.75781249999821
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.75781249999821,
+            76.95312499999822
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.95312499999822,
+            77.14843749999824
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.14843749999824,
+            77.34374999999824
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.34374999999824,
+            77.53906249999824
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.53906249999824,
+            77.73437499999825
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.73437499999825,
+            78.12499999999827
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            78.12499999999827,
+            78.9062499999983
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            78.9062499999983,
+            79.68749999999832
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            79.68749999999832,
+            81.2499999999984
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            81.2499999999984,
+            82.81249999999847
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            82.81249999999847,
+            84.37499999999852
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            84.37499999999852,
+            85.93749999999858
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            85.93749999999858,
+            87.49999999999864
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            87.49999999999864,
+            89.06249999999869
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            89.06249999999869,
+            90.62499999999875
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            90.62499999999875,
+            92.1874999999988
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            92.1874999999988,
+            93.74999999999888
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            93.74999999999888,
+            95.31249999999895
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            95.31249999999895,
+            96.874999999999
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            96.874999999999,
+            98.43749999999906
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            98.43749999999906,
+            99.99999999999912
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            99.99999999999912,
+            101.56249999999918
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            101.56249999999918,
+            103.12499999999923
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            103.12499999999923,
+            104.68749999999929
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            104.68749999999929,
+            106.24999999999936
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            106.24999999999936,
+            107.81249999999943
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            107.81249999999943,
+            109.37499999999949
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            109.37499999999949,
+            110.93749999999955
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            110.93749999999955,
+            112.4999999999996
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            112.4999999999996,
+            114.06249999999966
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            114.06249999999966,
+            115.62499999999972
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            115.62499999999972,
+            117.18749999999977
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            117.18749999999977,
+            118.74999999999983
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            118.74999999999983,
+            120.31249999999989
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            120.31249999999989,
+            121.87499999999994
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            121.87499999999994,
+            123.4375
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            123.4375,
+            125.00000000000007
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            125.00000000000007,
+            126.56250000000014
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            126.56250000000014,
+            128.1250000000002
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            128.1250000000002,
+            129.68750000000026
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            129.68750000000026,
+            131.2500000000003
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            131.2500000000003,
+            132.81250000000037
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            132.81250000000037,
+            134.37500000000043
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            134.37500000000043,
+            135.93750000000048
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            135.93750000000048,
+            137.50000000000054
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            137.50000000000054,
+            139.06250000000063
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            139.06250000000063,
+            140.62500000000068
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            140.62500000000068,
+            142.18750000000074
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            142.18750000000074,
+            143.7500000000008
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            143.7500000000008,
+            145.31250000000085
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            145.31250000000085,
+            146.8750000000009
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            146.8750000000009,
+            148.43750000000097
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            148.43750000000097,
+            150.00000000000102
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            150.00000000000102,
+            151.56250000000108
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            151.56250000000108,
+            153.12500000000114
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            153.12500000000114,
+            154.6875000000012
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            154.6875000000012,
+            156.25000000000125
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            156.25000000000125,
+            157.8125000000013
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            157.8125000000013,
+            159.37500000000136
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            159.37500000000136,
+            160.93750000000142
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            160.93750000000142,
+            162.5000000000015
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            162.5000000000015,
+            164.0625000000016
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            164.0625000000016,
+            165.62500000000165
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            165.62500000000165,
+            167.1875000000017
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            167.1875000000017,
+            168.75000000000176
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            168.75000000000176,
+            170.31250000000182
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            170.31250000000182,
+            171.87500000000188
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            171.87500000000188,
+            173.43750000000193
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            173.43750000000193,
+            175.000000000002
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        }
+      ],
+      "failures": [],
+      "partitionRunId": "c2321047-d86c-436a-95ba-b40ec5a46aea"
+    },
+    {
+      "piston": "v12-0011",
+      "target": "v12-0665",
+      "type": "block",
+      "phaseHits": 0,
+      "hitPhases": [],
+      "axialRangeMm": [
+        74.99999999999784,
+        175.00000000000165
+      ],
+      "queries": 155,
+      "maxDepth": 9,
+      "minimumCertifiedMeshClearanceMm": 0.10000999999999993,
+      "certifiedIntervals": [
+        {
+          "axialRangeMm": [
+            74.99999999999784,
+            75.19531249999784
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.19531249999784,
+            75.39062499999785
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.39062499999785,
+            75.58593749999787
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.58593749999787,
+            75.78124999999787
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.78124999999787,
+            75.97656249999787
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.97656249999787,
+            76.17187499999788
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.17187499999788,
+            76.3671874999979
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.3671874999979,
+            76.5624999999979
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.5624999999979,
+            76.7578124999979
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.7578124999979,
+            76.95312499999791
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.95312499999791,
+            77.14843749999793
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.14843749999793,
+            77.34374999999793
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.34374999999793,
+            77.53906249999793
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.53906249999793,
+            77.73437499999794
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.73437499999794,
+            78.12499999999795
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            78.12499999999795,
+            78.90624999999798
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            78.90624999999798,
+            79.68749999999801
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            79.68749999999801,
+            81.24999999999808
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            81.24999999999808,
+            82.81249999999815
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            82.81249999999815,
+            84.37499999999821
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            84.37499999999821,
+            85.93749999999827
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            85.93749999999827,
+            87.49999999999832
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            87.49999999999832,
+            89.06249999999838
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            89.06249999999838,
+            90.62499999999844
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            90.62499999999844,
+            92.1874999999985
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            92.1874999999985,
+            93.74999999999855
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            93.74999999999855,
+            95.31249999999861
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            95.31249999999861,
+            96.87499999999866
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            96.87499999999866,
+            98.43749999999872
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            98.43749999999872,
+            99.99999999999879
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            99.99999999999879,
+            101.56249999999886
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            101.56249999999886,
+            103.12499999999892
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            103.12499999999892,
+            104.68749999999898
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            104.68749999999898,
+            106.24999999999903
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            106.24999999999903,
+            107.81249999999909
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            107.81249999999909,
+            109.37499999999915
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            109.37499999999915,
+            110.9374999999992
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            110.9374999999992,
+            112.49999999999926
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            112.49999999999926,
+            114.06249999999932
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            114.06249999999932,
+            115.62499999999937
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            115.62499999999937,
+            117.18749999999943
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            117.18749999999943,
+            118.7499999999995
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            118.7499999999995,
+            120.31249999999957
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            120.31249999999957,
+            121.87499999999963
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            121.87499999999963,
+            123.43749999999969
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            123.43749999999969,
+            124.99999999999974
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            124.99999999999974,
+            126.56249999999982
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            126.56249999999982,
+            128.1249999999999
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            128.1249999999999,
+            129.68749999999994
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            129.68749999999994,
+            131.25
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            131.25,
+            132.81250000000006
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            132.81250000000006,
+            134.3750000000001
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            134.3750000000001,
+            135.93750000000017
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            135.93750000000017,
+            137.50000000000023
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            137.50000000000023,
+            139.06250000000028
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            139.06250000000028,
+            140.62500000000034
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            140.62500000000034,
+            142.1875000000004
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            142.1875000000004,
+            143.75000000000045
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            143.75000000000045,
+            145.3125000000005
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            145.3125000000005,
+            146.87500000000057
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            146.87500000000057,
+            148.43750000000063
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            148.43750000000063,
+            150.00000000000068
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            150.00000000000068,
+            151.56250000000074
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            151.56250000000074,
+            153.1250000000008
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            153.1250000000008,
+            154.68750000000085
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            154.68750000000085,
+            156.2500000000009
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            156.2500000000009,
+            157.81250000000097
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            157.81250000000097,
+            159.37500000000102
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            159.37500000000102,
+            160.93750000000108
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            160.93750000000108,
+            162.50000000000117
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            162.50000000000117,
+            164.06250000000125
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            164.06250000000125,
+            165.6250000000013
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            165.6250000000013,
+            167.18750000000136
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            167.18750000000136,
+            168.75000000000142
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            168.75000000000142,
+            170.31250000000148
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            170.31250000000148,
+            171.87500000000153
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            171.87500000000153,
+            173.4375000000016
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            173.4375000000016,
+            175.00000000000165
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        }
+      ],
+      "failures": [],
+      "partitionRunId": "c2321047-d86c-436a-95ba-b40ec5a46aea"
+    },
+    {
+      "piston": "v12-0009",
+      "target": "v12-0665",
+      "type": "block",
+      "phaseHits": 0,
+      "hitPhases": [],
+      "axialRangeMm": [
+        74.99999999999888,
+        175.000000000002
+      ],
+      "queries": 127,
+      "maxDepth": 6,
+      "minimumCertifiedMeshClearanceMm": 0.10000999999999993,
+      "certifiedIntervals": [
+        {
+          "axialRangeMm": [
+            74.99999999999888,
+            76.56249999999892
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            76.56249999999892,
+            78.12499999999898
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            78.12499999999898,
+            79.68749999999902
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            79.68749999999902,
+            81.24999999999906
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            81.24999999999906,
+            82.81249999999912
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            82.81249999999912,
+            84.37499999999916
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            84.37499999999916,
+            85.9374999999992
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            85.9374999999992,
+            87.49999999999926
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            87.49999999999926,
+            89.06249999999932
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            89.06249999999932,
+            90.62499999999936
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            90.62499999999936,
+            92.1874999999994
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            92.1874999999994,
+            93.74999999999946
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            93.74999999999946,
+            95.31249999999952
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            95.31249999999952,
+            96.87499999999956
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            96.87499999999956,
+            98.4374999999996
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            98.4374999999996,
+            99.99999999999966
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            99.99999999999966,
+            101.56249999999972
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            101.56249999999972,
+            103.12499999999976
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            103.12499999999976,
+            104.6874999999998
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            104.6874999999998,
+            106.24999999999986
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            106.24999999999986,
+            107.8124999999999
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            107.8124999999999,
+            109.37499999999994
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            109.37499999999994,
+            110.9375
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            110.9375,
+            112.50000000000004
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            112.50000000000004,
+            114.06250000000009
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            114.06250000000009,
+            115.62500000000014
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            115.62500000000014,
+            117.18750000000018
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            117.18750000000018,
+            118.75000000000023
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            118.75000000000023,
+            120.31250000000028
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            120.31250000000028,
+            121.87500000000033
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            121.87500000000033,
+            123.43750000000037
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            123.43750000000037,
+            125.00000000000043
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            125.00000000000043,
+            126.56250000000047
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            126.56250000000047,
+            128.1250000000005
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            128.1250000000005,
+            129.68750000000057
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            129.68750000000057,
+            131.25000000000063
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            131.25000000000063,
+            132.81250000000068
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            132.81250000000068,
+            134.3750000000007
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            134.3750000000007,
+            135.93750000000074
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            135.93750000000074,
+            137.5000000000008
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            137.5000000000008,
+            139.06250000000085
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            139.06250000000085,
+            140.6250000000009
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            140.6250000000009,
+            142.18750000000097
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            142.18750000000097,
+            143.750000000001
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            143.750000000001,
+            145.31250000000102
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            145.31250000000102,
+            146.87500000000108
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            146.87500000000108,
+            148.43750000000114
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            148.43750000000114,
+            150.0000000000012
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            150.0000000000012,
+            151.56250000000125
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            151.56250000000125,
+            153.1250000000013
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            153.1250000000013,
+            154.68750000000136
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            154.68750000000136,
+            156.2500000000014
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            156.2500000000014,
+            157.81250000000142
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            157.81250000000142,
+            159.37500000000148
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            159.37500000000148,
+            160.93750000000153
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            160.93750000000153,
+            162.5000000000016
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            162.5000000000016,
+            164.06250000000165
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            164.06250000000165,
+            165.6250000000017
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            165.6250000000017,
+            167.18750000000176
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            167.18750000000176,
+            168.7500000000018
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            168.7500000000018,
+            170.31250000000182
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            170.31250000000182,
+            171.87500000000188
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            171.87500000000188,
+            173.43750000000193
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            173.43750000000193,
+            175.000000000002
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        }
+      ],
+      "failures": [],
+      "partitionRunId": "c2321047-d86c-436a-95ba-b40ec5a46aea"
+    },
+    {
+      "piston": "v12-0004",
+      "target": "v12-0665",
+      "type": "block",
+      "phaseHits": 0,
+      "hitPhases": [],
+      "axialRangeMm": [
+        74.99999999999878,
+        175.0000000000014
+      ],
+      "queries": 155,
+      "maxDepth": 9,
+      "minimumCertifiedMeshClearanceMm": 0.10000999999999993,
+      "certifiedIntervals": [
+        {
+          "axialRangeMm": [
+            74.99999999999878,
+            75.19531249999878
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.19531249999878,
+            75.39062499999879
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.39062499999879,
+            75.5859374999988
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.5859374999988,
+            75.7812499999988
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.7812499999988,
+            75.9765624999988
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.9765624999988,
+            76.1718749999988
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.1718749999988,
+            76.3671874999988
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.3671874999988,
+            76.56249999999882
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.56249999999882,
+            76.75781249999883
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.75781249999883,
+            76.95312499999883
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.95312499999883,
+            77.14843749999883
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.14843749999883,
+            77.34374999999883
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.34374999999883,
+            77.53906249999883
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.53906249999883,
+            77.73437499999885
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.73437499999885,
+            78.12499999999886
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            78.12499999999886,
+            78.90624999999889
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            78.90624999999889,
+            79.6874999999989
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            79.6874999999989,
+            81.24999999999895
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            81.24999999999895,
+            82.81249999999899
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            82.81249999999899,
+            84.37499999999903
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            84.37499999999903,
+            85.93749999999906
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            85.93749999999906,
+            87.4999999999991
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            87.4999999999991,
+            89.06249999999915
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            89.06249999999915,
+            90.62499999999918
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            90.62499999999918,
+            92.18749999999922
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            92.18749999999922,
+            93.74999999999926
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            93.74999999999926,
+            95.3124999999993
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            95.3124999999993,
+            96.87499999999935
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            96.87499999999935,
+            98.43749999999939
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            98.43749999999939,
+            99.99999999999943
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            99.99999999999943,
+            101.56249999999947
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            101.56249999999947,
+            103.12499999999952
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            103.12499999999952,
+            104.68749999999956
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            104.68749999999956,
+            106.2499999999996
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            106.2499999999996,
+            107.81249999999964
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            107.81249999999964,
+            109.37499999999969
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            109.37499999999969,
+            110.93749999999972
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            110.93749999999972,
+            112.49999999999976
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            112.49999999999976,
+            114.0624999999998
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            114.0624999999998,
+            115.62499999999983
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            115.62499999999983,
+            117.18749999999987
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            117.18749999999987,
+            118.74999999999991
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            118.74999999999991,
+            120.31249999999996
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            120.31249999999996,
+            121.875
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            121.875,
+            123.43750000000004
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            123.43750000000004,
+            125.00000000000009
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            125.00000000000009,
+            126.56250000000013
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            126.56250000000013,
+            128.12500000000017
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            128.12500000000017,
+            129.6875000000002
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            129.6875000000002,
+            131.25000000000023
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            131.25000000000023,
+            132.81250000000028
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            132.81250000000028,
+            134.3750000000003
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            134.3750000000003,
+            135.93750000000034
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            135.93750000000034,
+            137.5000000000004
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            137.5000000000004,
+            139.06250000000045
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            139.06250000000045,
+            140.62500000000048
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            140.62500000000048,
+            142.1875000000005
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            142.1875000000005,
+            143.75000000000057
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            143.75000000000057,
+            145.31250000000063
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            145.31250000000063,
+            146.87500000000065
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            146.87500000000065,
+            148.43750000000068
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            148.43750000000068,
+            150.00000000000074
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            150.00000000000074,
+            151.5625000000008
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            151.5625000000008,
+            153.12500000000082
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            153.12500000000082,
+            154.68750000000085
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            154.68750000000085,
+            156.2500000000009
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            156.2500000000009,
+            157.81250000000097
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            157.81250000000097,
+            159.375000000001
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            159.375000000001,
+            160.93750000000102
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            160.93750000000102,
+            162.50000000000108
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            162.50000000000108,
+            164.06250000000114
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            164.06250000000114,
+            165.62500000000117
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            165.62500000000117,
+            167.1875000000012
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            167.1875000000012,
+            168.75000000000125
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            168.75000000000125,
+            170.31250000000128
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            170.31250000000128,
+            171.8750000000013
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            171.8750000000013,
+            173.43750000000136
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            173.43750000000136,
+            175.0000000000014
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        }
+      ],
+      "failures": [],
+      "partitionRunId": "c2321047-d86c-436a-95ba-b40ec5a46aea"
+    },
+    {
+      "piston": "v12-0006",
+      "target": "v12-0665",
+      "type": "block",
+      "phaseHits": 0,
+      "hitPhases": [],
+      "axialRangeMm": [
+        74.99999999999822,
+        175.00000000000125
+      ],
+      "queries": 155,
+      "maxDepth": 9,
+      "minimumCertifiedMeshClearanceMm": 0.10000999999999993,
+      "certifiedIntervals": [
+        {
+          "axialRangeMm": [
+            74.99999999999822,
+            75.19531249999824
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.19531249999824,
+            75.39062499999824
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.39062499999824,
+            75.58593749999824
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.58593749999824,
+            75.78124999999824
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.78124999999824,
+            75.97656249999824
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.97656249999824,
+            76.17187499999825
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.17187499999825,
+            76.36718749999827
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.36718749999827,
+            76.56249999999827
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.56249999999827,
+            76.75781249999827
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.75781249999827,
+            76.95312499999828
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.95312499999828,
+            77.1484374999983
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.1484374999983,
+            77.3437499999983
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.3437499999983,
+            77.5390624999983
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.5390624999983,
+            77.73437499999831
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.73437499999831,
+            78.12499999999832
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            78.12499999999832,
+            78.90624999999835
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            78.90624999999835,
+            79.68749999999837
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            79.68749999999837,
+            81.24999999999841
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            81.24999999999841,
+            82.81249999999847
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            82.81249999999847,
+            84.37499999999851
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            84.37499999999851,
+            85.93749999999855
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            85.93749999999855,
+            87.49999999999861
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            87.49999999999861,
+            89.06249999999865
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            89.06249999999865,
+            90.62499999999869
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            90.62499999999869,
+            92.18749999999875
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            92.18749999999875,
+            93.74999999999879
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            93.74999999999879,
+            95.31249999999883
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            95.31249999999883,
+            96.87499999999889
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            96.87499999999889,
+            98.43749999999893
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            98.43749999999893,
+            99.99999999999898
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            99.99999999999898,
+            101.56249999999903
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            101.56249999999903,
+            103.12499999999908
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            103.12499999999908,
+            104.68749999999912
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            104.68749999999912,
+            106.24999999999918
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            106.24999999999918,
+            107.81249999999922
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            107.81249999999922,
+            109.37499999999926
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            109.37499999999926,
+            110.93749999999932
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            110.93749999999932,
+            112.49999999999936
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            112.49999999999936,
+            114.0624999999994
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            114.0624999999994,
+            115.62499999999946
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            115.62499999999946,
+            117.1874999999995
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            117.1874999999995,
+            118.74999999999955
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            118.74999999999955,
+            120.3124999999996
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            120.3124999999996,
+            121.87499999999964
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            121.87499999999964,
+            123.43749999999969
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            123.43749999999969,
+            124.99999999999974
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            124.99999999999974,
+            126.56249999999979
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            126.56249999999979,
+            128.12499999999983
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            128.12499999999983,
+            129.6874999999999
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            129.6874999999999,
+            131.24999999999994
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            131.24999999999994,
+            132.8125
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            132.8125,
+            134.37500000000003
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            134.37500000000003,
+            135.93750000000006
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            135.93750000000006,
+            137.5000000000001
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            137.5000000000001,
+            139.06250000000017
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            139.06250000000017,
+            140.62500000000023
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            140.62500000000023,
+            142.18750000000028
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            142.18750000000028,
+            143.7500000000003
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            143.7500000000003,
+            145.31250000000034
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            145.31250000000034,
+            146.8750000000004
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            146.8750000000004,
+            148.43750000000045
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            148.43750000000045,
+            150.0000000000005
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            150.0000000000005,
+            151.56250000000057
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            151.56250000000057,
+            153.1250000000006
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            153.1250000000006,
+            154.68750000000063
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            154.68750000000063,
+            156.25000000000068
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            156.25000000000068,
+            157.81250000000074
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            157.81250000000074,
+            159.3750000000008
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            159.3750000000008,
+            160.93750000000085
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            160.93750000000085,
+            162.50000000000088
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            162.50000000000088,
+            164.0625000000009
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            164.0625000000009,
+            165.62500000000097
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            165.62500000000097,
+            167.18750000000102
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            167.18750000000102,
+            168.75000000000108
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            168.75000000000108,
+            170.31250000000114
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            170.31250000000114,
+            171.87500000000117
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            171.87500000000117,
+            173.4375000000012
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            173.4375000000012,
+            175.00000000000125
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        }
+      ],
+      "failures": [],
+      "partitionRunId": "c2321047-d86c-436a-95ba-b40ec5a46aea"
+    },
+    {
+      "piston": "v12-0008",
+      "target": "v12-0665",
+      "type": "block",
+      "phaseHits": 0,
+      "hitPhases": [],
+      "axialRangeMm": [
+        74.99999999999855,
+        175.00000000000225
+      ],
+      "queries": 155,
+      "maxDepth": 9,
+      "minimumCertifiedMeshClearanceMm": 0.10000999999999993,
+      "certifiedIntervals": [
+        {
+          "axialRangeMm": [
+            74.99999999999855,
+            75.19531249999855
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.19531249999855,
+            75.39062499999856
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.39062499999856,
+            75.58593749999858
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.58593749999858,
+            75.78124999999858
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.78124999999858,
+            75.97656249999858
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            75.97656249999858,
+            76.1718749999986
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.1718749999986,
+            76.36718749999861
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.36718749999861,
+            76.56249999999861
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.56249999999861,
+            76.75781249999861
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.75781249999861,
+            76.95312499999862
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            76.95312499999862,
+            77.14843749999864
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.14843749999864,
+            77.34374999999864
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.34374999999864,
+            77.53906249999864
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.53906249999864,
+            77.73437499999865
+          ],
+          "minimumClearanceBoundMm": 0.10001000000000002
+        },
+        {
+          "axialRangeMm": [
+            77.73437499999865,
+            78.12499999999866
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            78.12499999999866,
+            78.90624999999869
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            78.90624999999869,
+            79.68749999999872
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999999
+        },
+        {
+          "axialRangeMm": [
+            79.68749999999872,
+            81.24999999999878
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            81.24999999999878,
+            82.81249999999883
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            82.81249999999883,
+            84.37499999999889
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            84.37499999999889,
+            85.93749999999895
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            85.93749999999895,
+            87.499999999999
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            87.499999999999,
+            89.06249999999906
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            89.06249999999906,
+            90.62499999999912
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            90.62499999999912,
+            92.18749999999918
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            92.18749999999918,
+            93.74999999999923
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            93.74999999999923,
+            95.31249999999929
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            95.31249999999929,
+            96.87499999999935
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            96.87499999999935,
+            98.4374999999994
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            98.4374999999994,
+            99.99999999999947
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            99.99999999999947,
+            101.56249999999955
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            101.56249999999955,
+            103.1249999999996
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            103.1249999999996,
+            104.68749999999966
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            104.68749999999966,
+            106.24999999999972
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            106.24999999999972,
+            107.81249999999977
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            107.81249999999977,
+            109.37499999999983
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            109.37499999999983,
+            110.93749999999989
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            110.93749999999989,
+            112.49999999999994
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            112.49999999999994,
+            114.0625
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            114.0625,
+            115.62500000000006
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            115.62500000000006,
+            117.18750000000011
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            117.18750000000011,
+            118.75000000000017
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            118.75000000000017,
+            120.31250000000023
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            120.31250000000023,
+            121.87500000000028
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            121.87500000000028,
+            123.43750000000034
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            123.43750000000034,
+            125.0000000000004
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            125.0000000000004,
+            126.56250000000045
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            126.56250000000045,
+            128.1250000000005
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            128.1250000000005,
+            129.68750000000057
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            129.68750000000057,
+            131.25000000000063
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            131.25000000000063,
+            132.81250000000068
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            132.81250000000068,
+            134.37500000000074
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            134.37500000000074,
+            135.9375000000008
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            135.9375000000008,
+            137.50000000000085
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            137.50000000000085,
+            139.0625000000009
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            139.0625000000009,
+            140.62500000000097
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            140.62500000000097,
+            142.18750000000102
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            142.18750000000102,
+            143.75000000000108
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            143.75000000000108,
+            145.31250000000114
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            145.31250000000114,
+            146.8750000000012
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            146.8750000000012,
+            148.43750000000125
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            148.43750000000125,
+            150.0000000000013
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            150.0000000000013,
+            151.56250000000136
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            151.56250000000136,
+            153.12500000000142
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            153.12500000000142,
+            154.68750000000148
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            154.68750000000148,
+            156.25000000000153
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            156.25000000000153,
+            157.8125000000016
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            157.8125000000016,
+            159.37500000000165
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            159.37500000000165,
+            160.9375000000017
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            160.9375000000017,
+            162.50000000000176
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            162.50000000000176,
+            164.06250000000182
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            164.06250000000182,
+            165.62500000000188
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            165.62500000000188,
+            167.18750000000193
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            167.18750000000193,
+            168.750000000002
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            168.750000000002,
+            170.31250000000205
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            170.31250000000205,
+            171.8750000000021
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            171.8750000000021,
+            173.43750000000216
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        },
+        {
+          "axialRangeMm": [
+            173.43750000000216,
+            175.00000000000225
+          ],
+          "minimumClearanceBoundMm": 0.10000999999999993
+        }
+      ],
+      "failures": [],
+      "partitionRunId": "c2321047-d86c-436a-95ba-b40ec5a46aea"
+    }
+  ],
+  "headEnvelopeChecks": [
+    {
+      "piston": "v12-0014",
+      "target": "v12-0666",
+      "pass": true,
+      "method": "All final piston vertices at both extreme translations lie inside every actual Float32 envelope face halfspace. Convexity contains all piston triangles at every intermediate translation. Exhausted final-head distance search certifies separation of the entire envelope.",
+      "envelopeSides": 96,
+      "envelopeAxialRangeMm": [
+        60.899999999998464,
+        213.60000000000193
+      ],
+      "envelopeApothemMm": 42.1,
+      "vertices": 29478,
+      "maximumPlaneViolationMm": -0.09989346276244368,
+      "maximumPistonRadiusMm": 42.000014305766854,
+      "pistonRelativeAxialRangeMm": [
+        -13.97476485678034,
+        38.50000472330541
+      ],
+      "searchRadiusMm": 0.10001,
+      "returnedWitnessMm": 0.39999470862184505,
+      "certifiedLowerBoundMm": 0.10001
+    },
+    {
+      "piston": "v12-0003",
+      "target": "v12-0715",
+      "pass": true,
+      "method": "All final piston vertices at both extreme translations lie inside every actual Float32 envelope face halfspace. Convexity contains all piston triangles at every intermediate translation. Exhausted final-head distance search certifies separation of the entire envelope.",
+      "envelopeSides": 96,
+      "envelopeAxialRangeMm": [
+        60.89999999999832,
+        213.60000000000207
+      ],
+      "envelopeApothemMm": 42.1,
+      "vertices": 29478,
+      "maximumPlaneViolationMm": -0.0998940073609463,
+      "maximumPistonRadiusMm": 42.00001058147965,
+      "pistonRelativeAxialRangeMm": [
+        -13.974760794527143,
+        38.500003859908944
+      ],
+      "searchRadiusMm": 0.10001,
+      "returnedWitnessMm": 0.39999517269387486,
+      "certifiedLowerBoundMm": 0.10001
+    },
+    {
+      "piston": "v12-0013",
+      "target": "v12-0666",
+      "pass": true,
+      "method": "All final piston vertices at both extreme translations lie inside every actual Float32 envelope face halfspace. Convexity contains all piston triangles at every intermediate translation. Exhausted final-head distance search certifies separation of the entire envelope.",
+      "envelopeSides": 96,
+      "envelopeAxialRangeMm": [
+        60.89999999999815,
+        213.60000000000198
+      ],
+      "envelopeApothemMm": 42.1,
+      "vertices": 29478,
+      "maximumPlaneViolationMm": -0.09989392486526892,
+      "maximumPistonRadiusMm": 42.000008363754766,
+      "pistonRelativeAxialRangeMm": [
+        -13.97476445987715,
+        38.50000335345584
+      ],
+      "searchRadiusMm": 0.10001,
+      "returnedWitnessMm": 0.3999947086218518,
+      "certifiedLowerBoundMm": 0.10001
+    },
+    {
+      "piston": "v12-0004",
+      "target": "v12-0715",
+      "pass": true,
+      "method": "All final piston vertices at both extreme translations lie inside every actual Float32 envelope face halfspace. Convexity contains all piston triangles at every intermediate translation. Exhausted final-head distance search certifies separation of the entire envelope.",
+      "envelopeSides": 96,
+      "envelopeAxialRangeMm": [
+        60.899999999998776,
+        213.6000000000014
+      ],
+      "envelopeApothemMm": 42.1,
+      "vertices": 29478,
+      "maximumPlaneViolationMm": -0.09989488583517828,
+      "maximumPistonRadiusMm": 42.00000624491939,
+      "pistonRelativeAxialRangeMm": [
+        -13.97476250169052,
+        38.50000314965013
+      ],
+      "searchRadiusMm": 0.10001,
+      "returnedWitnessMm": 0.39999517269387486,
+      "certifiedLowerBoundMm": 0.10001
+    },
+    {
+      "piston": "v12-0012",
+      "target": "v12-0666",
+      "pass": true,
+      "method": "All final piston vertices at both extreme translations lie inside every actual Float32 envelope face halfspace. Convexity contains all piston triangles at every intermediate translation. Exhausted final-head distance search certifies separation of the entire envelope.",
+      "envelopeSides": 96,
+      "envelopeAxialRangeMm": [
+        60.89999999999802,
+        213.6000000000018
+      ],
+      "envelopeApothemMm": 42.1,
+      "vertices": 29478,
+      "maximumPlaneViolationMm": -0.09989698767189548,
+      "maximumPistonRadiusMm": 42.00000405893835,
+      "pistonRelativeAxialRangeMm": [
+        -13.97476352887955,
+        38.500002294178984
+      ],
+      "searchRadiusMm": 0.10001,
+      "returnedWitnessMm": 0.39999470862184505,
+      "certifiedLowerBoundMm": 0.10001
+    },
+    {
+      "piston": "v12-0005",
+      "target": "v12-0715",
+      "pass": true,
+      "method": "All final piston vertices at both extreme translations lie inside every actual Float32 envelope face halfspace. Convexity contains all piston triangles at every intermediate translation. Exhausted final-head distance search certifies separation of the entire envelope.",
+      "envelopeSides": 96,
+      "envelopeAxialRangeMm": [
+        60.89999999999795,
+        213.60000000000187
+      ],
+      "envelopeApothemMm": 42.1,
+      "vertices": 29478,
+      "maximumPlaneViolationMm": -0.09989307423057588,
+      "maximumPistonRadiusMm": 42.000006470380875,
+      "pistonRelativeAxialRangeMm": [
+        -13.974763611586411,
+        38.50000353865957
+      ],
+      "searchRadiusMm": 0.10001,
+      "returnedWitnessMm": 0.39999517269387486,
+      "certifiedLowerBoundMm": 0.10001
+    },
+    {
+      "piston": "v12-0011",
+      "target": "v12-0666",
+      "pass": true,
+      "method": "All final piston vertices at both extreme translations lie inside every actual Float32 envelope face halfspace. Convexity contains all piston triangles at every intermediate translation. Exhausted final-head distance search certifies separation of the entire envelope.",
+      "envelopeSides": 96,
+      "envelopeAxialRangeMm": [
+        60.89999999999784,
+        213.60000000000164
+      ],
+      "envelopeApothemMm": 42.1,
+      "vertices": 29478,
+      "maximumPlaneViolationMm": -0.0998969876743059,
+      "maximumPistonRadiusMm": 42.00000427124205,
+      "pistonRelativeAxialRangeMm": [
+        -13.97476352887935,
+        38.50000229417918
+      ],
+      "searchRadiusMm": 0.10001,
+      "returnedWitnessMm": 0.39999470862184505,
+      "certifiedLowerBoundMm": 0.10001
+    },
+    {
+      "piston": "v12-0006",
+      "target": "v12-0715",
+      "pass": true,
+      "method": "All final piston vertices at both extreme translations lie inside every actual Float32 envelope face halfspace. Convexity contains all piston triangles at every intermediate translation. Exhausted final-head distance search certifies separation of the entire envelope.",
+      "envelopeSides": 96,
+      "envelopeAxialRangeMm": [
+        60.89999999999822,
+        213.60000000000124
+      ],
+      "envelopeApothemMm": 42.1,
+      "vertices": 29527,
+      "maximumPlaneViolationMm": -0.09989307423388005,
+      "maximumPistonRadiusMm": 42.000006517039814,
+      "pistonRelativeAxialRangeMm": [
+        -13.974763611585786,
+        38.500003538660195
+      ],
+      "searchRadiusMm": 0.10001,
+      "returnedWitnessMm": 0.39999517269387486,
+      "certifiedLowerBoundMm": 0.10001
+    },
+    {
+      "piston": "v12-0010",
+      "target": "v12-0666",
+      "pass": true,
+      "method": "All final piston vertices at both extreme translations lie inside every actual Float32 envelope face halfspace. Convexity contains all piston triangles at every intermediate translation. Exhausted final-head distance search certifies separation of the entire envelope.",
+      "envelopeSides": 96,
+      "envelopeAxialRangeMm": [
+        60.89999999999761,
+        213.60000000000147
+      ],
+      "envelopeApothemMm": 42.1,
+      "vertices": 29478,
+      "maximumPlaneViolationMm": -0.09989392497562016,
+      "maximumPistonRadiusMm": 42.00000704925481,
+      "pistonRelativeAxialRangeMm": [
+        -13.974764459876667,
+        38.50000335345632
+      ],
+      "searchRadiusMm": 0.10001,
+      "returnedWitnessMm": 0.39999470862184505,
+      "certifiedLowerBoundMm": 0.10001
+    },
+    {
+      "piston": "v12-0007",
+      "target": "v12-0715",
+      "pass": true,
+      "method": "All final piston vertices at both extreme translations lie inside every actual Float32 envelope face halfspace. Convexity contains all piston triangles at every intermediate translation. Exhausted final-head distance search certifies separation of the entire envelope.",
+      "envelopeSides": 96,
+      "envelopeAxialRangeMm": [
+        60.899999999997895,
+        213.60000000000124
+      ],
+      "envelopeApothemMm": 42.1,
+      "vertices": 29478,
+      "maximumPlaneViolationMm": -0.09989488573101558,
+      "maximumPistonRadiusMm": 42.000006424383976,
+      "pistonRelativeAxialRangeMm": [
+        -13.974762501689156,
+        38.50000314965149
+      ],
+      "searchRadiusMm": 0.10001,
+      "returnedWitnessMm": 0.39999517269387486,
+      "certifiedLowerBoundMm": 0.10001
+    },
+    {
+      "piston": "v12-0009",
+      "target": "v12-0666",
+      "pass": true,
+      "method": "All final piston vertices at both extreme translations lie inside every actual Float32 envelope face halfspace. Convexity contains all piston triangles at every intermediate translation. Exhausted final-head distance search certifies separation of the entire envelope.",
+      "envelopeSides": 96,
+      "envelopeAxialRangeMm": [
+        60.899999999998876,
+        213.60000000000198
+      ],
+      "envelopeApothemMm": 42.1,
+      "vertices": 29478,
+      "maximumPlaneViolationMm": -0.09989346297025449,
+      "maximumPistonRadiusMm": 42.000009560961836,
+      "pistonRelativeAxialRangeMm": [
+        -13.974764856780851,
+        38.5000047233049
+      ],
+      "searchRadiusMm": 0.10001,
+      "returnedWitnessMm": 0.39999470862184505,
+      "certifiedLowerBoundMm": 0.10001
+    },
+    {
+      "piston": "v12-0008",
+      "target": "v12-0715",
+      "pass": true,
+      "method": "All final piston vertices at both extreme translations lie inside every actual Float32 envelope face halfspace. Convexity contains all piston triangles at every intermediate translation. Exhausted final-head distance search certifies separation of the entire envelope.",
+      "envelopeSides": 96,
+      "envelopeAxialRangeMm": [
+        60.89999999999855,
+        213.60000000000224
+      ],
+      "envelopeApothemMm": 42.1,
+      "vertices": 29478,
+      "maximumPlaneViolationMm": -0.0998940071551532,
+      "maximumPistonRadiusMm": 42.00001242352052,
+      "pistonRelativeAxialRangeMm": [
+        -13.974760794527356,
+        38.50000385990873
+      ],
+      "searchRadiusMm": 0.10001,
+      "returnedWitnessMm": 0.39999517269387486,
+      "certifiedLowerBoundMm": 0.10001
+    }
+  ],
+  "method": {
+    "block": "361 sampled crank positions plus an adaptive full-stroke partition. Every interval is certified by exhausted BVH search through radius half-width+0.1mm+0.00001mm. Returned pair distances are not global-minimum claims.",
+    "head": "Every final Float32 piston vertex at both extreme translations is inside every face halfspace of its closed conservative full-stroke polyhedron. Convexity contains all triangles at all intermediate translations. Exhausted search separates that whole envelope from its final published head mesh by more than0.100mm.",
+    "aggregation": "Exactly twelve unique block partitions with contiguous complete travel coverage, plus twelve unique head envelope proofs; every input shares the actual published binary SHA256."
+  },
+  "limitations": [
+    "Cold runtime triangle geometry; not manufacturing tolerances or thermal distortion.",
+    "Does not certify unrelated component pairs, stress, lubrication film, combustion or contact force.",
+    "Certified threshold is greater than0.100mm. No exact global minimum gap is claimed."
+  ]
+}

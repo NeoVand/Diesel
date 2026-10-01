@@ -7,3 +7,10 @@ bun.lockb
 
 # Miscellaneous
 /static/
+
+# Tool-managed skill bundles and their generated lockfile
+.agents/skills/
+skills-lock.json
+
+# Local visual audits and generated diagnostics
+/work/

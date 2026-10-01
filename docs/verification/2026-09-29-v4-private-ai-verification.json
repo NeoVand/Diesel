@@ -1,0 +1,166 @@
+{
+	"startedAt": "2026-09-30T00:19:28.089Z",
+	"access": {
+		"initial": {
+			"mode": "invite",
+			"authenticated": false,
+			"aiAvailable": false,
+			"expiresAt": null,
+			"limits": {
+				"guideRemaining": 30,
+				"audioRemaining": 30
+			}
+		},
+		"clientSentProviderKey": false,
+		"lockedAgentStatus": 401,
+		"wrongPasswordStatus": 401,
+		"unlockStatus": 200,
+		"cookie": {
+			"httpOnly": true,
+			"secure": true,
+			"sameSite": "Strict",
+			"path": "/"
+		},
+		"javascriptCanReadCookie": false,
+		"providerKeyInMarkup": false,
+		"afterNarrationReunlock": {
+			"mode": "invite",
+			"authenticated": true,
+			"aiAvailable": true,
+			"expiresAt": 1790734770204,
+			"limits": {
+				"guideRemaining": 29,
+				"audioRemaining": 30
+			}
+		},
+		"serverSessionStillActiveAfterMockedLogout": true,
+		"afterLogout": {
+			"mode": "invite",
+			"authenticated": false,
+			"aiAvailable": false,
+			"expiresAt": null,
+			"limits": {
+				"guideRemaining": 30,
+				"audioRemaining": 30
+			}
+		},
+		"agentRequests": 2,
+		"paidNarrationRequests": 0
+	},
+	"acknowledgements": [
+		{
+			"status": "applied",
+			"state": {
+				"display": "assembly",
+				"selected": null,
+				"running": false,
+				"phase": 0,
+				"section": {
+					"axis": "x",
+					"offset": 0.5,
+					"flipped": false,
+					"visible": true
+				},
+				"flows": []
+			}
+		},
+		{
+			"status": "applied",
+			"state": {
+				"display": "cylinder",
+				"selected": null,
+				"running": false,
+				"phase": 0,
+				"section": {
+					"axis": "x",
+					"offset": 0.5,
+					"flipped": false,
+					"visible": true
+				},
+				"flows": []
+			}
+		},
+		{
+			"status": "applied",
+			"state": {
+				"display": "cylinder",
+				"selected": null,
+				"running": false,
+				"phase": 0,
+				"section": {
+					"axis": "x",
+					"offset": 0.5,
+					"flipped": false,
+					"visible": true
+				},
+				"flows": ["fuel"]
+			}
+		},
+		{
+			"status": "applied",
+			"state": {
+				"display": "cylinder",
+				"selected": null,
+				"running": false,
+				"phase": 0,
+				"section": {
+					"axis": "x",
+					"offset": 0.5,
+					"flipped": false,
+					"visible": true
+				},
+				"flows": ["fuel"]
+			}
+		},
+		{
+			"status": "applied",
+			"state": {
+				"display": "cylinder",
+				"selected": null,
+				"running": false,
+				"phase": 355,
+				"section": {
+					"axis": "x",
+					"offset": 0.5,
+					"flipped": false,
+					"visible": true
+				},
+				"flows": ["fuel"]
+			}
+		},
+		{
+			"status": "applied",
+			"state": {
+				"display": "cylinder",
+				"selected": "mech:piston:01",
+				"running": false,
+				"phase": 355,
+				"section": {
+					"axis": "x",
+					"offset": 0.5,
+					"flipped": false,
+					"visible": true
+				},
+				"flows": ["fuel"]
+			}
+		}
+	],
+	"errors": [],
+	"ai": {
+		"status": 200,
+		"execution": "acknowledged",
+		"answer": "Cylinder 1’s teaching cutaway is fitted, with the fuel overlay on and motion paused at global 355°; its local phase is also 355°, in compression. Near the end of compression, the electronic unit injector delivers fuel into hot compressed air, where it ignites without a spark plug; the displayed injection timing is illustrative, not verified production calibration.",
+		"ui": {
+			"phase": 355,
+			"paused": true,
+			"fuelStudy": true
+		}
+	},
+	"uiRegressions": {
+		"delayedInitialStatusIgnored": true,
+		"mockedNarration401OpensUnlock": true,
+		"mockedLogoutFailureKeepsDialogDisconnected": true
+	},
+	"passed": true,
+	"serverIssue": false
+}

@@ -1,0 +1,11 @@
+{
+	"jsonStatus": 200,
+	"stepStatus": 200,
+	"stepBytes": 57715,
+	"parameterHash": "b4c7deba5b7f087724c937b4abc2edde3594893fc4d500f9d8d734f4fbd3bac6",
+	"volumeMm3": 39984.2696810487,
+	"invalidStatus": 400,
+	"originStatus": 403,
+	"oversizedStatus": 413,
+	"concurrentStatuses": [200, 429]
+}

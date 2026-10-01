@@ -1,0 +1,75 @@
+{
+	"title": "Authored mechanism closed-solid and non-joint collision audit",
+	"configuration": "Educational 170 mm bore / 190 mm stroke / assumed 350 mm rod; not production Caterpillar CAD",
+	"coordinate_basis": "0.003 display units per nominal millimeter in the standalone authored rig. Embedded placement is a uniform presentation scale plus inferred axial layout.",
+	"source_sha256": "df78b532ff6c65a776b8ab469f8c2f688f040911d9f401ef72c7e8424efc1ca5",
+	"topology": {
+		"solids": 718,
+		"totalTriangles": 262644,
+		"failures": []
+	},
+	"topology_final_recheck": "After the injector-bore/deck-outline repair and retirement of six redundant manual cylinder-section faces, all nine scene tests passed. Every educational hardware pickable now has an audited constituent solid range. The 718 physical constituent solids are unchanged by cap retirement.",
+	"boundary_sweep": {
+		"step": 1,
+		"samples": 721,
+		"tests": 242256,
+		"nonzeroSegments": 0,
+		"elapsedMs": 24533.43825,
+		"contacts": []
+	},
+	"boundary_sweep_pairs": [
+		"each of twelve rods against all crank finish meshes",
+		"each rod against its corresponding piston finish meshes",
+		"six adjacent paired rods"
+	],
+	"boundary_sweep_scope": "The original measured 721-pose sweep is preserved. The subsequent injector-deck aperture and manual-cap retirement changes do not alter any checked rod, piston or crank physical pair vertices. Head/deck geometry is outside these mesh pairs. Zero-length contact segments and segments shorter than 1e-7 display units are ignored.",
+	"clearances": {
+		"basis": "Nominal authored teaching geometry with 0.003 display units per millimeter; not OEM manufacturing clearances",
+		"phaseSamples": 721,
+		"stepDegrees": 1,
+		"nonJointAxialGapMm": 2.3333142300447176,
+		"pairedRodAxialGapMm": 7.333333273728648,
+		"rodToCrownUndersideGapMm": 3.3333242452022875,
+		"rodToSkirtInteriorGapMm": 14.44371448533822,
+		"bigEndRadialGapMm": 0.1439768688086309,
+		"smallEndRadialGapMm": 0.1550820736349462,
+		"wristPinEndBeforeSkirtMm": 2.0000000000000018,
+		"wristPinBossAxialGapFromRodMm": 12.000000000000002
+	},
+	"methods": {
+		"triangle_boundaries": "three-mesh-bvh 0.9.15, SAH BVHs and ExtendedTriangle intersection segments; 721 integer-degree poses over the 720-degree cycle",
+		"solid_closure": "For each original primitive range in merged finish meshes, weld coordinates at 1e-6 display units, drop zero-area triangles and require two oppositely directed incident triangles per edge plus positive signed volume.",
+		"retained_openings": "Ray winding probes preserve the piston underside cavity, the two rod-bearing apertures, and the real injector deck bore. Seventy-two probes around the full injector body radius pass through deck material without containment.",
+		"non_joint_separation": "Actual crank solid axial intervals excluding shared crank pins remain disjoint from every rod; pure rotation about the shaft preserves this axial separation. Piston-relative rod vertices and clipped triangle-edge crossings remain inside the underside cavity across sampled phases.",
+		"dependencies": "Scratch-only three-mesh-bvh 0.9.15 and tsx; no application dependency was added.",
+		"tool_reference": "https://github.com/gkjohnson/three-mesh-bvh/blob/master/API.md"
+	},
+	"joint_interpretation": {
+		"crank_pin": "A rod surrounds its shared journal with an annular bearing and positive radial gap; coincident joint centers are intentional, not a rod passing through a solid shaft.",
+		"wrist_pin": "A shorter pin stays inside the underside cavity, passes through a real small-end bore, and is supported by annular piston bosses. It ends before the unbored skirt wall.",
+		"same_component_overlap": "Connected details within a compound component can overlap as closed positive-winding solids. They are not a boolean-unioned manufacturing B-rep. Section caps use their nonzero winding union."
+	},
+	"resolved": [
+		"open piston underside boundary",
+		"open liner half-torus and spring ends",
+		"reversed liner cut-side winding",
+		"zero-thickness rod bearing-housing contour",
+		"detached rod cap bolt positions",
+		"wrist pin entering an unbored skirt",
+		"injector body/deck-bore overlap",
+		"redundant manually positioned cylinder-study bed/crank section faces superseded by solid-winding caps"
+	],
+	"remaining_limits": [
+		"No collision registration against purchased exterior bodies is established.",
+		"The 721-pose boundary sweep is discrete sampling, not a general swept-volume theorem.",
+		"The rendered closed valve disk/seat gap is approximately 0.0065 display units (2.17 nominal teaching mm); ideal event gating is not a modeled gas seal.",
+		"Cam/rocker actuation, production seat profiles, component fit, clearances, materials and load/contact forces remain illustrative.",
+		"Compound meshes retain internal constituent surfaces; closure is verified per constituent rather than claiming one manifold boolean union per component.",
+		"No OEM manufacturing-clearance, tolerance, stress or CFD validation is implied."
+	],
+	"regression_tests": [
+		"src/lib/scene/educational-mechanism.test.ts: 9 passing scene tests after final deck repair and legacy-cap retirement",
+		"src/lib/engine/mechanism.test.ts: 11 passing mechanism tests; unchanged by the final deck repair"
+	],
+	"scratch_artifacts": "/Users/neo/Documents/Codex/2026-09-29/referenced-chatgpt-conversation-this-is-an/work/mechanical-audit"
+}

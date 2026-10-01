@@ -1,0 +1,92 @@
+{
+	"schemaVersion": 1,
+	"recordedAt": "2026-09-30T13:14:36.365Z",
+	"subject": "Design Studio operating-cycle rendering and concurrent design search",
+	"route": "http://127.0.0.1:5173/design",
+	"environment": {
+		"platform": "macOS arm64",
+		"webglRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+		"playwrightVersion": "1.63.0",
+		"integratedAuditBrowser": "Chromium 153.0.8010.12",
+		"comparisonBrowser": "Chrome 154.0.8037.58",
+		"launch": "Isolated headless browser with channel: chromium; full Chromium, not the default headless shell",
+		"viewportCssPixels": [1516, 1000],
+		"canvasPixels": [982, 618],
+		"deviceScaleFactor": 1,
+		"server": "Local Vite development server"
+	},
+	"method": {
+		"scenario": "Default authored V12 cranktrain, Operating loads panel, engine playback active",
+		"settling": "Camera transition allowed to settle before measurement",
+		"frameTiming": "Consecutive requestAnimationFrame timestamps; p95 is the sorted sample at floor(count * 0.95)",
+		"longTasks": "PerformanceObserver observing longtask entries during each measurement window",
+		"worker": "Real operating-optimization worker: 500 geometry combinations across three prescribed operating conditions, followed by finalist refinement",
+		"nativeSolverIsolation": "The worker reached the first native-analysis request. That request was intercepted with a deliberate QA-only 503 response; no native solve ran during the frame measurements.",
+		"browserIsolation": "Separate browser profile; WebSockets blocked to prevent HMR from resetting the measured page",
+		"localAuditScripts": [
+			"work/design-renderer/integrated-audit.mjs",
+			"work/design-renderer/compare-browser-performance.mjs"
+		]
+	},
+	"integratedResults": [
+		{
+			"condition": "Operating playback",
+			"measurementWindowMs": 3000,
+			"frameIntervals": 181,
+			"p95FrameIntervalMs": 16.7,
+			"maximumFrameIntervalMs": 16.8,
+			"frameIntervalsOver50Ms": 0,
+			"longTaskDurationsMs": []
+		},
+		{
+			"condition": "Operating playback during the real 500-design worker search",
+			"measurementWindowMs": 4000,
+			"frameIntervals": 241,
+			"p95FrameIntervalMs": 16.8,
+			"maximumFrameIntervalMs": 16.8,
+			"frameIntervalsOver50Ms": 0,
+			"longTaskDurationsMs": []
+		}
+	],
+	"independentBrowserComparison": [
+		{
+			"channel": "chromium",
+			"renderer": "Apple M4 Metal",
+			"windowMs": 2500,
+			"frameIntervals": 151,
+			"p95Ms": 16.8,
+			"maximumMs": 16.8
+		},
+		{
+			"channel": "chrome",
+			"renderer": "Apple M4 Metal",
+			"windowMs": 2500,
+			"frameIntervals": 151,
+			"p95Ms": 16.7,
+			"maximumMs": 16.8
+		},
+		{
+			"channel": "default headless shell",
+			"renderer": "ANGLE Vulkan SwiftShader software renderer",
+			"windowMs": 2500,
+			"frameIntervals": 9,
+			"p95Ms": 350,
+			"maximumMs": 350
+		}
+	],
+	"stateChecks": {
+		"operatingSeek361DegreesRetained": true,
+		"leavingOperatingAt550DegreesProducesMechanical190Degrees": true,
+		"nativeRequestsIntercepted": 1,
+		"uncaughtJavaScriptPageErrors": []
+	},
+	"interpretation": "Approximately 60 Hz frame cadence was maintained in both measured hardware-accelerated windows, including the concurrent design search. The slow default-headless-shell result was specific to software rendering.",
+	"limits": [
+		"Short local measurements on one Apple M4 machine; not a guarantee for other devices, resolutions, browser versions or sustained sessions.",
+		"requestAnimationFrame cadence and long-task observations are not GPU timestamp queries, power measurements or an end-to-end input-latency benchmark.",
+		"The native meshing/elasticity solve, result adoption, AI requests and thermal throttling were outside these frame measurement windows.",
+		"No claim is made that SwiftShader can render this scene at 60 Hz. Its software-rendering result must not be conflated with the hardware Metal measurements.",
+		"Frame times are rounded to 0.1 ms. The frame count can include the final interval extending just beyond the requested measurement window.",
+		"This record verifies observed rendering behavior; it does not validate the physical assumptions of the operating or structural models."
+	]
+}

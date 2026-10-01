@@ -1,0 +1,40 @@
+{
+	"scope": "Presentation-only teaching-part atlas and wider explosion; historical v4 mechanical audit intentionally unchanged",
+	"verification": {
+		"command": "pnpm exec vitest run --project server src/lib/scene/educational-mechanism.test.ts src/lib/engine/mechanism.test.ts src/lib/scene/parts-layout.test.ts",
+		"exit_code": 0,
+		"test_files": 3,
+		"tests_passed": 35,
+		"duration_seconds": 4.07,
+		"targeted_eslint": "passed",
+		"prettier_check": "passed"
+	},
+	"tested_assertions": [
+		"All 88 teaching records retain stable IDs and pure cloned canonical bounds",
+		"Burst starts at the displayed current-phase rigid pose, including embedded scale and axial pitch; canonicalization is a static display transition, not a physical engine cycle",
+		"All 88 exploded-to-cell AABBs match the affine transform at grid blends 0.2, 0.5, 0.9 and 1.0; offset term decays to zero at final layout",
+		"All teaching components use one shared explosion multiplier of exactly 3 at normalized inputs 0.25, 0.5 and 1",
+		"Layout suppresses cycle, spray, trapped-charge and flow effects; Internals=false suppresses teaching bounds and picking",
+		"Hidden, family/exact isolation, picking and complete/partial reverse restoration remain consistent",
+		"Teaching geometry attributes retain identical byte content and array references; index references are unchanged (merged meshes are nonindexed)",
+		"Shared utility fixture covers 675 unique IDs (587 source and 88 teaching), deterministic input order, nonoverlapping cells, containing group bounds, uniform scale and source affine CPU/shader agreement"
+	],
+	"retained_limits": [
+		"Atlas normalizes each part independently using a positive uniform display scale; relative sizes and grid spacing are not physical dimensions",
+		"Teaching rod length, production phasing, timing, head ports, materials and embedding remain illustrative; no new OEM fidelity claim",
+		"The 675-ID utility fixture does not substitute for actual GPU source geometry/picking validation, owned by the renderer audit",
+		"Physical clearances and topology remain tied to the historical v4 audit; this report neither repeats nor re-certifies the historical boundary sweep"
+	],
+	"source_sha256": {
+		"src/lib/scene/educational-mechanism.ts": "5b36a5b9b9167610c1e93af578b198b008618d42fa45b3c254dd6e59ed932cde",
+		"src/lib/scene/educational-mechanism.test.ts": "97553082795c076dee31ba6341ffbe76167eee2b203384d9eb97dcd0886c4f13",
+		"src/lib/scene/parts-layout.ts": "ed13124b88992a48d7ea0998b743ce6ceef4ab3fab5f320743f2d92123d4375a",
+		"src/lib/scene/parts-layout.test.ts": "9f19b14919eaa2bc9229fb7851ad400771261d4943b67793e571220967455832"
+	},
+	"piston_shading_repair": {
+		"scope": "Flat lathe face/pole normals made axial; only piston aluminium anisotropy disabled because angular cap UV derivatives produced radial stripes",
+		"physical_geometry": "All264 meshes /795,996 position vertices, UVs, indices, triangle order and constituent ranges remain byte-identical; exactly12 piston normal buffers changed",
+		"evidence": "2026-09-29-v5-piston-shading.json",
+		"historical_mechanical_audit": "unchanged"
+	}
+}

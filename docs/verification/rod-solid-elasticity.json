@@ -1,0 +1,161 @@
+{
+	"patch": {
+		"method": "Distorted tetrahedral affine patch with known full strain tensor",
+		"nodes": 80,
+		"elements": 216,
+		"maxDisplacementErrorMm": 1.734723475976807e-17,
+		"maxStressErrorMpa": 2.0463630789890885e-12,
+		"energyRelativeError": 8.042609744195554e-15,
+		"residualRelative": 4.1340955071140155e-16
+	},
+	"cantilever": {
+		"method": "Four tetrahedral meshes of a slender clamped block under transverse end traction; comparison to bending-plus-shear beam, not identical 3D boundary-value problem",
+		"beamReferenceMm": 0.19196190476190475,
+		"runs": [
+			{
+				"elements": 480,
+				"nodes": 189,
+				"meanEndDeflectionMm": 0.09669138526529633,
+				"beamComparisonRelativeError": 0.4962990944207127,
+				"reactionBalanceRelative": 4.8467770862302366e-12,
+				"residualRelative": 1.0463473874134333e-11
+			},
+			{
+				"elements": 3840,
+				"nodes": 1025,
+				"meanEndDeflectionMm": 0.15109981381479828,
+				"beamComparisonRelativeError": 0.21286562559268601,
+				"reactionBalanceRelative": 6.36697772759482e-11,
+				"residualRelative": 6.15260127431981e-11
+			},
+			{
+				"elements": 30720,
+				"nodes": 6561,
+				"meanEndDeflectionMm": 0.17844467545139128,
+				"beamComparisonRelativeError": 0.07041620746199218,
+				"reactionBalanceRelative": 3.368389107492891e-10,
+				"residualRelative": 3.528733654399011e-10
+			},
+			{
+				"elements": 103680,
+				"nodes": 20449,
+				"meanEndDeflectionMm": 0.18492472162107298,
+				"beamComparisonRelativeError": 0.03665926918968721,
+				"reactionBalanceRelative": 4.088984307727603e-10,
+				"residualRelative": 9.343996549706219e-10
+			}
+		]
+	},
+	"rodRefinement": {
+		"performed": true,
+		"meshes": [
+			{
+				"meshSizeMm": 3.9000000000000004,
+				"nodes": 1974,
+				"elements": 5898,
+				"dofs": 5922,
+				"volumeMm3": 39976.248564799855,
+				"volumeRelativeError": 0.00020060679644351027,
+				"maxDisplacementMm": 0.3092637381810836,
+				"loadedMeanDisplacementMm": [
+					0.0021855147903227816, -0.06510580311746446, 0.2214068037835531
+				],
+				"strainEnergyNmm": 924.5259408599386,
+				"p95VonMisesMpa": 215.34988421186364,
+				"p99VonMisesMpa": 248.64101815259284,
+				"interiorP95VonMisesMpa": 236.82410058315983,
+				"interiorP99VonMisesMpa": 252.28333050460304,
+				"rawMaxElementVonMisesMpa": 292.6744795999877,
+				"interiorElementCount": 1805,
+				"interiorExclusionMm": 8.0,
+				"appliedN": [0.0, -25000.000000000004, 1000.0000000000001],
+				"reactionN": [3.962741246255064e-11, 24999.999999997402, -999.9999999967221],
+				"forceBalanceRelative": 1.6726117529601177e-13,
+				"momentBalanceRelative": 1.1058341260000579e-13,
+				"solveResidualRelative": 9.9307685815999e-13,
+				"solveIterations": 1,
+				"durationSeconds": 0.10894166701473296
+			},
+			{
+				"meshSizeMm": 2.73,
+				"nodes": 3783,
+				"elements": 11883,
+				"dofs": 11349,
+				"volumeMm3": 39999.363766048555,
+				"volumeRelativeError": 0.00037750058010952245,
+				"maxDisplacementMm": 0.3169508765013016,
+				"loadedMeanDisplacementMm": [
+					0.0011032687901206993, -0.06537799366043585, 0.22721924615884878
+				],
+				"strainEnergyNmm": 930.8345438345672,
+				"p95VonMisesMpa": 215.92767922274209,
+				"p99VonMisesMpa": 249.049502654769,
+				"interiorP95VonMisesMpa": 237.11570230615234,
+				"interiorP99VonMisesMpa": 255.1038820171501,
+				"rawMaxElementVonMisesMpa": 312.7033543992008,
+				"interiorElementCount": 3397,
+				"interiorExclusionMm": 8.0,
+				"appliedN": [0.0, -24999.999999999996, 1000.0],
+				"reactionN": [-8.764971526353804e-10, 24999.99999999791, -999.9999999952756],
+				"forceBalanceRelative": 2.0933990065004192e-13,
+				"momentBalanceRelative": 1.9834656488972304e-13,
+				"solveResidualRelative": 1.4860949210465076e-12,
+				"solveIterations": 1,
+				"durationSeconds": 0.22794316592626274
+			}
+		],
+		"displacementRelativeChange": 0.02425340609583843,
+		"strainEnergyRelativeChange": 0.006777362331913811,
+		"interiorP95RelativeChange": 0.0012297866406839992,
+		"withinScreeningTolerance": true,
+		"note": "Two meshes compare displacement and strain energy; 8% is a declared screening tolerance, not proof of asymptotic convergence. Sharp-edge peak stresses are not convergence or strength criteria."
+	},
+	"runtime": {
+		"solver": "scikit-fem 12.0.2 / SciPy 1.18.1",
+		"mesher": "Gmsh 4.15.2",
+		"durationSeconds": 0.881631915923208
+	},
+	"linearityAndInertia": {
+		"displacementScalingRelativeError": 0.0,
+		"energyScalingAbsoluteError": 0.0,
+		"uniformAccelerationResultantErrorN": 3.63800656256145e-12
+	},
+	"nativeMassProperties": [
+		{
+			"params": {
+				"rodLengthMm": 125,
+				"rodWidthMm": 20,
+				"rodDepthMm": 16,
+				"webMm": 4,
+				"flangeMm": 3
+			},
+			"massKg": 0.3138765169962323,
+			"centreOfMassMm": [1.4261938071158723e-14, 45.24497824095373, 1.069076697519075e-15],
+			"inertiaZKgM2": 0.0009445173698088913
+		},
+		{
+			"params": {
+				"rodLengthMm": 125,
+				"rodWidthMm": 26,
+				"rodDepthMm": 14,
+				"webMm": 5,
+				"flangeMm": 2
+			},
+			"massKg": 0.2843324231416114,
+			"centreOfMassMm": [6.779648972525535e-16, 46.1993807597711, 9.063072411188654e-17],
+			"inertiaZKgM2": 0.0008416960069077165
+		},
+		{
+			"params": {
+				"rodLengthMm": 160,
+				"rodWidthMm": 28,
+				"rodDepthMm": 22,
+				"webMm": 6,
+				"flangeMm": 5
+			},
+			"massKg": 0.6150377028930275,
+			"centreOfMassMm": [3.9003840156666125e-15, 66.77612449584008, 2.1722004730107582e-15],
+			"inertiaZKgM2": 0.002372935106306077
+		}
+	]
+}

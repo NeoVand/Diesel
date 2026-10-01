@@ -1,0 +1,20 @@
+{
+	"angleDeg": 45,
+	"forceN": [-55.797812436981076, -4924.622525756252, 0],
+	"inertia": {
+		"originAccelerationMps2": [-1560.2062077588987, -849.5946908804654, 0],
+		"angularVelocityRadS": [0, 0, 55.58430795445599],
+		"angularAccelerationRadS2": [0, 0, -9566.317366999365]
+	},
+	"expectedBigEndForceN": [-298.0597888993416, 4614.078037907338, 0],
+	"nativeBigEndReactionN": [-298.15510474894927, 4613.94867488455, 2.0063090078181745e-11],
+	"reactionRelativeError": 0.000034752665508358134,
+	"reactionMomentNmm": [-2.8514253368627354, 0.13004272559041619, 41.463841239325355],
+	"reactionMomentRelative": 0.00007191127183822822,
+	"analysisHash": "9a7ed351ce8840837b4a431025b6a459cee806515e73f5afe048963f405701b1",
+	"runtime": {
+		"solver": "scikit-fem 12.0.2 / SciPy 1.18.1",
+		"mesher": "Gmsh 4.15.2",
+		"durationSeconds": 0.9062705000396818
+	}
+}

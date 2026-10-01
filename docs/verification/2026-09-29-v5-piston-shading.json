@@ -1,0 +1,33 @@
+{
+	"meshes_compared": 264,
+	"position_vertices": 795996,
+	"positions_uvs_indices_order_solid_ranges": "byte-identical / unchanged",
+	"normal_buffers_changed": 12,
+	"changed_components": [
+		"mech:piston:01",
+		"mech:piston:02",
+		"mech:piston:03",
+		"mech:piston:04",
+		"mech:piston:05",
+		"mech:piston:06",
+		"mech:piston:07",
+		"mech:piston:08",
+		"mech:piston:09",
+		"mech:piston:10",
+		"mech:piston:11",
+		"mech:piston:12"
+	],
+	"scope": "Axial normals on actual flat lathe faces plus piston aluminium anisotropy=0 only; no vertex/topology/dimension changes; historical physical audit remains unchanged",
+	"validation": {
+		"focused_tests_passed": 35,
+		"test_files": 3,
+		"exit_code": 0,
+		"targeted_eslint": "passed",
+		"prettier_check": "passed"
+	},
+	"source_sha256": {
+		"src/lib/scene/educational-mechanism.ts": "5b36a5b9b9167610c1e93af578b198b008618d42fa45b3c254dd6e59ed932cde",
+		"src/lib/scene/educational-mechanism.test.ts": "97553082795c076dee31ba6341ffbe76167eee2b203384d9eb97dcd0886c4f13"
+	},
+	"controlled_visual_comparison": "work/parts-atlas/piston-controls/piston-controls.json and four screenshots (renderer-owned GPU comparison)"
+}

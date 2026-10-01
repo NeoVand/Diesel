@@ -1,0 +1,16 @@
+.git
+.agents
+.claude
+.codex
+.env
+.env.*
+node_modules
+build
+.svelte-kit
+references
+outputs
+work
+test-results
+playwright-report
+.DS_Store
+.npmrc

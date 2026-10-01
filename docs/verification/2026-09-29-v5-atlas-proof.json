@@ -1,0 +1,181 @@
+{
+	"errors": [],
+	"captures": [
+		"first-explosion-stage",
+		"all-675-parts",
+		"turbo-system-grid",
+		"teaching-piston-cell",
+		"source-only-heads-hidden",
+		"wider-explosion",
+		"reassembled-355",
+		"rapid-scrub-max-explosion"
+	],
+	"assertions": {
+		"sourceCount": true,
+		"teachingCount": true,
+		"sourceTransform": true,
+		"teachingTransform": true,
+		"phasePreserved": true,
+		"click": true,
+		"doubleClick": true,
+		"internalsHidden": true,
+		"cameraRestore": true,
+		"maxExplosionNonempty": true,
+		"reverseRestored": true,
+		"rapidScrubNonempty": true
+	},
+	"burst": {
+		"stage": 0.8525550000000001,
+		"blend": 0,
+		"explosion": 0.9411908327892923,
+		"phase": 355
+	},
+	"full": {
+		"sourceMaxResidual": 3.841872997655384e-14,
+		"teachingMaxResidual": 3.978256139440565e-15,
+		"sourceCount": 587,
+		"teachingCount": 88,
+		"teachingVisible": 264,
+		"groups": [
+			{
+				"parent": "block",
+				"count": 72,
+				"source": 34,
+				"teaching": 38
+			},
+			{
+				"parent": "heads",
+				"count": 305,
+				"source": 267,
+				"teaching": 38
+			},
+			{
+				"parent": "turbo",
+				"count": 8,
+				"source": 8,
+				"teaching": 0
+			},
+			{
+				"parent": "air",
+				"count": 7,
+				"source": 7,
+				"teaching": 0
+			},
+			{
+				"parent": "cooling",
+				"count": 104,
+				"source": 104,
+				"teaching": 0
+			},
+			{
+				"parent": "fuel",
+				"count": 88,
+				"source": 76,
+				"teaching": 12
+			},
+			{
+				"parent": "exhaust",
+				"count": 8,
+				"source": 8,
+				"teaching": 0
+			},
+			{
+				"parent": "flywheel",
+				"count": 19,
+				"source": 19,
+				"teaching": 0
+			},
+			{
+				"parent": "accessories",
+				"count": 64,
+				"source": 64,
+				"teaching": 0
+			}
+		],
+		"bounds": {
+			"min": [-26.657999999999994, -1.884, -13.648],
+			"max": [26.657999999999994, -0.9299999999999998, 13.648]
+		},
+		"phase": 355,
+		"snapshot": {
+			"phase": 355,
+			"camera": {
+				"position": [4.494447173491168, 73.01191389455899, 42.907912768047716],
+				"target": [-0.44988545964179816, -1.1530756024355295, -0.3549977718657436]
+			}
+		},
+		"renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+	},
+	"performance": {
+		"sampleFrames": 124,
+		"medianMs": 16.699999999999818,
+		"p95Ms": 16.799999999999272,
+		"pixelRatio": 1.25,
+		"viewport": [1168, 880],
+		"measurement": "Presentation-frame intervals during a warmed scripted orbit; not GPU timer queries.",
+		"counterNote": "Final composer counters describe the output quad and were excluded; they do not describe engine geometry or batching."
+	},
+	"picking": {
+		"id": "Frame_Object_479",
+		"x": 294.9422662993871,
+		"y": 343.8288884650751
+	},
+	"events": {
+		"selected": ["Frame_Object_479", "Frame_Object_479", "Frame_Object_479"],
+		"isolated": ["Frame_Object_479"]
+	},
+	"isolated": {
+		"visible": ["mech:piston:01", "mech:piston:01"],
+		"bounds": {
+			"min": [17.92866028393493, -1.8299999999999998, 0.1479999999999992],
+			"max": [18.683339716065063, -1.0124896633463423, 1.0479999999999992]
+		},
+		"phase": 355
+	},
+	"cameraRestore": {
+		"actual": {
+			"position": [4.494447173491168, 73.01191389455899, 42.907912768047716],
+			"target": [-0.44988545964179816, -1.1530756024355295, -0.3549977718657436]
+		},
+		"expected": {
+			"position": [4.494447173491168, 73.01191389455899, 42.907912768047716],
+			"target": [-0.4498854596417981, -1.1530756024355295, -0.3549977718657436]
+		},
+		"maxResidual": 5.551115123125783e-17
+	},
+	"maxExplosionAppearance": {
+		"visible": 34307,
+		"gold": 30153,
+		"fog": 109.47797048080083,
+		"camera": {
+			"position": [32.88116760935463, 21.552291766860975, 53.56475490946691],
+			"target": [-0.08535252325037895, 2.971162237574525, 1.1180183348680566]
+		},
+		"finiteTables": true
+	},
+	"reverse": {
+		"layoutStage": 0,
+		"blend": 0,
+		"phase": 355,
+		"scales": true,
+		"educationalScale": [0.8792106205031583, 0.8792106205031583, 0.8792106205031583],
+		"floor": -2.302910594940186
+	},
+	"rapidScrub": {
+		"gold": 30153,
+		"snapshot": {
+			"phase": 355,
+			"camera": {
+				"position": [32.88116760935463, 21.552291766860975, 53.56475490946691],
+				"target": [-0.08535252325037895, 2.971162237574525, 1.1180183348680566]
+			}
+		},
+		"explosion": 1,
+		"far": 194.02162254260847,
+		"fog": {
+			"near": 82.59551270084202,
+			"far": 109.47797048080083
+		},
+		"sourceFinite": true
+	}
+}

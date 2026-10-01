@@ -1,0 +1,29 @@
+{
+	"criterion": "All RGB channels at least245; images2336x1760. Top pair uses the same camera and lighting with source anisotropy toggled; perspective pair is a broader before/after studio comparison.",
+	"comparisons": [
+		[
+			{
+				"image": "highlights-before.png",
+				"nearWhitePixels": 14269,
+				"pixelCount": 4111360
+			},
+			{
+				"image": "highlights-after.png",
+				"nearWhitePixels": 0,
+				"pixelCount": 4111360
+			}
+		],
+		[
+			{
+				"image": "highlights-before-perspective.png",
+				"nearWhitePixels": 290,
+				"pixelCount": 4111360
+			},
+			{
+				"image": "highlights-after-perspective.png",
+				"nearWhitePixels": 0,
+				"pixelCount": 4111360
+			}
+		]
+	]
+}

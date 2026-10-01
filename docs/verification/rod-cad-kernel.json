@@ -1,0 +1,671 @@
+{
+	"schemaVersion": "rod-solid-v1",
+	"kernel": "OCP 8.0.1.0",
+	"method": "Independent OCCT fused solid, BRepCheck, exact volume properties and STEP write/read checks; baseline and all 32 parameter-box corners.",
+	"scope": "Geometry and full-solid volume only; no structural, fatigue, material or manufacturing validation.",
+	"densityKgM3": 7850,
+	"assumedMaterial": "Representative steel, not an asset material identification",
+	"invalidCasesRejected": 5,
+	"cases": [
+		{
+			"params": {
+				"rodLengthMm": 125.0,
+				"rodWidthMm": 20.0,
+				"rodDepthMm": 16.0,
+				"webMm": 4.0,
+				"flangeMm": 3.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 39984.2696810487,
+			"massKg": 0.31387651699623237,
+			"boundsMm": {
+				"min": [-32.0, -32.0, -8.0],
+				"max": [32.0, 140.0, 8.0]
+			},
+			"relativeVolumeError": 9.098525085268716e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 4.4218831914406e-14
+		},
+		{
+			"params": {
+				"rodLengthMm": 110.0,
+				"rodWidthMm": 14.0,
+				"rodDepthMm": 12.0,
+				"webMm": 2.0,
+				"flangeMm": 2.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 25052.846729727222,
+			"massKg": 0.1966648468283587,
+			"boundsMm": {
+				"min": [-32.0, -32.0, -6.0],
+				"max": [32.0, 125.0, 6.0]
+			},
+			"relativeVolumeError": 8.712731562217944e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 9.859907884576631e-14
+		},
+		{
+			"params": {
+				"rodLengthMm": 110.0,
+				"rodWidthMm": 14.0,
+				"rodDepthMm": 12.0,
+				"webMm": 2.0,
+				"flangeMm": 5.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 29657.60243356511,
+			"massKg": 0.23281217910348614,
+			"boundsMm": {
+				"min": [-32.0, -32.0, -6.0],
+				"max": [32.0, 125.0, 6.0]
+			},
+			"relativeVolumeError": 4.906639119249125e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 8.35355310052163e-14
+		},
+		{
+			"params": {
+				"rodLengthMm": 110.0,
+				"rodWidthMm": 14.0,
+				"rodDepthMm": 12.0,
+				"webMm": 6.0,
+				"flangeMm": 2.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 27075.667682974054,
+			"massKg": 0.21254399131134633,
+			"boundsMm": {
+				"min": [-32.0, -32.0, -6.0],
+				"max": [32.0, 125.0, 6.0]
+			},
+			"relativeVolumeError": 1.343634014750217e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 1.0426599954461682e-13
+		},
+		{
+			"params": {
+				"rodLengthMm": 110.0,
+				"rodWidthMm": 14.0,
+				"rodDepthMm": 12.0,
+				"webMm": 6.0,
+				"flangeMm": 5.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 30163.30767187682,
+			"massKg": 0.23678196522423306,
+			"boundsMm": {
+				"min": [-32.0, -32.0, -6.0],
+				"max": [32.0, 125.0, 6.0]
+			},
+			"relativeVolumeError": 4.824376486380683e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 8.466780733598094e-14
+		},
+		{
+			"params": {
+				"rodLengthMm": 110.0,
+				"rodWidthMm": 14.0,
+				"rodDepthMm": 22.0,
+				"webMm": 2.0,
+				"flangeMm": 2.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 43372.021391256625,
+			"massKg": 0.3404703679213645,
+			"boundsMm": {
+				"min": [-32.0, -32.0, -11.0],
+				"max": [32.0, 125.0, 11.0]
+			},
+			"relativeVolumeError": 6.710277622107964e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 1.0400930314267337e-13
+		},
+		{
+			"params": {
+				"rodLengthMm": 110.0,
+				"rodWidthMm": 14.0,
+				"rodDepthMm": 22.0,
+				"webMm": 2.0,
+				"flangeMm": 5.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 47976.77709509453,
+			"massKg": 0.37661770019649204,
+			"boundsMm": {
+				"min": [-32.0, -32.0, -11.0],
+				"max": [32.0, 125.0, 11.0]
+			},
+			"relativeVolumeError": 9.099349378673511e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 9.402661024629287e-14
+		},
+		{
+			"params": {
+				"rodLengthMm": 110.0,
+				"rodWidthMm": 14.0,
+				"rodDepthMm": 22.0,
+				"webMm": 6.0,
+				"flangeMm": 2.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 47923.368536062044,
+			"massKg": 0.3761984430080871,
+			"boundsMm": {
+				"min": [-32.0, -32.0, -11.0],
+				"max": [32.0, 125.0, 11.0]
+			},
+			"relativeVolumeError": 9.109490217126519e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 1.1128760548589552e-13
+		},
+		{
+			"params": {
+				"rodLengthMm": 110.0,
+				"rodWidthMm": 14.0,
+				"rodDepthMm": 22.0,
+				"webMm": 6.0,
+				"flangeMm": 5.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 51011.0085249648,
+			"massKg": 0.4004364169209737,
+			"boundsMm": {
+				"min": [-32.0, -32.0, -11.0],
+				"max": [32.0, 125.0, 11.0]
+			},
+			"relativeVolumeError": 7.13175236539636e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 9.913135787900933e-14
+		},
+		{
+			"params": {
+				"rodLengthMm": 110.0,
+				"rodWidthMm": 28.0,
+				"rodDepthMm": 12.0,
+				"webMm": 2.0,
+				"flangeMm": 2.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 28947.944104099406,
+			"massKg": 0.22724136121718036,
+			"boundsMm": {
+				"min": [-32.00000000000001, -32.0, -6.0],
+				"max": [32.0, 125.0, 6.0]
+			},
+			"relativeVolumeError": 1.2567313222691114e-15,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 1.0204658336825173e-13
+		},
+		{
+			"params": {
+				"rodLengthMm": 110.0,
+				"rodWidthMm": 28.0,
+				"rodDepthMm": 12.0,
+				"webMm": 2.0,
+				"flangeMm": 5.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 39395.34586949555,
+			"massKg": 0.3092534650755401,
+			"boundsMm": {
+				"min": [-32.00000000000001, -32.0, -6.0],
+				"max": [32.0, 125.0, 6.0]
+			},
+			"relativeVolumeError": 7.387631664193432e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 7.646198772440197e-14
+		},
+		{
+			"params": {
+				"rodLengthMm": 110.0,
+				"rodWidthMm": 28.0,
+				"rodDepthMm": 12.0,
+				"webMm": 6.0,
+				"flangeMm": 2.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 30970.765057346245,
+			"massKg": 0.24312050570016802,
+			"boundsMm": {
+				"min": [-32.00000000000001, -32.0, -6.0],
+				"max": [32.0, 125.0, 6.0]
+			},
+			"relativeVolumeError": 8.222545230151338e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 1.0712801785568592e-13
+		},
+		{
+			"params": {
+				"rodLengthMm": 110.0,
+				"rodWidthMm": 28.0,
+				"rodDepthMm": 12.0,
+				"webMm": 6.0,
+				"flangeMm": 5.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 39901.05110780725,
+			"massKg": 0.3132232511962869,
+			"boundsMm": {
+				"min": [-32.00000000000001, -32.0, -6.0],
+				"max": [32.0, 125.0, 6.0]
+			},
+			"relativeVolumeError": 5.470500710263077e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 7.768111008573564e-14
+		},
+		{
+			"params": {
+				"rodLengthMm": 110.0,
+				"rodWidthMm": 28.0,
+				"rodDepthMm": 22.0,
+				"webMm": 2.0,
+				"flangeMm": 2.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 47267.11876562881,
+			"massKg": 0.3710468823101862,
+			"boundsMm": {
+				"min": [-32.00000000000001, -32.0, -11.0],
+				"max": [32.0, 125.0, 11.0]
+			},
+			"relativeVolumeError": 9.235965048253735e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 1.1344843734271662e-13
+		},
+		{
+			"params": {
+				"rodLengthMm": 110.0,
+				"rodWidthMm": 28.0,
+				"rodDepthMm": 22.0,
+				"webMm": 2.0,
+				"flangeMm": 5.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 57714.52053102496,
+			"massKg": 0.45305898616854595,
+			"boundsMm": {
+				"min": [-32.00000000000001, -32.0, -11.0],
+				"max": [32.0, 125.0, 11.0]
+			},
+			"relativeVolumeError": 7.564083576096426e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 9.417284052240044e-14
+		},
+		{
+			"params": {
+				"rodLengthMm": 110.0,
+				"rodWidthMm": 28.0,
+				"rodDepthMm": 22.0,
+				"webMm": 6.0,
+				"flangeMm": 2.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 51818.46591043421,
+			"massKg": 0.4067749573969086,
+			"boundsMm": {
+				"min": [-32.00000000000001, -32.0, -11.0],
+				"max": [32.0, 125.0, 11.0]
+			},
+			"relativeVolumeError": 8.424746838425803e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 1.1935058021103212e-13
+		},
+		{
+			"params": {
+				"rodLengthMm": 110.0,
+				"rodWidthMm": 28.0,
+				"rodDepthMm": 22.0,
+				"webMm": 6.0,
+				"flangeMm": 5.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 60748.75196089523,
+			"massKg": 0.47687770289302756,
+			"boundsMm": {
+				"min": [-32.00000000000001, -32.0, -11.0],
+				"max": [32.0, 125.0, 11.0]
+			},
+			"relativeVolumeError": 7.186278610826831e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 9.845201696832751e-14
+		},
+		{
+			"params": {
+				"rodLengthMm": 160.0,
+				"rodWidthMm": 14.0,
+				"rodDepthMm": 12.0,
+				"webMm": 2.0,
+				"flangeMm": 2.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 28652.84672972723,
+			"massKg": 0.22492484682835875,
+			"boundsMm": {
+				"min": [-32.0, -32.0, -6.0],
+				"max": [32.0, 175.0, 6.0]
+			},
+			"relativeVolumeError": 1.0157395783832748e-15,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 1.3788664776552944e-13
+		},
+		{
+			"params": {
+				"rodLengthMm": 160.0,
+				"rodWidthMm": 14.0,
+				"rodDepthMm": 12.0,
+				"webMm": 2.0,
+				"flangeMm": 5.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 36857.60243356511,
+			"massKg": 0.28933217910348613,
+			"boundsMm": {
+				"min": [-32.0, -32.0, -6.0],
+				"max": [32.0, 175.0, 6.0]
+			},
+			"relativeVolumeError": 3.94814482428593e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 1.156806433515777e-13
+		},
+		{
+			"params": {
+				"rodLengthMm": 160.0,
+				"rodWidthMm": 14.0,
+				"rodDepthMm": 12.0,
+				"webMm": 6.0,
+				"flangeMm": 2.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 32275.667682974068,
+			"massKg": 0.25336399131134646,
+			"boundsMm": {
+				"min": [-32.0, -32.0, -6.0],
+				"max": [32.0, 175.0, 6.0]
+			},
+			"relativeVolumeError": 5.635791709757266e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 1.4517799444334709e-13
+		},
+		{
+			"params": {
+				"rodLengthMm": 160.0,
+				"rodWidthMm": 14.0,
+				"rodDepthMm": 12.0,
+				"webMm": 6.0,
+				"flangeMm": 5.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 37763.30767187682,
+			"massKg": 0.29644196522423305,
+			"boundsMm": {
+				"min": [-32.0, -32.0, -6.0],
+				"max": [32.0, 175.0, 6.0]
+			},
+			"relativeVolumeError": 3.853453557301601e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 1.1772300617556386e-13
+		},
+		{
+			"params": {
+				"rodLengthMm": 160.0,
+				"rodWidthMm": 14.0,
+				"rodDepthMm": 22.0,
+				"webMm": 2.0,
+				"flangeMm": 2.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 47972.02139125664,
+			"massKg": 0.3765803679213646,
+			"boundsMm": {
+				"min": [-32.0, -32.0, -11.0],
+				"max": [32.0, 175.0, 11.0]
+			},
+			"relativeVolumeError": 9.100251442199448e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 1.472724025062609e-13
+		},
+		{
+			"params": {
+				"rodLengthMm": 160.0,
+				"rodWidthMm": 14.0,
+				"rodDepthMm": 22.0,
+				"webMm": 2.0,
+				"flangeMm": 5.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 56176.77709509453,
+			"massKg": 0.440987700196492,
+			"boundsMm": {
+				"min": [-32.0, -32.0, -11.0],
+				"max": [32.0, 175.0, 11.0]
+			},
+			"relativeVolumeError": 7.77113745973738e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 1.314617420272239e-13
+		},
+		{
+			"params": {
+				"rodLengthMm": 160.0,
+				"rodWidthMm": 14.0,
+				"rodDepthMm": 22.0,
+				"webMm": 6.0,
+				"flangeMm": 2.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 56123.368536062044,
+			"massKg": 0.44056844300808706,
+			"boundsMm": {
+				"min": [-32.0, -32.0, -11.0],
+				"max": [32.0, 175.0, 11.0]
+			},
+			"relativeVolumeError": 7.778532690362235e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 1.5544101159573853e-13
+		},
+		{
+			"params": {
+				"rodLengthMm": 160.0,
+				"rodWidthMm": 14.0,
+				"rodDepthMm": 22.0,
+				"webMm": 6.0,
+				"flangeMm": 5.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 61611.00852496481,
+			"massKg": 0.4836464169209738,
+			"boundsMm": {
+				"min": [-32.0, -32.0, -11.0],
+				"max": [32.0, 175.0, 11.0]
+			},
+			"relativeVolumeError": 8.266656319811171e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 1.3805316054084643e-13
+		},
+		{
+			"params": {
+				"rodLengthMm": 160.0,
+				"rodWidthMm": 28.0,
+				"rodDepthMm": 12.0,
+				"webMm": 2.0,
+				"flangeMm": 2.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 35347.944104099384,
+			"massKg": 0.2774813612171802,
+			"boundsMm": {
+				"min": [-32.00000000000001, -32.0, -6.0],
+				"max": [32.0, 175.0, 6.0]
+			},
+			"relativeVolumeError": 4.1167642410861564e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 1.0497748814769695e-13
+		},
+		{
+			"params": {
+				"rodLengthMm": 160.0,
+				"rodWidthMm": 28.0,
+				"rodDepthMm": 12.0,
+				"webMm": 2.0,
+				"flangeMm": 5.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 53595.34586949555,
+			"massKg": 0.4207234650755401,
+			"boundsMm": {
+				"min": [-32.00000000000001, -32.0, -6.0],
+				"max": [32.0, 175.0, 6.0]
+			},
+			"relativeVolumeError": 5.43029063150398e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 6.692833203328652e-14
+		},
+		{
+			"params": {
+				"rodLengthMm": 160.0,
+				"rodWidthMm": 28.0,
+				"rodDepthMm": 12.0,
+				"webMm": 6.0,
+				"flangeMm": 2.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 38970.765057346245,
+			"massKg": 0.30592050570016804,
+			"boundsMm": {
+				"min": [-32.00000000000001, -32.0, -6.0],
+				"max": [32.0, 175.0, 6.0]
+			},
+			"relativeVolumeError": 7.468118835723873e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 1.1538243601193376e-13
+		},
+		{
+			"params": {
+				"rodLengthMm": 160.0,
+				"rodWidthMm": 28.0,
+				"rodDepthMm": 12.0,
+				"webMm": 6.0,
+				"flangeMm": 5.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 54501.05110780727,
+			"massKg": 0.42783325119628707,
+			"boundsMm": {
+				"min": [-32.00000000000001, -32.0, -6.0],
+				"max": [32.0, 175.0, 6.0]
+			},
+			"relativeVolumeError": 6.67506173393888e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 6.95541432676431e-14
+		},
+		{
+			"params": {
+				"rodLengthMm": 160.0,
+				"rodWidthMm": 28.0,
+				"rodDepthMm": 22.0,
+				"webMm": 2.0,
+				"flangeMm": 2.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 54667.118765628795,
+			"massKg": 0.42913688231018604,
+			"boundsMm": {
+				"min": [-32.00000000000001, -32.0, -11.0],
+				"max": [32.0, 175.0, 11.0]
+			},
+			"relativeVolumeError": 5.323827396411526e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 1.2564232655531194e-13
+		},
+		{
+			"params": {
+				"rodLengthMm": 160.0,
+				"rodWidthMm": 28.0,
+				"rodDepthMm": 22.0,
+				"webMm": 2.0,
+				"flangeMm": 5.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 72914.52053102494,
+			"massKg": 0.5723789861685459,
+			"boundsMm": {
+				"min": [-32.00000000000001, -32.0, -11.0],
+				"max": [32.0, 175.0, 11.0]
+			},
+			"relativeVolumeError": 3.99149994332749e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 9.220364869086498e-14
+		},
+		{
+			"params": {
+				"rodLengthMm": 160.0,
+				"rodWidthMm": 28.0,
+				"rodDepthMm": 22.0,
+				"webMm": 6.0,
+				"flangeMm": 2.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 62818.46591043423,
+			"massKg": 0.49312495739690876,
+			"boundsMm": {
+				"min": [-32.00000000000001, -32.0, -11.0],
+				"max": [32.0, 175.0, 11.0]
+			},
+			"relativeVolumeError": 9.266011207032532e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 1.3760026642443297e-13
+		},
+		{
+			"params": {
+				"rodLengthMm": 160.0,
+				"rodWidthMm": 28.0,
+				"rodDepthMm": 22.0,
+				"webMm": 6.0,
+				"flangeMm": 5.0
+			},
+			"valid": true,
+			"solidCount": 1,
+			"volumeMm3": 78348.75196089523,
+			"massKg": 0.6150377028930276,
+			"boundsMm": {
+				"min": [-32.00000000000001, -32.0, -11.0],
+				"max": [32.0, 175.0, 11.0]
+			},
+			"relativeVolumeError": 5.571977165238021e-16,
+			"stepRoundTripValid": true,
+			"stepRoundTripRelativeVolumeError": 1.0103851926298271e-13
+		}
+	]
+}

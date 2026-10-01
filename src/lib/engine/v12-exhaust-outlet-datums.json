@@ -1,0 +1,30 @@
+{
+	"schemaVersion": 1,
+	"extractor": "references/00_Active_V12/exhaust-flow-verification/extract-exhaust-outlets.py",
+	"provenance": "Placed purchased native BREP circular edge extraction; Component506 and Component507 exhaust pipes",
+	"scope": "Measured terminal mouths. Short external plumes are illustrative soft density, not CFD, emissions, or turbo/downpipe mass-flow prediction.",
+	"outlets": [
+		{
+			"componentId": "v12-0768",
+			"centerMm": [205.0052526543708, -49.01849920822042, -67.83621617222673],
+			"axis": [1.990653375645356e-15, 7.95053335525878e-16, -1.0],
+			"rimRadiusMm": 29.99999999999999,
+			"sourceFile": "106-Component506.brep",
+			"sourceSha256": "adcdc385d8159b43c2b778a23b74205fb975793568735830b542db38ddd36fd0",
+			"sourceFace": 1,
+			"rimAngleRadians": 6.28318530717959,
+			"centralCorridorChecks": 336
+		},
+		{
+			"componentId": "v12-0769",
+			"centerMm": [-199.6944924826485, -42.09738507675204, -67.83621617225776],
+			"axis": [3.141911225162472e-15, 1.7255672539035284e-15, -1.0],
+			"rimRadiusMm": 30.000000000000007,
+			"sourceFile": "107-Component507.brep",
+			"sourceSha256": "535a3d9ac85c1ce8379e6f76dadf58180ca3dd875fad1e1bb093221eb1e048f0",
+			"sourceFace": 3,
+			"rimAngleRadians": 6.28318530717959,
+			"centralCorridorChecks": 336
+		}
+	]
+}

@@ -1,0 +1,38 @@
+{
+	"renderer": {
+		"stats": {
+			"parts": 587,
+			"triangles": 965744,
+			"educationalParts": 88,
+			"renderer": "WebGL 2 · component-aware GPU batches"
+		},
+		"viewport": [1168, 880],
+		"requestedDpr": 2,
+		"pixelRatio": 1.25,
+		"exposure": 0.9,
+		"toneMapping": 4,
+		"gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+	},
+	"views": [],
+	"doubleClick": {},
+	"benchmarks": [
+		{
+			"display": "section",
+			"frames": 119,
+			"medianMs": 16.699999999999818,
+			"p95Ms": 16.799999999999272,
+			"averagePassDrawCalls": 930,
+			"averagePassTriangles": 3691355
+		},
+		{
+			"display": "mechanism",
+			"frames": 119,
+			"medianMs": 16.69999999999891,
+			"p95Ms": 16.700000000000728,
+			"averagePassDrawCalls": 663,
+			"averagePassTriangles": 636549
+		}
+	],
+	"transitions": {},
+	"errors": []
+}

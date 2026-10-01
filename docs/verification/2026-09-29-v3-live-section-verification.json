@@ -1,0 +1,50 @@
+{
+	"acknowledgements": [
+		{
+			"status": "applied",
+			"state": {
+				"display": "assembly",
+				"section": {
+					"axis": "z",
+					"offset": 0.4,
+					"flipped": false,
+					"visible": false
+				},
+				"internals": true,
+				"running": false,
+				"selected": null,
+				"revision": 1
+			}
+		},
+		{
+			"status": "applied",
+			"state": {
+				"display": "section",
+				"section": {
+					"axis": "z",
+					"offset": 0.4,
+					"flipped": false,
+					"visible": false
+				},
+				"internals": true,
+				"running": false,
+				"selected": null,
+				"revision": 2
+			}
+		}
+	],
+	"errors": [],
+	"response": {
+		"status": 200,
+		"answer": "The verified view is a paused whole-engine cutaway, clipped on the scene Z axis at 40%, with flipped false, the plane guide hidden, and teaching internals enabled. The exterior is a generic purchased 3512 visual asset; the internal geometry is separately authored for education, with approximate placement rather than verified OEM geometry.",
+		"execution": "acknowledged"
+	},
+	"ui": {
+		"activeView": "Cutaway",
+		"plane": "0.4",
+		"z": "true",
+		"guide": "false",
+		"internals": "true",
+		"paused": true
+	}
+}

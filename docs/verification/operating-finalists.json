@@ -1,0 +1,792 @@
+{
+	"createdAt": "2026-09-30T12:56:39.670Z",
+	"sourceHashes": {
+		"src/lib/design/operating-cycle.ts": "3765c6ecf8c50a2f8e4279635d9dff1efc96b7b9197b489d7864b340395b54e4",
+		"src/lib/design/operating-search.ts": "3e818ec91a80dc812ac753f14bde7b6de863e81d77e0a98508808cc03cb30871",
+		"src/lib/server/cad/rod_elasticity.py": "9ac6b185bc4938e4b752acf094ffa24fd62a56d552b9a84071336179139c70e1"
+	},
+	"conditions": [
+		{
+			"label": "Low-speed / reduced firing",
+			"rpm": 800,
+			"pistonMassKg": 0.85,
+			"intakePressureBar": 1.1,
+			"exhaustPressureBar": 1.2,
+			"crankcasePressureBar": 1,
+			"compressionRatio": 16,
+			"polytropicExponent": 1.3,
+			"combustionRiseBar": 10.5,
+			"combustionCentreDeg": 10,
+			"combustionWidthDeg": 18
+		},
+		{
+			"label": "Illustrative reference",
+			"rpm": 1800,
+			"pistonMassKg": 0.85,
+			"intakePressureBar": 1.1,
+			"exhaustPressureBar": 1.2,
+			"crankcasePressureBar": 1,
+			"compressionRatio": 16,
+			"polytropicExponent": 1.3,
+			"combustionRiseBar": 30,
+			"combustionCentreDeg": 10,
+			"combustionWidthDeg": 18
+		},
+		{
+			"label": "High-speed / same pressure",
+			"rpm": 3000,
+			"pistonMassKg": 0.85,
+			"intakePressureBar": 1.1,
+			"exhaustPressureBar": 1.2,
+			"crankcasePressureBar": 1,
+			"compressionRatio": 16,
+			"polytropicExponent": 1.3,
+			"combustionRiseBar": 30,
+			"combustionCentreDeg": 10,
+			"combustionWidthDeg": 18
+		}
+	],
+	"search": {
+		"evaluated": 500,
+		"coarsePassCount": 376,
+		"refinedCount": 3,
+		"baseline": {
+			"id": "20/16/4/3",
+			"params": {
+				"boreMm": 85,
+				"strokeMm": 100,
+				"rodLengthMm": 125,
+				"rpm": 1800,
+				"rodWidthMm": 20,
+				"rodDepthMm": 16,
+				"webMm": 4,
+				"flangeMm": 3,
+				"loadKn": 25,
+				"lateralLoadN": 1000
+			},
+			"massKg": 0.3138765169962326,
+			"peakNominalStressMpa": 222.11315174199729,
+			"utilization": 0.8884526069679891,
+			"passesNominalScreen": true,
+			"criticalScenarioIndex": 1,
+			"criticalAngleDeg": 4,
+			"criticalSectionMm": 110,
+			"maxCompressionN": 35648.010308040466,
+			"maxTensionN": 5788.070281683275,
+			"angularSamples": 721
+		},
+		"best": {
+			"id": "14/12/2/5",
+			"params": {
+				"boreMm": 85,
+				"strokeMm": 100,
+				"rodLengthMm": 125,
+				"rpm": 1800,
+				"rodWidthMm": 14,
+				"rodDepthMm": 12,
+				"webMm": 2,
+				"flangeMm": 5,
+				"loadKn": 25,
+				"lateralLoadN": 1000
+			},
+			"massKg": 0.24976817910348598,
+			"peakNominalStressMpa": 247.0484335134423,
+			"utilization": 0.9881937340537692,
+			"passesNominalScreen": true,
+			"criticalScenarioIndex": 1,
+			"criticalAngleDeg": 4,
+			"criticalSectionMm": 110,
+			"maxCompressionN": 35648.04912848988,
+			"maxTensionN": 5788.063507316931,
+			"angularSamples": 721
+		},
+		"massReductionPercent": 20.424700294962207
+	},
+	"cases": [
+		{
+			"design": "baseline",
+			"kind": "compression",
+			"scenario": {
+				"label": "Illustrative reference",
+				"rpm": 1800,
+				"pistonMassKg": 0.85,
+				"intakePressureBar": 1.1,
+				"exhaustPressureBar": 1.2,
+				"crankcasePressureBar": 1,
+				"compressionRatio": 16,
+				"polytropicExponent": 1.3,
+				"combustionRiseBar": 30,
+				"combustionCentreDeg": 10,
+				"combustionWidthDeg": 18
+			},
+			"angleDeg": 4,
+			"pressureBar": 67.50733508968703,
+			"nominalStressMpa": 222.11315174199729,
+			"request": {
+				"params": {
+					"boreMm": 85,
+					"strokeMm": 100,
+					"rodLengthMm": 125,
+					"rpm": 1800,
+					"rodWidthMm": 20,
+					"rodDepthMm": 16,
+					"webMm": 4,
+					"flangeMm": 3,
+					"loadKn": 25,
+					"lateralLoadN": 1000
+				},
+				"loadCase": {
+					"forceN": [-9.105980547881131, -35648.010308040466, 0],
+					"label": "Audit baseline: compression, 4deg, 1800rpm",
+					"inertia": {
+						"originAccelerationMps2": [-173.32513790278256, -1768.0534341678306, 0],
+						"angularVelocityRadS": [0, 0, 75.2438538266054],
+						"angularAccelerationRadS2": [0, 0, -833.7453455535515]
+					}
+				},
+				"refine": true
+			},
+			"analysisHash": "9d2c6453ac1f304fa5dceb617f7dc34df9e2120a7a5aac70ae220ba0b2f783fa",
+			"geometryParams": {
+				"rodLengthMm": 125,
+				"rodWidthMm": 20,
+				"rodDepthMm": 16,
+				"webMm": 4,
+				"flangeMm": 3
+			},
+			"stats": {
+				"meshSizeMm": 2.73,
+				"nodes": 3783,
+				"elements": 11883,
+				"dofs": 11349,
+				"volumeMm3": 39999.363766048555,
+				"volumeRelativeError": 0.00037750058010952245,
+				"maxDisplacementMm": 0.09455197379837546,
+				"loadedMeanDisplacementMm": [
+					0.00045838823614408026, -0.09256272776743536, 0.000027607075744362488
+				],
+				"strainEnergyNmm": 1638.17226094517,
+				"p95VonMisesMpa": 223.88481640182664,
+				"p99VonMisesMpa": 237.87875702874018,
+				"interiorP95VonMisesMpa": 225.92964997315104,
+				"interiorP99VonMisesMpa": 232.23817214797546,
+				"rawMaxElementVonMisesMpa": 282.0831798296103,
+				"interiorElementCount": 3397,
+				"interiorExclusionMm": 8,
+				"appliedN": [33.46902892343416, -35012.39460028174, 0],
+				"reactionN": [-33.469028923758586, 35012.39460028021, 1.265854088217111e-10],
+				"appliedMomentNmm": [12.65963449049083, -0.016402183022402733, -234.58411978049241],
+				"reactionMomentNmm": [-12.659634471367427, 0.016402183116156266, 234.5841198147886],
+				"bodyForceN": [42.57500947131529, 635.6157077587268, 0],
+				"forceBalanceRelative": 4.396134927383064e-14,
+				"momentBalanceRelative": 8.81228878158044e-15,
+				"solveResidualRelative": 4.079348588821149e-13,
+				"solveIterations": 1,
+				"durationSeconds": 0.2668309579603374
+			},
+			"convergence": {
+				"performed": true,
+				"meshes": [
+					{
+						"meshSizeMm": 3.9000000000000004,
+						"nodes": 1974,
+						"elements": 5898,
+						"dofs": 5922,
+						"volumeMm3": 39976.248564799855,
+						"volumeRelativeError": 0.00020060679644351027,
+						"maxDisplacementMm": 0.09446472478362548,
+						"loadedMeanDisplacementMm": [
+							0.0029739806091534015, -0.09218220864526855, -0.00005949167022746269
+						],
+						"strainEnergyNmm": 1631.4611010341357,
+						"p95VonMisesMpa": 223.80078136443524,
+						"p99VonMisesMpa": 237.36025581050612,
+						"interiorP95VonMisesMpa": 225.50358259089057,
+						"interiorP99VonMisesMpa": 230.9239981183315,
+						"rawMaxElementVonMisesMpa": 266.4718969721363,
+						"interiorElementCount": 1805,
+						"interiorExclusionMm": 8,
+						"appliedN": [33.45387608012567, -35012.8454793926, 0],
+						"reactionN": [-33.45387608014671, 35012.84547938987, -8.269751550216142e-11],
+						"appliedMomentNmm": [36.92046230204693, -0.0006833570931679689, -669.8633833454683],
+						"reactionMomentNmm": [-36.920462316236005, 0.0006833564339103759, 669.8633833396599],
+						"bodyForceN": [42.5598566280068, 635.1648286478667, 0],
+						"forceBalanceRelative": 7.657701159272892e-14,
+						"momentBalanceRelative": 3.4439094588609966e-15,
+						"solveResidualRelative": 2.571904147141106e-13,
+						"solveIterations": 1,
+						"durationSeconds": 0.12079329206608236
+					},
+					{
+						"meshSizeMm": 2.73,
+						"nodes": 3783,
+						"elements": 11883,
+						"dofs": 11349,
+						"volumeMm3": 39999.363766048555,
+						"volumeRelativeError": 0.00037750058010952245,
+						"maxDisplacementMm": 0.09455197379837546,
+						"loadedMeanDisplacementMm": [
+							0.00045838823614408026, -0.09256272776743536, 0.000027607075744362488
+						],
+						"strainEnergyNmm": 1638.17226094517,
+						"p95VonMisesMpa": 223.88481640182664,
+						"p99VonMisesMpa": 237.87875702874018,
+						"interiorP95VonMisesMpa": 225.92964997315104,
+						"interiorP99VonMisesMpa": 232.23817214797546,
+						"rawMaxElementVonMisesMpa": 282.0831798296103,
+						"interiorElementCount": 3397,
+						"interiorExclusionMm": 8,
+						"appliedN": [33.46902892343416, -35012.39460028174, 0],
+						"reactionN": [-33.469028923758586, 35012.39460028021, 1.265854088217111e-10],
+						"appliedMomentNmm": [12.65963449049083, -0.016402183022402733, -234.58411978049241],
+						"reactionMomentNmm": [-12.659634471367427, 0.016402183116156266, 234.5841198147886],
+						"bodyForceN": [42.57500947131529, 635.6157077587268, 0],
+						"forceBalanceRelative": 4.396134927383064e-14,
+						"momentBalanceRelative": 8.81228878158044e-15,
+						"solveResidualRelative": 4.079348588821149e-13,
+						"solveIterations": 1,
+						"durationSeconds": 0.2668309579603374
+					}
+				],
+				"displacementRelativeChange": 0.0009227624897183865,
+				"strainEnergyRelativeChange": 0.00409673638788273,
+				"interiorP95RelativeChange": 0.001885840934605542,
+				"withinScreeningTolerance": true,
+				"note": "Two meshes compare displacement and strain energy; 8% is a declared screening tolerance, not proof of asymptotic convergence. Sharp-edge peak stresses are not convergence or strength criteria."
+			},
+			"method": "3D linear isotropic elasticity; conforming four-node tetrahedra; scikit-fem assembly and SciPy sparse solution",
+			"assumptions": [
+				"All displacement components are held fixed on the complete big-end bore surface.",
+				"The small-end bore carries cosine-weighted distributed resultant traction; this is a prescribed load, not a solved bearing contact pressure.",
+				"Rod-local Y runs from big eye to small eye; Z follows the bearing axes. Forces are N, positions/displacements mm, stresses MPa.",
+				"Small-strain, linear, homogeneous isotropic elasticity without geometric stiffness.",
+				"Element stress percentiles are volume weighted; surface colors recover adjacent-element tensors before computing von Mises.",
+				"Interior stress statistics exclude both eye/shoulder zones by the reported axial buffer."
+			],
+			"limitations": [
+				"This is the authored sharp-shoulder rod family, without fillets, cap joint, bolts, bushings or manufacturing detail.",
+				"Fixture and shoulder singularities make raw peak stresses mesh dependent; percentiles are not certified material allowables.",
+				"A fixed bore fixture is not a pin-contact or assembled-engine support model.",
+				"No plasticity, fatigue, buckling, thermal stress, contact or transient elastic dynamics are solved.",
+				"Beam screening uses different supports and load application; it is not a direct validation target for this fixture solve.",
+				"Selected cycle endpoint forces alone are a quasistatic fixture case. Optional rigid-body inertia loads improve force consistency but do not establish real operating stresses."
+			],
+			"predictedBigEndForceLocalN": [-33.456412102684794, 35012.65703623412, 0],
+			"reactionDifferenceRelative": 0.000007504113172417638
+		},
+		{
+			"design": "baseline",
+			"kind": "tension",
+			"scenario": {
+				"label": "High-speed / same pressure",
+				"rpm": 3000,
+				"pistonMassKg": 0.85,
+				"intakePressureBar": 1.1,
+				"exhaustPressureBar": 1.2,
+				"crankcasePressureBar": 1,
+				"compressionRatio": 16,
+				"polytropicExponent": 1.3,
+				"combustionRiseBar": 30,
+				"combustionCentreDeg": 10,
+				"combustionWidthDeg": 18
+			},
+			"angleDeg": 361,
+			"pressureBar": 1.146253125,
+			"nominalStressMpa": 42.536467027026326,
+			"request": {
+				"params": {
+					"boreMm": 85,
+					"strokeMm": 100,
+					"rodLengthMm": 125,
+					"rpm": 1800,
+					"rodWidthMm": 20,
+					"rodDepthMm": 16,
+					"webMm": 4,
+					"flangeMm": 3,
+					"loadKn": 25,
+					"lateralLoadN": 1000
+				},
+				"loadCase": {
+					"forceN": [-6.34897760909859, 5788.070281683275, 0],
+					"label": "Audit baseline: tension, 361deg, 3000rpm",
+					"inertia": {
+						"originAccelerationMps2": [-120.56649771023126, -4933.3291475564965, 0],
+						"angularVelocityRadS": [0, 0, 125.64762863540179],
+						"angularAccelerationRadS2": [0, 0, -578.7967571729274]
+					}
+				},
+				"refine": true
+			},
+			"analysisHash": "e7388c22a7c22e5bf6775c999fa93dea704e86276745db964751fe0438867b3d",
+			"geometryParams": {
+				"rodLengthMm": 125,
+				"rodWidthMm": 20,
+				"rodDepthMm": 16,
+				"webMm": 4,
+				"flangeMm": 3
+			},
+			"stats": {
+				"meshSizeMm": 2.73,
+				"nodes": 3783,
+				"elements": 11883,
+				"dofs": 11349,
+				"volumeMm3": 39999.363766048555,
+				"volumeRelativeError": 0.00037750058010952245,
+				"maxDisplacementMm": 0.028988108121108018,
+				"loadedMeanDisplacementMm": [
+					-0.0008266709445091696, 0.026660000907294142, -0.00004520409842406711
+				],
+				"strainEnergyNmm": 84.1068317991811,
+				"p95VonMisesMpa": 46.22967691360201,
+				"p99VonMisesMpa": 74.17141491399424,
+				"interiorP95VonMisesMpa": 42.378204759419525,
+				"interiorP99VonMisesMpa": 43.609881368326555,
+				"rawMaxElementVonMisesMpa": 134.06975189578066,
+				"interiorElementCount": 3397,
+				"interiorExclusionMm": 8,
+				"appliedN": [23.282860898075953, 7561.459791319346, 0],
+				"reactionN": [-23.282860898057823, -7561.459791319, -2.821334832425748e-11],
+				"appliedMomentNmm": [6.38622563316874, -0.006436607256135776, 34.02158079989667],
+				"reactionMomentNmm": [-6.386225637520855, 0.006436607197455091, -34.02158080111806],
+				"bodyForceN": [29.631838507174542, 1773.3895096360702, 0],
+				"forceBalanceRelative": 4.592097685316642e-14,
+				"momentBalanceRelative": 4.782796078371318e-15,
+				"solveResidualRelative": 5.213244268297758e-13,
+				"solveIterations": 1,
+				"durationSeconds": 0.2437685001641512
+			},
+			"convergence": {
+				"performed": true,
+				"meshes": [
+					{
+						"meshSizeMm": 3.9000000000000004,
+						"nodes": 1974,
+						"elements": 5898,
+						"dofs": 5922,
+						"volumeMm3": 39976.248564799855,
+						"volumeRelativeError": 0.00020060679644351027,
+						"maxDisplacementMm": 0.02726832420449819,
+						"loadedMeanDisplacementMm": [
+							-0.0011933034203899635, 0.025324036433404307, 0.00004811403755183573
+						],
+						"strainEnergyNmm": 80.08109447959853,
+						"p95VonMisesMpa": 45.147983622926425,
+						"p99VonMisesMpa": 67.7218510830181,
+						"interiorP95VonMisesMpa": 42.27509944794683,
+						"interiorP99VonMisesMpa": 43.469475488539715,
+						"rawMaxElementVonMisesMpa": 108.71378221965408,
+						"interiorElementCount": 1805,
+						"interiorExclusionMm": 8,
+						"appliedN": [23.266445696530333, 7560.2028154234085, 0],
+						"reactionN": [-23.266445696525423, -7560.202815422788, 1.8993029371472403e-11],
+						"appliedMomentNmm": [-0.5164499668175786, 0.025323072738728136, 111.15986414531618],
+						"reactionMomentNmm": [0.5164499698608207, -0.025323072631294963, -111.15986414433628],
+						"bodyForceN": [29.615423305628923, 1772.132533740133, 0],
+						"forceBalanceRelative": 8.20854418824242e-14,
+						"momentBalanceRelative": 3.3849887213944206e-15,
+						"solveResidualRelative": 3.423344544535254e-13,
+						"solveIterations": 1,
+						"durationSeconds": 0.12670729192905128
+					},
+					{
+						"meshSizeMm": 2.73,
+						"nodes": 3783,
+						"elements": 11883,
+						"dofs": 11349,
+						"volumeMm3": 39999.363766048555,
+						"volumeRelativeError": 0.00037750058010952245,
+						"maxDisplacementMm": 0.028988108121108018,
+						"loadedMeanDisplacementMm": [
+							-0.0008266709445091696, 0.026660000907294142, -0.00004520409842406711
+						],
+						"strainEnergyNmm": 84.1068317991811,
+						"p95VonMisesMpa": 46.22967691360201,
+						"p99VonMisesMpa": 74.17141491399424,
+						"interiorP95VonMisesMpa": 42.378204759419525,
+						"interiorP99VonMisesMpa": 43.609881368326555,
+						"rawMaxElementVonMisesMpa": 134.06975189578066,
+						"interiorElementCount": 3397,
+						"interiorExclusionMm": 8,
+						"appliedN": [23.282860898075953, 7561.459791319346, 0],
+						"reactionN": [-23.282860898057823, -7561.459791319, -2.821334832425748e-11],
+						"appliedMomentNmm": [6.38622563316874, -0.006436607256135776, 34.02158079989667],
+						"reactionMomentNmm": [-6.386225637520855, 0.006436607197455091, -34.02158080111806],
+						"bodyForceN": [29.631838507174542, 1773.3895096360702, 0],
+						"forceBalanceRelative": 4.592097685316642e-14,
+						"momentBalanceRelative": 4.782796078371318e-15,
+						"solveResidualRelative": 5.213244268297758e-13,
+						"solveIterations": 1,
+						"durationSeconds": 0.2437685001641512
+					}
+				],
+				"displacementRelativeChange": 0.059327221680863976,
+				"strainEnergyRelativeChange": 0.04786456977947608,
+				"interiorP95RelativeChange": 0.0024329796898670737,
+				"withinScreeningTolerance": true,
+				"note": "Two meshes compare displacement and strain energy; 8% is a declared screening tolerance, not proof of asymptotic convergence. Sharp-edge peak stresses are not convergence or strength criteria."
+			},
+			"method": "3D linear isotropic elasticity; conforming four-node tetrahedra; scikit-fem assembly and SciPy sparse solution",
+			"assumptions": [
+				"All displacement components are held fixed on the complete big-end bore surface.",
+				"The small-end bore carries cosine-weighted distributed resultant traction; this is a prescribed load, not a solved bearing contact pressure.",
+				"Rod-local Y runs from big eye to small eye; Z follows the bearing axes. Forces are N, positions/displacements mm, stresses MPa.",
+				"Small-strain, linear, homogeneous isotropic elasticity without geometric stiffness.",
+				"Element stress percentiles are volume weighted; surface colors recover adjacent-element tensors before computing von Mises.",
+				"Interior stress statistics exclude both eye/shoulder zones by the reported axial buffer."
+			],
+			"limitations": [
+				"This is the authored sharp-shoulder rod family, without fillets, cap joint, bolts, bushings or manufacturing detail.",
+				"Fixture and shoulder singularities make raw peak stresses mesh dependent; percentiles are not certified material allowables.",
+				"A fixed bore fixture is not a pin-contact or assembled-engine support model.",
+				"No plasticity, fatigue, buckling, thermal stress, contact or transient elastic dynamics are solved.",
+				"Beam screening uses different supports and load application; it is not a direct validation target for this fixture solve.",
+				"Selected cycle endpoint forces alone are a quasistatic fixture case. Optional rigid-body inertia loads improve force consistency but do not establish real operating stresses."
+			],
+			"predictedBigEndForceLocalN": [-23.27432742905098, -7560.7275839135345, 0],
+			"reactionDifferenceRelative": 0.00009684962890614153
+		},
+		{
+			"design": "candidate",
+			"kind": "compression",
+			"scenario": {
+				"label": "Illustrative reference",
+				"rpm": 1800,
+				"pistonMassKg": 0.85,
+				"intakePressureBar": 1.1,
+				"exhaustPressureBar": 1.2,
+				"crankcasePressureBar": 1,
+				"compressionRatio": 16,
+				"polytropicExponent": 1.3,
+				"combustionRiseBar": 30,
+				"combustionCentreDeg": 10,
+				"combustionWidthDeg": 18
+			},
+			"angleDeg": 4,
+			"pressureBar": 67.50733508968703,
+			"nominalStressMpa": 247.0484335134423,
+			"request": {
+				"params": {
+					"boreMm": 85,
+					"strokeMm": 100,
+					"rodLengthMm": 125,
+					"rpm": 1800,
+					"rodWidthMm": 14,
+					"rodDepthMm": 12,
+					"webMm": 2,
+					"flangeMm": 5,
+					"loadKn": 25,
+					"lateralLoadN": 1000
+				},
+				"loadCase": {
+					"forceN": [-7.715237421192342, -35648.04912848988, 0],
+					"label": "Audit candidate: compression, 4deg, 1800rpm",
+					"inertia": {
+						"originAccelerationMps2": [-173.32513790278256, -1768.0534341678306, 0],
+						"angularVelocityRadS": [0, 0, 75.2438538266054],
+						"angularAccelerationRadS2": [0, 0, -833.7453455535515]
+					}
+				},
+				"refine": true
+			},
+			"analysisHash": "7bf83c5ce620cfc7c4769c5294a9c7357a93ed842f0797ba90f572a00b620590",
+			"geometryParams": {
+				"rodLengthMm": 125,
+				"rodWidthMm": 14,
+				"rodDepthMm": 12,
+				"webMm": 2,
+				"flangeMm": 5
+			},
+			"stats": {
+				"meshSizeMm": 1.8199999999999998,
+				"nodes": 7805,
+				"elements": 28726,
+				"dofs": 23415,
+				"volumeMm3": 31820.010964267447,
+				"volumeRelativeError": 0.00007569805761973665,
+				"maxDisplacementMm": 0.10917516725217294,
+				"loadedMeanDisplacementMm": [
+					0.0007028277518666915, -0.10447385501905068, 0.0003366696787431826
+				],
+				"strainEnergyNmm": 1851.3780021217144,
+				"p95VonMisesMpa": 247.0684129632022,
+				"p99VonMisesMpa": 260.2006297658949,
+				"interiorP95VonMisesMpa": 247.68345903140232,
+				"interiorP99VonMisesMpa": 250.85599983589182,
+				"rawMaxElementVonMisesMpa": 435.34690554890005,
+				"interiorElementCount": 8779,
+				"interiorExclusionMm": 6,
+				"appliedN": [25.852706259599127, -35140.3636474225, 0],
+				"reactionN": [-25.852706259403575, 35140.36364742584, 2.30977771631391e-10],
+				"appliedMomentNmm": [-0.2791220643802286, -0.0012277894992387371, -241.41000372565387],
+				"reactionMomentNmm": [0.2791220778305268, 0.001227786178166268, 241.41000370204728],
+				"bodyForceN": [33.56794368079147, 507.6854810673831, 0],
+				"forceBalanceRelative": 9.40682355544388e-14,
+				"momentBalanceRelative": 6.142657531679484e-15,
+				"solveResidualRelative": 7.869135458828912e-13,
+				"solveIterations": 1,
+				"durationSeconds": 0.7189242909662426
+			},
+			"convergence": {
+				"performed": true,
+				"meshes": [
+					{
+						"meshSizeMm": 2.6,
+						"nodes": 3348,
+						"elements": 10888,
+						"dofs": 10044,
+						"volumeMm3": 31822.30986832316,
+						"volumeRelativeError": 0.00014795064360610728,
+						"maxDisplacementMm": 0.10845005225955097,
+						"loadedMeanDisplacementMm": [
+							0.002781407621356709, -0.10410224124093562, 0.0003453666287880737
+						],
+						"strainEnergyNmm": 1844.8025793089269,
+						"p95VonMisesMpa": 247.2639154893164,
+						"p99VonMisesMpa": 262.3459801842151,
+						"interiorP95VonMisesMpa": 247.92918831104896,
+						"interiorP99VonMisesMpa": 252.00149111463233,
+						"rawMaxElementVonMisesMpa": 374.1651855677055,
+						"interiorElementCount": 3554,
+						"interiorExclusionMm": 6,
+						"appliedN": [25.853438728290904, -35140.3222367305, 0],
+						"reactionN": [-25.853438728205823, 35140.32223672309, 3.45488027075902e-10],
+						"appliedMomentNmm": [-2.023169733258392, 0.0010158912753635702, -540.9976307470985],
+						"reactionMomentNmm": [2.0231697738957175, -0.0010158935930908441, 540.9976307329886],
+						"bodyForceN": [33.568676149483245, 507.72689175938285, 0],
+						"forceBalanceRelative": 2.0801884071774876e-13,
+						"momentBalanceRelative": 9.667764010664181e-15,
+						"solveResidualRelative": 3.60470727299486e-13,
+						"solveIterations": 1,
+						"durationSeconds": 0.26950454199686646
+					},
+					{
+						"meshSizeMm": 1.8199999999999998,
+						"nodes": 7805,
+						"elements": 28726,
+						"dofs": 23415,
+						"volumeMm3": 31820.010964267447,
+						"volumeRelativeError": 0.00007569805761973665,
+						"maxDisplacementMm": 0.10917516725217294,
+						"loadedMeanDisplacementMm": [
+							0.0007028277518666915, -0.10447385501905068, 0.0003366696787431826
+						],
+						"strainEnergyNmm": 1851.3780021217144,
+						"p95VonMisesMpa": 247.0684129632022,
+						"p99VonMisesMpa": 260.2006297658949,
+						"interiorP95VonMisesMpa": 247.68345903140232,
+						"interiorP99VonMisesMpa": 250.85599983589182,
+						"rawMaxElementVonMisesMpa": 435.34690554890005,
+						"interiorElementCount": 8779,
+						"interiorExclusionMm": 6,
+						"appliedN": [25.852706259599127, -35140.3636474225, 0],
+						"reactionN": [-25.852706259403575, 35140.36364742584, 2.30977771631391e-10],
+						"appliedMomentNmm": [-0.2791220643802286, -0.0012277894992387371, -241.41000372565387],
+						"reactionMomentNmm": [0.2791220778305268, 0.001227786178166268, 241.41000370204728],
+						"bodyForceN": [33.56794368079147, 507.6854810673831, 0],
+						"forceBalanceRelative": 9.40682355544388e-14,
+						"momentBalanceRelative": 6.142657531679484e-15,
+						"solveResidualRelative": 7.869135458828912e-13,
+						"solveIterations": 1,
+						"durationSeconds": 0.7189242909662426
+					}
+				],
+				"displacementRelativeChange": 0.006641757561470898,
+				"strainEnergyRelativeChange": 0.003551637107739211,
+				"interiorP95RelativeChange": 0.0009921101740406673,
+				"withinScreeningTolerance": true,
+				"note": "Two meshes compare displacement and strain energy; 8% is a declared screening tolerance, not proof of asymptotic convergence. Sharp-edge peak stresses are not convergence or strength criteria."
+			},
+			"method": "3D linear isotropic elasticity; conforming four-node tetrahedra; scikit-fem assembly and SciPy sparse solution",
+			"assumptions": [
+				"All displacement components are held fixed on the complete big-end bore surface.",
+				"The small-end bore carries cosine-weighted distributed resultant traction; this is a prescribed load, not a solved bearing contact pressure.",
+				"Rod-local Y runs from big eye to small eye; Z follows the bearing axes. Forces are N, positions/displacements mm, stresses MPa.",
+				"Small-strain, linear, homogeneous isotropic elasticity without geometric stiffness.",
+				"Element stress percentiles are volume weighted; surface colors recover adjacent-element tensors before computing von Mises.",
+				"Interior stress statistics exclude both eye/shoulder zones by the reported axial buffer."
+			],
+			"limitations": [
+				"This is the authored sharp-shoulder rod family, without fillets, cap joint, bolts, bushings or manufacturing detail.",
+				"Fixture and shoulder singularities make raw peak stresses mesh dependent; percentiles are not certified material allowables.",
+				"A fixed bore fixture is not a pin-contact or assembled-engine support model.",
+				"No plasticity, fatigue, buckling, thermal stress, contact or transient elastic dynamics are solved.",
+				"Beam screening uses different supports and load application; it is not a direct validation target for this fixture solve.",
+				"Selected cycle endpoint forces alone are a quasistatic fixture case. Optional rigid-body inertia loads improve force consistency but do not establish real operating stresses."
+			],
+			"predictedBigEndForceLocalN": [-25.850616816356478, 35140.405285456945, 0],
+			"reactionDifferenceRelative": 0.0000011863953139445612
+		},
+		{
+			"design": "candidate",
+			"kind": "tension",
+			"scenario": {
+				"label": "High-speed / same pressure",
+				"rpm": 3000,
+				"pistonMassKg": 0.85,
+				"intakePressureBar": 1.1,
+				"exhaustPressureBar": 1.2,
+				"crankcasePressureBar": 1,
+				"compressionRatio": 16,
+				"polytropicExponent": 1.3,
+				"combustionRiseBar": 30,
+				"combustionCentreDeg": 10,
+				"combustionWidthDeg": 18
+			},
+			"angleDeg": 361,
+			"pressureBar": 1.146253125,
+			"nominalStressMpa": 46.16904205176041,
+			"request": {
+				"params": {
+					"boreMm": 85,
+					"strokeMm": 100,
+					"rodLengthMm": 125,
+					"rpm": 1800,
+					"rodWidthMm": 14,
+					"rodDepthMm": 12,
+					"webMm": 2,
+					"flangeMm": 5,
+					"loadKn": 25,
+					"lateralLoadN": 1000
+				},
+				"loadCase": {
+					"forceN": [-5.378595487725882, 5788.063507316931, 0],
+					"label": "Audit candidate: tension, 361deg, 3000rpm",
+					"inertia": {
+						"originAccelerationMps2": [-120.56649771023126, -4933.3291475564965, 0],
+						"angularVelocityRadS": [0, 0, 125.64762863540179],
+						"angularAccelerationRadS2": [0, 0, -578.7967571729274]
+					}
+				},
+				"refine": true
+			},
+			"analysisHash": "9c73bee4d514335320171d068103980df6ac16a885b7f1d38b4615ad0dcb92c7",
+			"geometryParams": {
+				"rodLengthMm": 125,
+				"rodWidthMm": 14,
+				"rodDepthMm": 12,
+				"webMm": 2,
+				"flangeMm": 5
+			},
+			"stats": {
+				"meshSizeMm": 1.8199999999999998,
+				"nodes": 7805,
+				"elements": 28726,
+				"dofs": 23415,
+				"volumeMm3": 31820.010964267447,
+				"volumeRelativeError": 0.00007569805761973665,
+				"maxDisplacementMm": 0.03893595036044899,
+				"loadedMeanDisplacementMm": [
+					-0.001498975791501655, 0.03525632643034584, 0.000001932478764052328
+				],
+				"strainEnergyNmm": 108.65805035411486,
+				"p95VonMisesMpa": 64.20379080782331,
+				"p99VonMisesMpa": 105.40538782094258,
+				"interiorP95VonMisesMpa": 45.69614105230773,
+				"interiorP99VonMisesMpa": 46.38306842254291,
+				"rawMaxElementVonMisesMpa": 199.8863345810296,
+				"interiorElementCount": 8779,
+				"interiorExclusionMm": 6,
+				"appliedN": [17.98518424215792, 7204.520092468641, 0],
+				"reactionN": [-17.985184242311114, -7204.520092469217, -8.269435136654124e-11],
+				"appliedMomentNmm": [0.8458576761182931, 0.0008332412019174239, 40.506183435627925],
+				"reactionMomentNmm": [-0.8458576838022411, -0.00083324024079523, -40.50618341696976],
+				"bodyForceN": [23.363779729883802, 1416.456585151711, 0],
+				"forceBalanceRelative": 8.348280561625609e-14,
+				"momentBalanceRelative": 2.2431773306002488e-14,
+				"solveResidualRelative": 1.1124813359127467e-12,
+				"solveIterations": 1,
+				"durationSeconds": 0.7400127500295639
+			},
+			"convergence": {
+				"performed": true,
+				"meshes": [
+					{
+						"meshSizeMm": 2.6,
+						"nodes": 3348,
+						"elements": 10888,
+						"dofs": 10044,
+						"volumeMm3": 31822.30986832316,
+						"volumeRelativeError": 0.00014795064360610728,
+						"maxDisplacementMm": 0.035797209348976525,
+						"loadedMeanDisplacementMm": [
+							-0.0018945490540048507, 0.032692391069579864, -0.00004137776393652411
+						],
+						"strainEnergyNmm": 101.03606227022152,
+						"p95VonMisesMpa": 60.69744171597718,
+						"p99VonMisesMpa": 100.26698829844264,
+						"interiorP95VonMisesMpa": 45.74600746064237,
+						"interiorP99VonMisesMpa": 46.64890521365058,
+						"rawMaxElementVonMisesMpa": 159.03955374766562,
+						"interiorElementCount": 3554,
+						"interiorExclusionMm": 6,
+						"appliedN": [17.98365571469568, 7204.63592271364, 0],
+						"reactionN": [-17.983655714780205, -7204.635922712171, -7.740960650259865e-11],
+						"appliedMomentNmm": [-0.27174740132047237, -0.0015769753449850488, 85.29727956553333],
+						"reactionMomentNmm": [0.2717473924994236, 0.0015769761604190191, -85.29727955478947],
+						"bodyForceN": [23.36225120242156, 1416.5724153967094, 0],
+						"forceBalanceRelative": 2.0449256144612614e-13,
+						"momentBalanceRelative": 1.5462248396730705e-14,
+						"solveResidualRelative": 4.700922041344587e-13,
+						"solveIterations": 1,
+						"durationSeconds": 0.27237104205414653
+					},
+					{
+						"meshSizeMm": 1.8199999999999998,
+						"nodes": 7805,
+						"elements": 28726,
+						"dofs": 23415,
+						"volumeMm3": 31820.010964267447,
+						"volumeRelativeError": 0.00007569805761973665,
+						"maxDisplacementMm": 0.03893595036044899,
+						"loadedMeanDisplacementMm": [
+							-0.001498975791501655, 0.03525632643034584, 0.000001932478764052328
+						],
+						"strainEnergyNmm": 108.65805035411486,
+						"p95VonMisesMpa": 64.20379080782331,
+						"p99VonMisesMpa": 105.40538782094258,
+						"interiorP95VonMisesMpa": 45.69614105230773,
+						"interiorP99VonMisesMpa": 46.38306842254291,
+						"rawMaxElementVonMisesMpa": 199.8863345810296,
+						"interiorElementCount": 8779,
+						"interiorExclusionMm": 6,
+						"appliedN": [17.98518424215792, 7204.520092468641, 0],
+						"reactionN": [-17.985184242311114, -7204.520092469217, -8.269435136654124e-11],
+						"appliedMomentNmm": [0.8458576761182931, 0.0008332412019174239, 40.506183435627925],
+						"reactionMomentNmm": [-0.8458576838022411, -0.00083324024079523, -40.50618341696976],
+						"bodyForceN": [23.363779729883802, 1416.456585151711, 0],
+						"forceBalanceRelative": 8.348280561625609e-14,
+						"momentBalanceRelative": 2.2431773306002488e-14,
+						"solveResidualRelative": 1.1124813359127467e-12,
+						"solveIterations": 1,
+						"durationSeconds": 0.7400127500295639
+					}
+				],
+				"displacementRelativeChange": 0.08061292924445439,
+				"strainEnergyRelativeChange": 0.07014655664309642,
+				"interiorP95RelativeChange": 0.0010912608195417547,
+				"withinScreeningTolerance": false,
+				"note": "Two meshes compare displacement and strain energy; 8% is a declared screening tolerance, not proof of asymptotic convergence. Sharp-edge peak stresses are not convergence or strength criteria."
+			},
+			"method": "3D linear isotropic elasticity; conforming four-node tetrahedra; scikit-fem assembly and SciPy sparse solution",
+			"assumptions": [
+				"All displacement components are held fixed on the complete big-end bore surface.",
+				"The small-end bore carries cosine-weighted distributed resultant traction; this is a prescribed load, not a solved bearing contact pressure.",
+				"Rod-local Y runs from big eye to small eye; Z follows the bearing axes. Forces are N, positions/displacements mm, stresses MPa.",
+				"Small-strain, linear, homogeneous isotropic elasticity without geometric stiffness.",
+				"Element stress percentiles are volume weighted; surface colors recover adjacent-element tensors before computing von Mises.",
+				"Interior stress statistics exclude both eye/shoulder zones by the reported axial buffer."
+			],
+			"limitations": [
+				"This is the authored sharp-shoulder rod family, without fillets, cap joint, bolts, bushings or manufacturing detail.",
+				"Fixture and shoulder singularities make raw peak stresses mesh dependent; percentiles are not certified material allowables.",
+				"A fixed bore fixture is not a pin-contact or assembled-engine support model.",
+				"No plasticity, fatigue, buckling, thermal stress, contact or transient elastic dynamics are solved.",
+				"Beam screening uses different supports and load application; it is not a direct validation target for this fixture solve.",
+				"Selected cycle endpoint forces alone are a quasistatic fixture case. Optional rigid-body inertia loads improve force consistency but do not establish real operating stresses."
+			],
+			"predictedBigEndForceLocalN": [-17.983685403735485, -7204.403932627461, 0],
+			"reactionDifferenceRelative": 0.000016124741262669105
+		}
+	],
+	"interpretation": "Candidate is nominal-screened only. Interior percentile stress is not a maximum-stress or fatigue acceptance criterion. Mesh refinement and fixed-bore boundary limitations apply."
+}

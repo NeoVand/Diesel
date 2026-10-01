@@ -1,0 +1,216 @@
+{
+	"schemaVersion": 1,
+	"provenance": {
+		"source": "Purchased V12.step: retained native OCCT analytic cylinder faces; occurrence matched to runtime GLB bounds",
+		"auditSha256": "edc3045fa3a18d67e8487ee08d21230eb168791d38a905703f72d2eb2daea27e",
+		"runtimeAssetSha256": "6cd6b2c5c81fd6b96d62e49230a05decd5cc84afb704dd717ead52c60e7f28f0",
+		"extractor": "references/00_Active_V12/turbo-verification/extract-turbo-datums.py",
+		"units": "native millimetres; v12NativeToDisplay maps to renderer coordinates",
+		"boundsMatching": "Up to0.237mm B-rep vs tessellated bounds-center residual; next same-definition occurrence270mm away. Axes come from analytic STEP faces, not bounds centers."
+	},
+	"scope": {
+		"measured": "Four compressor bore / turbine shaft pairs share native axes; original blade geometry is preserved.",
+		"inferred": "Coaxial compressor and turbine rotate as one rigid shaft. Native joint constraints are not verified.",
+		"illustrative": "Shaft speed and rotation direction are presentation parameters; no turbo performance map, inertia, exhaust-torque balance, boost, surge or spool prediction.",
+		"phaseConvention": "Right-hand positive about each recovered turbine shaft axis; time zero is the exact purchased pose."
+	},
+	"shafts": [
+		{
+			"id": "turbo-1",
+			"componentIds": ["v12-0799", "v12-0800"],
+			"compressorId": "v12-0799",
+			"turbineId": "v12-0800",
+			"fixedHousingIds": ["v12-0798", "v12-0801", "v12-0802", "v12-0803"],
+			"pivotMm": [281.6096976304188, 15.2602614501556, 435.16378422312886],
+			"axis": [1.7249692194084078e-15, -3.5466158188666207e-15, 1.0],
+			"sourcePaths": [
+				"V12 v94/turbo_assemble:1/turbo_assemble/compresssor:1/compresssor/Body1.192",
+				"V12 v94/turbo_assemble:1/turbo_assemble/turbine:1/turbine/Body1.193"
+			],
+			"evidence": {
+				"compressorBore": {
+					"nativeOccurrence": "0:1:1:140:4",
+					"nativeDefinition": "0:1:1:144",
+					"nativeFace": 6,
+					"radiusMm": 2.0,
+					"pointMm": [281.6096976304188, 15.260261450155422, 485.16378422312886],
+					"axis": [2.518470996125898e-15, -3.546615825033561e-15, 1.0],
+					"axialIntervalMm": [-9.0, 0.5000000298023011]
+				},
+				"turbineShaft": {
+					"nativeOccurrence": "0:1:1:140:5",
+					"nativeDefinition": "0:1:1:145",
+					"nativeFace": 13,
+					"radiusMm": 2.00000002980231,
+					"pointMm": [281.60969763041885, 15.260261450155438, 480.91378422312886],
+					"axis": [1.7249692194084078e-15, -3.5466158188666207e-15, 1.0],
+					"axialIntervalMm": [-4.75, 4.75]
+				},
+				"turbineJournal": {
+					"nativeOccurrence": "0:1:1:140:5",
+					"nativeDefinition": "0:1:1:145",
+					"nativeFace": 10,
+					"radiusMm": 5.5,
+					"pointMm": [281.6096976304188, 15.2602614501556, 435.16378422312886],
+					"axis": [1.7249692194084078e-15, -3.5466158188666207e-15, 1.0],
+					"axialIntervalMm": [-27.0, 29.0]
+				}
+			},
+			"validation": {
+				"coaxialResidualMm": 8.624899987539312e-14,
+				"shaftResidualMm": 2.20823277679331e-14,
+				"axisParallelError": 0.0,
+				"maxSourceBoundsCenterResidualMm": 0.2369063746523464
+			}
+		},
+		{
+			"id": "turbo-2",
+			"componentIds": ["v12-0805", "v12-0806"],
+			"compressorId": "v12-0805",
+			"turbineId": "v12-0806",
+			"fixedHousingIds": ["v12-0804", "v12-0807", "v12-0808", "v12-0809"],
+			"pivotMm": [281.60969763041885, 15.260261450154797, 165.16378422312908],
+			"axis": [1.618911726381408e-15, -3.546615812309521e-15, 1.0],
+			"sourcePaths": [
+				"V12 v94/turbo_assemble:2/turbo_assemble.001/compresssor:1.001/compresssor.001/Body1.198",
+				"V12 v94/turbo_assemble:2/turbo_assemble.001/turbine:1.001/turbine.001/Body1.199"
+			],
+			"evidence": {
+				"compressorBore": {
+					"nativeOccurrence": "0:1:1:148:4",
+					"nativeDefinition": "0:1:1:144",
+					"nativeFace": 6,
+					"radiusMm": 2.0,
+					"pointMm": [281.6096976304118, 15.260261450147528, 215.16378422313005],
+					"axis": [2.4124135030988506e-15, -3.546615812309514e-15, 1.0],
+					"axialIntervalMm": [-9.0, 0.5000000298023011]
+				},
+				"turbineShaft": {
+					"nativeOccurrence": "0:1:1:148:5",
+					"nativeDefinition": "0:1:1:145",
+					"nativeFace": 13,
+					"radiusMm": 2.00000002980231,
+					"pointMm": [281.6096976304189, 15.260261450154635, 210.91378422312908],
+					"axis": [1.618911726381408e-15, -3.546615812309521e-15, 1.0],
+					"axialIntervalMm": [-4.75, 4.75]
+				},
+				"turbineJournal": {
+					"nativeOccurrence": "0:1:1:148:5",
+					"nativeDefinition": "0:1:1:145",
+					"nativeFace": 10,
+					"radiusMm": 5.5,
+					"pointMm": [281.60969763041885, 15.260261450154797, 165.16378422312908],
+					"axis": [1.618911726381408e-15, -3.546615812309521e-15, 1.0],
+					"axialIntervalMm": [-27.0, 29.0]
+				}
+			},
+			"validation": {
+				"coaxialResidualMm": 1.0055837456999836e-11,
+				"shaftResidualMm": 1.723256414402098e-14,
+				"axisParallelError": 0.0,
+				"maxSourceBoundsCenterResidualMm": 0.23689187796108624
+			}
+		},
+		{
+			"id": "turbo-3",
+			"componentIds": ["v12-0811", "v12-0812"],
+			"compressorId": "v12-0811",
+			"turbineId": "v12-0812",
+			"fixedHousingIds": ["v12-0810", "v12-0813", "v12-0814", "v12-0815"],
+			"pivotMm": [-281.6096976304198, 15.260261450156497, 168.8362157768404],
+			"axis": [-1.6189119677690025e-15, -3.48538368149069e-15, -1.0],
+			"sourcePaths": [
+				"V12 v94/turbo_assemble:3/turbo_assemble.002/compresssor:1.002/compresssor.002/Body1.204",
+				"V12 v94/turbo_assemble:3/turbo_assemble.002/turbine:1.002/turbine.002/Body1.205"
+			],
+			"evidence": {
+				"compressorBore": {
+					"nativeOccurrence": "0:1:1:149:4",
+					"nativeDefinition": "0:1:1:144",
+					"nativeFace": 6,
+					"radiusMm": 2.0,
+					"pointMm": [-281.6096976304215, 15.26026145015703, 118.83621577684039],
+					"axis": [-2.4124137444865014e-15, -3.48538368765762e-15, -1.0],
+					"axialIntervalMm": [-9.0, 0.5000000298023011]
+				},
+				"turbineShaft": {
+					"nativeOccurrence": "0:1:1:149:5",
+					"nativeDefinition": "0:1:1:145",
+					"nativeFace": 13,
+					"radiusMm": 2.00000002980231,
+					"pointMm": [-281.6096976304199, 15.260261450156337, 123.08621577684039],
+					"axis": [-1.6189119677690025e-15, -3.48538368149069e-15, -1.0],
+					"axialIntervalMm": [-4.75, 4.75]
+				},
+				"turbineJournal": {
+					"nativeOccurrence": "0:1:1:149:5",
+					"nativeDefinition": "0:1:1:145",
+					"nativeFace": 10,
+					"radiusMm": 5.5,
+					"pointMm": [-281.6096976304198, 15.260261450156497, 168.8362157768404],
+					"axis": [-1.6189119677690025e-15, -3.48538368149069e-15, -1.0],
+					"axialIntervalMm": [-27.0, 29.0]
+				}
+			},
+			"validation": {
+				"coaxialResidualMm": 1.771618973219486e-12,
+				"shaftResidualMm": 1.7226822724466067e-14,
+				"axisParallelError": 0.0,
+				"maxSourceBoundsCenterResidualMm": 0.23684822324725893
+			}
+		},
+		{
+			"id": "turbo-4",
+			"componentIds": ["v12-0817", "v12-0818"],
+			"compressorId": "v12-0817",
+			"turbineId": "v12-0818",
+			"fixedHousingIds": ["v12-0816", "v12-0819", "v12-0820", "v12-0821"],
+			"pivotMm": [-281.6096976304193, 15.260261450154799, 438.83621577687063],
+			"axis": [-1.6189121098552966e-15, -3.4853837925001274e-15, -1.0],
+			"sourcePaths": [
+				"V12 v94/turbo_assemble:4/turbo_assemble.003/compresssor:1.003/compresssor.003/Body1.210",
+				"V12 v94/turbo_assemble:4/turbo_assemble.003/turbine:1.003/turbine.003/Body1.211"
+			],
+			"evidence": {
+				"compressorBore": {
+					"nativeOccurrence": "0:1:1:150:4",
+					"nativeDefinition": "0:1:1:144",
+					"nativeFace": 6,
+					"radiusMm": 2.0,
+					"pointMm": [-281.60969763041993, 15.260261450154728, 388.83621577687063],
+					"axis": [-2.4124138865726e-15, -3.4853837986670676e-15, -1.0],
+					"axialIntervalMm": [-9.0, 0.5000000298023011]
+				},
+				"turbineShaft": {
+					"nativeOccurrence": "0:1:1:150:5",
+					"nativeDefinition": "0:1:1:145",
+					"nativeFace": 13,
+					"radiusMm": 2.00000002980231,
+					"pointMm": [-281.60969763041936, 15.260261450154639, 393.08621577687063],
+					"axis": [-1.6189121098552966e-15, -3.4853837925001274e-15, -1.0],
+					"axialIntervalMm": [-4.75, 4.75]
+				},
+				"turbineJournal": {
+					"nativeOccurrence": "0:1:1:150:5",
+					"nativeDefinition": "0:1:1:145",
+					"nativeFace": 10,
+					"radiusMm": 5.5,
+					"pointMm": [-281.6096976304193, 15.260261450154799, 438.83621577687063],
+					"axis": [-1.6189121098552966e-15, -3.4853837925001274e-15, -1.0],
+					"axialIntervalMm": [-27.0, 29.0]
+				}
+			},
+			"validation": {
+				"coaxialResidualMm": 5.540312692171225e-13,
+				"shaftResidualMm": 1.7226829100434302e-14,
+				"axisParallelError": 0.0,
+				"maxSourceBoundsCenterResidualMm": 0.236862746663119
+			}
+		}
+	],
+	"validation": {
+		"rotorBodies": 8,
+		"stationaryTurboBodies": 16,
+		"maxCoaxialResidualMm": 1.0055837456999836e-11
+	}
+}

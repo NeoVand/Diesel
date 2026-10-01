@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "provenance": {
+    "model": "Single-zone open-cylinder air-standard mass/internal-energy ODE",
+    "geometry": "Purchased 85 mm bore,100 mm stroke,125 mm rod; measured source-profile valve curtain areas and corrected events",
+    "clearance": "Case compression ratio defines an assumed clearance volume; independent of the truncated rendering occupancy",
+    "assumptions": [
+      "Uniform ideal air with constant R and heat-capacity ratio; no species or chemical reactions",
+      "Heat input replaces combustion; no fuel mass is added to the air-standard working fluid",
+      "Declared normalized Wiebe heat release; not fuel, ignition-delay or combustion calibration",
+      "Fixed inlet/exhaust reservoirs and assumed discharge coefficient; compressible choked flow, including reverse flow",
+      "Constant wall temperature and heat-transfer coefficient over an equivalent cylindrical surface",
+      "No friction, turbo matching, manifold dynamics, blowby or acoustic model",
+      "Steady passage visualizations are separate reference fields and do not solve these cylinder boundary conditions"
+    ],
+    "sources": [
+      {
+        "title": "Cantera control-volume mass and internal-energy equations",
+        "url": "https://cantera.org/stable/reference/reactors/controlreactor.html"
+      },
+      {
+        "title": "NASA Glenn compressible mass-flow and choking equations",
+        "url": "https://www.grc.nasa.gov/www/k-12/BGP/mflchk.html"
+      }
+    ],
+    "status": "Numerically verified declared case; no calibrated production-performance claim"
+  },
+  "scenario": {
+    "id": "source-v12-air-standard-1800-v1",
+    "label": "Air-standard reference case",
+    "pistonId": "v12-0003",
+    "rpm": 1800,
+    "compressionRatio": 16,
+    "gasConstantJPerKgK": 287.05,
+    "gamma": 1.4,
+    "intakePressurePa": 110000,
+    "intakeTemperatureK": 320,
+    "exhaustPressurePa": 120000,
+    "exhaustTemperatureK": 650,
+    "dischargeCoefficient": 0.65,
+    "valveAreaScale": 1,
+    "heatInputPerCycleJ": 950,
+    "burnStartDeg": -4,
+    "burnDurationDeg": 74,
+    "wiebeShape": 6.9,
+    "wiebeExponent": 3,
+    "wallTemperatureK": 450,
+    "wallCoefficientWPerM2K": 250
+  },
+  "summary": {
+    "peakPressurePa": 5364168.961718058,
+    "peakPressureAngleDeg": 0.3125,
+    "peakTemperatureK": 2012.8499843493614,
+    "minPressurePa": 91256.25603512734,
+    "minTemperatureK": 351.5061272305619,
+    "indicatedWorkPerCylinderJ": 459.7572057773045,
+    "indicatedMeanEffectivePressurePa": 810215.9935953016,
+    "intakeReverseFlowKg": 0.000005018094754912755,
+    "exhaustReverseFlowKg": 0
+  },
+  "balance": {
+    "massIntakeKg": 0.0006069669293925984,
+    "massExhaustKg": -0.0006069669294008398,
+    "enthalpyIntakeJ": 194.44272309571693,
+    "enthalpyExhaustJ": -537.5350473168613,
+    "heatInputJ": 950.0000000000009,
+    "wallHeatIntoGasJ": -147.15047000296326,
+    "workByGasJ": 459.7572057773045,
+    "massChangeKg": -8.244164899362527e-15,
+    "internalEnergyChangeJ": -1.4113652468950022e-9,
+    "massResidualKg": -2.710505431213761e-18,
+    "energyResidualJ": -1.7053025658242404e-13
+  },
+  "periodic": {
+    "converged": true,
+    "cycles": 6,
+    "relativeMassChange": 1.270013993191707e-11,
+    "relativeEnergyChange": 2.7825174879058774e-12
+  },
+  "verification": {
+    "integrationStepDeg": 0.0625,
+    "curveStepDeg": 0.5,
+    "refinement": [
+      {
+        "stepDeg": 0.25,
+        "periodic": {
+          "converged": true,
+          "cycles": 6,
+          "relativeMassChange": 1.0630111406744715e-11,
+          "relativeEnergyChange": 2.3310004656928307e-12
+        },
+        "summary": {
+          "peakPressurePa": 5364127.59082544,
+          "peakPressureAngleDeg": 0.25,
+          "peakTemperatureK": 2012.8559360743632,
+          "minPressurePa": 91260.05229066838,
+          "minTemperatureK": 351.5075761220191,
+          "indicatedWorkPerCylinderJ": 459.7573979734006,
+          "indicatedMeanEffectivePressurePa": 810216.332296575,
+          "intakeReverseFlowKg": 0.000005013120122831079,
+          "exhaustReverseFlowKg": 0
+        },
+        "balance": {
+          "massIntakeKg": 0.0006069651056083775,
+          "massExhaustKg": -0.0006069651056152803,
+          "enthalpyIntakeJ": 194.4435595935085,
+          "enthalpyExhaustJ": -537.5345392178846,
+          "heatInputJ": 949.9999999999985,
+          "wallHeatIntoGasJ": -147.15162240340007,
+          "workByGasJ": 459.7573979734006,
+          "massChangeKg": -6.900404726783993e-15,
+          "internalEnergyChangeJ": -1.1823431123048067e-9,
+          "massResidualKg": 2.3852447794681098e-18,
+          "energyResidualJ": -4.092726157978177e-12
+        }
+      },
+      {
+        "stepDeg": 0.125,
+        "periodic": {
+          "converged": true,
+          "cycles": 6,
+          "relativeMassChange": 1.211305622510365e-11,
+          "relativeEnergyChange": 2.6524072215284264e-12
+        },
+        "summary": {
+          "peakPressurePa": 5364132.337832106,
+          "peakPressureAngleDeg": 0.25,
+          "peakTemperatureK": 2012.8494593718672,
+          "minPressurePa": 91256.55791836286,
+          "minTemperatureK": 351.50601885771414,
+          "indicatedWorkPerCylinderJ": 459.7572406888603,
+          "indicatedMeanEffectivePressurePa": 810216.0551188635,
+          "intakeReverseFlowKg": 0.0000050185217465075085,
+          "exhaustReverseFlowKg": 0
+        },
+        "balance": {
+          "massIntakeKg": 0.000606967080778456,
+          "massExhaustKg": -0.0006069670807863203,
+          "enthalpyIntakeJ": 194.44269959639388,
+          "enthalpyExhaustJ": -537.5350848668439,
+          "heatInputJ": 949.9999999999986,
+          "wallHeatIntoGasJ": -147.15037404203932,
+          "workByGasJ": 459.7572406888603,
+          "massChangeKg": -7.863067835733872e-15,
+          "internalEnergyChangeJ": -1.345370037597604e-9,
+          "massResidualKg": 1.1926223897340549e-18,
+          "energyResidualJ": 5.5706550483591855e-12
+        }
+      },
+      {
+        "stepDeg": 0.0625,
+        "periodic": {
+          "converged": true,
+          "cycles": 6,
+          "relativeMassChange": 1.270013993191707e-11,
+          "relativeEnergyChange": 2.7825174879058774e-12
+        },
+        "summary": {
+          "peakPressurePa": 5364168.961718058,
+          "peakPressureAngleDeg": 0.3125,
+          "peakTemperatureK": 2012.8499843493614,
+          "minPressurePa": 91256.25603512734,
+          "minTemperatureK": 351.5061272305619,
+          "indicatedWorkPerCylinderJ": 459.7572057773045,
+          "indicatedMeanEffectivePressurePa": 810215.9935953016,
+          "intakeReverseFlowKg": 0.000005018094754912755,
+          "exhaustReverseFlowKg": 0
+        },
+        "balance": {
+          "massIntakeKg": 0.0006069669293925984,
+          "massExhaustKg": -0.0006069669294008398,
+          "enthalpyIntakeJ": 194.44272309571693,
+          "enthalpyExhaustJ": -537.5350473168613,
+          "heatInputJ": 950.0000000000009,
+          "wallHeatIntoGasJ": -147.15047000296326,
+          "workByGasJ": 459.7572057773045,
+          "massChangeKg": -8.244164899362527e-15,
+          "internalEnergyChangeJ": -1.4113652468950022e-9,
+          "massResidualKg": -2.710505431213761e-18,
+          "energyResidualJ": -1.7053025658242404e-13
+        }
+      }
+    ],
+    "independentReference": {
+      "method": "Independent Python/SciPy DOP853, piecewise heat-support intervals;rtol2e-10,atol1e-14kg/1e-8J,maxstep0.5deg. Source valve table shared as measured input; integration and formulas separately implemented.",
+      "maxRelativePressureError": 0.000017728293889433728,
+      "maxRelativeTemperatureError": 0.000004594583840512904,
+      "maxRelativeMassError": 0.000014654476860561896,
+      "maxRelativeEnergyError": 0.000017728293889478058
+    }
+  }
+}

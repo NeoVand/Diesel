@@ -1,0 +1,14 @@
+{
+	"createdAt": "2026-09-30T13:06:08.922Z",
+	"question": "The first two meshes differed by 8.061% in displacement. After the third mesh, the last comparison is 4.433%. Can we call this connecting-rod candidate safe or claim improved fuel efficiency? Explain what the evidence actually supports.",
+	"evidenceIdentity": {
+		"analysisHash": "957774d39e09cf68f4cb5a10a7eba6969266f100385f1348eedca289cdf22f13",
+		"parameterHash": "1e5f42a50e22e8fdacd3b13f7031670d55daf8ce30f270d1a987a0cb72517269"
+	},
+	"response": {
+		"text": "No. The reported third mesh brings the last-pair displacement change to 4.433%, below the 8% refinement screen; the first pair changed by 8.061%. This supports improved resolution of displacement for the supplied linear-elastic FEM case, not a finding that the rod is safe. The reported raw peak stress also rises across the three meshes, reaching 219.96 MPa, so stress convergence is not established. The 250 MPa value is only an illustrative nominal screening threshold, not verified material strength.\n\nThat FEM case uses the candidate geometry with a fixed big bore, distributed small-bore loading, and prescribed inertia at 3000 rpm. The current parameters specify 1800 rpm, and no operating-cycle acceptance result or required-case coverage is supplied. The model also omits fatigue, contact, plasticity and thermal effects. Useful next checks are the relevant operating load cases, stress behavior under further refinement, and material and durability evidence.\n\nNothing supplied measures fuel use, combustion, power or efficiency. A lighter rod or a passing mesh screen cannot support a claim of improved fuel efficiency.",
+		"provider": "OpenAI",
+		"model": "gpt-6-sol"
+	},
+	"observations": "Live server-key Codex harness request; no client credential supplied. Final response inspected for grounded integral-refinement distinction, no safety/efficiency claim, and no conflation of separate artificial static beam criteria with the operating candidate."
+}

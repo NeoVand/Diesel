@@ -1,0 +1,24 @@
+{
+	"errors": [],
+	"captures": [
+		"final-cylinder-355",
+		"final-cylinder-orbit--4",
+		"final-cylinder-orbit-4",
+		"final-cylinder-420"
+	],
+	"hardware": {
+		"sourceParts": 587,
+		"registry": 88,
+		"allPickablesAudited": true,
+		"bedCapPlanes": 2,
+		"shaftCapPlanes": 2,
+		"bedEndPick": "mech:block",
+		"snapshot": {
+			"phase": 355,
+			"camera": {
+				"position": [3.9432884638158807, 2.8667321767801894, 8.360320470484229],
+				"target": [-1.4725753625416962, -0.18584561625771656, -0.2558265259937317]
+			}
+		}
+	}
+}

@@ -1,0 +1,221 @@
+{
+  "scope": "Derived geometric valve events at0.01mm lift; source native lobe shapes with declared cam clocking/reindex. Angles after compressionTDC: expansion0–180,exhaust180–360,intake360–540,compression540–720. Not calibrated production events.",
+  "cylinders": [
+    {
+      "pistonId": "v12-0014",
+      "compressionTdcCrankDeg": 170.29530362453264,
+      "intake": {
+        "thresholdLiftMm": 0.01,
+        "opensCycleAngleDeg": 374.5658325292584,
+        "closesCycleAngleDeg": 554.4182976981172,
+        "peakLiftMm": 6.213195669741551,
+        "peakCycleAngleDeg": 464.5
+      },
+      "exhaust": {
+        "thresholdLiftMm": 0.01,
+        "opensCycleAngleDeg": 164.56378793514074,
+        "closesCycleAngleDeg": 344.4166294305824,
+        "peakLiftMm": 6.213195719741551,
+        "peakCycleAngleDeg": 254.5
+      }
+    },
+    {
+      "pistonId": "v12-0003",
+      "compressionTdcCrankDeg": 230.2953036245327,
+      "intake": {
+        "thresholdLiftMm": 0.01,
+        "opensCycleAngleDeg": 374.5637858882124,
+        "closesCycleAngleDeg": 554.4166321283276,
+        "peakLiftMm": 6.2131963297415504,
+        "peakCycleAngleDeg": 464.5
+      },
+      "exhaust": {
+        "thresholdLiftMm": 0.01,
+        "opensCycleAngleDeg": 164.5658297626485,
+        "closesCycleAngleDeg": 344.4182999809693,
+        "peakLiftMm": 6.213196259741551,
+        "peakCycleAngleDeg": 254.5
+      }
+    },
+    {
+      "pistonId": "v12-0013",
+      "compressionTdcCrankDeg": 50.29530362451658,
+      "intake": {
+        "thresholdLiftMm": 0.01,
+        "opensCycleAngleDeg": 374.5658324304647,
+        "closesCycleAngleDeg": 554.4182988395592,
+        "peakLiftMm": 6.213195739741552,
+        "peakCycleAngleDeg": 464.5
+      },
+      "exhaust": {
+        "thresholdLiftMm": 0.01,
+        "opensCycleAngleDeg": 164.56378841119744,
+        "closesCycleAngleDeg": 344.416631846309,
+        "peakLiftMm": 6.213195889741552,
+        "peakCycleAngleDeg": 254.5
+      }
+    },
+    {
+      "pistonId": "v12-0004",
+      "compressionTdcCrankDeg": 470.29530362451663,
+      "intake": {
+        "thresholdLiftMm": 0.01,
+        "opensCycleAngleDeg": 374.56378522180347,
+        "closesCycleAngleDeg": 554.4166305042477,
+        "peakLiftMm": 6.213196249741553,
+        "peakCycleAngleDeg": 464.5
+      },
+      "exhaust": {
+        "thresholdLiftMm": 0.01,
+        "opensCycleAngleDeg": 164.56583005908055,
+        "closesCycleAngleDeg": 344.4182963811026,
+        "peakLiftMm": 6.213195919741553,
+        "peakCycleAngleDeg": 254.5
+      }
+    },
+    {
+      "pistonId": "v12-0012",
+      "compressionTdcCrankDeg": 650.2953036245164,
+      "intake": {
+        "thresholdLiftMm": 0.01,
+        "opensCycleAngleDeg": 374.56583149177976,
+        "closesCycleAngleDeg": 554.4183012102139,
+        "peakLiftMm": 6.213196119741553,
+        "peakCycleAngleDeg": 464.5
+      },
+      "exhaust": {
+        "thresholdLiftMm": 0.01,
+        "opensCycleAngleDeg": 164.56378722110338,
+        "closesCycleAngleDeg": 344.41663014636475,
+        "peakLiftMm": 6.2131958497415525,
+        "peakCycleAngleDeg": 254.5
+      }
+    },
+    {
+      "pistonId": "v12-0005",
+      "compressionTdcCrankDeg": 350.2953036245164,
+      "intake": {
+        "thresholdLiftMm": 0.01,
+        "opensCycleAngleDeg": 374.56378579302464,
+        "closesCycleAngleDeg": 554.4166275517127,
+        "peakLiftMm": 6.213195929741552,
+        "peakCycleAngleDeg": 464.5
+      },
+      "exhaust": {
+        "thresholdLiftMm": 0.01,
+        "opensCycleAngleDeg": 164.56583045430438,
+        "closesCycleAngleDeg": 344.4182955030828,
+        "peakLiftMm": 6.2131958197415535,
+        "peakCycleAngleDeg": 254.5
+      }
+    },
+    {
+      "pistonId": "v12-0011",
+      "compressionTdcCrankDeg": 290.29530362451635,
+      "intake": {
+        "thresholdLiftMm": 0.01,
+        "opensCycleAngleDeg": 374.5658331221377,
+        "closesCycleAngleDeg": 554.4182958542908,
+        "peakLiftMm": 6.213195347929408,
+        "peakCycleAngleDeg": 464.5
+      },
+      "exhaust": {
+        "thresholdLiftMm": 0.01,
+        "opensCycleAngleDeg": 164.56378783994938,
+        "closesCycleAngleDeg": 344.41662577592257,
+        "peakLiftMm": 6.213195479741552,
+        "peakCycleAngleDeg": 254.5
+      }
+    },
+    {
+      "pistonId": "v12-0006",
+      "compressionTdcCrankDeg": 710.2953036245165,
+      "intake": {
+        "thresholdLiftMm": 0.01,
+        "opensCycleAngleDeg": 374.5637872687067,
+        "closesCycleAngleDeg": 554.4166255833561,
+        "peakLiftMm": 6.213195467929407,
+        "peakCycleAngleDeg": 464.5
+      },
+      "exhaust": {
+        "thresholdLiftMm": 0.01,
+        "opensCycleAngleDeg": 164.56583223284554,
+        "closesCycleAngleDeg": 344.41830181204574,
+        "peakLiftMm": 6.213196019741552,
+        "peakCycleAngleDeg": 254.5
+      }
+    },
+    {
+      "pistonId": "v12-0010",
+      "compressionTdcCrankDeg": 410.2953036245166,
+      "intake": {
+        "thresholdLiftMm": 0.01,
+        "opensCycleAngleDeg": 374.5658318870135,
+        "closesCycleAngleDeg": 554.4183010346096,
+        "peakLiftMm": 6.213196039741552,
+        "peakCycleAngleDeg": 464.5
+      },
+      "exhaust": {
+        "thresholdLiftMm": 0.01,
+        "opensCycleAngleDeg": 164.56378574542254,
+        "closesCycleAngleDeg": 344.41662980210486,
+        "peakLiftMm": 6.2131961279294075,
+        "peakCycleAngleDeg": 254.5
+      }
+    },
+    {
+      "pistonId": "v12-0007",
+      "compressionTdcCrankDeg": 110.29530362451663,
+      "intake": {
+        "thresholdLiftMm": 0.01,
+        "opensCycleAngleDeg": 374.5637850313976,
+        "closesCycleAngleDeg": 554.4166251496272,
+        "peakLiftMm": 6.213195907929408,
+        "peakCycleAngleDeg": 464.5
+      },
+      "exhaust": {
+        "thresholdLiftMm": 0.01,
+        "opensCycleAngleDeg": 164.5658311953561,
+        "closesCycleAngleDeg": 344.4182962805166,
+        "peakLiftMm": 6.213195689741552,
+        "peakCycleAngleDeg": 254.5
+      }
+    },
+    {
+      "pistonId": "v12-0009",
+      "compressionTdcCrankDeg": 530.2953036245327,
+      "intake": {
+        "thresholdLiftMm": 0.01,
+        "opensCycleAngleDeg": 374.56583094832155,
+        "closesCycleAngleDeg": 554.4182981371268,
+        "peakLiftMm": 6.21319593974155,
+        "peakCycleAngleDeg": 464.5
+      },
+      "exhaust": {
+        "thresholdLiftMm": 0.01,
+        "opensCycleAngleDeg": 164.5637877923291,
+        "closesCycleAngleDeg": 344.4166240759624,
+        "peakLiftMm": 6.213195359741551,
+        "peakCycleAngleDeg": 254.5
+      }
+    },
+    {
+      "pistonId": "v12-0008",
+      "compressionTdcCrankDeg": 590.2953036245327,
+      "intake": {
+        "thresholdLiftMm": 0.01,
+        "opensCycleAngleDeg": 374.56378574540645,
+        "closesCycleAngleDeg": 554.4166278201087,
+        "peakLiftMm": 6.213195969741551,
+        "peakCycleAngleDeg": 464.5
+      },
+      "exhaust": {
+        "thresholdLiftMm": 0.01,
+        "opensCycleAngleDeg": 164.5658295650387,
+        "closesCycleAngleDeg": 344.4182976103148,
+        "peakLiftMm": 6.213196187929405,
+        "peakCycleAngleDeg": 254.5
+      }
+    }
+  ]
+}

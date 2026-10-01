@@ -1,0 +1,20 @@
+{
+	"browser": {
+		"channel": "chrome",
+		"headless": true,
+		"executable": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+		"requestedDpr": 2
+	},
+	"frames": 119,
+	"medianFrameMs": 16.69999999999891,
+	"p95FrameMs": 16.700000000000728,
+	"averagePassDrawCalls": 663.0083333333333,
+	"averageTrianglesAllPasses": 636549.0083333333,
+	"gpu": {
+		"vendor": "Google Inc. (Apple)",
+		"renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+		"version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+	},
+	"pixelRatio": 1.25,
+	"viewport": [1168, 880]
+}

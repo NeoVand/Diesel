@@ -25,3 +25,22 @@ vite.config.ts.timestamp-*
 test-results
 
 /references/*
+
+# Purchased geometry is a local licensed asset; do not publish it accidentally.
+/static/models/*.glb
+/static/models/*.obj
+
+# Local visual audits and generated diagnostics
+/work/
+
+# Optional project-local native CAD/FEA environment.
+/.venv-cad/
+
+# Derived native CAD remains subject to the purchased asset licence.
+static/models/v12-clearance-refined.bin
+static/models/v12-clearance-refined.json
+static/models/v12-chamber-domains.bin
+
+# Python bytecode is generated locally.
+__pycache__/
+*.py[cod]

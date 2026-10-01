@@ -1,0 +1,51 @@
+{
+	"errors": [],
+	"controls": [
+		{
+			"mode": "baseline",
+			"flatTriangles": 0,
+			"anisotropy": [0.2, 0.25],
+			"camera": {
+				"position": [24.31780809385794, 1.794137137075853, 2.451320821256984],
+				"target": [24.104103174011325, -1.4114366606233952, 0.5814027725990889]
+			},
+			"capMeshes": 0
+		},
+		{
+			"mode": "anisotropy-off",
+			"flatTriangles": 0,
+			"anisotropy": [0, 0],
+			"camera": {
+				"position": [24.31780809385794, 1.794137137075853, 2.451320821256984],
+				"target": [24.104103174011325, -1.4114366606233952, 0.5814027725990889]
+			},
+			"capMeshes": 0
+		},
+		{
+			"mode": "flat-normal-only",
+			"flatTriangles": 336,
+			"anisotropy": [0.2, 0.25],
+			"camera": {
+				"position": [24.31780809385794, 1.794137137075853, 2.451320821256984],
+				"target": [24.104103174011325, -1.4114366606233952, 0.5814027725990889]
+			},
+			"capMeshes": 0
+		},
+		{
+			"mode": "flat-normal-and-isotropic",
+			"flatTriangles": 336,
+			"anisotropy": [0, 0],
+			"camera": {
+				"position": [24.31780809385794, 1.794137137075853, 2.451320821256984],
+				"target": [24.104103174011325, -1.4114366606233952, 0.5814027725990889]
+			},
+			"capMeshes": 0
+		}
+	],
+	"scope": "Read-only GPU diagnostic; normal attributes and anisotropy were temporarily changed in the isolated browser. Repository geometry was not edited by this probe.",
+	"findings": [
+		"Disabling anisotropy alone removes high-contrast triangle stripes but retains incorrect flat-face/pole shading.",
+		"Correcting horizontal-face normals alone improves the pole but retains the anisotropic UV-chart stripes.",
+		"Correcting flat-face normals and using an isotropic aluminium finish removes both observed artifacts."
+	]
+}

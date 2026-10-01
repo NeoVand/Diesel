@@ -1,0 +1,349 @@
+{
+  "schemaVersion": 1,
+  "resolution": 64,
+  "halfWidthMm": 42,
+  "cellMm": 1.3125,
+  "boreRadiusMm": 41.5,
+  "crownCutHeightMm": 38.5,
+  "binaryUrl": "/models/v12-chamber-domains.bin",
+  "floats": 98304,
+  "provenance": "Conservative 64×64 cell height envelopes sampled against purchased piston/head triangles;9 rays per cell,0.08mm margins. Piston envelope clipped at native derived38.5mm crown plane. Chamber domain is truncated at source injector tip and within41.5mmradius; excludes head passages. Moving valve heads additionally excluded at runtime. Not a watertight combustion CFD mesh.",
+  "cylinders": [
+    {
+      "pistonId": "v12-0014",
+      "bank": "negativeX",
+      "originMm": [
+        0,
+        0,
+        86.99999999999869
+      ],
+      "axis": [
+        -0.500000000000001,
+        0.866025403784438,
+        2.465190328815662e-31
+      ],
+      "radialAxis": [
+        -0.866025403784438,
+        -0.500000000000001,
+        0
+      ],
+      "nozzleMm": [
+        -110.28688511814997,
+        191.02248843314658,
+        86.99999999996982
+      ],
+      "nozzleAxialMm": 220.57377023629903,
+      "sourceInjectorId": "v12-0775",
+      "sourceNozzleFace": 295,
+      "offsetFloats": 0
+    },
+    {
+      "pistonId": "v12-0003",
+      "bank": "positiveX",
+      "originMm": [
+        0,
+        0,
+        66.99999999999864
+      ],
+      "axis": [
+        0.4999999999999999,
+        0.8660254037844388,
+        0
+      ],
+      "radialAxis": [
+        -0.8660254037844388,
+        0.4999999999999999,
+        0
+      ],
+      "nozzleMm": [
+        110.28688511815008,
+        191.02248843314504,
+        66.9999999999988
+      ],
+      "nozzleAxialMm": 220.57377023629775,
+      "sourceInjectorId": "v12-0776",
+      "sourceNozzleFace": 355,
+      "offsetFloats": 8192
+    },
+    {
+      "pistonId": "v12-0013",
+      "bank": "negativeX",
+      "originMm": [
+        0,
+        0,
+        176.9999999999987
+      ],
+      "axis": [
+        -0.500000000000001,
+        0.866025403784438,
+        2.465190328815662e-31
+      ],
+      "radialAxis": [
+        -0.866025403784438,
+        -0.500000000000001,
+        0
+      ],
+      "nozzleMm": [
+        -110.28688511814997,
+        191.02248843314658,
+        176.99999999996982
+      ],
+      "nozzleAxialMm": 220.57377023629903,
+      "sourceInjectorId": "v12-0775",
+      "sourceNozzleFace": 235,
+      "offsetFloats": 16384
+    },
+    {
+      "pistonId": "v12-0004",
+      "bank": "positiveX",
+      "originMm": [
+        0,
+        0,
+        156.9999999999987
+      ],
+      "axis": [
+        0.4999999999999999,
+        0.8660254037844388,
+        0
+      ],
+      "radialAxis": [
+        -0.8660254037844388,
+        0.4999999999999999,
+        0
+      ],
+      "nozzleMm": [
+        110.28688511815014,
+        191.02248843314504,
+        156.9999999999988
+      ],
+      "nozzleAxialMm": 220.57377023629778,
+      "sourceInjectorId": "v12-0776",
+      "sourceNozzleFace": 112,
+      "offsetFloats": 24576
+    },
+    {
+      "pistonId": "v12-0012",
+      "bank": "negativeX",
+      "originMm": [
+        0,
+        0,
+        266.9999999999991
+      ],
+      "axis": [
+        -0.500000000000001,
+        0.866025403784438,
+        2.465190328815662e-31
+      ],
+      "radialAxis": [
+        -0.866025403784438,
+        -0.500000000000001,
+        0
+      ],
+      "nozzleMm": [
+        -110.28688511814997,
+        191.02248843314658,
+        266.9999999999698
+      ],
+      "nozzleAxialMm": 220.57377023629903,
+      "sourceInjectorId": "v12-0775",
+      "sourceNozzleFace": 172,
+      "offsetFloats": 32768
+    },
+    {
+      "pistonId": "v12-0005",
+      "bank": "positiveX",
+      "originMm": [
+        0,
+        0,
+        246.9999999999999
+      ],
+      "axis": [
+        0.4999999999999999,
+        0.8660254037844388,
+        0
+      ],
+      "radialAxis": [
+        -0.8660254037844388,
+        0.4999999999999999,
+        0
+      ],
+      "nozzleMm": [
+        110.28688511815014,
+        191.02248843314504,
+        246.9999999999988
+      ],
+      "nozzleAxialMm": 220.57377023629778,
+      "sourceInjectorId": "v12-0776",
+      "sourceNozzleFace": 52,
+      "offsetFloats": 40960
+    },
+    {
+      "pistonId": "v12-0011",
+      "bank": "negativeX",
+      "originMm": [
+        0,
+        0,
+        356.9999999999995
+      ],
+      "axis": [
+        -0.500000000000001,
+        0.866025403784438,
+        2.465190328815662e-31
+      ],
+      "radialAxis": [
+        -0.866025403784438,
+        -0.500000000000001,
+        0
+      ],
+      "nozzleMm": [
+        -110.28688511815,
+        191.02248843314658,
+        356.9999999999698
+      ],
+      "nozzleAxialMm": 220.57377023629903,
+      "sourceInjectorId": "v12-0775",
+      "sourceNozzleFace": 52,
+      "offsetFloats": 49152
+    },
+    {
+      "pistonId": "v12-0006",
+      "bank": "positiveX",
+      "originMm": [
+        0,
+        0,
+        336.99999999999943
+      ],
+      "axis": [
+        0.4999999999999999,
+        0.8660254037844388,
+        0
+      ],
+      "radialAxis": [
+        -0.8660254037844388,
+        0.4999999999999999,
+        0
+      ],
+      "nozzleMm": [
+        110.28688511815017,
+        191.022488433145,
+        336.9999999999988
+      ],
+      "nozzleAxialMm": 220.57377023629778,
+      "sourceInjectorId": "v12-0776",
+      "sourceNozzleFace": 172,
+      "offsetFloats": 57344
+    },
+    {
+      "pistonId": "v12-0010",
+      "bank": "negativeX",
+      "originMm": [
+        0,
+        0,
+        446.99999999999966
+      ],
+      "axis": [
+        -0.500000000000001,
+        0.866025403784438,
+        2.465190328815662e-31
+      ],
+      "radialAxis": [
+        -0.866025403784438,
+        -0.500000000000001,
+        0
+      ],
+      "nozzleMm": [
+        -110.28688511815,
+        191.02248843314658,
+        446.9999999999698
+      ],
+      "nozzleAxialMm": 220.57377023629903,
+      "sourceInjectorId": "v12-0775",
+      "sourceNozzleFace": 112,
+      "offsetFloats": 65536
+    },
+    {
+      "pistonId": "v12-0007",
+      "bank": "positiveX",
+      "originMm": [
+        0,
+        0,
+        426.99999999999966
+      ],
+      "axis": [
+        0.4999999999999999,
+        0.8660254037844388,
+        0
+      ],
+      "radialAxis": [
+        -0.8660254037844388,
+        0.4999999999999999,
+        0
+      ],
+      "nozzleMm": [
+        110.28688511815017,
+        191.02248843314507,
+        426.9999999999988
+      ],
+      "nozzleAxialMm": 220.57377023629783,
+      "sourceInjectorId": "v12-0776",
+      "sourceNozzleFace": 235,
+      "offsetFloats": 73728
+    },
+    {
+      "pistonId": "v12-0009",
+      "bank": "negativeX",
+      "originMm": [
+        0,
+        0,
+        537
+      ],
+      "axis": [
+        -0.500000000000001,
+        0.866025403784438,
+        2.465190328815662e-31
+      ],
+      "radialAxis": [
+        -0.866025403784438,
+        -0.500000000000001,
+        0
+      ],
+      "nozzleMm": [
+        -110.28688511815,
+        191.02248843314658,
+        536.9999999999699
+      ],
+      "nozzleAxialMm": 220.57377023629903,
+      "sourceInjectorId": "v12-0775",
+      "sourceNozzleFace": 355,
+      "offsetFloats": 81920
+    },
+    {
+      "pistonId": "v12-0008",
+      "bank": "positiveX",
+      "originMm": [
+        0,
+        0,
+        517
+      ],
+      "axis": [
+        0.4999999999999999,
+        0.8660254037844388,
+        0
+      ],
+      "radialAxis": [
+        -0.8660254037844388,
+        0.4999999999999999,
+        0
+      ],
+      "nozzleMm": [
+        110.28688511815022,
+        191.02248843314507,
+        516.9999999999987
+      ],
+      "nozzleAxialMm": 220.57377023629783,
+      "sourceInjectorId": "v12-0776",
+      "sourceNozzleFace": 295,
+      "offsetFloats": 90112
+    }
+  ]
+}

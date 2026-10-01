@@ -1,0 +1,526 @@
+{
+  "method": "Conservative original source crown plane vs source seated valve head;7200phase samples per station plus continuous extremum refinement. Independent actual native-derived rendered cam mesh section vs finite13mm pad at7200phases per station. No operating thermal/dynamic clearance claim.",
+  "clearanceSamples": 345600,
+  "camContactSamples": 345600,
+  "minPistonPlaneClearanceMm": 0.5469146627006438,
+  "renderedCamPadGapMm": [
+    -0.0009067622933223163,
+    0.003878489800841045
+  ],
+  "twelveCompressionEvents": [
+    50.29530362451658,
+    110.29530362451663,
+    170.29530362453264,
+    230.2953036245327,
+    290.29530362451635,
+    350.2953036245164,
+    410.2953036245166,
+    470.29530362451663,
+    530.2953036245327,
+    590.2953036245327,
+    650.2953036245164,
+    710.2953036245165
+  ],
+  "eventSpacingsDeg": [
+    60,
+    60.00000000001603,
+    60,
+    59.99999999998363,
+    60,
+    60.00000000000023,
+    60,
+    60.00000000001614,
+    60,
+    59.99999999998363,
+    60.000000000000114,
+    60.000000000000114
+  ],
+  "camTessellationMm": 0.01,
+  "acceptance": {
+    "positiveCrownPlaneClearance": true,
+    "contactWithinNativeTessellation": true,
+    "twelveEvenEvents": true
+  },
+  "valves": [
+    {
+      "valveId": "v12-1106",
+      "pistonId": "v12-0003",
+      "minPistonPlaneClearanceMm": 0.5469641169656398,
+      "crankDegAtMinimum": 230.29530441171306,
+      "renderedCamPadGapMm": [
+        -0.0009067373746898255,
+        0.003878145453423798
+      ]
+    },
+    {
+      "valveId": "v12-1107",
+      "pistonId": "v12-0003",
+      "minPistonPlaneClearanceMm": 0.5469566401137769,
+      "crankDegAtMinimum": 230.29530441171306,
+      "renderedCamPadGapMm": [
+        -0.0009067373746898255,
+        0.0038781454534122517
+      ]
+    },
+    {
+      "valveId": "v12-1108",
+      "pistonId": "v12-0008",
+      "minPistonPlaneClearanceMm": 0.5920890655819235,
+      "crankDegAtMinimum": 230.29530552519782,
+      "renderedCamPadGapMm": [
+        -0.0009067411790049107,
+        0.003878120361255455
+      ]
+    },
+    {
+      "valveId": "v12-1109",
+      "pistonId": "v12-0008",
+      "minPistonPlaneClearanceMm": 0.5469777672910041,
+      "crankDegAtMinimum": 230.29530552519782,
+      "renderedCamPadGapMm": [
+        -0.0009067411790022462,
+        0.003878120361255455
+      ]
+    },
+    {
+      "valveId": "v12-1250",
+      "pistonId": "v12-0005",
+      "minPistonPlaneClearanceMm": 0.5469635331768856,
+      "crankDegAtMinimum": 350.2953047173521,
+      "renderedCamPadGapMm": [
+        -0.0009067382216316755,
+        0.0038781294483516415
+      ]
+    },
+    {
+      "valveId": "v12-1251",
+      "pistonId": "v12-0005",
+      "minPistonPlaneClearanceMm": 0.5469539801873893,
+      "crankDegAtMinimum": 350.2953047173521,
+      "renderedCamPadGapMm": [
+        -0.0009067382216307873,
+        0.003878129448329881
+      ]
+    },
+    {
+      "valveId": "v12-1252",
+      "pistonId": "v12-0006",
+      "minPistonPlaneClearanceMm": 0.5469743100775588,
+      "crankDegAtMinimum": 350.295305517358,
+      "renderedCamPadGapMm": [
+        -0.0009067468422039315,
+        0.003878335120246268
+      ]
+    },
+    {
+      "valveId": "v12-1253",
+      "pistonId": "v12-0006",
+      "minPistonPlaneClearanceMm": 0.5469797298850949,
+      "crankDegAtMinimum": 350.295305517358,
+      "renderedCamPadGapMm": [
+        -0.0009067468421988245,
+        0.0038783351202682503
+      ]
+    },
+    {
+      "valveId": "v12-1070",
+      "pistonId": "v12-0003",
+      "minPistonPlaneClearanceMm": 0.5469890912044235,
+      "crankDegAtMinimum": 230.29530441171306,
+      "renderedCamPadGapMm": [
+        -0.0007299564954130755,
+        0.003817816465271129
+      ]
+    },
+    {
+      "valveId": "v12-1071",
+      "pistonId": "v12-0003",
+      "minPistonPlaneClearanceMm": 0.5469916813488993,
+      "crankDegAtMinimum": 230.29530441171306,
+      "renderedCamPadGapMm": [
+        -0.0007299564954139637,
+        0.0038178164652706847
+      ]
+    },
+    {
+      "valveId": "v12-1072",
+      "pistonId": "v12-0008",
+      "minPistonPlaneClearanceMm": 0.5469696370561863,
+      "crankDegAtMinimum": 230.29530552519782,
+      "renderedCamPadGapMm": [
+        -0.0007299513071989949,
+        0.003817913813503715
+      ]
+    },
+    {
+      "valveId": "v12-1073",
+      "pistonId": "v12-0008",
+      "minPistonPlaneClearanceMm": 0.5469670906328545,
+      "crankDegAtMinimum": 230.29530552519782,
+      "renderedCamPadGapMm": [
+        -0.0007299513071989949,
+        0.003817913813503715
+      ]
+    },
+    {
+      "valveId": "v12-1142",
+      "pistonId": "v12-0004",
+      "minPistonPlaneClearanceMm": 0.5470031544877685,
+      "crankDegAtMinimum": 110.29530475547472,
+      "renderedCamPadGapMm": [
+        -0.0007299473516311217,
+        0.0038174489313251847
+      ]
+    },
+    {
+      "valveId": "v12-1143",
+      "pistonId": "v12-0004",
+      "minPistonPlaneClearanceMm": 0.5470022800028715,
+      "crankDegAtMinimum": 110.29530475547472,
+      "renderedCamPadGapMm": [
+        -0.000729947351632898,
+        0.0038174489313234083
+      ]
+    },
+    {
+      "valveId": "v12-1144",
+      "pistonId": "v12-0007",
+      "minPistonPlaneClearanceMm": 0.5469855975848006,
+      "crankDegAtMinimum": 110.29530464203845,
+      "renderedCamPadGapMm": [
+        -0.0007299462448757676,
+        0.003817453821339356
+      ]
+    },
+    {
+      "valveId": "v12-1145",
+      "pistonId": "v12-0007",
+      "minPistonPlaneClearanceMm": 0.5469813519909437,
+      "crankDegAtMinimum": 110.29530464203845,
+      "renderedCamPadGapMm": [
+        -0.0007299462448757676,
+        0.003817453821338468
+      ]
+    },
+    {
+      "valveId": "v12-1214",
+      "pistonId": "v12-0005",
+      "minPistonPlaneClearanceMm": 0.5469724794053192,
+      "crankDegAtMinimum": 350.2953047173521,
+      "renderedCamPadGapMm": [
+        -0.0007299437265495534,
+        0.003818124548554902
+      ]
+    },
+    {
+      "valveId": "v12-1215",
+      "pistonId": "v12-0005",
+      "minPistonPlaneClearanceMm": 0.5469739685056183,
+      "crankDegAtMinimum": 350.2953047173521,
+      "renderedCamPadGapMm": [
+        -0.0007299437265495534,
+        0.00381812454855579
+      ]
+    },
+    {
+      "valveId": "v12-1216",
+      "pistonId": "v12-0006",
+      "minPistonPlaneClearanceMm": 0.5469885944942803,
+      "crankDegAtMinimum": 350.295305517358,
+      "renderedCamPadGapMm": [
+        -0.0007299646282119543,
+        0.0038176655343273858
+      ]
+    },
+    {
+      "valveId": "v12-1217",
+      "pistonId": "v12-0006",
+      "minPistonPlaneClearanceMm": 0.5469974837750158,
+      "crankDegAtMinimum": 350.295305517358,
+      "renderedCamPadGapMm": [
+        -0.0007299646282137306,
+        0.0038176655343256094
+      ]
+    },
+    {
+      "valveId": "v12-1178",
+      "pistonId": "v12-0004",
+      "minPistonPlaneClearanceMm": 0.5469730528045744,
+      "crankDegAtMinimum": 110.29530475547472,
+      "renderedCamPadGapMm": [
+        -0.0009067328734571056,
+        0.003878054669737452
+      ]
+    },
+    {
+      "valveId": "v12-1179",
+      "pistonId": "v12-0004",
+      "minPistonPlaneClearanceMm": 0.5469728176724828,
+      "crankDegAtMinimum": 110.29530475547472,
+      "renderedCamPadGapMm": [
+        -0.0009067328734562174,
+        0.003878054669742559
+      ]
+    },
+    {
+      "valveId": "v12-1180",
+      "pistonId": "v12-0007",
+      "minPistonPlaneClearanceMm": 0.5469770167357737,
+      "crankDegAtMinimum": 110.29530464203845,
+      "renderedCamPadGapMm": [
+        -0.0009067279415708729,
+        0.003878023734331437
+      ]
+    },
+    {
+      "valveId": "v12-1181",
+      "pistonId": "v12-0007",
+      "minPistonPlaneClearanceMm": 0.5469725372796788,
+      "crankDegAtMinimum": 110.29530464203845,
+      "renderedCamPadGapMm": [
+        -0.0009067279415679863,
+        0.0038780237343387647
+      ]
+    },
+    {
+      "valveId": "v12-0854",
+      "pistonId": "v12-0014",
+      "minPistonPlaneClearanceMm": 0.5470198935525801,
+      "crankDegAtMinimum": 170.29530471734978,
+      "renderedCamPadGapMm": [
+        -0.0009067537320264218,
+        0.00387842058296628
+      ]
+    },
+    {
+      "valveId": "v12-0855",
+      "pistonId": "v12-0014",
+      "minPistonPlaneClearanceMm": 0.5470166640735172,
+      "crankDegAtMinimum": 170.29530471734978,
+      "renderedCamPadGapMm": [
+        -0.0009067537320290864,
+        0.003878420582966946
+      ]
+    },
+    {
+      "valveId": "v12-0856",
+      "pistonId": "v12-0009",
+      "minPistonPlaneClearanceMm": 0.5469146627006438,
+      "crankDegAtMinimum": 170.29530393716942,
+      "renderedCamPadGapMm": [
+        -0.0009067454260089924,
+        0.003878403382468809
+      ]
+    },
+    {
+      "valveId": "v12-0857",
+      "pistonId": "v12-0009",
+      "minPistonPlaneClearanceMm": 0.5469196608854219,
+      "crankDegAtMinimum": 170.29530393716942,
+      "renderedCamPadGapMm": [
+        -0.0009067454260009988,
+        0.003878403382468365
+      ]
+    },
+    {
+      "valveId": "v12-0998",
+      "pistonId": "v12-0012",
+      "minPistonPlaneClearanceMm": 0.5469705515720591,
+      "crankDegAtMinimum": 290.29530458156114,
+      "renderedCamPadGapMm": [
+        -0.0009067493890408951,
+        0.003878322227768294
+      ]
+    },
+    {
+      "valveId": "v12-0999",
+      "pistonId": "v12-0012",
+      "minPistonPlaneClearanceMm": 0.5920895928244647,
+      "crankDegAtMinimum": 290.29530458156114,
+      "renderedCamPadGapMm": [
+        -0.0009067493890426714,
+        0.0038783222277669616
+      ]
+    },
+    {
+      "valveId": "v12-1000",
+      "pistonId": "v12-0011",
+      "minPistonPlaneClearanceMm": 0.5920604592280441,
+      "crankDegAtMinimum": 290.29530461095067,
+      "renderedCamPadGapMm": [
+        -0.0009067493026322371,
+        0.0038784175880755
+      ]
+    },
+    {
+      "valveId": "v12-1001",
+      "pistonId": "v12-0011",
+      "minPistonPlaneClearanceMm": 0.5469370564438876,
+      "crankDegAtMinimum": 290.29530461095067,
+      "renderedCamPadGapMm": [
+        -0.0009067493026273521,
+        0.0038784175880777205
+      ]
+    },
+    {
+      "valveId": "v12-0890",
+      "pistonId": "v12-0014",
+      "minPistonPlaneClearanceMm": 0.5470108260219959,
+      "crankDegAtMinimum": 170.29530471734978,
+      "renderedCamPadGapMm": [
+        -0.0007299548696655389,
+        0.0038182833356810164
+      ]
+    },
+    {
+      "valveId": "v12-0891",
+      "pistonId": "v12-0014",
+      "minPistonPlaneClearanceMm": 0.5470286034499807,
+      "crankDegAtMinimum": 170.29530471734978,
+      "renderedCamPadGapMm": [
+        -0.0007299548696677594,
+        0.003818283335678796
+      ]
+    },
+    {
+      "valveId": "v12-0892",
+      "pistonId": "v12-0009",
+      "minPistonPlaneClearanceMm": 0.546948183573349,
+      "crankDegAtMinimum": 170.29530393716942,
+      "renderedCamPadGapMm": [
+        -0.0007299570971315283,
+        0.0038182625590574837
+      ]
+    },
+    {
+      "valveId": "v12-0893",
+      "pistonId": "v12-0009",
+      "minPistonPlaneClearanceMm": 0.5469555243390545,
+      "crankDegAtMinimum": 170.29530393716942,
+      "renderedCamPadGapMm": [
+        -0.0007299570971306402,
+        0.003818262559058816
+      ]
+    },
+    {
+      "valveId": "v12-0962",
+      "pistonId": "v12-0013",
+      "minPistonPlaneClearanceMm": 0.5469915080839414,
+      "crankDegAtMinimum": 50.29530469515254,
+      "renderedCamPadGapMm": [
+        -0.0007299587662954465,
+        0.0038175725304658847
+      ]
+    },
+    {
+      "valveId": "v12-0963",
+      "pistonId": "v12-0013",
+      "minPistonPlaneClearanceMm": 0.5470005797483211,
+      "crankDegAtMinimum": 50.29530469515254,
+      "renderedCamPadGapMm": [
+        -0.0007299587662967788,
+        0.0038175725304654407
+      ]
+    },
+    {
+      "valveId": "v12-0964",
+      "pistonId": "v12-0010",
+      "minPistonPlaneClearanceMm": 0.5469942220074202,
+      "crankDegAtMinimum": 50.2953044639801,
+      "renderedCamPadGapMm": [
+        -0.0007299665848077286,
+        0.003817801250538988
+      ]
+    },
+    {
+      "valveId": "v12-0965",
+      "pistonId": "v12-0010",
+      "minPistonPlaneClearanceMm": 0.546993554741114,
+      "crankDegAtMinimum": 50.2953044639801,
+      "renderedCamPadGapMm": [
+        -0.0007299665847975145,
+        0.0038178012505425407
+      ]
+    },
+    {
+      "valveId": "v12-1034",
+      "pistonId": "v12-0012",
+      "minPistonPlaneClearanceMm": 0.5470032458060814,
+      "crankDegAtMinimum": 290.29530458156114,
+      "renderedCamPadGapMm": [
+        -0.0007299679789041225,
+        0.0038184158740888208
+      ]
+    },
+    {
+      "valveId": "v12-1035",
+      "pistonId": "v12-0012",
+      "minPistonPlaneClearanceMm": 0.5470151759388386,
+      "crankDegAtMinimum": 290.29530458156114,
+      "renderedCamPadGapMm": [
+        -0.0007299679789010138,
+        0.0038184158740914853
+      ]
+    },
+    {
+      "valveId": "v12-1036",
+      "pistonId": "v12-0011",
+      "minPistonPlaneClearanceMm": 0.5470040142903443,
+      "crankDegAtMinimum": 290.29530461095067,
+      "renderedCamPadGapMm": [
+        -0.0007299424187181547,
+        0.0038177694264005524
+      ]
+    },
+    {
+      "valveId": "v12-1037",
+      "pistonId": "v12-0011",
+      "minPistonPlaneClearanceMm": 0.5469948496312398,
+      "crankDegAtMinimum": 290.29530461095067,
+      "renderedCamPadGapMm": [
+        -0.0007299424187190429,
+        0.003817769426399664
+      ]
+    },
+    {
+      "valveId": "v12-0926",
+      "pistonId": "v12-0013",
+      "minPistonPlaneClearanceMm": 0.5469370842196426,
+      "crankDegAtMinimum": 50.29530469515254,
+      "renderedCamPadGapMm": [
+        -0.0009067622933134345,
+        0.003878489800841045
+      ]
+    },
+    {
+      "valveId": "v12-0927",
+      "pistonId": "v12-0013",
+      "minPistonPlaneClearanceMm": 0.546940300622559,
+      "crankDegAtMinimum": 50.29530469515254,
+      "renderedCamPadGapMm": [
+        -0.0009067622933223163,
+        0.0038784898008339397
+      ]
+    },
+    {
+      "valveId": "v12-0928",
+      "pistonId": "v12-0010",
+      "minPistonPlaneClearanceMm": 0.5469177627272259,
+      "crankDegAtMinimum": 50.2953044639801,
+      "renderedCamPadGapMm": [
+        -0.0009067351303340132,
+        0.003878124561527585
+      ]
+    },
+    {
+      "valveId": "v12-0929",
+      "pistonId": "v12-0010",
+      "minPistonPlaneClearanceMm": 0.5469358170779586,
+      "crankDegAtMinimum": 50.2953044639801,
+      "renderedCamPadGapMm": [
+        -0.0009067351303260196,
+        0.003878124561528473
+      ]
+    }
+  ]
+}

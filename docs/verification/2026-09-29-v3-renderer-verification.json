@@ -1,0 +1,2081 @@
+{
+	"renderer": {
+		"stats": {
+			"parts": 587,
+			"triangles": 965744,
+			"educationalParts": 88,
+			"renderer": "WebGL 2 · component-aware GPU batches"
+		},
+		"viewport": [1168, 880],
+		"requestedDpr": 2,
+		"pixelRatio": 1.25,
+		"exposure": 0.9,
+		"toneMapping": 4,
+		"gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+	},
+	"views": [
+		{
+			"name": "render-assembly-perspective",
+			"display": "assembly",
+			"view": "perspective",
+			"section": {
+				"axis": "x",
+				"offset": 0.5,
+				"flipped": false,
+				"visible": true
+			},
+			"sourceProxies": 587,
+			"visibleTeachingPickables": 259,
+			"visibleBanks": 12,
+			"camera": {
+				"position": [6.653131880099879, 3.7499470596926576, 10.584527991067986],
+				"target": [0, 0, 0]
+			},
+			"sourceClippingPlanes": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			"capReport": {},
+			"sourceAnisotropy": [
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "rubber",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "exhaust",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "aluminium",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				}
+			],
+			"doubleSidedProxies": 0
+		},
+		{
+			"name": "render-assembly-front",
+			"display": "assembly",
+			"view": "front",
+			"section": {
+				"axis": "x",
+				"offset": 0.5,
+				"flipped": false,
+				"visible": true
+			},
+			"sourceProxies": 587,
+			"visibleTeachingPickables": 259,
+			"visibleBanks": 12,
+			"camera": {
+				"position": [11.405072983924404, 1.1405072983924402, 0.011405072983923783],
+				"target": [0, 0, 0]
+			},
+			"sourceClippingPlanes": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			"capReport": {},
+			"sourceAnisotropy": [
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "rubber",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "exhaust",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "aluminium",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				}
+			],
+			"doubleSidedProxies": 0
+		},
+		{
+			"name": "render-assembly-side",
+			"display": "assembly",
+			"view": "side",
+			"section": {
+				"axis": "x",
+				"offset": 0.5,
+				"flipped": false,
+				"visible": true
+			},
+			"sourceProxies": 587,
+			"visibleTeachingPickables": 259,
+			"visibleBanks": 12,
+			"camera": {
+				"position": [0.010873892579715305, 1.5223449611601418, 10.8738925797153],
+				"target": [0, 0, 0]
+			},
+			"sourceClippingPlanes": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			"capReport": {},
+			"sourceAnisotropy": [
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "rubber",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "exhaust",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "aluminium",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				}
+			],
+			"doubleSidedProxies": 0
+		},
+		{
+			"name": "render-assembly-top",
+			"display": "assembly",
+			"view": "top",
+			"section": {
+				"axis": "x",
+				"offset": 0.5,
+				"flipped": false,
+				"visible": true
+			},
+			"sourceProxies": 587,
+			"visibleTeachingPickables": 259,
+			"visibleBanks": 12,
+			"camera": {
+				"position": [0.015105693246457864, 15.105693246428203, 0.015105693246457866],
+				"target": [0, 0, 0]
+			},
+			"sourceClippingPlanes": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			"capReport": {},
+			"sourceAnisotropy": [
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "rubber",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "exhaust",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "aluminium",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				}
+			],
+			"doubleSidedProxies": 0
+		},
+		{
+			"name": "render-exploded-internals",
+			"display": "assembly",
+			"view": "perspective",
+			"section": {
+				"axis": "x",
+				"offset": 0.5,
+				"flipped": false,
+				"visible": true
+			},
+			"sourceProxies": 587,
+			"visibleTeachingPickables": 259,
+			"visibleBanks": 12,
+			"camera": {
+				"position": [11.758952236157906, 7.470004344713067, 19.178883343245886],
+				"target": [-0.044917293882369855, 0.8169142459630965, 0.3999999999999997]
+			},
+			"sourceClippingPlanes": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			"capReport": {},
+			"sourceAnisotropy": [
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "rubber",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "exhaust",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "aluminium",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				}
+			],
+			"doubleSidedProxies": 0
+		},
+		{
+			"name": "render-exploded-exterior",
+			"display": "assembly",
+			"view": "perspective",
+			"section": {
+				"axis": "x",
+				"offset": 0.5,
+				"flipped": false,
+				"visible": true
+			},
+			"sourceProxies": 587,
+			"visibleTeachingPickables": 0,
+			"visibleBanks": 0,
+			"camera": {
+				"position": [11.758952236157906, 7.470004344713067, 19.178883343245886],
+				"target": [-0.04491729388236986, 0.8169142459630965, 0.3999999999999997]
+			},
+			"sourceClippingPlanes": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			"capReport": {},
+			"sourceAnisotropy": [
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "rubber",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "exhaust",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "aluminium",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				}
+			],
+			"doubleSidedProxies": 0
+		},
+		{
+			"name": "render-section-x",
+			"display": "section",
+			"view": "perspective",
+			"section": {
+				"axis": "x",
+				"offset": 0.5,
+				"flipped": false,
+				"visible": true
+			},
+			"sourceProxies": 587,
+			"visibleTeachingPickables": 259,
+			"visibleBanks": 12,
+			"camera": {
+				"position": [7.461257465248427, 4.860189056001419, 14.256545967440676],
+				"target": [-1.4720718861370168, -0.1749602147794664, 0.044431090236564316]
+			},
+			"sourceClippingPlanes": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+			"capReport": {
+				"Frame_156826": {
+					"closedContours": 1,
+					"openContours": 0,
+					"triangles": 445,
+					"rendered": false
+				},
+				"Frame_Object_002": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_003": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_004": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_005": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_006": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_007": {
+					"closedContours": 1,
+					"openContours": 0,
+					"triangles": 115,
+					"rendered": true
+				},
+				"Frame_Object_008": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_009": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_010": {
+					"closedContours": 1,
+					"openContours": 0,
+					"triangles": 107,
+					"rendered": true
+				},
+				"Frame_Object_011": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_012": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_013": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_014": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				}
+			},
+			"sourceAnisotropy": [
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "rubber",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "exhaust",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "aluminium",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				}
+			],
+			"doubleSidedProxies": 587
+		},
+		{
+			"name": "render-section-y",
+			"display": "section",
+			"view": "perspective",
+			"section": {
+				"axis": "y",
+				"offset": 0.5,
+				"flipped": false,
+				"visible": true
+			},
+			"sourceProxies": 587,
+			"visibleTeachingPickables": 259,
+			"visibleBanks": 12,
+			"camera": {
+				"position": [7.2677749614488505, 3.0089785402807547, 11.562369256850442],
+				"target": [0.022650308557813047, -1.0746371731669195, 0.03603458179652075]
+			},
+			"sourceClippingPlanes": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+			"capReport": {
+				"Frame_156826": {
+					"closedContours": 36,
+					"openContours": 16,
+					"triangles": 318,
+					"rendered": false
+				},
+				"Frame_Object_002": {
+					"closedContours": 3,
+					"openContours": 0,
+					"triangles": 295,
+					"rendered": true
+				},
+				"Frame_Object_003": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_004": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_005": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_006": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_007": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_008": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_009": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_010": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_011": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_012": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_013": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_014": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				}
+			},
+			"sourceAnisotropy": [
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "rubber",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "exhaust",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "aluminium",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				}
+			],
+			"doubleSidedProxies": 587
+		},
+		{
+			"name": "render-section-z",
+			"display": "section",
+			"view": "perspective",
+			"section": {
+				"axis": "z",
+				"offset": 0.5,
+				"flipped": false,
+				"visible": true
+			},
+			"sourceProxies": 587,
+			"visibleTeachingPickables": 259,
+			"visibleBanks": 12,
+			"camera": {
+				"position": [9.029775711377393, 4.897350317271261, 13.479251942706723],
+				"target": [0.028141653691182912, -0.17629796978823892, -0.8415295127031585]
+			},
+			"sourceClippingPlanes": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+			"capReport": {
+				"Frame_156826": {
+					"closedContours": 1,
+					"openContours": 0,
+					"triangles": 192,
+					"rendered": false
+				},
+				"Frame_Object_002": {
+					"closedContours": 3,
+					"openContours": 0,
+					"triangles": 217,
+					"rendered": true
+				},
+				"Frame_Object_003": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_004": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_005": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_006": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_007": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_008": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_009": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_010": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_011": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_012": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_013": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_014": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				}
+			},
+			"sourceAnisotropy": [
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "rubber",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "exhaust",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "aluminium",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				}
+			],
+			"doubleSidedProxies": 587
+		},
+		{
+			"name": "render-section-z-25",
+			"display": "section",
+			"view": "perspective",
+			"section": {
+				"axis": "z",
+				"offset": 0.25,
+				"flipped": false,
+				"visible": true
+			},
+			"sourceProxies": 587,
+			"visibleTeachingPickables": 259,
+			"visibleBanks": 12,
+			"camera": {
+				"position": [8.492901939451155, 4.606173767452337, 12.181984415581775],
+				"target": [0.026468465314378513, -0.1658160088792994, -1.2873415659994585]
+			},
+			"sourceClippingPlanes": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+			"capReport": {
+				"Frame_156826": {
+					"closedContours": 15,
+					"openContours": 0,
+					"triangles": 570,
+					"rendered": false
+				},
+				"Frame_Object_002": {
+					"closedContours": 2,
+					"openContours": 2,
+					"triangles": 253,
+					"rendered": true
+				},
+				"Frame_Object_003": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_004": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_005": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_006": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_007": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_008": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_009": {
+					"closedContours": 0,
+					"openContours": 2,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_010": {
+					"closedContours": 0,
+					"openContours": 2,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_011": {
+					"closedContours": 0,
+					"openContours": 2,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_012": {
+					"closedContours": 0,
+					"openContours": 2,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_013": {
+					"closedContours": 0,
+					"openContours": 2,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_014": {
+					"closedContours": 0,
+					"openContours": 2,
+					"triangles": 0,
+					"rendered": true
+				}
+			},
+			"sourceAnisotropy": [
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "rubber",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "exhaust",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "aluminium",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				}
+			],
+			"doubleSidedProxies": 587
+		},
+		{
+			"name": "render-section-z-75",
+			"display": "section",
+			"view": "perspective",
+			"section": {
+				"axis": "z",
+				"offset": 0.75,
+				"flipped": false,
+				"visible": true
+			},
+			"sourceProxies": 587,
+			"visibleTeachingPickables": 259,
+			"visibleBanks": 12,
+			"camera": {
+				"position": [9.566649483303634, 5.188526867090184, 14.776519469831666],
+				"target": [0.02981484206798731, -0.18677993069717858, -0.39571745940685865]
+			},
+			"sourceClippingPlanes": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+			"capReport": {
+				"Frame_156826": {
+					"closedContours": 15,
+					"openContours": 2,
+					"triangles": 588,
+					"rendered": false
+				},
+				"Frame_Object_002": {
+					"closedContours": 3,
+					"openContours": 0,
+					"triangles": 289,
+					"rendered": true
+				},
+				"Frame_Object_003": {
+					"closedContours": 1,
+					"openContours": 0,
+					"triangles": 111,
+					"rendered": true
+				},
+				"Frame_Object_004": {
+					"closedContours": 1,
+					"openContours": 0,
+					"triangles": 111,
+					"rendered": true
+				},
+				"Frame_Object_005": {
+					"closedContours": 1,
+					"openContours": 0,
+					"triangles": 106,
+					"rendered": true
+				},
+				"Frame_Object_006": {
+					"closedContours": 1,
+					"openContours": 0,
+					"triangles": 112,
+					"rendered": true
+				},
+				"Frame_Object_007": {
+					"closedContours": 1,
+					"openContours": 0,
+					"triangles": 113,
+					"rendered": true
+				},
+				"Frame_Object_008": {
+					"closedContours": 1,
+					"openContours": 0,
+					"triangles": 116,
+					"rendered": true
+				},
+				"Frame_Object_009": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_010": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_011": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_012": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_013": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_014": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				}
+			},
+			"sourceAnisotropy": [
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "rubber",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "exhaust",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "aluminium",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				}
+			],
+			"doubleSidedProxies": 587
+		},
+		{
+			"name": "render-section-z-reversed",
+			"display": "section",
+			"view": "perspective",
+			"section": {
+				"axis": "z",
+				"offset": 0.5,
+				"flipped": true,
+				"visible": false
+			},
+			"sourceProxies": 587,
+			"visibleTeachingPickables": 259,
+			"visibleBanks": 12,
+			"camera": {
+				"position": [9.029775711377393, 4.897350317271261, 15.251852593494077],
+				"target": [0.028141653691182912, -0.17629796978823897, 0.9310711380841951]
+			},
+			"sourceClippingPlanes": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+			"capReport": {
+				"Frame_156826": {
+					"closedContours": 1,
+					"openContours": 0,
+					"triangles": 192,
+					"rendered": false
+				},
+				"Frame_Object_002": {
+					"closedContours": 3,
+					"openContours": 0,
+					"triangles": 217,
+					"rendered": true
+				},
+				"Frame_Object_003": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_004": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_005": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_006": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_007": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_008": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_009": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_010": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_011": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_012": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_013": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_014": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				}
+			},
+			"sourceAnisotropy": [
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "rubber",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "exhaust",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "aluminium",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				}
+			],
+			"doubleSidedProxies": 587
+		},
+		{
+			"name": "render-cylinder-02",
+			"display": "cylinder",
+			"view": "perspective",
+			"section": {
+				"axis": "z",
+				"offset": 0.5,
+				"flipped": true,
+				"visible": false
+			},
+			"sourceProxies": 587,
+			"visibleTeachingPickables": 37,
+			"visibleBanks": 1,
+			"camera": {
+				"position": [3.8915351505404656, 2.817271945866835, 8.71538946816174],
+				"target": [-1.4723587322209253, -0.20601369714413034, 0.18192192740498458]
+			},
+			"sourceClippingPlanes": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			"capReport": {
+				"Frame_156826": {
+					"closedContours": 1,
+					"openContours": 0,
+					"triangles": 192,
+					"rendered": false
+				},
+				"Frame_Object_002": {
+					"closedContours": 3,
+					"openContours": 0,
+					"triangles": 217,
+					"rendered": true
+				},
+				"Frame_Object_003": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_004": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_005": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_006": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_007": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_008": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_009": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_010": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_011": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_012": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_013": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				},
+				"Frame_Object_014": {
+					"closedContours": 0,
+					"openContours": 0,
+					"triangles": 0,
+					"rendered": true
+				}
+			},
+			"sourceAnisotropy": [
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "steel",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "paint",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "rubber",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "fastener",
+					"value": 0
+				},
+				{
+					"finish": "exhaust",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				},
+				{
+					"finish": "aluminium",
+					"value": 0
+				},
+				{
+					"finish": "iron",
+					"value": 0
+				}
+			],
+			"doubleSidedProxies": 0
+		}
+	],
+	"doubleClick": {
+		"expected": "Frame_Object_034",
+		"actual": "Frame_Object_034"
+	},
+	"benchmarks": [
+		{
+			"display": "section",
+			"frames": 119,
+			"medianMs": 33.29999999998836,
+			"p95Ms": 50,
+			"averagePassDrawCalls": 930,
+			"averagePassTriangles": 3691355
+		},
+		{
+			"display": "mechanism",
+			"frames": 119,
+			"medianMs": 16.69999999999709,
+			"p95Ms": 16.70000000001164,
+			"averagePassDrawCalls": 663,
+			"averagePassTriangles": 636549
+		}
+	],
+	"transitions": {
+		"capsAfterReassembly": {
+			"before": 14,
+			"after": 14
+		},
+		"planeUpdateCpu": {
+			"samples": 21,
+			"medianMs": 22,
+			"p95Ms": 29.200000047683716,
+			"maxMs": 29.600000143051147
+		},
+		"isolatedRemovedPistonBounds": [
+			{
+				"x": -0.1745981379365554,
+				"y": 0.06549732429183466,
+				"z": 0.9781941880913472
+			},
+			{
+				"x": -0.46410951612033297,
+				"y": -0.08244165940132854,
+				"z": 0.9745577453298379
+			},
+			{
+				"x": -0.18278020801101258,
+				"y": 0.5795819859645716,
+				"z": 0.9771395025282338
+			},
+			{
+				"x": -0.4895656634545477,
+				"y": 0.5111484736282184,
+				"z": 0.9731238438424584
+			},
+			{
+				"x": 0.16831662229694802,
+				"y": -0.014628059352378663,
+				"z": 0.976224650623316
+			},
+			{
+				"x": -0.0899262148747256,
+				"y": -0.19210214602070005,
+				"z": 0.9718622145587351
+			},
+			{
+				"x": 0.17692991343010392,
+				"y": 0.5426468159442144,
+				"z": 0.9749721574477439
+			},
+			{
+				"x": -0.09539813961803846,
+				"y": 0.4597440610327417,
+				"z": 0.970107447797906
+			}
+		]
+	},
+	"errors": []
+}
