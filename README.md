@@ -2,6 +2,8 @@
 
 [![Engine Lab animated application tour](Engine-Lab-Browser-Tour.gif)](https://youtu.be/jyEHHKMNal8)
 
+**[Watch the full video tour on YouTube (10:45)](https://youtu.be/jyEHHKMNal8)**
+
 A browser-based workspace for inspecting a V12 diesel concept, changing parametric geometry, and comparing engineering calculations with their assumptions and verification evidence.
 
 [Open the application](https://neovand.github.io/Diesel/) · [Run locally](docs/RUNNING.md) · [Computation and verification](docs/COMPUTE_ARCHITECTURE.md) · [Engineering scope](#engineering-scope)
